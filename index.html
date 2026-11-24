@@ -37,7 +37,7 @@ input[type=text],input[type=email],input[type=password]{font:inherit;border:0;bo
 label,.lab{display:flex;justify-content:space-between;align-items:center;font-size:16px;margin-top:14px}
 select{font:inherit;font-weight:800;border:0;border-radius:999px;padding:0 44px 0 18px;min-height:48px;width:100%;margin-top:6px;color:var(--ink);background:#fdf1f4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10' viewBox='0 0 16 10'%3E%3Cpath d='M2 2l6 6 6-6' fill='none' stroke='%23cf4a78' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 18px center;-webkit-appearance:none;appearance:none;box-shadow:inset 0 -5px 0 var(--edge)}
 input[type=range]{width:100%;accent-color:#e58aa5;min-height:44px;margin:0}
-input[type=time]{font:inherit;min-height:44px;border:0;border-radius:999px;padding:0 16px;background:#fdf1f4;color:var(--ink);box-shadow:inset 0 -5px 0 var(--edge)}
+input[type=time],input[type=date]{font:inherit;min-height:44px;border:0;border-radius:999px;padding:0 16px;background:#fdf1f4;color:var(--ink);box-shadow:inset 0 -5px 0 var(--edge)}
 button{font:inherit;font-weight:800;cursor:pointer;border:0;border-radius:999px;min-height:44px;padding:0 22px;color:var(--ink);background:var(--card);box-shadow:inset 0 -6px 0 var(--edge),inset 0 5px 8px #fff,0 3px 8px rgba(190,110,140,.2)}
 button.x{padding:0 14px;font-size:14px}
 .seg{display:flex;gap:10px;margin-top:6px}
@@ -529,6 +529,8 @@ details p{margin:8px 0 0;color:var(--mute)}
 <h2 id="mt" style="font-size:26px">New load</h2>
 <label for="rt">Rating <b id="rtV" style="font-size:24px">5</b></label>
 <input type="range" id="rt" min="1" max="10" value="5">
+<div class="lab"><span>Date it started</span></div>
+<input type="date" id="td" aria-label="Date" min="2000-01-01" style="width:100%;margin-top:6px">
 <div class="lab"><span>Time</span></div>
 <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
 <input type="time" id="tf" aria-label="From" style="flex:1"><span>to</span><input type="time" id="tt" aria-label="To" style="flex:1">
@@ -689,23 +691,26 @@ function render() {
   renderProfile();
 }
 
+function ymd(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
 function span() {
-  var now = new Date(), a = $('tf').value.split(':'), b = $('tt').value.split(':');
-  if (a.length < 2 || b.length < 2) return null;
-  var to = new Date(now); to.setHours(+b[0], +b[1], 0, 0);
-  if (to - now > 60000) to.setDate(to.getDate() - 1);
-  var fr = new Date(to); fr.setHours(+a[0], +a[1], 0, 0);
-  if (fr > to) fr.setDate(fr.getDate() - 1);
-  return {to: to, fr: fr, dur: Math.round((to - fr) / 60000)};
+  var now = new Date(), a = $('tf').value.split(':'), b = $('tt').value.split(':'), dv = ($('td').value || ymd(now)).split('-');
+  if (a.length < 2 || b.length < 2 || dv.length < 3) return null;
+  var fr = new Date(+dv[0], +dv[1] - 1, +dv[2], +a[0], +a[1], 0, 0), to = new Date(+dv[0], +dv[1] - 1, +dv[2], +b[0], +b[1], 0, 0);
+  if (to < fr) to.setDate(to.getDate() + 1);
+  var dur = Math.round((to - fr) / 60000);
+  if (dur < 1) return {err: 'The end time has to differ from the start time.'};
+  if (dur > 1440) return {err: 'The maximum is 24 hours.'};
+  if (to - now > 60000) return {err: 'That time is in the future.'};
+  return {to: to, fr: fr, dur: dur};
 }
-function showDur() { var s = span(); $('durV').textContent = s ? 'Duration: ' + s.dur + ' min' : ''; }
+function showDur() { var s = span(); $('durV').textContent = !s ? '' : s.err ? s.err : 'Duration: ' + s.dur + ' min'; }
 function setRel(v) {
   relV = v;
   Array.prototype.forEach.call($('rel').children, function (b) { b.setAttribute('aria-pressed', (b.getAttribute('data-v') === '1') === v ? 'true' : 'false'); });
 }
 function openM() {
   var now = new Date(), f = new Date(now - S.dLen * 60000);
-  $('tt').value = hm(now); $('tf').value = hm(f);
+  $('tt').value = hm(now); $('tf').value = hm(f); $('td').max = ymd(now); $('td').value = ymd(f);
   $('rt').value = S.dRate; $('rtV').textContent = S.dRate; setRel(S.dRel); showDur(); selTags = []; renderTagBox();
   $('ov').hidden = false; $('rt').focus();
 }
@@ -730,9 +735,10 @@ $('ov').addEventListener('click', function (e) { if (e.target === $('ov') && ovD
 $('rt').addEventListener('input', function () { $('rtV').textContent = $('rt').value; });
 $('tf').addEventListener('input', showDur);
 $('tt').addEventListener('input', showDur);
+$('td').addEventListener('input', showDur);
 $('rel').addEventListener('click', function (e) { var v = e.target.getAttribute && e.target.getAttribute('data-v'); if (v !== null) setRel(v === '1'); });
 $('save').addEventListener('click', function () {
-  var s = span(); if (!s) return;
+  var s = span(); showDur(); if (!s || s.err) return;
   var b0 = totals(), e0 = earnedSet();
   E.push({id: Date.now(), t: s.to.getTime(), from: hm(s.fr), to: hm(s.to), dur: s.dur, rate: +$('rt').value, rel: relV, tags: selTags.filter(function (t) { return (S.tags || []).indexOf(t) >= 0; })});
   saveE(); render(); closeM();
