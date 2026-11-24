@@ -256,6 +256,19 @@ details p{margin:8px 0 0;color:var(--mute)}
 .welDots i.on{background:#cf4a78}
 .welNav{display:flex;gap:10px;margin-top:22px}
 .welNav button{flex:1}
+.tabs button{position:relative}
+.nb{position:absolute;top:2px;right:8px;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#cf4a78;color:#fff;font-size:13px;font-weight:800;line-height:22px;text-align:center;box-shadow:0 2px 0 rgba(120,30,70,.35)}
+.nb[hidden]{display:none}
+#nots{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:12px;right:12px;z-index:110;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
+.nt{pointer-events:auto;width:100%;max-width:460px;display:flex;align-items:center;background:#fff;border:2px solid var(--edge);border-radius:26px;box-shadow:0 10px 30px rgba(90,30,55,.28),inset 0 -5px 0 var(--edge);animation:ntIn .35s cubic-bezier(.2,1.3,.4,1)}
+.nt .ntb{flex:1;min-width:0;text-align:left;background:transparent;box-shadow:none;border:0;border-radius:24px 0 0 24px;padding:12px 6px 14px 18px;min-height:60px;display:block;font-weight:400}
+.nt .ntb b{display:block;font-size:16px;font-weight:800}
+.nt .ntb span{display:block;font-size:14px;color:var(--mute);margin-top:2px;font-weight:600}
+.nt .ntx{width:46px;min-width:46px;height:46px;min-height:46px;margin:0 8px 0 0;padding:0;border-radius:50%;background:#fdf1f4;display:flex;align-items:center;justify-content:center;flex:none}
+.nt .ntx svg{width:18px;height:18px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round}
+@keyframes ntIn{from{transform:translateY(-30px);opacity:0}to{transform:none;opacity:1}}
+.bd.hl{outline:4px solid #cf4a78;outline-offset:2px;animation:bdHl .9s ease-in-out 4}
+@keyframes bdHl{50%{transform:scale(1.05)}}
 @media(max-width:400px){#gear{font-size:0;gap:0;padding:0 14px}#hTitle{display:none}.who{gap:8px}}
 </style>
 </head>
@@ -445,6 +458,7 @@ details p{margin:8px 0 0;color:var(--mute)}
 <section class="card">
 <h2>Feedback</h2>
 <div class="kv"><span>Save effect</span><button type="button" id="tFx" role="switch" aria-checked="true">On</button></div>
+<div class="kv"><span>Notifications</span><button type="button" id="tNot" role="switch" aria-checked="true">On</button></div>
 <div class="kv"><span>Pop-up messages</span><button type="button" id="tPop" role="switch" aria-checked="true">On</button></div>
 </section>
 <section class="card">
@@ -482,6 +496,7 @@ details p{margin:8px 0 0;color:var(--mute)}
 </div>
 
 <p class="toast" id="toast" role="status" hidden></p>
+<div id="nots" aria-live="polite"></div>
 <div class="wel" id="wel" hidden role="dialog" aria-modal="true" aria-label="Welcome">
 <div class="card welBox"><div class="welDots" id="welDots"></div><div id="welBody"></div>
 <div class="welNav"><button type="button" id="welSkip">Skip</button><button type="button" id="welNext" class="go">Next</button></div></div>
@@ -560,7 +575,7 @@ try {
   if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
 } catch (e) { CLOUDFAIL = true; }
 var uid = '', ACC = {};
-var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
+var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
 function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
 var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
 function ukey(n, u) { return 'creamer:u:' + (u || uid) + ':' + n; }
@@ -630,6 +645,7 @@ function sinceLabel(t, ago) {
 }
 function lastOf(arr) { var m = null; arr.forEach(function (x) { if (!m || x.t > m.t) m = x; }); return m; }
 function tick() {
+  checkNotifs();
   var els = document.querySelectorAll('[data-since]');
   for (var i = 0; i < els.length; i++) els[i].textContent = sinceLabel(+els[i].getAttribute('data-since'), els[i].hasAttribute('data-ago'));
 }
@@ -676,7 +692,7 @@ function render() {
     $('hLast').textContent = 'Last load ' + fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to) + ', rating ' + l.rate + ', ' + (l.rel ? 'released' : 'not released') + '.';
   } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = 'No loads yet. Tap the splash.'; }
   $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
-  renderSettings(); $('hBalN').textContent = totals().bal;
+  renderSettings(); $('hBalN').textContent = totals().bal; updateBadge(); checkNotifs();
   renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
   $('hf').innerHTML = F.length ? F.map(function (n) {
     return '<li><span>@' + n + '</span>' + sinceCell(api.find(n)) + '</li>';
@@ -744,8 +760,10 @@ $('save').addEventListener('click', function () {
   saveE(); render(); closeM();
   var b1 = totals(), e1 = earnedSet(), msg = [], nb = Object.keys(e1).filter(function (k) { return !e0[k]; });
   msg.push(b1.lp > b0.lp ? '+' + (b1.lp - b0.lp) + ' drops' : 'Daily drop limit reached');
-  if (b1.L > b0.L) msg.push('Level ' + b1.L + ': ' + lvlName(b1.L));
-  if (nb.length) msg.push('Badge: ' + BMAP[nb[0]].n + (nb.length > 1 ? ' +' + (nb.length - 1) : ''));
+  if (!notifOn()) {
+    if (b1.L > b0.L) msg.push('Level ' + b1.L + ': ' + lvlName(b1.L));
+    if (nb.length) msg.push('Badge: ' + BMAP[nb[0]].n + (nb.length > 1 ? ' +' + (nb.length - 1) : ''));
+  }
   toast(msg.join(' · ')); if (S.fx) burst(G.eq.fx);
 });
 document.addEventListener('keydown', function (e) {
@@ -786,14 +804,15 @@ function loadUser(id) {
   openF = ''; histAll = false;
   try { localStorage.setItem('creamer:session', id); } catch (e) {}
   ['aUser', 'aEmail', 'aPass', 'aConf'].forEach(function (k) { $(k).value = ''; });
-  auth.hidden = true; appShow(true); lock(); render(); tab('home'); maybeWelcome();
+  auth.hidden = true; appShow(true); lock(); render(); tab(savedTab()); maybeWelcome();
 }
 function logout() {
   if (CLOUD) { cloudLogout(); return; }
   logoutLocal();
 }
 function logoutLocal() {
-  closeSet(); $('wel').hidden = true;
+  try { localStorage.removeItem('creamer:tab'); localStorage.removeItem('creamer:rw'); } catch (e) {}
+  clearN(); closeSet(); $('wel').hidden = true;
   try { localStorage.removeItem('creamer:session'); } catch (e) {}
   uid = ''; CUSER = null; FR = {}; SOC = {inc: [], out: []}; SOCIAL_OK = false; synced = {}; E = []; F = []; P = Object.assign({}, DEF_P); S = Object.assign({}, DEF_S); G = newG(); openF = '';
   applyEq(); showAuth('in'); window.scrollTo(0, 0);
@@ -844,6 +863,7 @@ $('addForm').addEventListener('submit', function (e) {
     sb.rpc('send_friend_request', {name: n}).then(function (r) {
       if (r.error) { fmsg('Something went wrong. Try again.'); return; }
       var m = {not_found: 'No user @' + n + '.', self: "That's you.", exists: '@' + n + ' is already your friend.', pending: 'You already sent a request to @' + n + '.', sent: 'Request sent to @' + n + '.', accepted: 'You are now friends with @' + n + '.', auth: 'Log in again.'};
+      if (r.data === 'accepted') MINE[n] = 1;
       fmsg(m[r.data] || 'Done.'); if (r.data === 'sent' || r.data === 'accepted') $('fq').value = '';
       return refreshSocial().then(render);
     });
@@ -864,6 +884,109 @@ $('fBody').addEventListener('click', function (e) {
   F = F.filter(function (x) { return x !== openF; }); saveF(); openF = ''; render();
 });
 
+
+/* ---------- In-app notifications ---------- */
+var NQ = [], NSHOW = [], MINE = {}, MINEC = {}, MILES = [3, 5, 7, 10, 14, 21, 30, 50, 75, 100, 150, 200, 365];
+function notifOn() { return S.nt !== false; }
+function notify(o) {
+  if (!uid || !notifOn()) return;
+  if (o.id && (NSHOW.some(function (n) { return n.id === o.id; }) || NQ.some(function (n) { return n.id === o.id; }))) return;
+  NQ.push(o); pumpN();
+}
+function pumpN() { while (NSHOW.length < 3 && NQ.length) showN(NQ.shift()); }
+function showN(o) {
+  var el = document.createElement('div'); el.className = 'nt'; el.setAttribute('role', 'status');
+  el.innerHTML = '<button type="button" class="ntb"><b>' + esc(o.title) + '</b>' + (o.text ? '<span>' + esc(o.text) + '</span>' : '') + '</button><button type="button" class="ntx" aria-label="Dismiss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+  var rec = {id: o.id, el: el, t: setTimeout(function () { closeN(rec); }, o.ms || 10000)};
+  el.querySelector('.ntb').addEventListener('click', function () { closeN(rec); if (o.go) { try { o.go(); } catch (e) {} } });
+  el.querySelector('.ntx').addEventListener('click', function () { closeN(rec); });
+  $('nots').appendChild(el); NSHOW.push(rec);
+}
+function closeN(rec) { clearTimeout(rec.t); var i = NSHOW.indexOf(rec); if (i < 0) return; NSHOW.splice(i, 1); if (rec.el.parentNode) rec.el.parentNode.removeChild(rec.el); pumpN(); }
+function clearN() { NQ = []; NSHOW.slice().forEach(closeN); }
+function goTab(v) { closeSet(); tab(v); }
+function goAdd() { closeSet(); openM(); }
+function goFriend(name) { closeSet(); openF = name; renderFriendView(); tab('friends'); }
+function goBadge(id) {
+  closeSet(); rwSub = 'rw'; try { localStorage.setItem('creamer:rw', 'rw'); } catch (e) {}
+  tab('rewards'); renderRewards();
+  setTimeout(function () {
+    var el = document.querySelector('.bd[data-b="' + id + '"]'); if (!el) return;
+    el.scrollIntoView({block: 'center', behavior: 'smooth'}); el.classList.add('hl');
+    setTimeout(function () { el.classList.remove('hl'); }, 4000);
+  }, 150);
+}
+function checkNotifs() {
+  if (!uid || !G) return;
+  var T = totals(), es = earnedSet(), cl = claimables(), st = curStreak(E), now = new Date(), key = ymd(now), wk = winOf('w').a, hit = 0;
+  MILES.forEach(function (m) { if (st >= m) hit = m; });
+  var clm = {}; cl.forEach(function (x) { clm[x.key] = x.r; });
+  var first = !G.ns;
+  if (first) {
+    G.ns = {bd: Object.assign({}, es), lv: T.L, st: hit, cl: clm, fr: {}, rq: {}, du: {}, fl: [], fi: 0, dd: key, sk: '', wk: wk, lg: G.lg && G.lg.last ? String(G.lg.last.week) : ''};
+    saveG(); return;
+  }
+  var n = G.ns, before = JSON.stringify(n);
+  ['bd', 'cl', 'fr', 'rq', 'du'].forEach(function (k) { if (!n[k]) n[k] = {}; }); if (!n.fl) n.fl = [];
+  // badges
+  var nb = BADGES.filter(function (b) { return es[b.id] && !n.bd[b.id]; });
+  nb.forEach(function (b) { n.bd[b.id] = 1; });
+  Object.keys(n.bd).forEach(function (k) { if (!es[k]) delete n.bd[k]; });
+  if (nb.length && nb.length <= 2) nb.forEach(function (b) { notify({id: 'bd:' + b.id, title: 'New badge: ' + b.n, text: b.d.replace(/\.?$/, '.') + ' Tap to see it.', go: function () { goBadge(b.id); }}); });
+  else if (nb.length) notify({title: nb.length + ' new badges', text: nb.slice(0, 2).map(function (b) { return b.n; }).join(', ') + ' and more.', go: function () { goTab('rewards'); }});
+  // level
+  if (T.L > n.lv) notify({id: 'lv', title: 'Level ' + T.L, text: lvlName(T.L) + '. Nice climb.', go: function () { goTab('profile'); }});
+  n.lv = T.L;
+  // streak
+  if (hit > n.st) notify({id: 'st', title: hit + '-day streak', text: 'You logged ' + hit + ' days in a row.', go: function () { goTab('home'); }});
+  n.st = hit;
+  // challenges
+  var newc = Object.keys(clm).filter(function (k) { return k.charAt(0) === 'c' && !n.cl[k]; });
+  if (newc.length) notify({id: 'cl', title: newc.length > 1 ? newc.length + ' challenges complete' : 'Challenge complete', text: 'Claim +' + newc.reduce(function (a, k) { return a + clm[k]; }, 0) + ' drops.', go: function () { goTab('rewards'); }});
+  n.cl = clm;
+  // league
+  var lw = G.lg && G.lg.last && !G.lg.last.idle ? String(G.lg.last.week) : '';
+  if (lw && n.lg !== lw) {
+    var L = G.lg.last;
+    notify({id: 'lg', title: 'Weekly league result', text: ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : '') + (L.prize > 0 ? '. +' + L.prize + ' drops to claim.' : '.'), go: function () { goTab('friends'); }});
+  }
+  if (lw) n.lg = lw;
+  // daily and weekly reminders
+  if (n.dd !== key) { if (!dayPick()) notify({id: 'dd', title: "Choose today's challenge", text: 'Pick one for extra drops.', go: function () { goTab('rewards'); }}); n.dd = key; }
+  if (n.wk !== wk) { notify({id: 'wk', title: 'New weekly challenges', text: 'Three fresh ones for this week.', go: function () { goTab('rewards'); }}); n.wk = wk; }
+  var today = dstart(now.getTime()), loggedToday = E.some(function (x) { return dstart(x.t) === today; });
+  if (now.getHours() >= 19 && st >= 2 && !loggedToday && n.sk !== key) { notify({id: 'sk', title: 'Your ' + st + '-day streak ends tonight', text: 'Log a load before midnight to keep it.', go: goAdd}); n.sk = key; }
+  // social
+  if (!CLOUD || SOCIAL_OK) {
+    F.forEach(function (name) {
+      var u = api.find(name);
+      if (!u || u.priv) { delete n.fr[name]; return; }
+      var mx = 0; u.entries.forEach(function (x) { if (x.t > mx) mx = x.t; });
+      if (n.fr[name] === undefined) { n.fr[name] = mx; return; }
+      var nw = u.entries.filter(function (x) { return x.t > n.fr[name]; });
+      n.fr[name] = mx;
+      if (nw.length) notify({id: 'fr:' + name, title: '@' + name + ' logged ' + (nw.length > 1 ? nw.length + ' new loads' : 'a new load'), text: nw.length === 1 ? 'Rated ' + nw[0].rate + ' out of 10, ' + nw[0].dur + ' min.' : 'Tap to see their stats.', go: function () { goFriend(name); }});
+    });
+    Object.keys(n.fr).forEach(function (k) { if (F.indexOf(k) < 0) delete n.fr[k]; });
+  }
+  if (CLOUD && SOCIAL_OK) {
+    var rq = {};
+    SOC.inc.forEach(function (r) { rq[r.id] = 1; if (!n.rq[r.id]) notify({id: 'rq:' + r.id, title: '@' + r.username + ' sent you a friend request', text: 'Tap to review it.', go: function () { goTab('friends'); }}); });
+    n.rq = rq;
+    if (n.fi) F.forEach(function (name) { if (n.fl.indexOf(name) < 0 && !MINE[name]) notify({id: 'fa:' + name, title: '@' + name + ' accepted your friend request', text: 'You are now friends.', go: function () { goFriend(name); }}); });
+    n.fl = F.slice(); n.fi = 1;
+    var dn = {};
+    (G.du || []).forEach(function (d) {
+      var sv = d.done ? 'done' : d.pend === 'in' ? 'pin' : d.pend === 'out' ? 'pout' : 'act', prev = n.du[d.cid];
+      dn[d.cid] = sv + '|' + d.f;
+      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: '@' + d.f + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (d.k ? ', ' + d.k + ' drops at stake.' : '.'), go: function () { goTab('friends'); }}); }
+      else if (prev.split('|')[0] === 'pout' && sv === 'act') notify({id: 'da:' + d.cid, title: '@' + d.f + ' accepted your duel', text: 'It runs for ' + d.days + ' days.', go: function () { goTab('friends'); }});
+    });
+    Object.keys(n.du).forEach(function (k) { if (!dn[k] && n.du[k].split('|')[0] === 'pout' && !MINEC[k]) notify({id: 'dx:' + k, title: '@' + n.du[k].split('|')[1] + ' declined your duel', text: 'Your stake is back.', go: function () { goTab('friends'); }}); });
+    n.du = dn;
+  }
+  if (JSON.stringify(n) !== before) saveG();
+}
 
 /* ---------- Supabase (cloud mode) ---------- */
 function cloudErr(e) {
@@ -924,7 +1047,7 @@ async function cloudLoad(user) {
     await refreshSocial();
     openF = ''; histAll = false;
     ['aUser', 'aEmail', 'aPass', 'aConf'].forEach(function (k) { $(k).value = ''; });
-    auth.hidden = true; appShow(true); lock(); render(); tab('home'); maybeWelcome();
+    auth.hidden = true; appShow(true); lock(); render(); tab(savedTab()); maybeWelcome();
     if (location.hash || location.search) { try { history.replaceState(null, '', location.pathname); } catch (e) {} }
   } catch (e) {
     showAuth('in'); amsg(cloudErr(e));
@@ -964,6 +1087,13 @@ function buildDuels(rows) {
   out.sort(function (x, y) { return x.cid - y.cid; });
   G.du = out;
 }
+function updateBadge() {
+  var b = $('tFriends'), el = b.querySelector('.nb');
+  if (!el) { el = document.createElement('b'); el.className = 'nb'; el.setAttribute('data-nosub', ''); b.appendChild(el); }
+  var n = CLOUD ? SOC.inc.length + (G.du || []).filter(function (d) { return d.pend === 'in'; }).length : 0;
+  el.hidden = !n; el.textContent = n > 9 ? '9+' : n;
+  b.setAttribute('aria-label', n ? 'Friends, ' + n + ' waiting' : 'Friends');
+}
 function renderRequests() {
   var el = $('rqCard'); if (!el) return;
   var inc = SOC.inc, out = SOC.out; el.hidden = !CLOUD || !(inc.length || out.length);
@@ -974,7 +1104,7 @@ function renderRequests() {
 $('rqCard').addEventListener('click', function (e) {
   var b = e.target.closest ? e.target.closest('button') : null; if (!b || !CLOUD) return;
   var ra = b.getAttribute('data-ra'), rd2 = b.getAttribute('data-rd'), rc = b.getAttribute('data-rc'), done = function () { return refreshSocial().then(render); };
-  if (ra) sb.rpc('respond_friend', {from_id: ra, accept: true}).then(done);
+  if (ra) { var rr = SOC.inc.filter(function (x) { return String(x.id) === ra; })[0]; if (rr) MINE[rr.username] = 1; sb.rpc('respond_friend', {from_id: ra, accept: true}).then(done); }
   else if (rd2) sb.rpc('respond_friend', {from_id: rd2, accept: false}).then(done);
   else if (rc) sb.rpc('remove_friend', {other: rc}).then(done);
 });
@@ -1574,7 +1704,7 @@ function claim(key) {
   list.forEach(function (x) { G.claimed[x.key] = 1; G.bonus += x.r; tot += x.r; });
   if (!tot) return;
   var L0 = lvlOf(totals().xp - tot); saveG(); render();
-  var L1 = totals().L; toast('+' + tot + ' drops claimed' + (L1 > L0 ? ' · Level ' + L1 + ': ' + lvlName(L1) : ''));
+  var L1 = totals().L; toast('+' + tot + ' drops claimed' + (L1 > L0 && !notifOn() ? ' · Level ' + L1 + ': ' + lvlName(L1) : ''));
 }
 
 var SHOP = [
@@ -1679,7 +1809,7 @@ function renderRewards() {
   out.push(card(' span2', 'Badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
     var on = es[b.id], c = G.claimed['b:' + b.id];
     var nm = on || !b.s ? b.n : '???', ds = on || !b.s ? b.d : 'Secret badge. Keep exploring.';
-    return '<div class="bd' + (on ? ' on' : '') + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
+    return '<div class="bd' + (on ? ' on' : '') + '" data-b="' + b.id + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
   }).join('') + '</div>'));
   var heads = {theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
   ['theme', 'splash', 'title', 'fx', 'use'].forEach(function (k) {
@@ -1694,7 +1824,7 @@ $('rw').addEventListener('click', function (e) {
   if (dailyClick(e)) return;
   var t = e.target.closest ? e.target.closest('button') : null; if (!t) return;
   var k;
-  if ((k = t.getAttribute('data-sub'))) { rwSub = k; renderRewards(); window.scrollTo(0, 0); }
+  if ((k = t.getAttribute('data-sub'))) { rwSub = k; try { localStorage.setItem('creamer:rw', k); } catch (e) {} renderRewards(); window.scrollTo(0, 0); }
   else if ((k = t.getAttribute('data-claim'))) claim(k);
   else if ((k = t.getAttribute('data-buy'))) buy(k);
   else if ((k = t.getAttribute('data-eq'))) equip(k);
@@ -1766,7 +1896,7 @@ function renderSettings() {
   renderWord(); renderTagList(); segSet('visSeg', P.pub); segSet('dRel', S.dRel); segSet('fmtSeg', S.h24 !== false);
   if (document.activeElement !== $('bio')) $('bio').value = P.bio || '';
   $('dRate').value = S.dRate; $('dRateV').textContent = S.dRate; $('dLen').value = S.dLen; $('dLenV').textContent = S.dLen + ' min';
-  [['tFx', S.fx], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
+  [['tFx', S.fx], ['tNot', S.nt !== false], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
 }
 
 /* Wording setting: swaps the word "load/loads" in all visible text, so the source strings stay unchanged. */
@@ -1930,7 +2060,7 @@ function duelSettle() {
     if (d.res === 'w') { G.bonus += d.k; G.st = Object.assign({}, G.st, {dw: ((G.st || {}).dw || 0) + 1}); } else if (d.res === 'l') G.lost = (G.lost || 0) + d.k;
     if (CLOUD) { G.dset = Object.assign({}, G.dset); G.dset[d.cid] = {f: d.f, st: d.st, k: d.k, my: mine, th: th, res: d.res}; }
   });
-  if (msg) { saveG(); toast(msg); }
+  if (msg) { saveG(); if (notifOn()) notify({title: msg, text: 'Tap to see the result.', go: function () { goTab('friends'); }}); else toast(msg); }
 }
 function renderDuels() {
   var sel = $('duF'), pubF = F.filter(function (f) { var u = api.find(f); return u && !u.priv; }), key = pubF.join(',');
@@ -1956,7 +2086,7 @@ $('duList').addEventListener('click', function (e) {
     if (d && d.k > totals().bal) { $('duMsg').textContent = 'Not enough drops for this stake.'; return; }
     sb.rpc('respond_duel', {duel_id: +da, accept: true}).then(done);
   } else if (dd) sb.rpc('respond_duel', {duel_id: +dd, accept: false}).then(done);
-  else if (dc) sb.rpc('cancel_duel', {duel_id: +dc}).then(done);
+  else if (dc) { MINEC[dc] = 1; sb.rpc('cancel_duel', {duel_id: +dc}).then(done); }
 });
 $('duGo').addEventListener('click', function () {
   var f = $('duF').value, st = $('duS').value, days = +$('duD').value, k = +$('duK').value, m = $('duMsg'), du = G.du || [];
@@ -2092,6 +2222,7 @@ segClick('fmtSeg', function (on) { S.h24 = on; saveS(); render(); });
 $('dRate').addEventListener('input', function () { S.dRate = +$('dRate').value; $('dRateV').textContent = S.dRate; saveS(); });
 $('dLen').addEventListener('input', function () { S.dLen = +$('dLen').value; $('dLenV').textContent = S.dLen + ' min'; saveS(); });
 $('tFx').addEventListener('click', function () { S.fx = !S.fx; saveS(); renderSettings(); });
+$('tNot').addEventListener('click', function () { S.nt = S.nt === false; saveS(); if (S.nt === false) clearN(); renderSettings(); });
 $('tPop').addEventListener('click', function () { S.pop = !S.pop; saveS(); renderSettings(); });
 $('tFind').addEventListener('click', function () { P.discover = P.discover === false; saveP(); renderSettings(); });
 $('bio').addEventListener('input', function () { P.bio = $('bio').value.slice(0, 80); saveP(); renderProfile(); });
@@ -2193,7 +2324,14 @@ $('enSort').addEventListener('click', function (e) { var b = e.target.closest ? 
 $('enMore').addEventListener('click', function () { entMax += 50; renderEntries(); });
 $('allBtn').addEventListener('click', function () { entFilter = ''; entMax = 50; tab('entries'); });
 $('enBack').addEventListener('click', function () { tab('home'); });
+var TABS = ['home', 'entries', 'stats', 'friends', 'rewards', 'profile'];
+function savedTab() {
+  var v = 'home'; try { v = localStorage.getItem('creamer:tab') || 'home'; rwSub = localStorage.getItem('creamer:rw') === 'shop' ? 'shop' : 'rw'; } catch (e) {}
+  renderRewards();
+  return TABS.indexOf(v) >= 0 ? v : 'home';
+}
 function tab(v) {
+  try { localStorage.setItem('creamer:tab', v); } catch (e) {}
   ['home', 'entries', 'stats', 'friends', 'rewards', 'profile'].forEach(function (k) {
     $(k + 'View').hidden = k !== v;
     var kk = k === 'entries' ? 'home' : k, on = k === v || (v === 'entries' && k === 'home');
@@ -2206,7 +2344,7 @@ function tab(v) {
 }
 function openSet() { $('settingsView').hidden = false; $('gear').setAttribute('aria-pressed', 'true'); $('settingsView').querySelector('.sbox').scrollTop = 0; lock(); }
 function closeSet() { $('settingsView').hidden = true; $('gear').setAttribute('aria-pressed', 'false'); lock(); }
-$('hBal').addEventListener('click', function () { rwSub = 'shop'; tab('rewards'); renderRewards(); });
+$('hBal').addEventListener('click', function () { rwSub = 'shop'; try { localStorage.setItem('creamer:rw', 'shop'); } catch (e) {} tab('rewards'); renderRewards(); });
 $('gear').addEventListener('click', function () { if ($('settingsView').hidden) openSet(); else closeSet(); });
 $('setX').addEventListener('click', closeSet);
 var sDown = false;
