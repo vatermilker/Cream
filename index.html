@@ -1,0 +1,2091 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#fbd3e1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creamer</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbd3e1;--bgink:#3b2a33;--card:#fff;--edge:#f0cdd9;--ink:#3b2a33;--mute:#6f5560;--bar:#f7d3de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--bgink);font-family:"Baloo 2",system-ui,sans-serif;font-weight:500;font-size:17px;line-height:1.35}
+.wrap{max-width:980px;margin:0 auto;padding:28px 20px 230px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+h1{margin:0;font-size:44px;font-weight:800;line-height:1}
+.who{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+input[type=text],input[type=email],input[type=password]{font:inherit;border:0;border-radius:999px;padding:0 18px;min-height:44px;background:var(--card);color:var(--ink);width:170px;box-shadow:inset 0 -5px 0 var(--edge)}
+.card{background:var(--card);color:var(--ink);padding:28px 30px 34px;border-radius:44px 44px 44px 64px;box-shadow:inset 0 -12px 0 var(--edge),inset 0 10px 14px #fff,0 12px 28px rgba(190,110,140,.18)}
+.card.b{border-radius:44px 64px 44px 44px;padding-top:32px}
+.card h2{margin:0 0 10px;font-size:22px;font-weight:800}
+.grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.stack{display:grid;gap:20px;align-content:start}
+@media (max-width:760px){.grid{grid-template-columns:1fr}h1{font-size:36px}}
+.big{font-size:96px;font-weight:800;line-height:1}
+.mini{display:flex;gap:26px;margin-top:14px;flex-wrap:wrap}
+.mini div{font-size:16px;color:var(--mute)}
+.mini b{display:block;font-size:34px;color:var(--ink);line-height:1.1}
+label,.lab{display:flex;justify-content:space-between;align-items:center;font-size:16px;margin-top:14px}
+select{font:inherit;font-weight:800;border:0;border-radius:999px;padding:0 44px 0 18px;min-height:48px;width:100%;margin-top:6px;color:var(--ink);background:#fdf1f4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10' viewBox='0 0 16 10'%3E%3Cpath d='M2 2l6 6 6-6' fill='none' stroke='%23cf4a78' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 18px center;-webkit-appearance:none;appearance:none;box-shadow:inset 0 -5px 0 var(--edge)}
+input[type=range]{width:100%;accent-color:#e58aa5;min-height:44px;margin:0}
+input[type=time]{font:inherit;min-height:44px;border:0;border-radius:999px;padding:0 16px;background:#fdf1f4;color:var(--ink);box-shadow:inset 0 -5px 0 var(--edge)}
+button{font:inherit;font-weight:800;cursor:pointer;border:0;border-radius:999px;min-height:44px;padding:0 22px;color:var(--ink);background:var(--card);box-shadow:inset 0 -6px 0 var(--edge),inset 0 5px 8px #fff,0 3px 8px rgba(190,110,140,.2)}
+button.x{padding:0 14px;font-size:14px}
+.seg{display:flex;gap:10px;margin-top:6px}
+.seg button{flex:1;background:#fdf1f4}
+#enSort button{min-width:0;padding:0 10px;font-size:15px}
+.toast{z-index:120}
+.wr{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(14px + env(safe-area-inset-bottom,0px));background:#fbd3e1}
+.wr[hidden]{display:none}
+.wrTop{display:flex;gap:12px;align-items:center}
+#wrDots{display:flex;gap:4px;flex:1;min-width:0}
+#wrDots i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.7)}
+#wrDots i.on{background:#cf4a78}
+#wrBody{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;gap:12px;overflow:auto;min-height:0;padding:0 4px}
+.wk{font-size:20px;margin:0;color:var(--mute)}
+.wb{font-size:clamp(44px,17vw,88px);font-weight:800;line-height:1.05;overflow-wrap:anywhere}
+.wc{font-size:20px;margin:0 auto;max-width:420px}
+.wrNav{display:flex;gap:12px}.wrNav button{flex:1}
+.wsum{text-align:left;max-width:420px;margin:0 auto;width:100%}
+.lgme{font-weight:800;background:#fdf1f4;border-radius:18px;padding-left:10px;padding-right:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chips button{min-height:40px;padding:0 14px;font-size:15px;background:#fdf1f4;max-width:100%;overflow-wrap:anywhere;white-space:normal}
+.chips button[aria-pressed="true"]{background:#f7a9c2;box-shadow:inset 0 5px 0 rgba(160,50,90,.25)}
+#tagBox{max-height:150px;overflow:auto;padding-bottom:4px}
+li small.tg{color:var(--ink);font-weight:800}
+.ov .card{max-height:calc(100dvh - 32px);overflow:auto}
+.seg.two{flex-wrap:wrap}.seg.two button{flex:1 1 40%;min-width:0;padding-left:8px;padding-right:8px}
+.seg button[aria-pressed="true"]{background:#f7a9c2;box-shadow:inset 0 5px 0 rgba(160,50,90,.25)}
+.row{display:flex;gap:12px;margin-top:20px}
+.row button{flex:1}
+.row .go,button.go{background:#f7a9c2}
+button:disabled{opacity:.5;cursor:default}
+[hidden]{display:none!important}
+.tabs{position:fixed;z-index:60;left:0;right:0;bottom:0;display:flex;gap:8px;justify-content:center;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -6px 20px rgba(190,110,140,.22)}
+.tabs button{flex:1;max-width:180px;min-height:48px;padding:0 10px}
+.home{max-width:680px;margin:0 auto}
+.tabs button{font-size:15px;padding:0 4px}
+.toast{bottom:calc(204px + env(safe-area-inset-bottom,0px));white-space:normal;max-width:92vw;text-align:center;border-radius:28px;padding:10px 18px}
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.it{border-radius:24px;padding:12px 14px;background:#fdf1f4;box-shadow:inset 0 -5px 0 var(--edge);display:flex;flex-direction:column;gap:6px}
+.it span{font-size:13px;color:var(--mute)}
+.it .sw{display:block;height:22px;border-radius:999px;box-shadow:inset 0 0 0 2px var(--edge)}
+.it button,.bd button,.chr button{min-height:44px}
+.bd button{margin-top:6px;font-size:14px}
+.ch{padding:10px 0;border-bottom:2px dashed var(--edge)}
+.ch:last-child{border:0}
+.ch .top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.sec{font-size:15px;font-weight:800;margin:14px 0 8px;color:var(--mute)}
+.pf{position:fixed;z-index:90;pointer-events:none;width:10px;height:10px;border-radius:50%;animation:pf .9s ease-out forwards}
+.pf.spr{width:5px;height:16px;border-radius:3px}
+.pf.bub{background:transparent!important;box-shadow:inset 0 0 0 2px #fff,0 0 0 1px #f7a9c2;width:14px;height:14px}
+.pf.str{border-radius:0;width:16px;height:16px;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.stack{grid-template-columns:minmax(0,1fr)}
+.sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid>*,.sgrid>*,.stack>*{min-width:0}
+.card{overflow-wrap:break-word}
+li{flex-wrap:wrap}
+li>span:first-child{flex:1 1 140px;min-width:0}
+li>*,.kv>*,.fr>*,.ch .top>*{min-width:0}
+.fr{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:8px}
+.kv{flex-wrap:wrap}
+.kv b{overflow-wrap:anywhere}
+input{min-width:0}
+button{max-width:100%}
+#unameBtn{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.who{max-width:100%}
+#fName{overflow-wrap:anywhere;min-width:0}
+.bd b,.it b{overflow-wrap:anywhere}
+@media (max-width:760px){.sgrid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){
+.wrap{padding-left:14px;padding-right:14px}
+.card{padding:22px 20px 30px}
+.card.b{padding-top:30px}
+h1{font-size:32px}
+.bigt{font-size:40px}
+#hSince{font-size:clamp(46px,17vw,72px)!important;overflow-wrap:anywhere;line-height:1.02}
+.tiles b{font-size:26px}
+.badges{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shop{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mini{gap:16px}
+.hm{gap:4px}
+}
+button{overflow-wrap:normal;word-break:normal;white-space:nowrap}
+.it button{width:100%;padding:0 8px;font-size:14px}
+.ch .top>span,.ch .top>button{flex:none;white-space:nowrap}
+.ch .top>b{flex:1 1 auto}
+.card.shine{position:relative;background:linear-gradient(165deg,#fff 0%,#ffe6f0 50%,#fbb9d1 100%);animation:glow 1.8s ease-in-out infinite,pop 5s ease-in-out infinite}
+.card.shine::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.3) 48%,rgba(240,100,150,.18) 54%,transparent 72%);background-size:260% 100%;animation:shn 2.4s linear infinite}
+.pill{display:inline-block;margin:0 0 10px;padding:6px 14px;border-radius:999px;background:#cf4a78;color:#fff;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes pop{0%,86%,100%{transform:scale(1)}91%{transform:scale(1.025)}96%{transform:scale(.995)}}
+.card.locked{box-shadow:0 0 0 3px #f7a9c2,inset 0 -12px 0 var(--edge),0 10px 24px rgba(190,110,140,.25)}
+@keyframes shn{from{background-position:130% 0}to{background-position:-130% 0}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 4px rgba(240,100,150,.8),0 0 22px rgba(240,90,150,.55),inset 0 -12px 0 var(--edge)}50%{box-shadow:0 0 0 7px #ff7fb0,0 0 50px rgba(240,60,130,.95),inset 0 -12px 0 var(--edge)}}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opts button{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;min-height:48px;padding:6px 16px;border-radius:24px;white-space:normal;background:#fff}
+.opts button b{flex:1 1 auto;min-width:0;font-weight:800}
+.opts button span{flex:none;color:var(--mute);font-weight:800}
+.opts button[aria-pressed="true"]{background:#f7a9c2;box-shadow:inset 0 5px 0 rgba(160,50,90,.25)}
+.lock{margin-top:14px;width:100%}
+.tag{flex:none;font-size:13px;padding:4px 12px;border-radius:999px;background:#fdf1f4;color:var(--mute);font-weight:800}
+@media (prefers-reduced-motion:reduce){.card.shine,.card.shine::after,.pill{animation:none}.card.shine{box-shadow:0 0 0 6px #ff7fb0,inset 0 -12px 0 var(--edge)}}
+@keyframes pf{from{transform:translate(-50%,-50%) rotate(0);opacity:1}to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--r));opacity:0}}
+@media (prefers-reduced-motion:reduce){.pf{display:none}}
+.fr{width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px;padding:0 10px;border-radius:20px;background:none;box-shadow:none;font-weight:500;text-align:left;color:var(--ink)}
+.fr:hover{background:#fdf1f4}
+.fr b{font-weight:800}
+.tabs button[aria-pressed="true"]{background:#f7a9c2;box-shadow:inset 0 5px 0 rgba(160,50,90,.25)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.span2{grid-column:1/-1}
+@media (max-width:760px){.sgrid{grid-template-columns:1fr}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:14px}
+.tiles b{display:block;font-size:30px;line-height:1.1;font-weight:800}
+.tiles span{font-size:14px;color:var(--mute)}
+.bigt{font-size:54px;font-weight:800;line-height:1.05}
+.sub{font-size:15px;color:var(--mute);margin:6px 0 0}
+.chart.sm{gap:3px}
+.chart.sm div{font-size:11px;overflow:visible;white-space:nowrap}
+.hm{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+.hm i{aspect-ratio:1;border-radius:10px;background:#fdf1f4;box-shadow:inset 0 0 0 2px var(--edge);display:block}
+.hm i.t{box-shadow:inset 0 0 0 3px #cf4a78}
+.hz{display:grid;grid-template-columns:22px repeat(6,minmax(0,1fr));gap:5px;margin-top:8px;font-size:12px;color:var(--mute);align-items:center;text-align:center}
+.hz i{display:block;height:28px;border-radius:9px;background:#fdf1f4;box-shadow:inset 0 0 0 2px var(--edge)}
+.split{display:flex;height:34px;border-radius:999px;overflow:hidden;box-shadow:0 0 0 2px var(--edge);margin:8px 0}
+.split i{display:block;height:100%}
+.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.bd{border-radius:28px;padding:12px 16px;background:#fdf1f4;box-shadow:inset 0 -5px 0 var(--edge);opacity:.55}
+.bd.on{background:#f7a9c2;opacity:1;box-shadow:inset 0 -5px 0 rgba(160,50,90,.3)}
+.bd b{display:block;font-size:17px}
+.rar{display:inline-block;margin-top:6px;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:800;background:#fff;color:var(--mute)}
+.rar.u{color:#1f7a55}.rar.r{color:#2a62b0}.rar.e{color:#a2246a}.rar.l{color:#a8780a;box-shadow:0 0 0 2px #f1d37a}
+.bd span{font-size:13px}
+.bar{height:16px;border-radius:999px;background:#fdf1f4;box-shadow:inset 0 0 0 2px var(--edge);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:#f7a9c2}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:2px dashed var(--edge);font-size:16px}
+.kv:last-child{border:0}
+.kv b{text-align:right}
+#fl li button{flex:none}
+.chart{display:flex;align-items:flex-end;gap:10px;height:130px;margin-top:8px}
+.chart div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:13px;color:var(--mute)}
+.chart i{display:block;width:100%;background:linear-gradient(#fff,var(--bar));border-radius:14px;box-shadow:0 0 0 2px var(--edge);min-height:4px;margin-bottom:4px}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:2px dashed var(--edge);font-size:16px}
+li:last-child{border:0}
+li small{display:block;color:var(--mute);font-size:14px}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+.empty{color:var(--mute);font-size:16px}
+.drop{position:fixed;z-index:50;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));width:112px;height:112px;min-height:112px;margin-left:-56px;padding:0;border-radius:0;background:none;box-shadow:none;display:flex;align-items:center;justify-content:center}
+.drop svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 8px 10px rgba(190,110,140,.5))}
+.drop span{position:relative;font-size:56px;font-weight:800;line-height:1;color:var(--plus,#cf4a78);padding-bottom:4px}
+.drop path,.drop circle{stroke:var(--rim,#f0cdd9)}
+.drop:active{transform:scale(.93)}
+.ov{position:fixed;inset:0;z-index:80;background:rgba(90,30,55,.4);display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));overflow:auto}
+.ov[hidden]{display:none}
+.ov .card{width:100%;max-width:400px;margin:auto}
+.gate{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px))}
+.gate[hidden]{display:none}
+.gc{max-width:420px;text-align:center}
+.gc p{margin:0 0 18px;font-size:17px;color:var(--mute)}
+.gc .row{justify-content:center;flex-wrap:wrap}
+button,input,.tabs{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{min-height:100vh;min-height:100dvh}
+header{flex-wrap:nowrap}
+.who{display:flex;align-items:center;gap:10px;flex:none}
+.gear{width:auto;height:48px;min-height:48px;padding:0 16px;gap:8px;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.gear svg,.tabs svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gear[aria-pressed="true"]{background:#f7a9c2}
+.tabs button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;min-height:56px;padding:4px 2px;border-radius:22px}
+[role="switch"]{min-width:64px}
+[role="switch"][aria-checked="true"]{background:#f7a9c2}
+.ch .bar{height:10px;margin-top:6px}
+.setrow{margin-top:14px}
+.col{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+@media (max-width:640px){
+.ov{align-items:flex-end;padding:0}
+.ov .card{max-width:none;margin:0;max-height:92dvh;border-radius:36px 36px 0 0;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+.drop{width:96px;height:96px;min-height:96px;margin-left:-48px}
+.drop span{font-size:48px}
+.wrap{padding-top:18px}
+}
+.fl{display:block;text-align:left;font-size:15px;margin:12px 0 6px;color:var(--mute)}
+.av{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:#fff;flex:none;box-shadow:inset 0 -6px 0 rgba(0,0,0,.15)}
+#auth{overflow:auto;align-items:flex-start}
+#auth .card{margin:auto;width:100%;max-width:420px}
+.logo{font-size:40px!important}
+.linkb{background:none;box-shadow:none;min-height:44px;font-weight:500;text-decoration:underline;color:var(--mute);width:100%}
+#auth form{text-align:left}
+#auth .gc>.note{margin-top:14px}
+#auth .seg{margin:14px 0 4px}
+.pw{display:flex;gap:8px}
+.pw button{flex:none;padding:0 14px}
+</style>
+</head>
+<body>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
+<div class="card gc">
+<h2 id="gt" style="font-size:34px">18+ only</h2>
+<p>This site contains adult content. Confirm that you are 18 or older to continue.</p>
+<div class="row">
+<button type="button" id="yes">I am 18 or older</button>
+<button type="button" id="no">Leave</button>
+</div>
+</div>
+</div>
+
+<div class="wrap">
+<header>
+<h1>Creamer</h1>
+<div class="who">
+<span id="hTitle" class="sub" style="margin:0"></span>
+<button id="gear" class="gear" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></button>
+</div>
+</header>
+<div id="homeView">
+<div class="stack home">
+<section class="card">
+<div style="font-size:18px">Time since last load</div>
+<div class="big" id="hSince">–</div>
+<p class="sub" id="hLast"></p>
+<div id="hStreak"></div>
+</section>
+
+<section class="card b" id="dchCard">
+<h2>Today's challenge</h2>
+<div id="dch"></div>
+</section>
+
+<section class="card">
+<h2>My last loads</h2>
+<ul id="hist"></ul>
+<div class="row" style="margin-top:8px"><button type="button" id="histMore" hidden>Show more</button><button type="button" id="allBtn">All entries</button></div>
+</section>
+
+<section class="card b">
+<h2>Friends</h2>
+<ul id="hf"></ul>
+</section>
+</div>
+</div>
+
+<div id="entriesView" hidden>
+<div class="stack">
+<section class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">All entries</h2><button type="button" id="enBack">Back</button></div>
+<p class="sub" id="enCount"></p>
+<div class="chips" id="enTags"></div>
+<div class="seg" id="enSort"><button type="button" data-s="new" aria-pressed="true">Newest first</button><button type="button" data-s="old" aria-pressed="false">Oldest first</button></div>
+<ul id="enList" style="margin-top:8px"></ul>
+<div class="row" style="margin-top:8px"><button type="button" id="enMore" hidden>Show more</button></div>
+</section>
+</div>
+</div>
+<div id="statsView" hidden>
+<div class="row" style="max-width:340px;margin:0 0 16px"><button type="button" class="go wrOpen">Your year in numbers</button></div>
+<div class="sgrid" id="sg"></div>
+</div>
+
+<div id="friendsView" hidden>
+<div id="fList" class="stack home">
+<section class="card" id="lgCard"></section>
+<section class="card b" id="rqCard" hidden></section>
+<section class="card b">
+<h2>Friends</h2>
+<form id="addForm" style="display:flex;gap:10px">
+<input type="text" id="fq" maxlength="21" placeholder="find by username" aria-label="Friend's username" autocomplete="off" autocapitalize="none" spellcheck="false" style="flex:1;width:auto;min-width:0">
+<button type="submit" class="go">Add</button>
+</form>
+<p class="note" id="fMsg" role="status" style="min-height:1.4em"></p>
+<ul id="fl"></ul>
+<p class="note" id="fNote">Demo: the user list is three sample names with made-up loads. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
+</section>
+<section class="card" id="duCard">
+<h2>Duels</h2>
+<div id="duList"></div>
+<div class="sec">New duel</div>
+<label for="duF" style="margin-top:0">Opponent</label>
+<select id="duF"></select>
+<label for="duS">What counts</label>
+<select id="duS"><option value="n">Most entries</option><option value="m">Most total minutes</option><option value="a">Highest average rating (3+ entries)</option><option value="d">Most active days</option></select>
+<label for="duD">Length</label>
+<select id="duD"><option value="3">3 days</option><option value="7">7 days</option></select>
+<label for="duK">Stake</label>
+<select id="duK"><option value="0">No stake</option><option value="20">20 drops</option><option value="50">50 drops</option><option value="100">100 drops</option></select>
+<div class="row"><button type="button" class="go" id="duGo">Start duel</button></div>
+<p class="note" id="duMsg" role="status" style="min-height:1.4em"></p>
+<div id="duHist"></div>
+<p class="note" id="duNote">The winner takes the other side's stake. A draw returns it. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
+</section>
+</div>
+<div id="fDetail" hidden>
+<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap"><button type="button" id="fBack">Back</button><div style="font-size:32px;font-weight:800" id="fName"></div></div>
+<div id="fBody"></div>
+</div>
+</div>
+
+<div id="rewardsView" hidden>
+<div class="sgrid" id="rw"></div>
+</div>
+
+<div id="profileView" hidden>
+<div class="row" style="max-width:340px;margin:0 0 16px"><button type="button" class="go wrOpen">Your year in numbers</button></div>
+<div class="sgrid" id="pf"></div>
+</div>
+
+<div id="settingsView" hidden>
+<div class="stack home">
+<section class="card">
+<h2>Account</h2>
+<div class="kv"><span>Username</span><b id="sName">–</b></div>
+<div class="kv"><span>Email</span><b id="sMail">–</b></div>
+<form id="nameForm" novalidate>
+<label for="nn" class="fl">Change username</label>
+<input type="text" id="nn" maxlength="20" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="new username" style="width:100%" aria-describedby="nMsg">
+<p class="note" id="nMsg" role="status" style="min-height:1.4em"></p>
+<button type="submit" class="go" id="nGo" disabled style="width:100%">Change username</button>
+</form>
+</section>
+<section class="card b">
+<h2>Password</h2>
+<form id="pwForm" novalidate>
+<label for="pCur" class="fl">Current password</label>
+<input type="password" id="pCur" autocomplete="current-password" style="width:100%">
+<label for="pNew" class="fl">New password (8+ characters)</label>
+<input type="password" id="pNew" autocomplete="new-password" style="width:100%">
+<p class="note" id="pMsg" role="status" style="min-height:1.4em"></p>
+<button type="submit" style="width:100%">Change password</button>
+</form>
+</section>
+<section class="card">
+<h2>Profile</h2>
+<label for="bio" class="fl" style="margin-top:0">Bio (up to 80 characters)</label>
+<input type="text" id="bio" maxlength="80" placeholder="Say something" style="width:100%">
+<p class="note">Shown on your profile and to friends.</p>
+</section>
+<section class="card b">
+<h2>Privacy</h2>
+<div class="lab"><span>Who can see my stats</span></div>
+<div class="seg" id="visSeg"><button type="button" data-v="0" aria-pressed="true">Only me</button><button type="button" data-v="1" aria-pressed="false">My friends</button></div>
+<div class="kv" style="margin-top:12px"><span>Findable by username</span><button type="button" id="tFind" role="switch" aria-checked="true">On</button></div>
+<p class="note">Private: friends see no stats. Findable off: nobody can add you by username.</p>
+</section>
+<section class="card">
+<h2>Preferences</h2>
+<div class="lab" style="margin-top:0"><span>Time format</span></div>
+<div class="seg" id="fmtSeg"><button type="button" data-v="1" aria-pressed="true">24-hour</button><button type="button" data-v="0" aria-pressed="false">12-hour</button></div>
+<div class="sec" data-nosub>Wording</div>
+<p class="sub" data-nosub style="margin-top:0">Word used for a logged entry, everywhere in the app. Pick from the list.</p>
+<select id="wSel" data-nosub aria-label="Word for an entry"></select>
+<div id="wCustom" hidden data-nosub>
+<label for="wS">Singular</label>
+<input type="text" id="wS" maxlength="20" autocomplete="off" spellcheck="false" placeholder="one word" style="width:100%">
+<label for="wP">Plural (empty keeps the same word)</label>
+<input type="text" id="wP" maxlength="20" autocomplete="off" spellcheck="false" placeholder="optional" style="width:100%">
+</div>
+<p class="sub" data-nosub>Preview: <b id="wEx">1 load, 5 loads</b></p>
+<div class="sec">New load defaults</div>
+<label for="dRate" style="margin-top:0">Rating <b id="dRateV">5</b></label>
+<input type="range" id="dRate" min="1" max="10" value="5">
+<label for="dLen">Length <b id="dLenV">10 min</b></label>
+<input type="range" id="dLen" min="1" max="60" value="10">
+<div class="lab setrow"><span id="dRelLab">Released</span></div>
+<div class="seg" id="dRel"><button type="button" data-v="1" aria-pressed="true">Yes</button><button type="button" data-v="0" aria-pressed="false">No</button></div>
+</section>
+<section class="card b">
+<h2>Tags</h2>
+<form id="tagForm" style="display:flex;gap:10px;margin-top:0">
+<input type="text" id="tagIn" maxlength="24" placeholder="New tag" autocomplete="off" aria-label="New tag" style="flex:1;width:auto;min-width:0">
+<button type="submit" class="go">Add</button>
+</form>
+<p class="note" id="tagMsg" role="status" style="min-height:1.4em"></p>
+<div class="chips" id="tagList"></div>
+<p class="note">Add as many as you like. They show up when you log an entry, and you can pick any of them. Removing a tag keeps it on old entries.</p>
+</section>
+<section class="card">
+<h2>Feedback</h2>
+<div class="kv"><span>Save effect</span><button type="button" id="tFx" role="switch" aria-checked="true">On</button></div>
+<div class="kv"><span>Pop-up messages</span><button type="button" id="tPop" role="switch" aria-checked="true">On</button></div>
+</section>
+<section class="card">
+<h2>Data</h2>
+<p class="note" style="margin-top:0">Everything is stored in this browser only.</p>
+<div class="col"><button type="button" id="dCopy">Copy my data</button><button type="button" id="dReset">Erase my data</button></div>
+<p class="note" id="dMsg" role="status" style="min-height:1.4em"></p>
+</section>
+<section class="card b">
+<h2>Session</h2>
+<div class="col"><button type="button" id="dLogout">Log out</button><button type="button" id="dDelete">Delete account</button></div>
+</section>
+<section class="card">
+<h2>About</h2>
+<div class="kv"><span>Version</span><b>Creamer 0.2 (demo)</b></div>
+<div class="kv"><span>Age confirmation</span><b>18+ confirmed</b></div>
+</section>
+</div>
+</div>
+</div>
+
+<p class="toast" id="toast" role="status" hidden></p>
+<div class="wr" id="wr" hidden role="dialog" aria-modal="true" aria-label="Your year in numbers">
+<div class="wrTop"><div id="wrDots"></div><button type="button" id="wrX" aria-label="Close">Close</button></div>
+<div id="wrBody"></div>
+<div class="wrNav"><button type="button" id="wrPrev">Back</button><button type="button" id="wrNext" class="go">Next</button></div>
+</div>
+
+<nav class="tabs" aria-label="Sections"><button type="button" id="tHome" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</button><button type="button" id="tStats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-8"/></svg>Stats</button><button type="button" id="tFriends" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c2.7 0 4.5 1.8 4.5 4.5"/></svg>Friends</button><button type="button" id="tRewards" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg>Rewards</button><button type="button" id="tProfile" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Profile</button></nav>
+
+<button class="drop" id="add" type="button" aria-label="Add a load"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20C68 20 70 32 78 34C88 36 98 28 102 36C106 46 94 50 94 58C94 66 106 70 102 80C98 90 86 84 80 90C72 96 74 108 62 106C52 104 54 94 46 90C36 86 24 94 20 84C16 74 28 68 28 60C28 52 14 48 20 38C26 28 38 34 46 32C54 30 52 20 60 20Z" fill="#fff" stroke="#f0cdd9" stroke-width="3"/><circle cx="107" cy="17" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="13" cy="22" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="109" cy="101" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="15" cy="105" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/></svg><span>+</span></button>
+
+<div class="gate" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="atl" style="z-index:95">
+<div class="card gc">
+<h2 id="atl" class="logo">Creamer</h2>
+<div class="seg" id="authTabs"><button type="button" data-m="in" aria-pressed="true">Log in</button><button type="button" data-m="up" aria-pressed="false">Create account</button></div>
+<form id="authForm" novalidate>
+<div id="fUser" hidden>
+<label for="aUser" class="fl">Username</label>
+<input type="text" id="aUser" maxlength="20" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="3 to 20 characters" style="width:100%" aria-describedby="aUMsg">
+<p class="note" id="aUMsg" role="status" style="min-height:1.4em;margin:6px 0 0"></p>
+</div>
+<div id="fEmail">
+<label for="aEmail" class="fl">Email</label>
+<input type="email" id="aEmail" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="you@example.com" style="width:100%">
+</div>
+<label for="aPass" class="fl" id="lblPass">Password</label>
+<div class="pw"><input type="password" id="aPass" autocomplete="current-password" placeholder="8+ characters" style="flex:1;width:auto"><button type="button" id="aShow" aria-pressed="false">Show</button></div>
+<div id="fConf" hidden>
+<label for="aConf" class="fl">Repeat password</label>
+<input type="password" id="aConf" autocomplete="new-password" placeholder="Same password again" style="width:100%">
+</div>
+<p class="note" id="aMsg" role="alert" style="min-height:1.4em"></p>
+<button type="submit" class="go" id="aGo" style="width:100%">Log in</button>
+<button type="button" class="linkb" id="aForgot">Forgot password?</button>
+</form>
+<p class="note" id="aNote" style="text-align:center">Demo mode: accounts live in this browser only. Real sign-in comes with the backend.</p>
+</div>
+</div>
+
+<div class="ov" id="ov" hidden>
+<div class="card" role="dialog" aria-modal="true" aria-labelledby="mt">
+<h2 id="mt" style="font-size:26px">New load</h2>
+<label for="rt">Rating <b id="rtV" style="font-size:24px">5</b></label>
+<input type="range" id="rt" min="1" max="10" value="5">
+<div class="lab"><span>Time</span></div>
+<div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+<input type="time" id="tf" aria-label="From" style="flex:1"><span>to</span><input type="time" id="tt" aria-label="To" style="flex:1">
+</div>
+<div class="note" id="durV" style="margin-top:6px"></div>
+<div class="lab"><span id="relLab">Released</span></div>
+<div class="seg" id="rel">
+<button type="button" data-v="1" aria-pressed="true">Yes</button>
+<button type="button" data-v="0" aria-pressed="false">No</button>
+</div>
+<div class="lab" id="tagLab" hidden><span>Tags</span></div>
+<div class="chips" id="tagBox"></div>
+<p class="note" id="tagNone" style="margin:10px 0 0">No tags yet. Add them in Settings.</p>
+<div class="row">
+<button type="button" id="cancel">Cancel</button>
+<button type="button" id="save" class="go">Save</button>
+</div>
+</div>
+</div>
+
+<script>
+var AKEY = 'creamlog:age18';
+/* Supabase connection. The publishable key is meant to be public. Never put a service_role key here. */
+var CFG = {url: 'https://olorelgffrbkuabtzahh.supabase.co', key: 'sb_publishable_17_12idPw9GIRGWuv7ndcA_4n3juC8l'};
+var sb = null, CLOUD = false, CLOUDFAIL = false, CUSER = null, FR = {}, SOC = {inc: [], out: []}, SOCIAL_OK = false, synced = {}, syncing = false, again = false, profT = 0, profErr = 0, soErr = 0, loadingUser = false, recovering = false;
+try {
+  if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
+} catch (e) { CLOUDFAIL = true; }
+var uid = '', ACC = {};
+var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
+function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
+var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
+function ukey(n, u) { return 'creamer:u:' + (u || uid) + ':' + n; }
+function rd(n, def, u) { try { var v = localStorage.getItem(ukey(n, u)); return v ? JSON.parse(v) : def; } catch (e) { return def; } }
+function wr(n, v) { if (!uid) return; try { localStorage.setItem(ukey(n), JSON.stringify(v)); } catch (e) {} }
+function saveE() { if (CLOUD) cloudSyncEntries(); else wr('loads', E); }
+function saveP() { if (CLOUD) queueProf(); else wr('profile', P); }
+function saveF() { if (!CLOUD) wr('friends', F); }
+function saveS() { if (CLOUD) queueProf(); else wr('settings', S); }
+function loadAcc() { try { ACC = JSON.parse(localStorage.getItem('creamer:accounts') || '{}'); } catch (e) { ACC = {}; } }
+function saveAcc() { try { localStorage.setItem('creamer:accounts', JSON.stringify(ACC)); } catch (e) {} }
+var SEED = {soft_harbor: {n: 34, d: 60, bio: 'Night shifts and slow mornings.'}, quiet_fox: {n: 18, d: 60, bio: 'Keeping it simple.'}, dusk_wren: {n: 52, d: 75, bio: 'Here for the badges.'}}, DEMO = {}, openF = '';
+function rng(a) { return function () { a = (a + 0x6D2B79F5) | 0; var t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+/* Made-up loads for the three sample users. Real friends come from the backend later. */
+function demoFor(name) {
+  var hk = Math.floor(Date.now() / 3600000), cc = DEMO[name];
+  if (cc && cc.hk === hk) return cc.list;
+  var seed = 0, i; for (i = 0; i < name.length; i++) seed = (seed * 31 + name.charCodeAt(i)) | 0;
+  var cfg = SEED[name], rate = cfg.n / cfg.d, out = [], now = Date.now(), today = dstart(now), id = 0;
+  for (var d = cfg.d; d >= 0; d--) {
+    var dt = new Date(today); dt.setDate(dt.getDate() - d);
+    var r = rng(seed ^ Math.imul(Math.floor(dt.getTime() / 86400000), -1640531535)), k = (r() < rate ? 1 : 0) + (r() < rate * 0.3 ? 1 : 0);
+    for (var j = 0; j < k; j++) {
+      var hr = Math.floor(r() * 24), mi = Math.floor(r() * 60), dur = 3 + Math.floor(r() * r() * 50), rt = Math.min(10, 3 + Math.floor(r() * 8)), rl = r() < 0.75;
+      var e0 = new Date(dt); e0.setHours(hr, mi, 0, 0); var end = e0.getTime() + dur * 60000;
+      if (end > now) continue;
+      out.push({id: id++, t: end, from: hm(new Date(end - dur * 60000)), to: hm(new Date(end)), dur: dur, rate: rt, rel: rl});
+    }
+  }
+  DEMO[name] = {hk: hk, list: out}; return out;
+}
+var RESERVED = ['admin', 'support', 'creamer', 'moderator', 'system', 'root'];
+/* All account/user lookups go through api and ACC. These are what the Supabase backend replaces. */
+var api = {
+  isTaken: function (n) { if (SEED[n]) return true; for (var k in ACC) if (ACC[k].username === n) return true; return false; },
+  find: function (n, forAdd) {
+    if (CLOUD) { var f = FR[n]; return f ? {entries: f.entries, bio: f.bio, priv: f.priv} : null; }
+    if (SEED[n]) return {entries: demoFor(n), bio: SEED[n].bio, priv: false};
+    for (var k in ACC) if (ACC[k].username === n) {
+      if (k === uid) return null;
+      var pr = rd('profile', {}, k);
+      if (forAdd && pr.discover === false) return null;
+      return {entries: pr.pub ? rd('loads', [], k) : [], bio: pr.bio || '', priv: !pr.pub};
+    }
+    return null;
+  }
+};
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]; }); }
+function rnd() { var a = new Uint8Array(8); if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(a); else for (var i = 0; i < 8; i++) a[i] = Math.floor(Math.random() * 256); return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join(''); }
+function hashPw(salt, pw) {
+  var s = salt + ':' + pw;
+  if (window.crypto && crypto.subtle && window.TextEncoder) return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(function (b) { return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); });
+  var hh = 5381; for (var i = 0; i < s.length; i++) hh = ((hh << 5) + hh + s.charCodeAt(i)) | 0;
+  return Promise.resolve(String(hh));
+}
+function ft(s) { if (S.h24 !== false) return s; var q = s.split(':'), hr = +q[0]; return ((hr % 12) || 12) + ':' + q[1] + (hr < 12 ? ' AM' : ' PM'); }
+function $(id) { return document.getElementById(id); }
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function hm(d) { return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+function dayKey(t) { var d = new Date(t); return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
+
+function sinceLabel(t, ago) {
+  var m = Math.floor(Math.max(0, Date.now() - t) / 60000);
+  if (m < 1) return ago ? 'just now' : '0m';
+  var d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mm = m % 60;
+  return (d ? d + 'd ' : '') + (d || h ? h + 'h ' : '') + mm + 'm' + (ago ? ' ago' : '');
+}
+function lastOf(arr) { var m = null; arr.forEach(function (x) { if (!m || x.t > m.t) m = x; }); return m; }
+function tick() {
+  var els = document.querySelectorAll('[data-since]');
+  for (var i = 0; i < els.length; i++) els[i].textContent = sinceLabel(+els[i].getAttribute('data-since'), els[i].hasAttribute('data-ago'));
+}
+function sinceCell(u) {
+  if (!u) return '<span class="empty">unavailable</span>';
+  if (u.priv) return '<span class="empty">private</span>';
+  var l = lastOf(u.entries);
+  return l ? '<b data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="empty">no loads yet</span>';
+}
+function renderFriendView() {
+  var det = openF && F.indexOf(openF) >= 0;
+  if (!det) openF = '';
+  $('fList').hidden = !!det; $('fDetail').hidden = !det;
+  if (det) {
+    var u = api.find(openF), body;
+    if (!u) body = card('', 'Unavailable', '<p class="empty">This user is no longer available.</p>');
+    else if (u.priv) body = card('', 'Private profile', '<p class="empty">@' + openF + ' keeps their stats private.</p>');
+    else body = (u.bio ? card(' b', 'Bio', '<p style="margin:0">' + esc(u.bio) + '</p>') : '') + statsHtml(u.entries, false);
+    $('fName').textContent = '@' + openF;
+    $('fBody').innerHTML = '<div class="sgrid">' + body + '</div><div class="row" style="max-width:260px"><button type="button" id="fRemove">Remove friend</button></div>';
+  }
+}
+function entryRow(x, yr) {
+  var d = new Date(x.t).toLocaleDateString(undefined, yr ? {day: 'numeric', month: 'short', year: 'numeric'} : {day: 'numeric', month: 'short'});
+  var tg = x.tags && x.tags.length ? '<small class="tg">' + x.tags.map(esc).join(', ') + '</small>' : '';
+  return '<li><span>' + d + ' · ' + ft(x.from) + '–' + ft(x.to) + '<small>' + x.dur + ' min · released: ' + (x.rel ? 'yes' : 'no') + '</small>' + tg + '</span><span style="font-size:26px;font-weight:800">' + x.rate + '</span><button class="x" type="button" data-id="' + x.id + '" aria-label="Delete entry">' + (delArm === String(x.id) ? 'sure?' : 'delete') + '</button></li>';
+}
+function delClick(e) {
+  var id = e.target.getAttribute && e.target.getAttribute('data-id'); if (!id) return;
+  clearTimeout(delT);
+  if (delArm === id) { delArm = ''; E = E.filter(function (x) { return String(x.id) !== id; }); saveE(); render(); return; }
+  delArm = id; render();
+  delT = setTimeout(function () { delArm = ''; render(); }, 3000);
+}
+function render() {
+  if (!uid) return;
+  leagueSettle(); duelSettle();
+  var rows = E.slice().sort(function (a, b) { return b.t - a.t; }).slice(0, histAll ? 20 : 5);
+  $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No loads yet. Tap the splash.</li>';
+  if (!$('entriesView').hidden) renderEntries();
+  var l = lastOf(E), hs = $('hSince');
+  if (l) {
+    hs.setAttribute('data-since', l.t); hs.textContent = sinceLabel(l.t, false);
+    $('hLast').textContent = 'Last load ' + fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to) + ', rating ' + l.rate + ', ' + (l.rel ? 'released' : 'not released') + '.';
+  } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = 'No loads yet. Tap the splash.'; }
+  $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
+  renderSettings();
+  renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
+  $('hf').innerHTML = F.length ? F.map(function (n) {
+    return '<li><span>@' + n + '</span>' + sinceCell(api.find(n)) + '</li>';
+  }).join('') : '<li class="empty">No friends yet. Add them in the Friends tab.</li>';
+  $('fl').innerHTML = F.length ? F.map(function (n) {
+    return '<li><button class="fr" type="button" data-open="' + n + '"><b>@' + n + '</b>' + sinceCell(api.find(n)) + '</button></li>';
+  }).join('') : '<li class="empty">No friends yet. Add one by username.</li>';
+  renderStats();
+  renderFriendView();
+  applyEq();
+  renderRewards();
+  renderProfile();
+}
+
+function span() {
+  var now = new Date(), a = $('tf').value.split(':'), b = $('tt').value.split(':');
+  if (a.length < 2 || b.length < 2) return null;
+  var to = new Date(now); to.setHours(+b[0], +b[1], 0, 0);
+  if (to - now > 60000) to.setDate(to.getDate() - 1);
+  var fr = new Date(to); fr.setHours(+a[0], +a[1], 0, 0);
+  if (fr > to) fr.setDate(fr.getDate() - 1);
+  return {to: to, fr: fr, dur: Math.round((to - fr) / 60000)};
+}
+function showDur() { var s = span(); $('durV').textContent = s ? 'Duration: ' + s.dur + ' min' : ''; }
+function setRel(v) {
+  relV = v;
+  Array.prototype.forEach.call($('rel').children, function (b) { b.setAttribute('aria-pressed', (b.getAttribute('data-v') === '1') === v ? 'true' : 'false'); });
+}
+function openM() {
+  var now = new Date(), f = new Date(now - S.dLen * 60000);
+  $('tt').value = hm(now); $('tf').value = hm(f);
+  $('rt').value = S.dRate; $('rtV').textContent = S.dRate; setRel(S.dRel); showDur(); selTags = []; renderTagBox();
+  $('ov').hidden = false; $('rt').focus();
+}
+function renderTagBox() {
+  var tg = S.tags || [];
+  $('tagLab').hidden = !tg.length; $('tagNone').hidden = tg.length > 0;
+  $('tagBox').innerHTML = tg.map(function (t, i) { return '<button type="button" data-i="' + i + '" aria-pressed="' + (selTags.indexOf(t) >= 0) + '">' + esc(t) + '</button>'; }).join('');
+}
+$('tagBox').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+  var t = (S.tags || [])[+b.getAttribute('data-i')]; if (t === undefined) return;
+  var k = selTags.indexOf(t); if (k >= 0) selTags.splice(k, 1); else selTags.push(t);
+  renderTagBox();
+});
+function closeM() { $('ov').hidden = true; $('add').focus(); }
+
+$('add').addEventListener('click', openM);
+$('cancel').addEventListener('click', closeM);
+var ovDown = false;
+$('ov').addEventListener('pointerdown', function (e) { ovDown = e.target === $('ov'); });
+$('ov').addEventListener('click', function (e) { if (e.target === $('ov') && ovDown) closeM(); ovDown = false; });
+$('rt').addEventListener('input', function () { $('rtV').textContent = $('rt').value; });
+$('tf').addEventListener('input', showDur);
+$('tt').addEventListener('input', showDur);
+$('rel').addEventListener('click', function (e) { var v = e.target.getAttribute && e.target.getAttribute('data-v'); if (v !== null) setRel(v === '1'); });
+$('save').addEventListener('click', function () {
+  var s = span(); if (!s) return;
+  var b0 = totals(), e0 = earnedSet();
+  E.push({id: Date.now(), t: s.to.getTime(), from: hm(s.fr), to: hm(s.to), dur: s.dur, rate: +$('rt').value, rel: relV, tags: selTags.filter(function (t) { return (S.tags || []).indexOf(t) >= 0; })});
+  saveE(); render(); closeM();
+  var b1 = totals(), e1 = earnedSet(), msg = [], nb = Object.keys(e1).filter(function (k) { return !e0[k]; });
+  msg.push(b1.lp > b0.lp ? '+' + (b1.lp - b0.lp) + ' drops' : 'Daily drop limit reached');
+  if (b1.L > b0.L) msg.push('Level ' + b1.L + ': ' + lvlName(b1.L));
+  if (nb.length) msg.push('Badge: ' + BMAP[nb[0]].n + (nb.length > 1 ? ' +' + (nb.length - 1) : ''));
+  toast(msg.join(' · ')); if (S.fx) burst(G.eq.fx);
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key !== 'Escape') return;
+  if (!$('ov').hidden) closeM();
+});
+$('hist').addEventListener('click', delClick);
+$('enList').addEventListener('click', delClick);
+function clean(s) { return s.toLowerCase().replace(/[^a-z0-9_]/g, ''); }
+function checkName(n) {
+  if (!n) return {ok: false, msg: ''};
+  if (n.length < 3) return {ok: false, msg: 'At least 3 characters.'};
+  if (n === P.name) return {ok: false, msg: 'This is your current username.'};
+  if (RESERVED.indexOf(n) >= 0) return {ok: false, msg: '@' + n + ' is reserved.'};
+  if (api.isTaken(n)) return {ok: false, msg: '@' + n + ' is taken.'};
+  return {ok: true, msg: '@' + n + ' is available.'};
+}
+var auth = $('auth'), authMode = 'in', gate = $('gate'), ok = false;
+function lock() { document.body.style.overflow = (!gate.hidden || !auth.hidden) ? 'hidden' : ''; }
+function appShow(on) { document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
+function amsg(t) { $('aMsg').textContent = t; }
+function showAuth(m) {
+  authMode = m; appShow(false);
+  Array.prototype.forEach.call($('authTabs').children, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-m') === m ? 'true' : 'false'); });
+  $('fUser').hidden = m !== 'up'; $('fConf').hidden = m !== 'up'; $('aConf').value = ''; $('aGo').textContent = m === 'up' ? 'Create account' : 'Log in';
+  $('aPass').setAttribute('autocomplete', m === 'up' ? 'new-password' : 'current-password');
+  $('aForgot').hidden = m === 'up'; amsg(''); $('aUMsg').textContent = '';
+  $('fEmail').hidden = false; $('authTabs').hidden = false; $('lblPass').textContent = 'Password'; $('aGo').disabled = false;
+  auth.hidden = false; lock();
+}
+function findByEmail(em) { for (var k in ACC) if (ACC[k].email === em) return k; return ''; }
+function loadUser(id) {
+  uid = id;
+  E = rd('loads', []); F = rd('friends', []);
+  P = Object.assign({}, DEF_P, rd('profile', {})); P.name = ACC[id].username;
+  S = Object.assign({}, DEF_S, rd('settings', {}));
+  G = Object.assign(newG(), rd('game', {})); G.eq = Object.assign(newG().eq, G.eq || {});
+  openF = ''; histAll = false;
+  try { localStorage.setItem('creamer:session', id); } catch (e) {}
+  ['aUser', 'aEmail', 'aPass', 'aConf'].forEach(function (k) { $(k).value = ''; });
+  auth.hidden = true; appShow(true); lock(); render(); tab('home');
+}
+function logout() {
+  if (CLOUD) { cloudLogout(); return; }
+  logoutLocal();
+}
+function logoutLocal() {
+  try { localStorage.removeItem('creamer:session'); } catch (e) {}
+  uid = ''; CUSER = null; FR = {}; SOC = {inc: [], out: []}; SOCIAL_OK = false; synced = {}; E = []; F = []; P = Object.assign({}, DEF_P); S = Object.assign({}, DEF_S); G = newG(); openF = '';
+  applyEq(); showAuth('in'); window.scrollTo(0, 0);
+}
+$('authTabs').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('button') : null; if (b) showAuth(b.getAttribute('data-m')); });
+$('aUser').addEventListener('input', function () { var n = clean($('aUser').value); $('aUser').value = n; if (CLOUD) { liveName(n, 'aUMsg', null); return; } $('aUMsg').textContent = checkName(n).msg; });
+$('aConf').addEventListener('input', function () { var c = $('aConf').value; amsg(c && c !== $('aPass').value ? 'Passwords do not match.' : ''); });
+$('aShow').addEventListener('click', function () { var pw = $('aPass'), on = pw.type === 'password'; pw.type = on ? 'text' : 'password'; $('aConf').type = pw.type; $('aShow').textContent = on ? 'Hide' : 'Show'; $('aShow').setAttribute('aria-pressed', on ? 'true' : 'false'); });
+$('aForgot').addEventListener('click', function () {
+  if (!CLOUD) { amsg('Password reset by email needs the real backend. It is not available in this demo.'); return; }
+  var em = $('aEmail').value.trim().toLowerCase();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { amsg('Type your email above, then tap this again.'); return; }
+  sb.auth.resetPasswordForEmail(em, {redirectTo: location.origin + location.pathname}).then(function (r) { amsg(r.error ? cloudErr(r.error) : 'If this email has an account, a reset link is on its way.'); });
+});
+$('authForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (CLOUD) { cloudSubmit(); return; }
+  var em = $('aEmail').value.trim().toLowerCase(), pw = $('aPass').value, id;
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { amsg('Enter a valid email address.'); return; }
+  if (authMode === 'in') {
+    id = findByEmail(em);
+    if (!id) { amsg('Wrong email or password.'); return; }
+    hashPw(ACC[id].salt, pw).then(function (hx) { if (hx !== ACC[id].hash) amsg('Wrong email or password.'); else loadUser(id); });
+    return;
+  }
+  var n = clean($('aUser').value), r = checkName(n);
+  if (!r.ok) { amsg(r.msg || 'Choose a username.'); return; }
+  if (pw.length < 8) { amsg('Password needs at least 8 characters.'); return; }
+  if (pw !== $('aConf').value) { amsg('Passwords do not match.'); return; }
+  if (findByEmail(em)) { amsg('An account with this email already exists.'); return; }
+  var salt = rnd(), first = !Object.keys(ACC).length;
+  hashPw(salt, pw).then(function (hx) {
+    var nid = 'u' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    ACC[nid] = {email: em, username: n, salt: salt, hash: hx, created: Date.now()}; saveAcc();
+    if (first) [['creamer:v2', 'loads'], ['creamer:friends', 'friends'], ['creamer:game', 'game'], ['creamer:settings', 'settings']].forEach(function (m) { try { var v = localStorage.getItem(m[0]); if (v) localStorage.setItem(ukey(m[1], nid), v); } catch (x) {} });
+    loadUser(nid); toast('Welcome, @' + n);
+  });
+});
+function fmsg(t) { $('fMsg').textContent = t; }
+$('addForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var n = clean($('fq').value);
+  if (!P.name) { fmsg('Choose your own username first.'); return; }
+  if (!n) return;
+  if (n === P.name) { fmsg("That's you."); return; }
+  if (F.indexOf(n) >= 0) { fmsg('@' + n + ' is already your friend.'); return; }
+  if (CLOUD) {
+    sb.rpc('send_friend_request', {name: n}).then(function (r) {
+      if (r.error) { fmsg('Something went wrong. Try again.'); return; }
+      var m = {not_found: 'No user @' + n + '.', self: "That's you.", exists: '@' + n + ' is already your friend.', pending: 'You already sent a request to @' + n + '.', sent: 'Request sent to @' + n + '.', accepted: 'You are now friends with @' + n + '.', auth: 'Log in again.'};
+      fmsg(m[r.data] || 'Done.'); if (r.data === 'sent' || r.data === 'accepted') $('fq').value = '';
+      return refreshSocial().then(render);
+    });
+    return;
+  }
+  if (!api.find(n, true)) { fmsg('No user @' + n + '.'); return; }
+  F.push(n); saveF(); $('fq').value = ''; fmsg('Added @' + n + '.'); render();
+});
+$('fl').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('[data-open]') : null;
+  if (!b) return;
+  openF = b.getAttribute('data-open'); renderFriendView(); window.scrollTo(0, 0);
+});
+$('fBack').addEventListener('click', function () { openF = ''; renderFriendView(); });
+$('fBody').addEventListener('click', function (e) {
+  if (e.target.id !== 'fRemove') return;
+  if (CLOUD) { var fo = FR[openF]; openF = ''; if (fo) sb.rpc('remove_friend', {other: fo.id}).then(refreshSocial).then(render); else render(); return; }
+  F = F.filter(function (x) { return x !== openF; }); saveF(); openF = ''; render();
+});
+
+
+/* ---------- Supabase (cloud mode) ---------- */
+function cloudErr(e) {
+  var m = (e && e.message) || '';
+  if (/invalid login/i.test(m)) return 'Wrong email or password.';
+  if (/not confirmed/i.test(m)) return 'Confirm your email first. Check your inbox.';
+  if (/rate limit|too many|security purposes/i.test(m)) return 'Too many tries. Wait a minute and try again.';
+  if (/already registered/i.test(m)) return 'An account with this email already exists.';
+  if (/password/i.test(m) && /weak|short|characters|least/i.test(m)) return 'Password is too weak. Use 8 or more characters.';
+  if (/fetch|network|failed/i.test(m)) return 'No connection. Try again.';
+  return 'Something went wrong. ' + m;
+}
+function mapEntry(r) { return {id: r.id, t: Date.parse(r.ended_at), from: r.from_t, to: r.to_t, dur: r.dur, rate: r.rate, rel: !!r.released, tags: r.tags || []}; }
+function toRow(x) { return {ended_at: new Date(x.t).toISOString(), from_t: x.from, to_t: x.to, dur: x.dur, rate: x.rate, released: !!x.rel, tags: x.tags || []}; }
+function fetchAll(make) {
+  var out = [];
+  return (function page(a, i) {
+    return make(a, a + 999).then(function (r) {
+      if (r.error) throw r.error;
+      out = out.concat(r.data || []);
+      return (r.data && r.data.length === 1000 && i < 20) ? page(a + 1000, i + 1) : out;
+    });
+  })(0, 0);
+}
+var nameT = 0;
+function liveName(n, msgId, btnId) {
+  clearTimeout(nameT);
+  var msg = $(msgId), btn = btnId ? $(btnId) : null;
+  if (btn) btn.disabled = true;
+  if (!n) { msg.textContent = ''; return; }
+  if (n.length < 3) { msg.textContent = 'At least 3 characters.'; return; }
+  if (RESERVED.indexOf(n) >= 0) { msg.textContent = '@' + n + ' is reserved.'; return; }
+  if (n === P.name) { msg.textContent = 'This is your current username.'; return; }
+  msg.textContent = 'Checking…';
+  nameT = setTimeout(function () {
+    sb.rpc('username_available', {name: n}).then(function (r) {
+      if (clean((btnId ? $('nn') : $('aUser')).value) !== n) return;
+      if (r.error) { msg.textContent = 'Could not check. Try again.'; return; }
+      msg.textContent = r.data ? '@' + n + ' is available.' : '@' + n + ' is taken.';
+      if (btn) btn.disabled = !r.data;
+    });
+  }, 350);
+}
+async function cloudLoad(user) {
+  if (loadingUser) return;
+  loadingUser = true;
+  try {
+    var pr = await sb.from('profiles').select('username,bio,is_public,discoverable,settings,game').eq('id', user.id).single();
+    if (pr.error || !pr.data) { amsg('Could not load your profile. Try again.'); showAuth('in'); amsg('Could not load your profile. Try again.'); return; }
+    var rows = await fetchAll(function (a, b) { return sb.from('entries').select('id,ended_at,from_t,to_t,dur,rate,released,tags').eq('user_id', user.id).order('ended_at').order('id').range(a, b); });
+    uid = user.id; CUSER = user;
+    E = rows.map(mapEntry); synced = {}; E.forEach(function (x) { synced[x.id] = true; });
+    var d = pr.data;
+    P = Object.assign({}, DEF_P, {name: d.username, pub: !!d.is_public, discover: d.discoverable !== false, bio: d.bio || ''});
+    S = Object.assign({}, DEF_S, d.settings || {});
+    G = Object.assign(newG(), d.game || {}); G.eq = Object.assign(newG().eq, G.eq || {}); G.du = [];
+    F = []; FR = {}; SOCIAL_OK = false;
+    await refreshSocial();
+    openF = ''; histAll = false;
+    ['aUser', 'aEmail', 'aPass', 'aConf'].forEach(function (k) { $(k).value = ''; });
+    auth.hidden = true; appShow(true); lock(); render(); tab('home');
+    if (location.hash || location.search) { try { history.replaceState(null, '', location.pathname); } catch (e) {} }
+  } catch (e) {
+    showAuth('in'); amsg(cloudErr(e));
+  } finally { loadingUser = false; }
+}
+async function refreshSocial() {
+  if (!CLOUD || !uid) return;
+  try {
+    var fr = await sb.rpc('my_friends'); if (fr.error) throw fr.error;
+    var rows = fr.data || [], acc = rows.filter(function (r) { return r.status === 'accepted'; });
+    SOC.inc = rows.filter(function (r) { return r.status === 'pending' && r.incoming; });
+    SOC.out = rows.filter(function (r) { return r.status === 'pending' && !r.incoming; });
+    var byId = {}, nf = {};
+    acc.forEach(function (r) { byId[r.id] = r.username; nf[r.username] = {id: r.id, entries: [], bio: r.bio || '', priv: !r.is_public}; });
+    var ids = acc.filter(function (r) { return r.is_public; }).map(function (r) { return r.id; });
+    if (ids.length) {
+      var er = await fetchAll(function (a, b) { return sb.from('entries').select('user_id,id,ended_at,from_t,to_t,dur,rate,released,tags').in('user_id', ids).order('ended_at').order('id').range(a, b); });
+      er.forEach(function (r) { var n = byId[r.user_id]; if (n) nf[n].entries.push(mapEntry(r)); });
+    }
+    var dr = await sb.rpc('my_duels'); if (dr.error) throw dr.error;
+    FR = nf; F = Object.keys(nf).sort(); buildDuels(dr.data || []);
+    SOCIAL_OK = true; soErr = 0;
+  } catch (e) { if (!soErr++) toast('Could not load friends. Check your connection.'); }
+}
+function buildDuels(rows) {
+  var seen = {}, out = [];
+  rows.forEach(function (r) {
+    seen[r.id] = 1;
+    var a = r.starts_at ? Date.parse(r.starts_at) : 0, b = r.ends_at ? Date.parse(r.ends_at) : 0, ds = (G.dset || {})[r.id];
+    if (r.status === 'declined' || r.status === 'cancelled') return;
+    var base = {id: 'c' + r.id, cid: r.id, f: r.other, st: r.stat, days: r.days, a: a, b: b, k: r.stake};
+    if (r.status === 'pending') out.push(Object.assign(base, {done: false, pend: r.mine ? 'out' : 'in'}));
+    else if (ds) out.push(Object.assign(base, {done: true, res: ds.res, my: ds.my, th: ds.th}));
+    else out.push(Object.assign(base, {done: false}));
+  });
+  Object.keys(G.dset || {}).forEach(function (k) { if (!seen[k]) { var d = G.dset[k]; out.push({id: 'c' + k, cid: +k, f: d.f, st: d.st, a: 0, b: 0, k: d.k, done: true, res: d.res, my: d.my, th: d.th}); } });
+  out.sort(function (x, y) { return x.cid - y.cid; });
+  G.du = out;
+}
+function renderRequests() {
+  var el = $('rqCard'); if (!el) return;
+  var inc = SOC.inc, out = SOC.out; el.hidden = !CLOUD || !(inc.length || out.length);
+  if (el.hidden) return;
+  el.innerHTML = '<h2>Friend requests</h2>' + (inc.length ? '<ul>' + inc.map(function (r) { return '<li><span>@' + esc(r.username) + '</span><span><button type="button" class="go x" data-ra="' + r.id + '">Accept</button> <button type="button" class="x" data-rd="' + r.id + '">Decline</button></span></li>'; }).join('') + '</ul>' : '') +
+    (out.length ? '<div class="sec">Sent</div><ul>' + out.map(function (r) { return '<li><span>@' + esc(r.username) + '</span><span><span class="empty">waiting</span> <button type="button" class="x" data-rc="' + r.id + '">Cancel</button></span></li>'; }).join('') + '</ul>' : '');
+}
+$('rqCard').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('button') : null; if (!b || !CLOUD) return;
+  var ra = b.getAttribute('data-ra'), rd2 = b.getAttribute('data-rd'), rc = b.getAttribute('data-rc'), done = function () { return refreshSocial().then(render); };
+  if (ra) sb.rpc('respond_friend', {from_id: ra, accept: true}).then(done);
+  else if (rd2) sb.rpc('respond_friend', {from_id: rd2, accept: false}).then(done);
+  else if (rc) sb.rpc('remove_friend', {other: rc}).then(done);
+});
+function cloudSyncEntries() {
+  if (syncing) { again = true; return; }
+  syncing = true;
+  (async function () {
+    var changed = false;
+    try {
+      do {
+        again = false;
+        var cur = {}; E.forEach(function (x) { cur[x.id] = 1; });
+        var del = Object.keys(synced).filter(function (id) { return !cur[id]; });
+        if (del.length) { var r1 = await sb.from('entries').delete().in('id', del.map(Number)); if (r1.error) throw r1.error; del.forEach(function (id) { delete synced[id]; }); }
+        var add = E.filter(function (x) { return !synced[x.id]; });
+        for (var i = 0; i < add.length; i++) {
+          var x = add[i], r2 = await sb.from('entries').insert(toRow(x)).select('id').single();
+          if (r2.error) throw r2.error;
+          x.id = r2.data.id; synced[x.id] = true; changed = true;
+        }
+      } while (again);
+    } catch (e) { toast('Could not save to your account. Check your connection.'); }
+    syncing = false;
+    if (changed) render();
+  })();
+}
+function queueProf() { if (!CLOUD || !uid) return; clearTimeout(profT); profT = setTimeout(pushProf, 700); }
+async function pushProf() {
+  profT = 0; if (!CLOUD || !uid) return;
+  var g = Object.assign({}, G); delete g.du;
+  var r = await sb.from('profiles').update({bio: P.bio || '', is_public: !!P.pub, discoverable: P.discover !== false, settings: S, game: g}).eq('id', uid);
+  if (r.error) { if (!profErr++) toast('Could not save your changes. Check your connection.'); } else profErr = 0;
+}
+function flushProf() { if (profT) { clearTimeout(profT); return pushProf(); } return Promise.resolve(); }
+window.addEventListener('pagehide', function () { if (CLOUD && profT) { clearTimeout(profT); pushProf(); } });
+async function cloudLogout() { try { await flushProf(); await sb.auth.signOut(); } catch (e) {} logoutLocal(); }
+async function cloudErase() {
+  try {
+    var r = await sb.from('entries').delete().eq('user_id', uid); if (r.error) throw r.error;
+    S = Object.assign({}, DEF_S); G = newG(); G.du = []; clearTimeout(profT); await pushProf();
+    var u = CUSER; loadingUser = false; await cloudLoad(u); toast('Data erased');
+  } catch (e) { toast('Could not erase. Check your connection.'); }
+}
+async function cloudDelete() {
+  try {
+    var r = await sb.rpc('delete_me'); if (r.error) throw r.error;
+    try { await sb.auth.signOut(); } catch (e) {}
+    logoutLocal(); toast('Account deleted');
+  } catch (e) { toast('Could not delete the account. Check your connection.'); }
+}
+function showReset() {
+  recovering = true; authMode = 'reset'; appShow(false);
+  $('authTabs').hidden = true; $('fUser').hidden = true; $('fEmail').hidden = true; $('fConf').hidden = false; $('aConf').value = ''; $('aPass').value = '';
+  $('lblPass').textContent = 'New password'; $('aPass').setAttribute('autocomplete', 'new-password'); $('aForgot').hidden = true; $('aGo').textContent = 'Set new password'; amsg('');
+  auth.hidden = false; lock();
+}
+async function cloudSubmit() {
+  var em = $('aEmail').value.trim().toLowerCase(), pw = $('aPass').value, go = $('aGo');
+  if (authMode === 'reset') {
+    if (pw.length < 8) { amsg('Password needs at least 8 characters.'); return; }
+    if (pw !== $('aConf').value) { amsg('Passwords do not match.'); return; }
+    go.disabled = true;
+    try {
+      var u = await sb.auth.updateUser({password: pw});
+      if (u.error) amsg(cloudErr(u.error)); else { recovering = false; var s2 = await sb.auth.getSession(); if (s2.data.session) await cloudLoad(s2.data.session.user); else showAuth('in'); toast('Password changed'); }
+    } catch (e) { amsg('No connection. Try again.'); }
+    go.disabled = false; return;
+  }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { amsg('Enter a valid email address.'); return; }
+  go.disabled = true;
+  try {
+    if (authMode === 'in') {
+      var r = await sb.auth.signInWithPassword({email: em, password: pw});
+      if (r.error) amsg(cloudErr(r.error)); else await cloudLoad(r.data.user);
+    } else {
+      var n = clean($('aUser').value);
+      if (n.length < 3) { amsg('Choose a username (3 to 20 characters).'); go.disabled = false; return; }
+      if (RESERVED.indexOf(n) >= 0) { amsg('@' + n + ' is reserved.'); go.disabled = false; return; }
+      if (pw.length < 8) { amsg('Password needs at least 8 characters.'); go.disabled = false; return; }
+      if (pw !== $('aConf').value) { amsg('Passwords do not match.'); go.disabled = false; return; }
+      var av = await sb.rpc('username_available', {name: n});
+      if (av.error) { amsg('Could not check the username. Try again.'); go.disabled = false; return; }
+      if (!av.data) { amsg('@' + n + ' is taken.'); go.disabled = false; return; }
+      var r3 = await sb.auth.signUp({email: em, password: pw, options: {data: {username: n}, emailRedirectTo: location.origin + location.pathname}});
+      if (r3.error) { amsg(/database error/i.test(r3.error.message || '') ? 'Could not create the account. The username may have just been taken.' : cloudErr(r3.error)); }
+      else if (r3.data.session) { await cloudLoad(r3.data.user); toast('Welcome, @' + n); }
+      else { showAuth('in'); $('aEmail').value = em; amsg('Account created. Open the email we sent to confirm it, then log in. No email? You may already have an account: try logging in or reset your password.'); }
+    }
+  } catch (e) { amsg('No connection. Try again.'); }
+  go.disabled = false;
+}
+function cloudInit() {
+  $('aNote').hidden = true; $('fNote').hidden = true; $('duNote').textContent = "The winner takes the other side's stake. A draw returns it. Both of you need \"My friends\" stats (Settings, Privacy). The challenged friend has to accept.";
+  recovering = /type=recovery/.test(location.hash + location.search);
+  sb.auth.onAuthStateChange(function (ev, session) {
+    if (ev === 'PASSWORD_RECOVERY') setTimeout(showReset, 0);
+    else if (ev === 'SIGNED_IN' && session && !uid && !recovering && !loadingUser) setTimeout(function () { cloudLoad(session.user); }, 0);
+    else if (ev === 'SIGNED_OUT' && uid) setTimeout(logoutLocal, 0);
+  });
+  sb.auth.getSession().then(function (r) {
+    if (recovering) { showReset(); return; }
+    if (r.data && r.data.session) cloudLoad(r.data.session.user); else showAuth(authMode === 'up' ? 'up' : 'in');
+  }).catch(function () { showAuth('in'); amsg('No connection. Try again.'); });
+  setInterval(function () { if (uid && !document.hidden && SOCIAL_OK) refreshSocial().then(function () { render(); }); }, 90000);
+}
+try { ok = localStorage.getItem(AKEY) === '1'; } catch (e) {}
+$('yes').addEventListener('click', function () {
+  try { localStorage.setItem(AKEY, '1'); } catch (e) {}
+  gate.hidden = true; lock();
+  if (!auth.hidden) $(authMode === 'up' ? 'aUser' : 'aEmail').focus();
+});
+$('no').addEventListener('click', function () {
+  gate.querySelector('.gc').innerHTML = '<h2 style="font-size:34px">Sorry</h2><p>You must be 18 or older to use this site.</p>';
+});
+function fmtDur(m) { m = Math.round(m); if (m < 60) return m + ' min'; var h = Math.floor(m / 60), r = m % 60; return h + 'h ' + pad(r) + 'm'; }
+function fmtGap(ms) { var m = Math.round(ms / 60000); if (m < 60) return m + ' min'; var h = Math.floor(m / 60); if (h < 48) return h + 'h ' + (m % 60) + 'm'; return Math.floor(h / 24) + ' d ' + (h % 24) + 'h'; }
+function fmtDate(t) { return new Date(t).toLocaleDateString(undefined, {day: 'numeric', month: 'short'}); }
+function dstart(t) { var d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function tile(v, l) { return '<div><b>' + v + '</b><span>' + l + '</span></div>'; }
+function kv(l, v) { return '<div class="kv"><span>' + l + '</span><b>' + v + '</b></div>'; }
+function card(cls, title, body) { return '<section class="card' + cls + '"><h2>' + title + '</h2>' + body + '</section>'; }
+function bars(vals, labels, tip, fixedMax) {
+  var mx = fixedMax || Math.max.apply(null, vals.concat([1]));
+  return vals.map(function (v, i) {
+    return '<div><i style="height:' + Math.round(v / mx * 100) + '%" title="' + (tip ? tip(i, v) : v) + '"></i>' + (labels[i] || '') + '</div>';
+  }).join('');
+}
+function avgOf(sum, c) { return c ? (sum / c).toFixed(1) : '–'; }
+
+function statsHtml(E, mine) {
+  if (!E.length) return card('', 'No stats yet', '<p class="empty">' + (mine ? 'Add a load with the splash button and everything shows up here.' : 'No loads logged yet.') + '</p>');
+  var s = E.slice().sort(function (a, b) { return a.t - b.t; }), n = s.length, now = Date.now(), DAY = 86400000, i, j;
+  var tot = 0, rsum = 0, rel = 0, relR = 0, unrR = 0;
+  s.forEach(function (x) { tot += x.dur; rsum += x.rate; if (x.rel) { rel++; relR += x.rate; } else unrR += x.rate; });
+  var unr = n - rel;
+
+  var days = {};
+  s.forEach(function (x) { var k = dstart(x.t), d = days[k] || (days[k] = {t: k, n: 0, sum: 0}); d.n++; d.sum += x.rate; });
+  var dl = Object.keys(days).map(function (k) { return days[k]; }).sort(function (a, b) { return a.t - b.t; });
+  var busiest = dl.reduce(function (a, b) { return b.n >= a.n ? b : a; });
+  var bestDay = dl.reduce(function (a, b) { return b.sum / b.n >= a.sum / a.n ? b : a; });
+
+  var hi = s.reduce(function (a, b) { return b.rate >= a.rate ? b : a; });
+  var lo = s.reduce(function (a, b) { return b.rate <= a.rate ? b : a; });
+  var lg = s.reduce(function (a, b) { return b.dur >= a.dur ? b : a; });
+  var sh = s.reduce(function (a, b) { return b.dur <= a.dur ? b : a; });
+
+  var longest = 1, cur = 0, sm0 = dayStreakMap(s, mine ? G.fd : null), sk0 = Object.keys(sm0).map(Number).sort(function (a, b) { return a - b; });
+  sk0.forEach(function (k) { if (sm0[k] > longest) longest = sm0[k]; });
+  if (Math.round((dstart(now) - sk0[sk0.length - 1]) / DAY) <= 1) cur = sm0[sk0[sk0.length - 1]];
+  var gaps = []; for (i = 1; i < n; i++) gaps.push(s[i].t - s[i - 1].t);
+  var maxGap = gaps.length ? Math.max.apply(null, gaps) : 0;
+  var avgGap = gaps.length ? gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length : 0;
+  var last = s[n - 1], since = Math.max(0, now - last.t), prevGap = n > 1 ? last.t - s[n - 2].t : 0;
+
+  var hrs = [], per = {Morning: 0, Afternoon: 0, Evening: 0, Night: 0}, wd = [0, 0, 0, 0, 0, 0, 0], rc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (j = 0; j < 24; j++) hrs.push(0);
+  s.forEach(function (x) {
+    var h = new Date(x.t - x.dur * 60000).getHours();
+    hrs[h]++;
+    if (h >= 5 && h < 12) per.Morning++; else if (h >= 12 && h < 17) per.Afternoon++; else if (h >= 17 && h < 22) per.Evening++; else per.Night++;
+    wd[(new Date(x.t).getDay() + 6) % 7]++;
+    rc[x.rate - 1]++;
+  });
+  var titles = {Morning: 'Early bird', Afternoon: 'Afternoon regular', Evening: 'Evening regular', Night: 'Night owl'};
+  var topP = Object.keys(per).reduce(function (a, b) { return per[b] > per[a] ? b : a; });
+  var peakH = hrs.indexOf(Math.max.apply(null, hrs));
+  var WN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  var peakW = wd.indexOf(Math.max.apply(null, wd));
+  var modeR = rc.indexOf(Math.max.apply(null, rc)) + 1;
+  var avgD = tot / n, pace = avgD < 5 ? 'Sprinter' : avgD <= 20 ? 'Steady' : 'Endurance';
+
+  var edges = [0, 5, 10, 20, 40, Infinity], BL = ['<5', '5-10', '10-20', '20-40', '40+'], bs = [0, 0, 0, 0, 0], bc = [0, 0, 0, 0, 0];
+  s.forEach(function (x) { for (var b = 0; b < 5; b++) if (x.dur >= edges[b] && x.dur < edges[b + 1]) { bs[b] += x.rate; bc[b]++; break; } });
+  var ba = bs.map(function (v, b) { return bc[b] ? v / bc[b] : 0; });
+  var bestB = 0; ba.forEach(function (v, b) { if (v > ba[bestB]) bestB = b; });
+
+  var d0 = new Date(now), ms = new Date(d0.getFullYear(), d0.getMonth(), 1).getTime(), lms = new Date(d0.getFullYear(), d0.getMonth() - 1, 1).getTime();
+  var thisM = s.filter(function (x) { return x.t >= ms; }).length, lastM = s.filter(function (x) { return x.t >= lms && x.t < ms; }).length;
+  var diff = thisM - lastM;
+
+  var today = dstart(now), mx = Math.max(busiest.n, 1), hm = '';
+  for (j = 34; j >= 0; j--) {
+    var dt = new Date(today); dt.setDate(dt.getDate() - j);
+    var c = (days[dt.getTime()] || {n: 0}).n;
+    hm += '<i' + (j === 0 ? ' class="t"' : '') + ' title="' + fmtDate(dt.getTime()) + ': ' + c + '"' + (c ? ' style="background:rgba(247,169,194,' + (0.3 + 0.7 * c / mx).toFixed(2) + ')"' : '') + '></i>';
+  }
+
+  var B = [
+    ['First load', n >= 1, '1 load'], ['Ten up', n >= 10, '10 loads'], ['Quarter', n >= 25, '25 loads'], ['Half century', n >= 50, '50 loads'], ['Century', n >= 100, '100 loads'],
+    ['Hat trick', busiest.n >= 3, '3 in one day'], ['Streaker', longest >= 3, '3-day streak'], ['Week warrior', longest >= 7, '7-day streak'],
+    ['Perfect ten', hi.rate === 10, 'a 10/10 load'], ['Marathon', lg.dur >= 30, 'a 30+ min load'], ['Night owl', per.Night >= 5, '5 night loads'], ['Early bird', per.Morning >= 5, '5 morning loads']
+  ];
+  var MS = [1, 10, 25, 50, 100, 250], nextM = 0; for (j = 0; j < MS.length; j++) if (MS[j] > n) { nextM = MS[j]; break; }
+  var got = B.filter(function (b) { return b[1]; }).length;
+
+  var hrL = hrs.map(function (_, h) { return h % 6 === 0 ? pad(h) : ''; });
+  var rcL = rc.map(function (_, r) { return String(r + 1); });
+  var out = [];
+  out.push(card(' span2', 'Overview', '<div class="tiles">' + tile(n, 'loads') + tile(fmtDur(tot), 'total time') + tile(avgOf(rsum, n), 'avg rating') + tile(Math.round(rel / n * 100) + '%', 'released') + tile(fmtDur(avgD), 'avg length') + tile(dl.length, 'active days') + tile((n / dl.length).toFixed(1), 'per active day') + '</div>'));
+  out.push(card('', 'Last load', '<div class="bigt" data-since="' + last.t + '" data-ago="1">' + sinceLabel(last.t, true) + '</div>' + kv('Date', fmtDate(last.t)) + kv('Time', ft(last.from) + '–' + ft(last.to)) + kv('Length', fmtDur(last.dur)) + kv('Rating', last.rate + ' / 10') + kv('Released', last.rel ? 'yes' : 'no') + (n > 1 ? kv('Gap before it', fmtGap(prevGap)) : '')));
+  out.push(card(' b', 'Records', kv('Most loads in one day', busiest.n + ' (' + fmtDate(busiest.t) + ')') + kv('Highest rated', hi.rate + ' (' + fmtDate(hi.t) + ')') + kv('Lowest rated', lo.rate + ' (' + fmtDate(lo.t) + ')') + kv('Longest load', fmtDur(lg.dur) + ' (' + fmtDate(lg.t) + ')') + kv('Shortest load', fmtDur(sh.dur) + ' (' + fmtDate(sh.t) + ')') + kv('Best day, avg rating', (bestDay.sum / bestDay.n).toFixed(1) + ' (' + fmtDate(bestDay.t) + ')')));
+  out.push(card(' b', 'Streaks and gaps', kv('Current streak', cur + (cur === 1 ? ' day' : ' days')) + kv('Longest streak', longest + (longest === 1 ? ' day' : ' days')) + kv('Time since last load', '<span data-since="' + last.t + '">' + sinceLabel(last.t, false) + '</span>') + kv('Longest gap', n > 1 ? fmtGap(maxGap) : '–') + kv('Average gap', n > 1 ? fmtGap(avgGap) : '–')));
+  out.push(card('', 'Last 35 days', '<div class="hm">' + hm + '</div><p class="sub">Oldest first. Darker is more loads. The outlined square is today.</p>'));
+  out.push(card('', 'This month', '<div class="bigt">' + thisM + '</div><p class="sub">' + (diff === 0 ? 'Same as last month (' + lastM + ').' : (diff > 0 ? '+' + diff + ' vs' : diff + ' vs') + ' last month (' + lastM + ').') + '</p>'));
+  out.push(card(' span2', 'Time of day', '<div class="chart sm">' + bars(hrs, hrL, function (h, v) { return pad(h) + ':00, ' + v; }) + '</div>' + kv('Title', titles[topP] + ' (' + Math.round(per[topP] / n * 100) + '% of loads start ' + topP.toLowerCase() + ')') + kv('Peak hour', pad(peakH) + ':00') + kv('Pace', pace + ' (avg ' + fmtDur(avgD) + ')')));
+  out.push(card('', 'Weekdays', '<div class="chart">' + bars(wd, ['M', 'T', 'W', 'T', 'F', 'S', 'S'], function (d, v) { return WN[d] + ': ' + v; }) + '</div><p class="sub">Busiest: ' + WN[peakW] + '.</p>'));
+  out.push(card(' b', 'Rating spread', '<div class="chart sm">' + bars(rc, rcL, function (r, v) { return 'Rating ' + (r + 1) + ': ' + v; }) + '</div><p class="sub">Most common rating: ' + modeR + '.</p>'));
+  out.push(card('', 'Sweet spot', '<div class="chart">' + bars(ba, BL, function (b, v) { return BL[b] + ' min: ' + v.toFixed(1) + ' avg, ' + bc[b] + ' loads'; }, 10) + '</div><p class="sub">Best average rating: ' + BL[bestB] + ' min (' + ba[bestB].toFixed(1) + ').</p>'));
+  out.push(card(' b', 'Released or not', '<div class="split"><i style="width:' + (rel / n * 100) + '%;background:#f7a9c2"></i><i style="width:' + (unr / n * 100) + '%;background:#fdf1f4"></i></div>' + kv('Released', rel + ', avg rating ' + avgOf(relR, rel)) + kv('Not released', unr + ', avg rating ' + avgOf(unrR, unr))));
+  /* ---- more stats ---- */
+  var back = function (k) { var d = new Date(today); d.setDate(d.getDate() - k); return d.getTime(); };
+  var cr = function (a, b) { return s.filter(function (x) { return x.t >= a && x.t < b; }).length; };
+  var avgA = function (a) { return a.length ? a.reduce(function (p, q) { return p + q; }, 0) / a.length : 0; };
+  var med = function (a) { var z = a.slice().sort(function (p, q) { return p - q; }), k = z.length; return !k ? 0 : k % 2 ? z[(k - 1) / 2] : (z[k / 2 - 1] + z[k / 2]) / 2; };
+  var MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var wk0 = back((new Date(now).getDay() + 6) % 7), lwk0 = (function () { var d = new Date(wk0); d.setDate(d.getDate() - 7); return d.getTime(); })();
+  var yr0 = new Date(d0.getFullYear(), 0, 1).getTime(), first = s[0], daysSince = Math.round((today - dstart(first.t)) / DAY) + 1;
+  var c7 = cr(back(6), now + 1), c30 = cr(back(29), now + 1), thisW = cr(wk0, now + 1), lastW = cr(lwk0, wk0), thisY = cr(yr0, now + 1);
+  var cToday = (days[today] || {n: 0}).n, cYest = (days[back(1)] || {n: 0}).n, weeks = Math.max(1, daysSince / 7), months = Math.max(1, daysSince / 30.44);
+  var more = [];
+
+  more.push(card('', 'Calendar', kv('Today', cToday) + kv('Yesterday', cYest) + kv('This week', thisW + ' (last week ' + lastW + ')') + kv('Last 7 days', c7) + kv('Last 30 days', c30) + kv('This year', thisY) + kv('Per week', (n / weeks).toFixed(1)) + kv('Per month', (n / months).toFixed(1)) + kv('First load', fmtDate(first.t) + ' ' + new Date(first.t).getFullYear()) + kv('Days since first', daysSince) + kv('Active days', Math.round(dl.length / daysSince * 100) + '%')));
+
+  var topD = dl.slice().sort(function (a, b) { return b.n - a.n || b.t - a.t; }).slice(0, 3);
+  var topR = s.slice().sort(function (a, b) { return b.rate - a.rate || b.t - a.t; }).slice(0, 3);
+  var topL = s.slice().sort(function (a, b) { return b.dur - a.dur || b.t - a.t; }).slice(0, 3);
+  more.push(card(' b', 'Podium', '<div class="sec" style="margin-top:0">Busiest days</div>' + topD.map(function (d, k) { return kv((k + 1) + '. ' + fmtDate(d.t), d.n); }).join('') +
+    '<div class="sec">Highest rated</div>' + topR.map(function (x, k) { return kv((k + 1) + '. ' + fmtDate(x.t), x.rate + ' / 10'); }).join('') +
+    '<div class="sec">Longest</div>' + topL.map(function (x, k) { return kv((k + 1) + '. ' + fmtDate(x.t), fmtDur(x.dur)); }).join('')));
+
+  var mv = [], ml = [], mt = [], mn = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+  for (j = 11; j >= 0; j--) {
+    var m0 = new Date(d0.getFullYear(), d0.getMonth() - j, 1), m1 = new Date(d0.getFullYear(), d0.getMonth() - j + 1, 1);
+    mv.push(cr(m0.getTime(), m1.getTime())); ml.push(mn[m0.getMonth()]); mt.push(m0.toLocaleDateString(undefined, {month: 'short', year: 'numeric'}));
+  }
+  more.push(card(' span2', 'Last 12 months', '<div class="chart sm">' + bars(mv, ml, function (k, v) { return mt[k] + ': ' + v; }) + '</div><p class="sub">Best month in this range: ' + mt[mv.indexOf(Math.max.apply(null, mv))] + ' (' + Math.max.apply(null, mv) + ').</p>'));
+
+  var dv = [], dlb = [], dtt = [];
+  for (j = 13; j >= 0; j--) { var bt = back(j); dv.push((days[bt] || {n: 0}).n); dlb.push('SMTWTFS'.charAt(new Date(bt).getDay())); dtt.push(fmtDate(bt)); }
+  var p7 = cr(back(13), back(6)), dd7 = c7 - p7;
+  more.push(card('', 'Last 14 days', '<div class="chart sm">' + bars(dv, dlb, function (k, v) { return dtt[k] + ': ' + v; }) + '</div><p class="sub">Last 7 days: ' + c7 + ', the 7 before: ' + p7 + (dd7 ? ' (' + (dd7 > 0 ? '+' : '') + dd7 + ')' : ' (same)') + '.</p>'));
+
+  var hz = [], hzMax = 1, hzH = '<div></div>' + ['00', '04', '08', '12', '16', '20'].map(function (h) { return '<div>' + h + '</div>'; }).join('');
+  for (j = 0; j < 7; j++) hz.push([0, 0, 0, 0, 0, 0]);
+  s.forEach(function (x) { var dd = new Date(x.t - x.dur * 60000), a = (dd.getDay() + 6) % 7, b = Math.floor(dd.getHours() / 4); hz[a][b]++; if (hz[a][b] > hzMax) hzMax = hz[a][b]; });
+  hz.forEach(function (row, a) {
+    hzH += '<div>' + 'MTWTFSS'.charAt(a) + '</div>' + row.map(function (v, b) { return '<i title="' + WN[a] + ' ' + pad(b * 4) + ':00 to ' + pad(b * 4 + 3) + ':59: ' + v + '"' + (v ? ' style="background:rgba(247,169,194,' + (0.3 + 0.7 * v / hzMax).toFixed(2) + ')"' : '') + '></i>'; }).join('');
+  });
+  more.push(card(' b', 'Week map', '<div class="hz">' + hzH + '</div><p class="sub">Rows are weekdays, columns are 4-hour blocks by start time. Darker is more.</p>'));
+
+  var isWE = function (x) { var w = new Date(x.t).getDay(); return w === 0 || w === 6; };
+  var wkE = s.filter(isWE), wkD = s.filter(function (x) { return !isWE(x); });
+  var agg = function (a) { return a.length ? a.length + ' · rating ' + avgOf(a.reduce(function (p, x) { return p + x.rate; }, 0), a.length) + ' · ' + fmtDur(avgA(a.map(function (x) { return x.dur; }))) : '–'; };
+  more.push(card('', 'Weekend or weekday', kv('Weekdays', agg(wkD)) + kv('Weekends', agg(wkE)) + kv('Weekend share', Math.round(wkE.length / n * 100) + '%') + '<p class="sub">Count · average rating · average length.</p>'));
+
+  var rts = s.map(function (x) { return x.rate; }), l10 = rts.slice(-10), p10 = rts.slice(-20, -10), tr = p10.length ? avgA(l10) - avgA(p10) : null;
+  more.push(card(' b', 'Rating trend', '<div class="chart sm">' + bars(rts.slice(-20), rts.slice(-20).map(function () { return ''; }), function (k, v) { return 'Rating ' + v; }, 10) + '</div><p class="sub">Your last ' + rts.slice(-20).length + ' ratings, oldest first.</p>' + kv('All time', avgOf(rsum, n)) + kv('Last 10', l10.length ? avgA(l10).toFixed(1) : '–') + kv('The 10 before', p10.length ? avgA(p10).toFixed(1) : '–') + kv('Trend', tr === null ? '–' : Math.abs(tr) < 0.15 ? 'Flat' : (tr > 0 ? 'Up ' : 'Down ') + Math.abs(tr).toFixed(1))));
+
+  var grp = function (keyFn, names) {
+    var g = {}; s.forEach(function (x) { var k = keyFn(x), o = g[k] || (g[k] = {s: 0, c: 0}); o.s += x.rate; o.c++; });
+    var ks = Object.keys(g).filter(function (k) { return g[k].c >= 2; }); if (!ks.length) return {b: '–', w: '–'};
+    ks.sort(function (a, b) { return g[b].s / g[b].c - g[a].s / g[a].c; });
+    var f = function (k) { return names(k) + ' (' + (g[k].s / g[k].c).toFixed(1) + ')'; };
+    return {b: f(ks[0]), w: ks.length > 1 ? f(ks[ks.length - 1]) : '–'};
+  };
+  var gW = grp(function (x) { return (new Date(x.t).getDay() + 6) % 7; }, function (k) { return WN[k]; });
+  var gP = grp(function (x) { var h = new Date(x.t - x.dur * 60000).getHours(); return h >= 5 && h < 12 ? 'Morning' : h >= 12 && h < 17 ? 'Afternoon' : h >= 17 && h < 22 ? 'Evening' : 'Night'; }, String);
+  var gM = grp(function (x) { return new Date(x.t).getMonth(); }, function (k) { return MN[k]; });
+  more.push(card('', 'Best and worst', kv('Best weekday', gW.b) + kv('Weakest weekday', gW.w) + kv('Best time of day', gP.b) + kv('Weakest time of day', gP.w) + kv('Best month', gM.b) + kv('Weakest month', gM.w) + '<p class="sub">Average rating. Groups need 2 or more entries.</p>'));
+
+  var ds = s.map(function (x) { return x.dur; }), dsS = ds.slice().sort(function (p, q) { return p - q; });
+  more.push(card(' b', 'Length', '<div class="chart sm">' + bars(bc, BL, function (k, v) { return BL[k] + ' min: ' + v; }) + '</div>' + kv('Median', fmtDur(med(ds))) + kv('Longest 10% start at', fmtDur(dsS[Math.min(n - 1, Math.floor(0.9 * n))])) + kv('Total hours', (tot / 60).toFixed(1) + ' h') + kv('30 min or more', ds.filter(function (v) { return v >= 30; }).length) + kv('Under 5 min', ds.filter(function (v) { return v < 5; }).length)));
+
+  var gs = gaps.slice(), g1 = gs.filter(function (v) { return v < 3600000; }).length, g24 = gs.filter(function (v) { return v >= DAY; }).length, g7 = gs.filter(function (v) { return v >= 7 * DAY; }).length;
+  var off = 0, offA = 0, offB = 0;
+  for (i = 1; i < dl.length; i++) { var o = Math.round((dl[i].t - dl[i - 1].t) / DAY) - 1; if (o > off) { off = o; offA = dl[i - 1].t; offB = dl[i].t; } }
+  var breakNow = Math.max(0, Math.round((today - dl[dl.length - 1].t) / DAY));
+  var sd = gs.length ? Math.sqrt(gs.reduce(function (a, b) { return a + (b - avgGap) * (b - avgGap); }, 0) / gs.length) : 0, cv = avgGap ? sd / avgGap : 0;
+  more.push(card('', 'Gaps', kv('Median gap', gs.length ? fmtGap(med(gs)) : '–') + kv('Shortest gap', gs.length ? fmtGap(Math.min.apply(null, gs)) : '–') + kv('Under 1 hour', g1) + kv('24 hours or more', g24) + kv('7 days or more', g7) + kv('Longest break', off ? off + (off === 1 ? ' day' : ' days') + ', ' + fmtDate(offA) + ' to ' + fmtDate(offB) : 'none') + kv('Days off right now', breakNow) + kv('Rhythm', gs.length < 4 ? '–' : cv < 0.6 ? 'Clockwork' : cv < 1.2 ? 'Regular' : 'Wild')));
+
+  var mxl = ds.reduce(function (a, b) { return a + b; }, 0) / n, sxy = 0, sxx = 0, syy = 0;
+  s.forEach(function (x) { sxy += (x.dur - mxl) * (x.rate - rsum / n); sxx += (x.dur - mxl) * (x.dur - mxl); syy += (x.rate - rsum / n) * (x.rate - rsum / n); });
+  var rr = n >= 5 && sxx && syy ? sxy / Math.sqrt(sxx * syy) : null;
+  var after = function (min, max) { var a = []; for (i = 1; i < n; i++) { var g = s[i].t - s[i - 1].t; if (g >= min && g < max) a.push(s[i].rate); } return a.length ? avgA(a).toFixed(1) + ' (' + a.length + ')' : '–'; };
+  more.push(card(' b', 'What goes with what', kv('Length and rating', rr === null ? 'needs 5 entries' : (Math.abs(rr) < 0.3 ? 'no clear link' : rr > 0 ? 'longer rates higher' : 'shorter rates higher') + ' (r ' + rr.toFixed(2) + ')') + kv('After under 24h', after(0, DAY)) + kv('After 24h or more', after(DAY, Infinity)) + kv('After 3 days or more', after(3 * DAY, Infinity)) + '<p class="sub">Average rating of the entry that followed the gap, with the count.</p>'));
+
+  var runBest = function (f) { var b = 0, c = 0; s.forEach(function (x) { c = f(x) ? c + 1 : 0; if (c > b) b = c; }); return b; };
+  var startH = function (x) { return new Date(x.t - x.dur * 60000).getHours(); };
+  more.push(card('', 'Odd counts', kv('Rated 10', cnt2(function (x) { return x.rate === 10; })) + kv('Rated 1', cnt2(function (x) { return x.rate === 1; })) + kv('Rated 7', cnt2(function (x) { return x.rate === 7; })) + kv('Crossed midnight', cnt2(function (x) { return dstart(x.t - x.dur * 60000) !== dstart(x.t); })) + kv('Ended 11:11 or 22:22', cnt2(function (x) { return x.to === '11:11' || x.to === '22:22'; })) + kv('Exactly 10 min', cnt2(function (x) { return x.dur === 10; })) + kv('Started 00:00 to 04:59', cnt2(function (x) { return startH(x) < 5; })) + kv('On Friday the 13th', cnt2(function (x) { var d = new Date(x.t); return d.getDate() === 13 && d.getDay() === 5; })) + kv('Most released in a row', runBest(function (x) { return x.rel; })) + kv('Most rated 8+ in a row', runBest(function (x) { return x.rate >= 8; }))));
+  function cnt2(f) { return s.filter(f).length; }
+
+  var tmap = {}; s.forEach(function (x) { (x.tags || []).forEach(function (t) { var o = tmap[t] || (tmap[t] = {c: 0, r: 0, d: 0}); o.c++; o.r += x.rate; o.d += x.dur; }); });
+  var tk = Object.keys(tmap).sort(function (a, b) { return tmap[b].c - tmap[a].c; });
+  if (tk.length) {
+    var tb = tk.filter(function (t) { return tmap[t].c >= 2; }).sort(function (a, b) { return tmap[b].r / tmap[b].c - tmap[a].r / tmap[a].c; })[0];
+    more.push(card(' span2', 'Tags', tk.slice(0, 12).map(function (t) { return kv(esc(t), tmap[t].c + ' · rating ' + avgOf(tmap[t].r, tmap[t].c) + ' · ' + fmtDur(tmap[t].d / tmap[t].c)); }).join('') + kv('Best rated tag', tb ? esc(tb) + ' (' + (tmap[tb].r / tmap[tb].c).toFixed(1) + ')' : '–') + kv('Entries without a tag', s.filter(function (x) { return !(x.tags && x.tags.length); }).length) + '<p class="sub">Count · average rating · average length. Best rated needs 2 or more entries.</p>'));
+  }
+  var ins = [], overall = rsum / n, overD = tot / n;
+  var TPn = function (x) { var h = new Date(x.t - x.dur * 60000).getHours(); return h >= 5 && h < 12 ? 'in the morning' : h >= 12 && h < 17 ? 'in the afternoon' : h >= 17 && h < 22 ? 'in the evening' : 'at night'; };
+  tk.forEach(function (t) {
+    var o = tmap[t]; if (o.c < 3) return;
+    var dr = o.r / o.c - overall, dd = o.d / o.c / overD - 1, te = s.filter(function (x) { return (x.tags || []).indexOf(t) >= 0; });
+    if (Math.abs(dr) >= 0.5) ins.push({w: Math.abs(dr), t: 'Entries tagged ' + esc(t) + ' rate ' + Math.abs(dr).toFixed(1) + (dr > 0 ? ' higher' : ' lower') + ' than your average.'});
+    if (Math.abs(dd) >= 0.3) ins.push({w: Math.abs(dd) * 3, t: esc(t) + ' entries run ' + Math.round(Math.abs(dd) * 100) + '% ' + (dd > 0 ? 'longer' : 'shorter') + ' than usual.'});
+    var pc = {}; te.forEach(function (x) { var q = TPn(x); pc[q] = (pc[q] || 0) + 1; });
+    var pk = Object.keys(pc).sort(function (p1, p2) { return pc[p2] - pc[p1]; })[0];
+    if (pc[pk] / o.c >= 0.6) ins.push({w: 0.4, t: esc(t) + ' mostly happens ' + pk + '.'});
+  });
+  var pm = {}; s.forEach(function (x) { var g = (x.tags || []).slice().sort(); for (var u1 = 0; u1 < g.length; u1++) for (var u2 = u1 + 1; u2 < g.length; u2++) { var kk = g[u1] + '\u0001' + g[u2]; pm[kk] = (pm[kk] || 0) + 1; } });
+  var pb = Object.keys(pm).sort(function (p1, p2) { return pm[p2] - pm[p1]; })[0];
+  if (pb && pm[pb] >= 2) ins.push({w: 0.35, t: 'Most common pair: ' + esc(pb.split('\u0001')[0]) + ' and ' + esc(pb.split('\u0001')[1]) + ' (' + pm[pb] + ' times).'});
+  var untag = s.filter(function (x) { return !(x.tags && x.tags.length); }).length;
+  if (tk.length && untag / n >= 0.5) ins.push({w: 0.2, t: Math.round(untag / n * 100) + '% of your entries have no tag.'});
+  ins.sort(function (p1, p2) { return p2.w - p1.w; });
+  more.push(card(' b', 'Tag insights', ins.length ? ins.slice(0, 5).map(function (q) { return '<p style="margin:8px 0">' + q.t + '</p>'; }).join('') : '<p class="sub" style="margin:0">' + (tk.length ? 'Use the same tag on 3 or more entries and insights show up here.' : 'Add tags in Settings and use them when you log an entry. Insights show up here.') + '</p>'));
+  var span = Math.max(1, Math.min(30, daysSince)), pace = c30 / span, dim = new Date(d0.getFullYear(), d0.getMonth() + 1, 0).getDate(), leftM = dim - d0.getDate(), leftY = Math.round((new Date(d0.getFullYear(), 11, 31).getTime() - today) / DAY);
+  var etaD = nextM && pace > 0 ? Math.ceil((nextM - n) / pace) : 0, etaT = new Date(today); etaT.setDate(etaT.getDate() + etaD);
+  more.push(card(' b', 'Forecast', kv('Pace', pace.toFixed(2) + ' per day') + kv('Next milestone', nextM ? nextM + (etaD ? ', about ' + fmtDate(etaT.getTime()) : '') : '–') + kv('Projected this month', Math.round(thisM + pace * leftM)) + kv('Projected this year', Math.round(thisY + pace * leftY)) + '<p class="sub">Estimates at your last ' + span + '-day pace. They change as you do.</p>'));
+  more.forEach(function (c) { out.push(c); });
+  out.push(card(' span2', 'Badges (' + got + ' of ' + B.length + ')', '<div class="badges">' + B.map(function (b) { return '<div class="bd' + (b[1] ? ' on' : '') + '"><b>' + b[0] + '</b><span>' + b[2] + '</span></div>'; }).join('') + '</div>' + (nextM ? '<p class="sub">Next milestone: ' + nextM + ' loads (' + n + ' so far)</p><div class="bar"><i style="width:' + Math.min(100, n / nextM * 100) + '%"></i></div>' : '<p class="sub">All load milestones reached.</p>')));
+  return out.join('');
+}
+function renderStats() { $('sg').innerHTML = statsHtml(E, true); }
+/* ---------- game: drops, levels, badges, challenges, shop ---------- */
+function saveG() { if (CLOUD) queueProf(); else wr('game', G); }
+function asc(a, b) { return a.t - b.t; }
+function toast(m) { if (!S.pop) return; var t = $('toast'); t.textContent = m; t.hidden = false; clearTimeout(tTimer); tTimer = setTimeout(function () { t.hidden = true; }, 3800); }
+
+function dayStreakMap(arr, fz) {
+  var ds = {}, all = {}; arr.forEach(function (x) { ds[dstart(x.t)] = 1; all[dstart(x.t)] = 1; });
+  if (fz) Object.keys(fz).forEach(function (k) { all[k] = 1; });
+  var ks = Object.keys(all).map(Number).sort(function (a, b) { return a - b; }), m = {}, run = 0;
+  ks.forEach(function (k, i) { var inc = ds[k] ? 1 : 0; run = i && Math.round((k - ks[i - 1]) / 86400000) === 1 ? run + inc : inc; m[k] = run; });
+  return m;
+}
+function boosted(t) { return G.boosts.some(function (b) { return t >= b.from && t < b.to; }); }
+function loadPoints(arr) {
+  var s = arr.slice().sort(asc), sm = dayStreakMap(arr, arr === E ? G.fd : null), cnt = {}, tot = 0;
+  s.forEach(function (x) {
+    var k = dstart(x.t); cnt[k] = (cnt[k] || 0) + 1;
+    if (cnt[k] > 3) return;
+    var p = 10; if (cnt[k] === 1) p += 5 + Math.min(20, 2 * (sm[k] - 1));
+    tot += boosted(x.t) ? p * 2 : p;
+  });
+  return tot;
+}
+var LN = ['Droplet', 'Dribble', 'Drizzle', 'Puddle', 'Splash', 'Stream', 'Creek', 'Pond', 'River', 'Lake', 'Waterfall', 'Ocean', 'Tsunami', 'Cosmic Cream'];
+function lvlOf(xp) { return Math.floor((1 + Math.sqrt(1 + 4 * xp / 25)) / 2); }
+function xpFor(L) { return 25 * L * (L - 1); }
+function lvlName(L) { return LN[Math.min(L, LN.length) - 1]; }
+function locked() { return (G.du || []).reduce(function (a, d) { return a + (d.done || d.pend === 'in' ? 0 : d.k); }, 0); }
+function totals() { var lp = loadPoints(E), xp = lp + G.bonus; return {lp: lp, xp: xp, bal: Math.max(0, xp - G.spent - (G.lost || 0) - locked()), L: lvlOf(xp)}; }
+
+function ctxOf(arr) {
+  var s = arr.slice().sort(asc), n = s.length;
+  var c = {n: n, streak: 0, busy: 0, hi: 0, lo: 11, maxDur: 0, minDur: 1e9, night: 0, morning: 0, afternoon: 0, evening: 0, wk: 0, mon: 0, wd: {}, rs: {}, gap: 0, metro: false, swing: false, ladder: false, tens2: false, pal: false, angel: false, cross: false, witch: false, dawn: false, leap: false, f13: false, ny: false, vday: false, hween: false, lucky7: false, round10: false, bull: false, sum: 0};
+  var dayN = {}, same = 1, up = 1, d7 = {}, fr = {}, tu = {};
+  s.forEach(function (x, k) {
+    var sh = new Date(x.t - x.dur * 60000).getHours(), d = new Date(x.t), dk = dstart(x.t), w = d.getDay(), dg = x.to.replace(':', '');
+    dayN[dk] = (dayN[dk] || 0) + 1;
+    c.sum += x.rate; c.hi = Math.max(c.hi, x.rate); c.lo = Math.min(c.lo, x.rate); c.maxDur = Math.max(c.maxDur, x.dur); c.minDur = Math.min(c.minDur, x.dur);
+    if (sh >= 22 || sh < 5) c.night++; else if (sh < 12) c.morning++; else if (sh < 17) c.afternoon++; else c.evening++;
+    if (sh === 3) c.witch = true; if (sh === 5) c.dawn = true;
+    c.wd[w] = 1; if (w === 0 || w === 6) c.wk++; if (w === 1) c.mon++;
+    c.rs[x.rate] = 1;
+    if (dg.charAt(0) === dg.charAt(3) && dg.charAt(1) === dg.charAt(2)) c.pal = true;
+    if (x.to === '11:11' || x.to === '22:22') c.angel = true;
+    if (x.from > x.to) c.cross = true;
+    if (d.getMonth() === 1 && d.getDate() === 29) c.leap = true;
+    if (w === 5 && d.getDate() === 13) c.f13 = true;
+    if (d.getMonth() === 0 && d.getDate() === 1) c.ny = true;
+    if (d.getMonth() === 1 && d.getDate() === 14) c.vday = true;
+    if (d.getMonth() === 9 && d.getDate() === 31) c.hween = true;
+    if (x.dur === 7 && x.rate === 7) c.lucky7 = true;
+    if (x.dur === 10) c.round10 = true;
+    if (x.rate === 7) { d7[dk] = (d7[dk] || 0) + 1; if (d7[dk] >= 3) c.t7 = true; }
+    (fr[x.from] || (fr[x.from] = {}))[dk] = 1; if (Object.keys(fr[x.from]).length >= 3) c.clock = true;
+    if (sh === 0) c.snack = true;
+    (x.tags || []).forEach(function (t) { tu[t] = 1; });
+    if (x.dur === 10 && x.rate === 10) c.bull = true;
+    if (k) {
+      var p = s[k - 1], g = (x.t - p.t) / 86400000;
+      c.gap = Math.max(c.gap, g);
+      if (x.t - p.t < 1800000) c.b2b = true;
+      if (k >= 9 && x.t - s[k - 9].t <= 7 * 86400000) c.hot = true;
+      same = x.rate === p.rate ? same + 1 : 1; if (same >= 5) c.metro = true;
+      up = x.rate > p.rate ? up + 1 : 1; if (up >= 3) c.ladder = true;
+      if (Math.abs(x.rate - p.rate) >= 7) c.swing = true;
+      if (x.rate === 10 && p.rate === 10) c.tens2 = true;
+    }
+  });
+  Object.keys(dayN).forEach(function (k) { c.busy = Math.max(c.busy, dayN[k]); });
+  var sm = dayStreakMap(arr, arr === E ? G.fd : null); Object.keys(sm).forEach(function (k) { c.streak = Math.max(c.streak, sm[k]); });
+  c.variety = c.night > 0 && c.morning > 0 && c.afternoon > 0 && c.evening > 0;
+  c.wdAll = Object.keys(c.wd).length === 7; c.spec = Object.keys(c.rs).length === 10; c.avg = n ? c.sum / n : 0;
+  c.fr = F.length; c.named = !!P.name; c.owned = Object.keys(G.owned).length; c.spent = G.spent;
+  c.chc = Object.keys(G.claimed).filter(function (k) { return k.indexOf('c:') === 0; }).length;
+  c.L = lvlOf(loadPoints(arr) + G.bonus);
+  var gs = G.st || {}; c.fu = gs.fu || 0; c.dw = gs.dw || 0; c.pr = gs.pr || 0; c.wr = gs.wr || 0; c.tg = (S.tags || []).length; c.tgu = Object.keys(tu).length;
+  return c;
+}
+function rarOf(r) { return r <= 20 ? 'Common' : r <= 45 ? 'Uncommon' : r <= 75 ? 'Rare' : r <= 120 ? 'Epic' : 'Legendary'; }
+var RC = {Common: 'c', Uncommon: 'u', Rare: 'r', Epic: 'e', Legendary: 'l'};
+var BADGES = [
+  ['m1', 'First Drop', 'Log your first load', 10, function (c) { return c.n >= 1; }],
+  ['m10', 'Puddle', '10 loads', 25, function (c) { return c.n >= 10; }],
+  ['m25', 'Pond', '25 loads', 50, function (c) { return c.n >= 25; }],
+  ['m50', 'Lake', '50 loads', 100, function (c) { return c.n >= 50; }],
+  ['m100', 'Ocean', '100 loads', 200, function (c) { return c.n >= 100; }],
+  ['m250', 'Tsunami', '250 loads', 500, function (c) { return c.n >= 250; }],
+  ['s2', 'Two-Day Drip', '2-day streak', 15, function (c) { return c.streak >= 2; }],
+  ['s3', 'Slow Drip', '3-day streak', 25, function (c) { return c.streak >= 3; }],
+  ['s7', 'Steady Stream', '7-day streak', 75, function (c) { return c.streak >= 7; }],
+  ['s14', 'Fortnight Flow', '14-day streak', 150, function (c) { return c.streak >= 14; }],
+  ['s30', 'Moon Cycle', '30-day streak', 400, function (c) { return c.streak >= 30; }],
+  ['d3', 'Hat Trick', '3 loads in one day', 20, function (c) { return c.busy >= 3; }],
+  ['d4', 'Fab Four', '4 loads in one day', 40, function (c) { return c.busy >= 4; }],
+  ['d5', 'High Five', '5 loads in one day', 80, function (c) { return c.busy >= 5; }],
+  ['t1', 'Night Owl', '5 loads starting 22:00 to 04:59', 30, function (c) { return c.night >= 5; }],
+  ['t2', 'Early Bird', '5 loads starting 05:00 to 11:59', 30, function (c) { return c.morning >= 5; }],
+  ['t3', 'Lunch Break', '5 loads starting 12:00 to 16:59', 30, function (c) { return c.afternoon >= 5; }],
+  ['t4', 'Golden Hour', '5 loads starting 17:00 to 21:59', 30, function (c) { return c.evening >= 5; }],
+  ['t5', 'Full Cycle', 'Loads in all four parts of the day', 60, function (c) { return c.variety; }],
+  ['t6', 'Sunrise', 'A load starting 05:00 to 05:59', 40, function (c) { return c.dawn; }],
+  ['t7', 'Date Line', 'A load that crosses midnight', 40, function (c) { return c.cross; }],
+  ['t8', 'Witching Hour', 'A load starting 03:00 to 03:59', 40, function (c) { return c.witch; }, 1],
+  ['t9', 'Make a Wish', 'A load ending at 11:11 or 22:22', 50, function (c) { return c.angel; }, 1],
+  ['t10', 'Mirror Time', 'A load ending on a palindrome time, like 12:21', 50, function (c) { return c.pal; }, 1],
+  ['l1', 'Flash', 'A load of 2 min or less', 15, function (c) { return c.minDur <= 2; }],
+  ['l2', 'Slow Burn', 'A load of 30+ min', 30, function (c) { return c.maxDur >= 30; }],
+  ['l3', 'Marathon', 'A load of 60+ min', 60, function (c) { return c.maxDur >= 60; }],
+  ['l4', 'Ultra', 'A load of 120+ min', 120, function (c) { return c.maxDur >= 120; }],
+  ['l5', 'Round Number', 'A load of exactly 10 min', 20, function (c) { return c.round10; }],
+  ['r1', 'Perfect Ten', 'Rate a load 10', 25, function (c) { return c.hi === 10; }],
+  ['r2', 'Tough Crowd', 'Rate a load 1', 15, function (c) { return c.lo === 1; }],
+  ['r3', 'Metronome', '5 loads in a row with the same rating', 40, function (c) { return c.metro; }],
+  ['r4', 'Rollercoaster', 'Two loads in a row rated 7 or more apart', 40, function (c) { return c.swing; }],
+  ['r5', 'Staircase', 'Three loads in a row, each rated higher', 40, function (c) { return c.ladder; }],
+  ['r6', 'Double Ten', 'Two 10s in a row', 60, function (c) { return c.tens2; }],
+  ['r7', 'Connoisseur', 'Average rating 8+ over 10+ loads', 80, function (c) { return c.n >= 10 && c.avg >= 8; }],
+  ['r8', 'Full Spectrum', 'Use every rating from 1 to 10', 100, function (c) { return c.spec; }],
+  ['r9', 'Lucky Sevens', 'A 7 min load rated 7', 40, function (c) { return c.lucky7; }, 1],
+  ['r10', 'Bullseye', 'A 10 min load rated 10', 60, function (c) { return c.bull; }, 1],
+  ['c1', 'Weekend Warrior', '10 loads on weekends', 40, function (c) { return c.wk >= 10; }],
+  ['c2', 'Monday Mood', 'A load on a Monday', 10, function (c) { return c.mon >= 1; }],
+  ['c3', 'Seven Days', 'Loads on all 7 weekdays', 50, function (c) { return c.wdAll; }],
+  ['c4', 'Comeback Kid', 'Return after a break of 7+ days', 50, function (c) { return c.gap >= 7; }],
+  ['c5', 'New Year', 'A load on January 1', 50, function (c) { return c.ny; }, 1],
+  ['c6', 'Leap Day', 'A load on February 29', 100, function (c) { return c.leap; }, 1],
+  ['c7', 'Friday the 13th', 'A load on Friday the 13th', 60, function (c) { return c.f13; }, 1],
+  ['c8', 'Heartbeat', 'A load on February 14', 40, function (c) { return c.vday; }, 1],
+  ['c9', 'Spooky', 'A load on October 31', 40, function (c) { return c.hween; }, 1],
+  ['f0', 'Name Tag', 'Claim a username', 10, function (c) { return c.named; }],
+  ['f1', 'Social Butterfly', 'Add a friend', 20, function (c) { return c.fr >= 1; }],
+  ['f3', 'Squad', '3 friends', 40, function (c) { return c.fr >= 3; }],
+  ['f5', 'Popular', '5 friends', 80, function (c) { return c.fr >= 5; }],
+  ['g1', 'First Purchase', 'Buy something in the shop', 20, function (c) { return c.owned >= 1 || c.spent > 0; }],
+  ['g3', 'Collector', 'Own 5 shop items', 60, function (c) { return c.owned >= 5; }],
+  ['g4', 'Big Spender', 'Spend 500 drops', 100, function (c) { return c.spent >= 500; }],
+  ['g5', 'Level 5', 'Reach level 5', 50, function (c) { return c.L >= 5; }],
+  ['g10', 'Level 10', 'Reach level 10', 200, function (c) { return c.L >= 10; }],
+  ['g11', 'Challenger', 'Claim 10 challenges', 60, function (c) { return c.chc >= 10; }],
+  ['z1', 'Ice Cold', 'Use a streak freeze', 30, function (c) { return c.fu >= 1; }],
+  ['z2', 'Duelist', 'Win a duel', 40, function (c) { return c.dw >= 1; }],
+  ['z3', 'Gladiator', 'Win 5 duels', 100, function (c) { return c.dw >= 5; }],
+  ['z4', 'Climber', 'Get promoted in a league', 60, function (c) { return c.pr >= 1; }],
+  ['z5', 'Storyteller', 'Open your year in numbers', 20, function (c) { return c.wr >= 1; }],
+  ['z6', 'Label Maker', 'Create 5 tags', 25, function (c) { return c.tg >= 5; }],
+  ['z7', 'Archivist', 'Use 10 different tags on entries', 60, function (c) { return c.tgu >= 10; }],
+  ['x1', 'Triple Seven', 'Three entries in one day, all rated 7', 70, function (c) { return c.t7; }, 1],
+  ['x2', 'Clockwork', 'Start at the same minute on 3 different days', 50, function (c) { return c.clock; }, 1],
+  ['x3', 'Back to Back', 'Two entries less than 30 min apart', 30, function (c) { return c.b2b; }, 1],
+  ['x4', 'Hot Week', '10 entries within 7 days', 90, function (c) { return c.hot; }, 1],
+  ['x5', 'Midnight Snack', 'Start between 00:00 and 00:59', 40, function (c) { return c.snack; }, 1],
+  ['x6', 'Comeback Legend', 'Return after a break of 30+ days', 120, function (c) { return c.gap >= 30; }, 1]
+].map(function (b) { return {id: b[0], n: b[1], d: b[2], r: b[3], f: b[4], s: !!b[5], rar: rarOf(b[3])}; });
+var BMAP = {}; BADGES.forEach(function (b) { BMAP[b.id] = b; });
+function earnedSet() { var c = ctxOf(E), o = {}; BADGES.forEach(function (b) { if (b.f(c)) o[b.id] = 1; }); return o; }
+
+function sh(x) { return new Date(x.t - x.dur * 60000).getHours(); }
+function per(x) { var h = sh(x); return h >= 22 || h < 5 ? 'n' : h < 12 ? 'm' : h < 17 ? 'a' : 'e'; }
+function cnt(a, f) { return a.filter(f).length; }
+var CH = {
+  d: [
+    {id: 'd1', n: 'Log a load', g: 1, r: 15, p: function (a) { return a.length; }},
+    {id: 'd2', n: 'Log 2 loads', g: 2, r: 25, p: function (a) { return a.length; }},
+    {id: 'd3', n: 'A load of 10+ min', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.dur >= 10; }); }},
+    {id: 'd4', n: 'A load rated 8 or higher', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate >= 8; }); }},
+    {id: 'd5', n: 'A load that starts before 12:00', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return sh(x) < 12; }); }},
+    {id: 'd6', n: 'A load that starts after 21:00', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return sh(x) >= 21; }); }},
+    {id: 'd7', n: 'A released load', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
+    {id: 'd8', n: 'A load rated exactly 7', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate === 7; }); }},
+    {id: 'd9', n: 'A quick one: 5 min or less', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.dur <= 5; }); }},
+    {id: 'd10', n: 'A load of 20+ min', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return x.dur >= 20; }); }},
+    {id: 'd11', n: 'Log 3 loads', g: 3, r: 40, p: function (a) { return a.length; }},
+    {id: 'd12', n: 'Two loads rated 6 or higher', g: 2, r: 35, p: function (a) { return cnt(a, function (x) { return x.rate >= 6; }); }},
+    {id: 'd13', n: 'A load that starts 12:00 to 16:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 12 && h < 17; }); }},
+    {id: 'd14', n: 'A load rated 9 or 10', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return x.rate >= 9; }); }}
+  ],
+  w: [
+    {id: 'w1', n: 'Log 5 loads', g: 5, r: 60, p: function (a) { return a.length; }},
+    {id: 'w2', n: 'Log on 3 different days', g: 3, r: 60, p: function (a) { var d = {}; a.forEach(function (x) { d[dstart(x.t)] = 1; }); return Object.keys(d).length; }},
+    {id: 'w3', n: '60 minutes in total', g: 60, r: 60, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }},
+    {id: 'w4', n: 'Average rating 7+ across 3 loads', g: 1, r: 70, p: function (a) { return a.length >= 3 && a.reduce(function (s, x) { return s + x.rate; }, 0) / a.length >= 7 ? 1 : 0; }},
+    {id: 'w5', n: 'A load on Saturday or Sunday', g: 1, r: 50, p: function (a) { return cnt(a, function (x) { var w = new Date(x.t).getDay(); return w === 0 || w === 6; }); }},
+    {id: 'w6', n: 'Loads in 3 parts of the day', g: 3, r: 80, p: function (a) { var d = {}; a.forEach(function (x) { d[per(x)] = 1; }); return Object.keys(d).length; }},
+    {id: 'w7', n: 'Take a break: 24h+ between two loads', g: 1, r: 70, p: function (a) { for (var i = 1; i < a.length; i++) if (a[i].t - a[i - 1].t >= 86400000) return 1; return 0; }},
+    {id: 'w8', n: 'A 3-day streak', g: 3, r: 100, p: function (a) { var m = dayStreakMap(a), b = 0; Object.keys(m).forEach(function (k) { b = Math.max(b, m[k]); }); return b; }}
+  ]
+};
+function winOf(sc) {
+  var d = new Date(); d.setHours(0, 0, 0, 0);
+  if (sc === 'w') d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  var a = d.getTime(), e = new Date(a); e.setDate(e.getDate() + (sc === 'w' ? 7 : 1));
+  return {a: a, b: e.getTime()};
+}
+function pickCh(sc, w) {
+  var pool = CH[sc].slice(), r = rng((w.a / 60000) | 0), out = [];
+  while (out.length < 3 && pool.length) out.push(pool.splice(Math.floor(r() * pool.length), 1)[0]);
+  return out;
+}
+var CHD = {}; CH.d.forEach(function (c) { CHD[c.id] = c; });
+function dayOffers(w) {
+  var pool = CH.d.slice(), r = rng(((w.a / 60000) | 0) + 7), out = [];
+  while (out.length < 4 && pool.length) out.push(pool.splice(Math.floor(r() * pool.length), 1)[0]);
+  return out;
+}
+function dayPick() { var w = winOf('d'); return G.pick && G.pick.a === w.a && CHD[G.pick.id] ? G.pick : null; }
+var selPick = '';
+function chData() {
+  var out = [];
+  ['d', 'w'].forEach(function (sc) {
+    var w = winOf(sc), ents = E.filter(function (x) { return x.t >= w.a && x.t < w.b; }).sort(asc);
+    (sc === 'd' ? (dayPick() ? [CHD[dayPick().id]] : []) : pickCh(sc, w)).forEach(function (ch) {
+      var p = Math.min(ch.g, Math.floor(ch.p(ents))), key = 'c:' + sc + ':' + w.a + ':' + ch.id;
+      out.push({sc: sc, ch: ch, w: w, p: p, key: key, done: p >= ch.g, claimed: !!G.claimed[key]});
+    });
+  });
+  return out;
+}
+function claimables() {
+  var es = earnedSet(), out = [];
+  BADGES.forEach(function (b) { if (es[b.id] && !G.claimed['b:' + b.id]) out.push({key: 'b:' + b.id, r: b.r}); });
+  chData().forEach(function (x) { if (x.done && !x.claimed) out.push({key: x.key, r: x.ch.r}); });
+  if (G.lg && G.lg.prize && G.lg.prize.r > 0 && !G.claimed[G.lg.prize.key]) out.push({key: G.lg.prize.key, r: G.lg.prize.r});
+  return out;
+}
+function claim(key) {
+  var list = key === 'all' ? claimables() : claimables().filter(function (x) { return x.key === key; }), tot = 0;
+  list.forEach(function (x) { G.claimed[x.key] = 1; G.bonus += x.r; tot += x.r; });
+  if (!tot) return;
+  var L0 = lvlOf(totals().xp - tot); saveG(); render();
+  var L1 = totals().L; toast('+' + tot + ' drops claimed' + (L1 > L0 ? ' · Level ' + L1 + ': ' + lvlName(L1) : ''));
+}
+
+var SHOP = [
+  {id: 'strawberry', kind: 'theme', name: 'Strawberry', cost: 0, bg: '#fbd3e1', edge: '#f0cdd9', bar: '#f7d3de', ink: '#3b2a33'},
+  {id: 'th_vanilla', kind: 'theme', name: 'Vanilla', cost: 120, bg: '#fff1cf', edge: '#f1dfb0', bar: '#f7e3b0', ink: '#3b2f22'},
+  {id: 'th_mint', kind: 'theme', name: 'Mint Shake', cost: 120, bg: '#d3f2e3', edge: '#bfe3d0', bar: '#bfe8d3', ink: '#223b30'},
+  {id: 'th_sky', kind: 'theme', name: 'Blue Raspberry', cost: 150, bg: '#d6e6fb', edge: '#c3d7f2', bar: '#c3d7f2', ink: '#22304a'},
+  {id: 'th_peach', kind: 'theme', name: 'Peach Fizz', cost: 150, bg: '#ffdcc8', edge: '#f5c9b1', bar: '#f9cdb5', ink: '#4a2f22'},
+  {id: 'th_night', kind: 'theme', name: 'Midnight Plum', cost: 300, lvl: 4, bg: '#2b1d25', edge: '#e8c8d3', bar: '#f3c3d2', ink: '#fde8ee'},
+  {id: 'default', kind: 'splash', name: 'Classic', cost: 0, plus: '#cf4a78', rim: '#f0cdd9'},
+  {id: 'sp_cherry', kind: 'splash', name: 'Cherry', cost: 100, plus: '#d6264f', rim: '#f4a4b6'},
+  {id: 'sp_mint', kind: 'splash', name: 'Mint', cost: 100, plus: '#1f9e6e', rim: '#a8e0c8'},
+  {id: 'sp_ocean', kind: 'splash', name: 'Ocean', cost: 100, plus: '#2a74c9', rim: '#a9ccf2'},
+  {id: 'sp_gold', kind: 'splash', name: 'Gold', cost: 250, lvl: 3, plus: '#a8780a', rim: '#f1d37a'},
+  {id: 'sp_lico', kind: 'splash', name: 'Licorice', cost: 250, lvl: 3, plus: '#2b2b2b', rim: '#9a9a9a'},
+  {id: 't_none', kind: 'title', name: 'No title', cost: 0},
+  {id: 't_cream', kind: 'title', name: 'Cream of the Crop', cost: 80},
+  {id: 't_sage', kind: 'title', name: 'Soft Serve Sage', cost: 80},
+  {id: 't_scholar', kind: 'title', name: 'Sundae Scholar', cost: 150},
+  {id: 't_royal', kind: 'title', name: 'Drizzle Royalty', cost: 150},
+  {id: 't_legend', kind: 'title', name: 'Legend of the Drip', cost: 400, lvl: 8},
+  {id: 'none', kind: 'fx', name: 'No effect', cost: 0},
+  {id: 'fx_sprinkles', kind: 'fx', name: 'Sprinkles', cost: 200},
+  {id: 'fx_bubbles', kind: 'fx', name: 'Bubble Pop', cost: 200},
+  {id: 'fx_stars', kind: 'fx', name: 'Star Splash', cost: 300, lvl: 5},
+  {id: 'bo_2x', kind: 'use', name: 'Double Drops, 24h', cost: 120, desc: 'Loads logged in the next 24 hours earn double.'},
+  {id: 'fz', kind: 'use', name: 'Streak freeze', cost: 90, desc: 'Covers one missed day so your streak survives. Hold up to 3.'},
+  {id: 'cap', kind: 'use', name: 'Mystery Capsule', cost: 60, desc: 'Random prize: drops back, or a cosmetic you do not own yet.'}
+];
+var SMAP = {}; SHOP.forEach(function (i) { SMAP[i.id] = i; });
+function applyEq() {
+  var r = document.documentElement.style, th = SMAP[G.eq.theme] || SMAP.strawberry, sp = SMAP[G.eq.splash] || SMAP['default'];
+  r.setProperty('--bg', th.bg); r.setProperty('--edge', th.edge); r.setProperty('--bar', th.bar); r.setProperty('--bgink', th.ink);
+  r.setProperty('--plus', sp.plus); r.setProperty('--rim', sp.rim);
+  var t = SMAP[G.eq.title]; $('hTitle').textContent = t && t.cost ? t.name : '';
+}
+function burst(kind) {
+  if (!kind || kind === 'none' || !document.createElement) return;
+  var b = $('add').getBoundingClientRect(), cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+  var cols = kind === 'fx_sprinkles' ? ['#ff6fa5', '#ffd23f', '#5ad1c4', '#7aa7ff', '#ffffff'] : kind === 'fx_stars' ? ['#ffd23f', '#fff4a8'] : ['#ffffff', '#f7a9c2'];
+  var cls = kind === 'fx_bubbles' ? 'bub' : kind === 'fx_stars' ? 'str' : 'spr';
+  for (var i = 0; i < 22; i++) {
+    var d = document.createElement('i'), a = Math.random() * 6.283, dist = 60 + Math.random() * 120;
+    d.className = 'pf ' + cls;
+    d.style.cssText = 'left:' + cx + 'px;top:' + cy + 'px;background:' + cols[i % cols.length] + ';--dx:' + Math.round(Math.cos(a) * dist) + 'px;--dy:' + Math.round(Math.sin(a) * dist - 40) + 'px;--r:' + Math.round(Math.random() * 360) + 'deg';
+    document.body.appendChild(d);
+    (function (el) { setTimeout(function () { el.remove(); }, 1000); })(d);
+  }
+}
+function buy(id) {
+  var it = SMAP[id], T = totals(); if (!it || !it.cost || T.bal < it.cost) return;
+  if (it.kind !== 'use' && (G.owned[id] || (it.lvl && T.L < it.lvl))) return;
+  if (id === 'fz' && (G.fz || 0) >= 3) return;
+  G.spent += it.cost;
+  if (id === 'fz') { G.fz = (G.fz || 0) + 1; toast('Streak freeze added (' + G.fz + ' of 3)'); }
+  else if (id === 'bo_2x') {
+    var now = Date.now(), from = G.boosts.reduce(function (m, b) { return Math.max(m, b.to); }, now);
+    G.boosts.push({from: from, to: from + 86400000}); toast('Double drops are on for 24 hours');
+  } else if (id === 'cap') {
+    var r = Math.random(), gain = 0, free = SHOP.filter(function (x) { return x.kind !== 'use' && x.cost && x.cost <= 250 && !x.lvl && !G.owned[x.id]; });
+    if (r < 0.5) gain = 15 + Math.floor(Math.random() * 31);
+    else if (r < 0.8) gain = 55 + Math.floor(Math.random() * 31);
+    else if (r < 0.93 || !free.length) gain = 100 + Math.floor(Math.random() * 81);
+    if (gain) { G.bonus += gain; toast('Capsule: +' + gain + ' drops'); }
+    else { var pz = free[Math.floor(Math.random() * free.length)]; G.owned[pz.id] = 1; toast('Capsule: you got ' + pz.name + '!'); }
+  } else { G.owned[id] = 1; G.eq[it.kind] = id; toast('Bought ' + it.name); }
+  saveG(); render();
+}
+function equip(id) {
+  var it = SMAP[id]; if (!it || (it.cost && !G.owned[id])) return;
+  G.eq[it.kind] = id; saveG(); render();
+}
+function itemHtml(it, T) {
+  var owned = !it.cost || G.owned[it.id], on = G.eq[it.kind] === it.id, btn;
+  if (it.id === 'fz' && (G.fz || 0) >= 3) btn = '<button type="button" disabled>Full (3)</button>';
+  else if (it.kind === 'use') btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' drops</button>';
+  else if (on) btn = '<button type="button" disabled>Equipped</button>';
+  else if (owned) btn = '<button type="button" class="go" data-eq="' + it.id + '">Equip</button>';
+  else if (it.lvl && T.L < it.lvl) btn = '<button type="button" disabled>Level ' + it.lvl + '</button>';
+  else btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' drops</button>';
+  var pv = it.kind === 'theme' ? '<i class="sw" style="background:' + it.bg + '"></i>' : it.kind === 'splash' ? '<i class="sw" style="background:' + it.plus + '"></i>' : '';
+  return '<div class="it"><b>' + it.name + '</b>' + pv + (it.desc ? '<span>' + it.desc + '</span>' : '') + btn + '</div>';
+}
+function chList(data, sc, title, reset) {
+  var rows = data.filter(function (x) { return x.sc === sc; }).map(function (x) {
+    var act = x.claimed ? '<span class="empty">claimed</span>' : x.done ? '<button type="button" class="go x" data-claim="' + x.key + '">Claim +' + x.ch.r + '</button>' : '<span class="empty">+' + x.ch.r + '</span>';
+    return '<div class="ch"><div class="top"><b>' + x.ch.n + '</b>' + act + '</div><div class="bar"><i style="width:' + Math.round(x.p / x.ch.g * 100) + '%"></i></div><span class="sub">' + x.p + ' / ' + x.ch.g + '</span></div>';
+  }).join('');
+  return card(sc === 'd' ? '' : ' b', title, '<p class="sub" style="margin:-4px 0 6px">Resets in ' + reset + '</p>' + rows);
+}
+function renderRewards() {
+  var T = totals(), now = Date.now(), cur = xpFor(T.L), nxt = xpFor(T.L + 1), es = earnedSet(), cl = claimables(), data = chData();
+  var t = SMAP[G.eq.title], ttl = t && t.cost ? t.name : '', bo = G.boosts.filter(function (b) { return now >= b.from && now < b.to; })[0];
+  var top = '<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div style="font-size:18px">Level ' + T.L + '</div><div class="bigt">' + lvlName(T.L) + '</div>' + (ttl ? '<p class="sub">' + ttl + '</p>' : '') + '</div><div style="text-align:right"><div style="font-size:18px">Drops</div><div class="bigt">' + T.bal + '</div></div></div>' +
+    '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '. XP is every drop you have earned, spent or not.</p>' +
+    '<p class="sub">Each load earns 10 drops (first 3 a day). The first load of a day adds 5, plus 2 per streak day up to 20.</p>' +
+    (bo ? '<p class="sub"><b>Double drops active</b>, ends in ' + fmtGap(bo.to - now) + '.</p>' : '') +
+    (cl.length ? '<div class="row" style="max-width:300px"><button type="button" class="go" data-claim="all">Claim all (+' + cl.reduce(function (s, x) { return s + x.r; }, 0) + ')</button></div>' : '');
+  var out = [card(' span2', 'Your level', top), card(dayPick() ? ' locked' : ' shine', dayPick() ? "Today's challenge" : "Choose today's challenge", dailyHtml()), chList(data, 'w', 'Weekly challenges', fmtGap(winOf('w').b - now))];
+  var got = BADGES.filter(function (b) { return es[b.id]; }).length;
+  out.push(card(' span2', 'Badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
+    var on = es[b.id], c = G.claimed['b:' + b.id];
+    var nm = on || !b.s ? b.n : '???', ds = on || !b.s ? b.d : 'Secret badge. Keep exploring.';
+    return '<div class="bd' + (on ? ' on' : '') + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
+  }).join('') + '</div>'));
+  var heads = {theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
+  ['theme', 'splash', 'title', 'fx', 'use'].forEach(function (k) {
+    shop += '<div class="sec">' + heads[k] + '</div><div class="shop">' + SHOP.filter(function (i) { return i.kind === k; }).map(function (i) { return itemHtml(i, T); }).join('') + '</div>';
+  });
+  out.push(card(' span2 b', 'Shop', '<p class="sub" style="margin:-4px 0 0">You have ' + T.bal + ' drops.</p>' + shop));
+  $('rw').innerHTML = out.join('');
+}
+$('rw').addEventListener('click', function (e) {
+  if (dailyClick(e)) return;
+  var t = e.target.closest ? e.target.closest('button') : null; if (!t) return;
+  var k;
+  if ((k = t.getAttribute('data-claim'))) claim(k);
+  else if ((k = t.getAttribute('data-buy'))) buy(k);
+  else if ((k = t.getAttribute('data-eq'))) equip(k);
+});
+
+function dailyHtml() {
+  var w = winOf('d'), pk = dayPick(), left = fmtGap(w.b - Date.now());
+  if (!pk) {
+    var offers = dayOffers(w);
+    if (!offers.some(function (c) { return c.id === selPick; })) selPick = '';
+    return '<span class="pill">Pick one</span><p class="sub" style="margin:0">It is locked in for the day, so choose carefully.</p><div class="opts">' + offers.map(function (c) {
+      return '<button type="button" data-pick="' + c.id + '" aria-pressed="' + (c.id === selPick) + '"><b>' + c.n + '</b><span>+' + c.r + '</span></button>';
+    }).join('') + '</div><button type="button" class="go lock" data-lock="1"' + (selPick ? '' : ' disabled') + '>' + (selPick ? 'Lock it in' : 'Pick one above') + '</button><p class="sub">New choices in ' + left + '.</p>';
+  }
+  var x = chData().filter(function (q) { return q.sc === 'd'; })[0];
+  if (!x) return '';
+  var act = x.claimed ? '<span class="empty">done</span>' : x.done ? '<button type="button" class="go x" data-claim="' + x.key + '">+' + x.ch.r + '</button>' : '<span class="empty">' + x.p + '/' + x.ch.g + '</span>';
+  return '<div class="ch"><div class="top"><b>' + x.ch.n + '</b>' + act + '</div><div class="bar"><i style="width:' + Math.round(x.p / x.ch.g * 100) + '%"></i></div></div><p class="sub">Locked in. New choices in ' + left + '.</p>';
+}
+function freezeOk() {
+  if (!E.length || !(G.fz > 0)) return 0;
+  var t = dstart(Date.now()), y = new Date(t); y.setDate(y.getDate() - 1); var yk = y.getTime(); y.setDate(y.getDate() - 1); var bk = y.getTime();
+  var has = function (k) { return E.some(function (x) { return dstart(x.t) === k; }) || (G.fd && G.fd[k]); };
+  return !has(yk) && has(bk) ? yk : 0;
+}
+function renderStreak() {
+  var st = curStreak(E), n = G.fz || 0, ok = freezeOk(), h = '';
+  if (st > 0 || n > 0 || ok) h = '<div class="kv"><span>Streak</span><b>' + st + (st === 1 ? ' day' : ' days') + '</b></div><div class="kv"><span>Streak freezes</span><b>' + n + ' of 3</b></div>';
+  if (ok) h += '<div class="row" style="margin-top:10px"><button type="button" class="go" id="fzUse">Use a freeze on yesterday</button></div><p class="sub">Yesterday had no entry. A freeze keeps your streak alive.</p>';
+  $('hStreak').innerHTML = h;
+}
+$('hStreak').addEventListener('click', function (e) {
+  if (e.target.id !== 'fzUse') return;
+  var k = freezeOk(); if (!k) return;
+  G.fd = Object.assign({}, G.fd); G.fd[k] = 1; G.fz--; G.st = Object.assign({}, G.st, {fu: ((G.st || {}).fu || 0) + 1}); saveG(); render(); toast('Streak freeze used');
+});
+function renderHomeCh() {
+  var pk = dayPick(), c = $('dchCard');
+  $('dch').innerHTML = dailyHtml();
+  c.classList.toggle('shine', !pk); c.classList.toggle('locked', !!pk);
+  c.querySelector('h2').textContent = pk ? "Today's challenge" : "Choose today's challenge";
+}
+function pickDaily(k) {
+  if (dayPick() || !CHD[k]) return;
+  if (k === selPick) return;
+  selPick = k; render();
+}
+function lockDaily() {
+  if (dayPick() || !selPick || !CHD[selPick]) return;
+  G.pick = {a: winOf('d').a, id: selPick}; selPick = ''; saveG(); render(); toast('Challenge locked in');
+}
+function dailyClick(e) {
+  var t = e.target.closest ? e.target.closest('button') : null; if (!t) return false;
+  var k;
+  if ((k = t.getAttribute('data-pick'))) { pickDaily(k); return true; }
+  if (t.getAttribute('data-lock')) { lockDaily(); return true; }
+  return false;
+}
+$('dch').addEventListener('click', function (e) {
+  if (dailyClick(e)) return;
+  var t = e.target.closest ? e.target.closest('button') : null, k = t && t.getAttribute('data-claim');
+  if (k) claim(k);
+});
+$('histMore').addEventListener('click', function () { histAll = !histAll; render(); });
+function segSet(id, on) { Array.prototype.forEach.call($(id).children, function (b) { b.setAttribute('aria-pressed', (b.getAttribute('data-v') === '1') === on ? 'true' : 'false'); }); }
+function renderSettings() {
+  $('sName').textContent = P.name ? '@' + P.name : '–';
+  $('sMail').textContent = CLOUD ? (CUSER ? CUSER.email : '–') : (uid && ACC[uid] ? ACC[uid].email : '–');
+  renderWord(); renderTagList(); segSet('visSeg', P.pub); segSet('dRel', S.dRel); segSet('fmtSeg', S.h24 !== false);
+  if (document.activeElement !== $('bio')) $('bio').value = P.bio || '';
+  $('dRate').value = S.dRate; $('dRateV').textContent = S.dRate; $('dLen').value = S.dLen; $('dLenV').textContent = S.dLen + ' min';
+  [['tFx', S.fx], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
+}
+
+/* Wording setting: swaps the word "load/loads" in all visible text, so the source strings stay unchanged. */
+var WORDS = {load: ['load', 'loads'], sperm: ['sperm', 'sperm'], semen: ['semen', 'semen'], seed: ['seed', 'seeds'], milk: ['milk', 'milk']};
+var NM = new WeakMap(), AM = new WeakMap(), swapped = false, obs = null, raf = 0;
+function wordClean(v) { return String(v || '').replace(/[^\p{L} \-]/gu, '').replace(/\s+/g, ' ').slice(0, 20); }
+function termNow() {
+  var w = (S && S.w) || {k: 'load'};
+  if (w.k === 'custom') { var a = wordClean(w.s).trim(); if (a) return [a, wordClean(w.p).trim() || a]; }
+  return WORDS[w.k] || WORDS.load;
+}
+function caseLike(m, w) {
+  if (m.length > 1 && m === m.toUpperCase()) return w.toUpperCase();
+  return m.charAt(0) === m.charAt(0).toUpperCase() ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+}
+function sub(str) {
+  var t = termNow();
+  if (t[0] === 'load' && t[1] === 'loads') return str;
+  return str.replace(/\b(a|an)(\s+)load\b/gi, function (m, a, sp, off, whole) {
+    var w = caseLike('load', t[0]), art = /^[aeiou]/i.test(w) ? 'an' : 'a';
+    return caseLike(a, art) + sp + caseLike(whole.substr(off + m.length - 4, 4), t[0]);
+  }).replace(/\bloads?\b/gi, function (m) { return caseLike(m, m.toLowerCase() === 'loads' ? t[1] : t[0]); });
+}
+function swapNode(n) {
+  var rec = NM.get(n), cur = n.data, orig = rec && rec.r === cur ? rec.o : cur, out = sub(orig);
+  if (out !== cur) n.data = out;
+  if (out !== orig) NM.set(n, {o: orig, r: out}); else NM.delete(n);
+}
+function swapAttr(el, a) {
+  var m = AM.get(el) || {}, rec = m[a], cur = el.getAttribute(a), orig = rec && rec.r === cur ? rec.o : cur, out = sub(orig);
+  if (out !== cur) el.setAttribute(a, out);
+  if (out !== orig) { m[a] = {o: orig, r: out}; AM.set(el, m); } else if (m[a]) delete m[a];
+}
+function swapAll() {
+  raf = 0;
+  var def = termNow()[0] === 'load' && termNow()[1] === 'loads';
+  if (def && !swapped) return;
+  if (obs) obs.disconnect();
+  var tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), n, list = [];
+  while ((n = tw.nextNode())) {
+    var p = n.parentNode;
+    if (!p || /^(SCRIPT|STYLE|TEXTAREA|NOSCRIPT)$/.test(p.nodeName) || (p.closest && p.closest('[data-nosub]'))) continue;
+    list.push(n);
+  }
+  list.forEach(swapNode);
+  Array.prototype.forEach.call(document.querySelectorAll('[aria-label],[title],[placeholder]'), function (el) {
+    if (el.closest('[data-nosub]')) return;
+    ['aria-label', 'title', 'placeholder'].forEach(function (a) { if (el.hasAttribute(a)) swapAttr(el, a); });
+  });
+  swapped = !def;
+  startObs();
+}
+function startObs() { if (obs) obs.observe(document.body, {childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['aria-label', 'title', 'placeholder']}); }
+function queueSwap() { if (!raf) raf = requestAnimationFrame(swapAll); }
+if (window.MutationObserver) { obs = new MutationObserver(queueSwap); startObs(); }
+function renderWord() {
+  var w = S.w || {k: 'load'}, t = termNow();
+  var sel = $('wSel');
+  if (!sel.options.length) {
+    Object.keys(WORDS).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = WORDS[k][0].charAt(0).toUpperCase() + WORDS[k][0].slice(1); sel.appendChild(o); });
+    var oc = document.createElement('option'); oc.value = 'custom'; oc.textContent = 'Your own word'; sel.appendChild(oc);
+  }
+  sel.value = WORDS[w.k] || w.k === 'custom' ? w.k : 'load';
+  $('wCustom').hidden = w.k !== 'custom';
+  if (document.activeElement !== $('wS')) $('wS').value = w.s || '';
+  if (document.activeElement !== $('wP')) $('wP').value = w.p || '';
+  $('wEx').textContent = '1 ' + t[0] + ', 5 ' + t[1];
+  var dflt = t[0] === 'load' && t[1] === 'loads', lb = dflt ? 'Released' : 'Any ' + t[0] + '?';
+  $('relLab').textContent = lb; $('dRelLab').textContent = lb;
+  queueSwap();
+}
+$('wSel').addEventListener('change', function () {
+  S.w = Object.assign({k: 'load', s: '', p: ''}, S.w, {k: $('wSel').value}); saveS(); render(); renderSettings();
+});
+['wS', 'wP'].forEach(function (id) {
+  $(id).addEventListener('input', function () {
+    var v = wordClean($(id).value); if ($(id).value !== v) $(id).value = v;
+    S.w = Object.assign({k: 'custom', s: '', p: ''}, S.w); S.w[id === 'wS' ? 's' : 'p'] = v; saveS(); renderWord();
+  });
+});
+function renderTagList() {
+  $('tagList').innerHTML = (S.tags || []).map(function (t, i) { return '<button type="button" data-d="' + i + '" aria-label="Remove tag ' + esc(t) + '">' + esc(t) + ' ×</button>'; }).join('');
+}
+$('tagForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var t = $('tagIn').value.replace(/\s+/g, ' ').trim().slice(0, 24), cur = S.tags || [];
+  if (!t) return;
+  if (cur.some(function (x) { return x.toLowerCase() === t.toLowerCase(); })) { $('tagMsg').textContent = 'You already have this tag.'; return; }
+  if (cur.length >= 200) { $('tagMsg').textContent = 'Limit reached (200 tags).'; return; }
+  S.tags = cur.concat([t]); saveS(); $('tagIn').value = ''; $('tagMsg').textContent = 'Added.'; renderTagList(); renderTagBox();
+});
+$('tagList').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+  var i = +b.getAttribute('data-d'), cur = (S.tags || []).slice(); if (!(i >= 0 && i < cur.length)) return;
+  cur.splice(i, 1); S.tags = cur; saveS(); $('tagMsg').textContent = ''; renderTagList(); renderTagBox();
+});
+
+/* ---------- Leagues ---------- */
+var TIERS = ['Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond'];
+function ord(n) { var v = n % 100, sfx = ['th', 'st', 'nd', 'rd']; return n + (sfx[(v - 20) % 10] || sfx[v] || sfx[0]); }
+function wscore(arr, a, b) { var cnt = {}, tot = 0; arr.forEach(function (x) { if (x.t < a || x.t >= b) return; var k = dstart(x.t); cnt[k] = (cnt[k] || 0) + 1; if (cnt[k] <= 3) tot += 10; }); return tot; }
+function leagueRows(a, b) {
+  var rows = [{name: P.name, me: true, score: wscore(E, a, b)}];
+  F.forEach(function (f) { var u = api.find(f); if (u && !u.priv) rows.push({name: f, me: false, score: wscore(u.entries, a, b)}); });
+  rows.sort(function (x, y) { return y.score - x.score || (x.name < y.name ? -1 : 1); });
+  return rows;
+}
+function leagueSettle() {
+  if (!uid || !P.name || (CLOUD && !SOCIAL_OK)) return;
+  var w = winOf('w');
+  if (!G.lg) { G.lg = {tier: 0, week: w.a, last: null, prize: null}; saveG(); return; }
+  if (G.lg.week >= w.a) return;
+  var pa = G.lg.week, pb = new Date(pa); pb.setDate(pb.getDate() + 7);
+  var rows = leagueRows(pa, pb.getTime()), n = rows.length, rank = 0, i; for (i = 0; i < n; i++) if (rows[i].me) rank = i + 1;
+  var t0 = G.lg.tier, nt = t0;
+  if (n >= 3 && rows[rank - 1].score > 0) {
+    var prize = Math.round(([60, 40, 25][rank - 1] || 10) * (1 + 0.25 * t0));
+    if (rank <= Math.ceil(n / 3) && nt < 4) nt++; else if (rank > n - Math.floor(n / 3) && nt > 0) nt--;
+    if (nt > t0) G.st = Object.assign({}, G.st, {pr: ((G.st || {}).pr || 0) + 1});
+    G.lg = {tier: nt, week: w.a, last: {week: pa, rank: rank, of: n, prize: prize, from: t0, to: nt}, prize: {key: 'l:' + pa, r: prize}};
+  } else G.lg = {tier: t0, week: w.a, last: n >= 3 ? {week: pa, rank: rank, of: n, prize: 0, from: t0, to: t0, idle: true} : null, prize: null};
+  saveG();
+}
+function renderLeague() {
+  var el = $('lgCard'); if (!el || !G.lg) return;
+  var w = winOf('w'), rows = leagueRows(w.a, w.b), n = rows.length, tier = G.lg.tier, h = '<h2>Weekly league</h2>';
+  h += '<div class="kv"><span>League</span><b>' + TIERS[tier] + '</b></div><div class="kv"><span>Ends in</span><b>' + fmtGap(w.b - Date.now()) + '</b></div>';
+  if (n < 3) h += '<p class="sub">Add 2 or more friends with public stats to start your league. Right now: ' + (n - 1) + '.</p>';
+  else {
+    var show = rows.slice(0, 8), mi = rows.map(function (r) { return r.me; }).indexOf(true);
+    if (mi >= 8) show.push(rows[mi]);
+    h += '<ul style="margin-top:8px">' + show.map(function (r) { var rk = rows.indexOf(r) + 1; return '<li' + (r.me ? ' class="lgme"' : '') + '><span>' + rk + '. @' + esc(r.name) + '</span><b>' + r.score + '</b></li>'; }).join('') + '</ul>';
+    h += '<p class="sub">Score: 10 per entry, 3 a day count. At week end the top third moves up, the bottom third moves down.</p>';
+  }
+  var L = G.lg.last;
+  if (L) {
+    h += '<div class="sec">Last week</div><p style="margin:0">' + (L.idle ? 'No entries, no result.' : ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : ', stayed in ' + TIERS[L.to]) + (L.prize ? ', +' + L.prize + ' drops' : '')) + '</p>';
+    if (G.lg.prize && G.lg.prize.r > 0 && !G.claimed[G.lg.prize.key]) h += '<div class="row" style="max-width:260px"><button type="button" class="go" data-claim="' + G.lg.prize.key + '">Claim +' + G.lg.prize.r + '</button></div>';
+  }
+  el.innerHTML = h;
+}
+$('lgCard').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('button') : null, k = b && b.getAttribute('data-claim'); if (k) claim(k); });
+
+/* ---------- Duels ---------- */
+var DS = {
+  n: ['Most entries', function (a) { return a.length; }],
+  m: ['Most total minutes', function (a) { return a.reduce(function (t, x) { return t + x.dur; }, 0); }],
+  a: ['Highest average rating', function (a) { return a.length >= 3 ? a.reduce(function (t, x) { return t + x.rate; }, 0) / a.length : 0; }],
+  d: ['Most active days', function (a) { var d = {}; a.forEach(function (x) { d[dstart(x.t)] = 1; }); return Object.keys(d).length; }]
+};
+function dval(k, arr, a, b) { return DS[k][1](arr.filter(function (x) { return x.t >= a && x.t < b; })); }
+function dfmt(k, v) { return k === 'a' ? v.toFixed(1) : k === 'm' ? fmtDur(v) : String(v); }
+function duelSettle() {
+  if (CLOUD && !SOCIAL_OK) return;
+  var now = Date.now(), msg = '';
+  (G.du || []).forEach(function (d) {
+    if (d.done || d.pend || d.b > now) return;
+    var u = api.find(d.f), avail = !!(u && !u.priv), mine = dval(d.st, E, d.a, d.b), th = avail ? dval(d.st, u.entries, d.a, d.b) : 0;
+    d.done = true; d.my = mine; d.th = th; d.res = CLOUD && !avail ? 'd' : mine > th ? 'w' : mine < th ? 'l' : 'd';
+    msg = d.res === 'w' ? 'You won the duel against @' + d.f + (d.k ? ' (+' + d.k + ' drops)' : '') : d.res === 'l' ? 'You lost the duel against @' + d.f + (d.k ? ' (-' + d.k + ' drops)' : '') : 'The duel against @' + d.f + ' ended in a draw';
+    if (d.res === 'w') { G.bonus += d.k; G.st = Object.assign({}, G.st, {dw: ((G.st || {}).dw || 0) + 1}); } else if (d.res === 'l') G.lost = (G.lost || 0) + d.k;
+    if (CLOUD) { G.dset = Object.assign({}, G.dset); G.dset[d.cid] = {f: d.f, st: d.st, k: d.k, my: mine, th: th, res: d.res}; }
+  });
+  if (msg) { saveG(); toast(msg); }
+}
+function renderDuels() {
+  var sel = $('duF'), pubF = F.filter(function (f) { var u = api.find(f); return u && !u.priv; }), key = pubF.join(',');
+  if (sel.getAttribute('data-k') !== key) { var cur = sel.value; sel.innerHTML = pubF.length ? pubF.map(function (f) { return '<option value="' + esc(f) + '">@' + esc(f) + '</option>'; }).join('') : '<option value="">No friends with public stats</option>'; sel.setAttribute('data-k', key); if (pubF.indexOf(cur) >= 0) sel.value = cur; }
+  var bal = totals().bal; Array.prototype.forEach.call($('duK').options, function (o) { o.disabled = +o.value > bal; });
+  if (+$('duK').value > bal) $('duK').value = '0';
+  var du = G.du || [], act = du.filter(function (d) { return !d.done; }), now = Date.now();
+  $('duList').innerHTML = act.length ? act.map(function (d) {
+    var who = '@' + esc(d.f), stake = d.k ? d.k + ' drops' : 'no stake';
+    if (d.pend === 'out') return '<div class="ch"><div class="top"><b>You vs ' + who + '</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days. Waiting for them to accept.</p><div class="row" style="margin-top:8px"><button type="button" class="x" data-dc="' + d.cid + '">Cancel</button></div></div>';
+    if (d.pend === 'in') return '<div class="ch"><div class="top"><b>' + who + ' challenges you</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days.</p><div class="row" style="margin-top:8px"><button type="button" class="go x" data-da="' + d.cid + '">Accept</button><button type="button" class="x" data-dd="' + d.cid + '">Decline</button></div></div>';
+    var u = api.find(d.f), me = dval(d.st, E, d.a, d.b), th = u && !u.priv ? dval(d.st, u.entries, d.a, d.b) : 0;
+    return '<div class="ch"><div class="top"><b>You vs ' + who + '</b><span class="empty">' + stake + '</span></div><div class="kv"><span>' + DS[d.st][0] + '</span><b>' + dfmt(d.st, me) + ' to ' + dfmt(d.st, th) + '</b></div><p class="sub" style="margin:0">Ends in ' + fmtGap(d.b - now) + '.</p></div>';
+  }).join('') : '<p class="sub" style="margin:0">No active duels.</p>';
+  var hist = du.filter(function (d) { return d.done; }).slice(-5).reverse();
+  $('duHist').innerHTML = hist.length ? '<div class="sec">Finished</div>' + hist.map(function (d) { return kv((d.res === 'w' ? 'Won' : d.res === 'l' ? 'Lost' : 'Draw') + ' vs @' + esc(d.f), dfmt(d.st, d.my) + ' to ' + dfmt(d.st, d.th)); }).join('') : '';
+}
+$('duList').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('button') : null; if (!b || !CLOUD) return;
+  var da = b.getAttribute('data-da'), dd = b.getAttribute('data-dd'), dc = b.getAttribute('data-dc'), done = function () { return refreshSocial().then(render); };
+  if (da) {
+    var d = (G.du || []).filter(function (x) { return String(x.cid) === da; })[0];
+    if (d && d.k > totals().bal) { $('duMsg').textContent = 'Not enough drops for this stake.'; return; }
+    sb.rpc('respond_duel', {duel_id: +da, accept: true}).then(done);
+  } else if (dd) sb.rpc('respond_duel', {duel_id: +dd, accept: false}).then(done);
+  else if (dc) sb.rpc('cancel_duel', {duel_id: +dc}).then(done);
+});
+$('duGo').addEventListener('click', function () {
+  var f = $('duF').value, st = $('duS').value, days = +$('duD').value, k = +$('duK').value, m = $('duMsg'), du = G.du || [];
+  if (!f) { m.textContent = 'Pick a friend with public stats first.'; return; }
+  if (du.filter(function (d) { return !d.done; }).length >= 3) { m.textContent = 'You can run 3 duels at a time.'; return; }
+  if (du.some(function (d) { return !d.done && d.f === f; })) { m.textContent = 'You already have a duel with @' + f + '.'; return; }
+  if (k > totals().bal) { m.textContent = 'Not enough drops for this stake.'; return; }
+  if (CLOUD) {
+    sb.rpc('create_duel', {opp_name: f, p_stat: st, p_days: days, p_stake: k}).then(function (r) {
+      var t = {ok: 'Challenge sent. They need to accept.', not_friend: 'You are not friends with @' + f + '.', not_public: 'Both of you need "My friends" stats (Settings, Privacy).', exists: 'You already have a duel with @' + f + '.', limit: 'You can run 3 duels at a time.', auth: 'Log in again.'};
+      m.textContent = r.error ? 'Something went wrong. Try again.' : (t[r.data] || 'Done.');
+      return refreshSocial().then(render);
+    });
+    return;
+  }
+  var now = Date.now(); G.du = du.concat([{id: now, f: f, st: st, a: now, b: now + days * 86400000, k: k, done: false}]);
+  saveG(); m.textContent = 'Duel started.'; render();
+});
+
+/* ---------- Year in numbers ---------- */
+var BGS = ['linear-gradient(160deg,#fff,#fbc2d6)', 'linear-gradient(160deg,#fff4dc,#ffd0b0)', 'linear-gradient(160deg,#eafaf1,#bfe8d3)', 'linear-gradient(160deg,#eef5ff,#c3d7f2)', 'linear-gradient(160deg,#fff7d6,#f1d37a)', 'linear-gradient(160deg,#ffe0e8,#f48fb1)'];
+var wrYear = 0, wrI = 0, wrS = [], wrTx = 0;
+function wrapSlides(yr) {
+  var a = yr ? new Date(yr, 0, 1).getTime() : 0, b = yr ? new Date(yr + 1, 0, 1).getTime() : 9e15;
+  var s = E.filter(function (x) { return x.t >= a && x.t < b; }).sort(asc), n = s.length, lab = yr ? String(yr) : 'All time', q = 0, i;
+  var out = [{bg: BGS[0], k: 'Your year', big: lab, c: 'in numbers.', chips: true}];
+  var bg = function () { return BGS[(++q) % BGS.length]; };
+  if (!n) { out.push({bg: bg(), k: 'Nothing here yet', big: '0', c: 'Log an entry and come back.'}); return out; }
+  var tot = 0, rsum = 0, rc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], per = {Morning: 0, Afternoon: 0, Evening: 0, Night: 0}, hrs = [], wd = [0, 0, 0, 0, 0, 0, 0], mo = {}, dm = {}, tg = {};
+  for (i = 0; i < 24; i++) hrs.push(0);
+  s.forEach(function (x) {
+    tot += x.dur; rsum += x.rate; rc[x.rate - 1]++;
+    var h = new Date(x.t - x.dur * 60000).getHours(); hrs[h]++;
+    per[h >= 5 && h < 12 ? 'Morning' : h >= 12 && h < 17 ? 'Afternoon' : h >= 17 && h < 22 ? 'Evening' : 'Night']++;
+    wd[(new Date(x.t).getDay() + 6) % 7]++;
+    var d = new Date(x.t), mk = d.getFullYear() * 100 + d.getMonth(); mo[mk] = (mo[mk] || 0) + 1;
+    var dk = dstart(x.t); dm[dk] = (dm[dk] || 0) + 1;
+    (x.tags || []).forEach(function (t) { tg[t] = (tg[t] || 0) + 1; });
+  });
+  var WN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var titles = {Morning: 'Early bird', Afternoon: 'Afternoon regular', Evening: 'Evening regular', Night: 'Night owl'}, ph = {Morning: 'in the morning', Afternoon: 'in the afternoon', Evening: 'in the evening', Night: 'at night'};
+  var topP = Object.keys(per).reduce(function (x, y) { return per[y] > per[x] ? y : x; }), peakH = hrs.indexOf(Math.max.apply(null, hrs));
+  var days = Object.keys(dm).map(Number), busy = days.reduce(function (x, y) { return dm[y] > dm[x] || (dm[y] === dm[x] && y > x) ? y : x; });
+  var mk = Object.keys(mo).reduce(function (x, y) { return mo[y] > mo[x] ? y : x; }), pw = wd.indexOf(Math.max.apply(null, wd));
+  var sm = dayStreakMap(s, G.fd), longest = 1; Object.keys(sm).forEach(function (k) { if (sm[k] > longest) longest = sm[k]; });
+  var avg = (rsum / n).toFixed(1), modeR = rc.indexOf(Math.max.apply(null, rc)) + 1, T = totals(), got = BADGES.filter(function (x) { return earnedSet()[x.id]; }).length;
+  out.push({bg: bg(), k: 'You logged', big: n, c: (n === 1 ? 'entry' : 'entries') + ' on ' + days.length + (days.length === 1 ? ' different day.' : ' different days.')});
+  out.push({bg: bg(), k: 'Time spent', big: fmtDur(tot), c: 'in total, ' + fmtDur(tot / n) + ' per entry on average.'});
+  out.push({bg: bg(), k: 'Average rating', big: avg, c: 'Most common rating: ' + modeR + '. Tens given: ' + rc[9] + '.'});
+  out.push({bg: bg(), k: 'Your style', big: titles[topP], c: Math.round(per[topP] / n * 100) + '% of your entries start ' + ph[topP] + '. Peak hour: ' + pad(peakH) + ':00.'});
+  out.push({bg: bg(), k: 'Busiest weekday', big: WN[pw], c: wd[pw] + ' entries landed on a ' + WN[pw] + '.'});
+  out.push({bg: bg(), k: 'Best month', big: MN[mk % 100], c: mo[mk] + ' entries. Busiest single day: ' + fmtDate(busy) + ' with ' + dm[busy] + '.'});
+  out.push({bg: bg(), k: 'Longest streak', big: longest + (longest === 1 ? ' day' : ' days'), c: 'in a row' + (G.fd && Object.keys(G.fd).length ? ', freezes included.' : '.')});
+  var tk = Object.keys(tg).sort(function (x, y) { return tg[y] - tg[x]; });
+  if (tk.length) out.push({bg: bg(), k: 'Top tag', big: esc(tk[0]), c: 'used ' + tg[tk[0]] + ' times' + (tk.length > 1 ? '. Next: ' + tk.slice(1, 3).map(function (t) { return esc(t) + ' (' + tg[t] + ')'; }).join(', ') + '.' : '.')});
+  out.push({bg: bg(), k: 'Right now', big: 'Level ' + T.L, c: lvlName(T.L) + ', ' + T.bal + ' drops, ' + got + ' of ' + BADGES.length + ' badges.'});
+  var lines = [['Entries', n], ['Active days', days.length], ['Total time', fmtDur(tot)], ['Average rating', avg], ['Longest streak', longest + ' d'], ['Style', titles[topP]], ['Busiest weekday', WN[pw]], ['Best month', MN[mk % 100]]];
+  if (tk.length) lines.push(['Top tag', tk[0]]);
+  out.push({bg: bg(), k: 'Summary', big: lab, c: '', list: lines});
+  return out;
+}
+function drawWrap() {
+  var sl = wrS[wrI], h = '';
+  $('wr').style.background = sl.bg;
+  $('wrDots').innerHTML = wrS.map(function (_, k) { return '<i' + (k <= wrI ? ' class="on"' : '') + '></i>'; }).join('');
+  h += '<p class="wk">' + sl.k + '</p><div class="wb">' + sl.big + '</div>' + (sl.c ? '<p class="wc">' + sl.c + '</p>' : '');
+  if (sl.chips) {
+    var ys = {}; E.forEach(function (x) { ys[new Date(x.t).getFullYear()] = 1; });
+    h += '<div class="chips" style="justify-content:center">' + Object.keys(ys).sort().reverse().map(function (y) { return '<button type="button" data-y="' + y + '" aria-pressed="' + (+y === wrYear) + '">' + y + '</button>'; }).join('') + '<button type="button" data-y="0" aria-pressed="' + (wrYear === 0) + '">All time</button></div>';
+  }
+  if (sl.list) h += '<div class="wsum">' + sl.list.map(function (r) { return kv(r[0], esc(r[1])); }).join('') + '</div><div class="row" style="justify-content:center"><button type="button" id="wrCopy" style="flex:none">Copy summary</button></div>';
+  $('wrBody').innerHTML = h;
+  $('wrPrev').disabled = wrI === 0; $('wrNext').disabled = wrI === wrS.length - 1;
+}
+function openWrap() {
+  var y = new Date().getFullYear();
+  wrYear = E.some(function (x) { return new Date(x.t).getFullYear() === y; }) ? y : 0;
+  wrS = wrapSlides(wrYear); wrI = 0; drawWrap(); $('wr').hidden = false; document.body.style.overflow = 'hidden';
+  if (!((G.st || {}).wr)) { G.st = Object.assign({}, G.st, {wr: 1}); saveG(); render(); }
+}
+function closeWrap() { $('wr').hidden = true; lock(); }
+document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('.wrOpen')) openWrap(); });
+$('wrX').addEventListener('click', closeWrap);
+$('wrNext').addEventListener('click', function () { if (wrI < wrS.length - 1) { wrI++; drawWrap(); } });
+$('wrPrev').addEventListener('click', function () { if (wrI > 0) { wrI--; drawWrap(); } });
+$('wrBody').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+  if (b.getAttribute('data-y') !== null) { wrYear = +b.getAttribute('data-y'); wrS = wrapSlides(wrYear); drawWrap(); return; }
+  if (b.id === 'wrCopy') {
+    var sl = wrS[wrS.length - 1], txt = 'Creamer, ' + sl.big + '\n' + sl.list.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n');
+    try { navigator.clipboard.writeText(txt).then(function () { toast('Summary copied'); }, function () { toast('Copy is blocked in this browser'); }); } catch (x) { toast('Copy is blocked in this browser'); }
+  }
+});
+$('wr').addEventListener('touchstart', function (e) { wrTx = e.touches[0].clientX; }, {passive: true});
+$('wr').addEventListener('touchend', function (e) { var dx = e.changedTouches[0].clientX - wrTx; if (Math.abs(dx) < 60) return; if (dx < 0) $('wrNext').click(); else $('wrPrev').click(); }, {passive: true});
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('wr').hidden) closeWrap(); });
+function segClick(id, fn) {
+  $(id).addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null, v = b && b.getAttribute('data-v');
+    if (v !== null && v !== undefined) fn(v === '1');
+  });
+}
+function twoStep(id, idle, ask, fn) {
+  var b = $(id), on = 0, t;
+  b.addEventListener('click', function () {
+    if (!on) { on = 1; b.textContent = ask; t = setTimeout(function () { on = 0; b.textContent = idle; }, 4000); return; }
+    clearTimeout(t); on = 0; b.textContent = idle; fn();
+  });
+}
+function wipeUser(id) { try { var pre = ukey('', id); Object.keys(localStorage).forEach(function (k) { if (k.indexOf(pre) === 0) localStorage.removeItem(k); }); } catch (e) {} }
+segClick('visSeg', function (on) { P.pub = on; saveP(); renderSettings(); renderProfile(); });
+segClick('dRel', function (on) { S.dRel = on; saveS(); renderSettings(); });
+segClick('fmtSeg', function (on) { S.h24 = on; saveS(); render(); });
+$('dRate').addEventListener('input', function () { S.dRate = +$('dRate').value; $('dRateV').textContent = S.dRate; saveS(); });
+$('dLen').addEventListener('input', function () { S.dLen = +$('dLen').value; $('dLenV').textContent = S.dLen + ' min'; saveS(); });
+$('tFx').addEventListener('click', function () { S.fx = !S.fx; saveS(); renderSettings(); });
+$('tPop').addEventListener('click', function () { S.pop = !S.pop; saveS(); renderSettings(); });
+$('tFind').addEventListener('click', function () { P.discover = P.discover === false; saveP(); renderSettings(); });
+$('bio').addEventListener('input', function () { P.bio = $('bio').value.slice(0, 80); saveP(); renderProfile(); });
+$('nn').addEventListener('input', function () { var n = clean($('nn').value); $('nn').value = n; if (CLOUD) { liveName(n, 'nMsg', 'nGo'); return; } var r = checkName(n); $('nMsg').textContent = r.msg; $('nGo').disabled = !r.ok; });
+$('nameForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (CLOUD) {
+    var cn = clean($('nn').value); if (cn.length < 3) return;
+    sb.rpc('change_username', {new_name: cn}).then(function (r) {
+      var m = {ok: '', same: 'This is your current username.', taken: '@' + cn + ' is taken.', auth: 'Log in again.'};
+      if (r.error || r.data !== 'ok') { $('nMsg').textContent = r.error ? 'Something went wrong. Try again.' : (m[r.data] || 'Could not change the username.'); return; }
+      P.name = cn; $('nn').value = ''; $('nMsg').textContent = ''; $('nGo').disabled = true; render(); toast('Username changed to @' + cn);
+    });
+    return;
+  }
+  var n = clean($('nn').value), r = checkName(n);
+  if (!r.ok) { $('nMsg').textContent = r.msg; return; }
+  var old = P.name; ACC[uid].username = n; saveAcc(); P.name = n; saveP();
+  Object.keys(ACC).forEach(function (k) {
+    var f = rd('friends', [], k), i = f.indexOf(old);
+    if (i >= 0) { f[i] = n; try { localStorage.setItem(ukey('friends', k), JSON.stringify(f)); } catch (x) {} }
+  });
+  $('nn').value = ''; $('nMsg').textContent = ''; $('nGo').disabled = true; render(); toast('Username changed to @' + n);
+});
+$('pwForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var cur = $('pCur').value, nw = $('pNew').value, m = $('pMsg'), a = CLOUD ? null : ACC[uid];
+  if (nw.length < 8) { m.textContent = 'New password needs at least 8 characters.'; return; }
+  if (CLOUD) {
+    sb.auth.signInWithPassword({email: CUSER.email, password: cur}).then(function (r) {
+      if (r.error) { m.textContent = 'Current password is wrong.'; return; }
+      return sb.auth.updateUser({password: nw}).then(function (u) { if (u.error) { m.textContent = cloudErr(u.error); return; } $('pCur').value = ''; $('pNew').value = ''; m.textContent = 'Password changed.'; });
+    });
+    return;
+  }
+  hashPw(a.salt, cur).then(function (hx) {
+    if (hx !== a.hash) { m.textContent = 'Current password is wrong.'; return; }
+    var salt = rnd();
+    return hashPw(salt, nw).then(function (h2) { a.salt = salt; a.hash = h2; saveAcc(); $('pCur').value = ''; $('pNew').value = ''; m.textContent = 'Password changed.'; });
+  });
+});
+$('dCopy').addEventListener('click', function () {
+  var txt = JSON.stringify({loads: E, profile: P, friends: F, game: G, settings: S}), m = $('dMsg');
+  try { navigator.clipboard.writeText(txt).then(function () { m.textContent = 'Copied to clipboard.'; }, function () { m.textContent = "Couldn't copy here."; }); } catch (e) { m.textContent = "Couldn't copy here."; }
+});
+twoStep('dReset', 'Erase my data', 'Tap again to erase loads and rewards', function () {
+  if (CLOUD) { cloudErase(); return; }
+  var id = uid; wipeUser(id); loadUser(id); toast('Data erased');
+});
+twoStep('dDelete', 'Delete account', 'Tap again to delete for good', function () {
+  if (CLOUD) { cloudDelete(); return; }
+  var id = uid; wipeUser(id); delete ACC[id]; saveAcc(); logout();
+});
+$('dLogout').addEventListener('click', logout);
+
+function curStreak(arr) {
+  var m = dayStreakMap(arr, arr === E ? G.fd : null), ks = Object.keys(m).map(Number).sort(function (a, b) { return a - b; });
+  if (!ks.length) return 0;
+  var last = ks[ks.length - 1];
+  return Math.round((dstart(Date.now()) - last) / 86400000) <= 1 ? m[last] : 0;
+}
+function renderProfile() {
+  if (!uid || (!CLOUD && !ACC[uid])) return;
+  var T = totals(), c = ctxOf(E), es = earnedSet(), sp = SMAP[G.eq.splash] || SMAP['default'], t = SMAP[G.eq.title], ttl = t && t.cost ? t.name : '';
+  var got = BADGES.filter(function (b) { return es[b.id]; }), top = got.slice().sort(function (a, b) { return b.r - a.r; }).slice(0, 8);
+  var joined = new Date(CLOUD ? CUSER.created_at : ACC[uid].created).toLocaleDateString(undefined, {month: 'long', year: 'numeric'});
+  var head = '<div style="display:flex;gap:16px;align-items:center"><div class="av" style="background:' + sp.plus + '">' + esc(P.name.charAt(0).toUpperCase()) + '</div><div style="min-width:0"><div class="bigt" style="font-size:30px;overflow-wrap:anywhere">@' + P.name + '</div>' + (ttl ? '<p class="sub" style="margin:2px 0 0">' + ttl + '</p>' : '') + '<p class="sub" style="margin:2px 0 0">Joined ' + joined + ' · ' + (P.pub ? 'public' : 'private') + '</p></div></div>' +
+    (P.bio ? '<p style="margin:14px 0 0">' + esc(P.bio) + '</p>' : '<p class="sub">No bio yet. Add one in Settings.</p>') + '<div class="row" style="max-width:260px"><button type="button" id="pfSet">Settings</button></div>';
+  var nxt = xpFor(T.L + 1), cur = xpFor(T.L);
+  $('pf').innerHTML = card(' span2', 'Profile', head) +
+    card(' b', 'Level ' + T.L + ': ' + lvlName(T.L), '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + T.bal + ' drops, ' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '.</p>') +
+    card('', 'Numbers', '<div class="tiles">' + tile(E.length, 'loads') + tile(curStreak(E), 'day streak') + tile(c.streak, 'best streak') + tile(avgOf(c.sum, c.n), 'avg rating') + tile(got.length + '/' + BADGES.length, 'badges') + tile(F.length, 'friends') + '</div>') +
+    card(' span2 b', 'Top badges', top.length ? '<div class="badges">' + top.map(function (b) { return '<div class="bd on"><b>' + b.n + '</b><span>' + b.d + '</span></div>'; }).join('') + '</div>' : '<p class="empty">No badges yet.</p>');
+}
+$('pf').addEventListener('click', function (e) { if (e.target.id === 'pfSet') tab('settings'); });
+function renderEntries() {
+  var used = {}; E.forEach(function (x) { (x.tags || []).forEach(function (t) { used[t] = (used[t] || 0) + 1; }); });
+  var names = Object.keys(used).sort(function (a, b) { return used[b] - used[a]; });
+  if (entFilter && !used[entFilter]) entFilter = '';
+  $('enTags').innerHTML = names.length ? '<button type="button" data-f="" aria-pressed="' + (entFilter === '') + '">All</button>' + names.map(function (t, i) { return '<button type="button" data-f="' + i + '" aria-pressed="' + (entFilter === t) + '">' + esc(t) + ' ' + used[t] + '</button>'; }).join('') : '';
+  var rows = E.filter(function (x) { return !entFilter || (x.tags || []).indexOf(entFilter) >= 0; }).sort(function (a, b) { return entSort === 'old' ? a.t - b.t : b.t - a.t; });
+  $('enCount').textContent = rows.length + (rows.length === 1 ? ' entry' : ' entries') + (entFilter ? ' with this tag' : ' in total');
+  var out = '', last = '';
+  rows.slice(0, entMax).forEach(function (x) {
+    var m = new Date(x.t).toLocaleDateString(undefined, {month: 'long', year: 'numeric'});
+    if (m !== last) { out += '<li class="sec" style="display:block;border:0;padding-bottom:0">' + m + '</li>'; last = m; }
+    out += entryRow(x, true);
+  });
+  $('enList').innerHTML = out || '<li class="empty">Nothing here yet.</li>';
+  $('enMore').hidden = rows.length <= entMax;
+  Array.prototype.forEach.call($('enSort').children, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-s') === entSort ? 'true' : 'false'); });
+  $('enTags')._names = names;
+}
+$('enTags').addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+  var f = b.getAttribute('data-f'); entFilter = f === '' ? '' : ($('enTags')._names || [])[+f] || ''; entMax = 50; renderEntries();
+});
+$('enSort').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('button') : null; if (b) { entSort = b.getAttribute('data-s'); renderEntries(); } });
+$('enMore').addEventListener('click', function () { entMax += 50; renderEntries(); });
+$('allBtn').addEventListener('click', function () { entFilter = ''; entMax = 50; tab('entries'); });
+$('enBack').addEventListener('click', function () { tab('home'); });
+function tab(v) {
+  ['home', 'entries', 'stats', 'friends', 'rewards', 'profile', 'settings'].forEach(function (k) {
+    $(k + 'View').hidden = k !== v;
+    var kk = k === 'entries' ? 'home' : k, on = k === v || (v === 'entries' && k === 'home');
+    var b = kk === 'settings' ? $('gear') : $('t' + kk.charAt(0).toUpperCase() + kk.slice(1));
+    if (k === 'entries') return;
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  if (v === 'entries') renderEntries();
+  window.scrollTo(0, 0);
+}
+$('gear').addEventListener('click', function () { tab($('settingsView').hidden ? 'settings' : 'home'); });
+$('tHome').addEventListener('click', function () { tab('home'); });
+$('tStats').addEventListener('click', function () { tab('stats'); });
+$('tRewards').addEventListener('click', function () { tab('rewards'); });
+$('tProfile').addEventListener('click', function () { tab('profile'); });
+$('tFriends').addEventListener('click', function () { if (!$('friendsView').hidden) { openF = ''; renderFriendView(); } tab('friends'); if (CLOUD && uid) refreshSocial().then(render); });
+setInterval(tick, 15000);
+if (CLOUD) cloudInit();
+else {
+  if (CLOUDFAIL) { $('aNote').textContent = 'Could not load the sign-in service, so this page runs in demo mode. Your data stays in this browser. Reload to try again.'; }
+  loadAcc();
+  var sess = ''; try { sess = localStorage.getItem('creamer:session') || ''; } catch (e) {}
+  if (sess && ACC[sess]) loadUser(sess); else showAuth(Object.keys(ACC).length ? 'in' : 'up');
+}
+gate.hidden = ok; lock(); if (!ok) $('yes').focus();
+</script>
+</body>
+</html>
