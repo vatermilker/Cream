@@ -270,9 +270,46 @@ details p{margin:8px 0 0;color:var(--mute)}
 .bd.hl{outline:4px solid #cf4a78;outline-offset:2px;animation:bdHl .9s ease-in-out 4}
 @keyframes bdHl{50%{transform:scale(1.05)}}
 @media(max-width:400px){#gear{font-size:0;gap:0;padding:0 14px}#hTitle{display:none}.who{gap:8px}}
+
+/* design pass: hierarchy */
+body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
+#boot{position:fixed;inset:0;z-index:90;background:linear-gradient(#fcdbe7,#f8c4d8);display:flex;align-items:center;justify-content:center}
+#boot svg{width:120px;height:120px;fill:#fff;filter:drop-shadow(0 8px 14px rgba(190,110,140,.35));animation:bootp 1.2s ease-in-out infinite}
+@keyframes bootp{50%{transform:scale(1.08)}}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c;margin:6px 10px -8px}
+.card.hero{background:linear-gradient(160deg,#cf4f82 0%,#9c2a58 100%);color:#fff;box-shadow:inset 0 -12px 0 #7e1f46,inset 0 10px 14px rgba(255,255,255,.28),0 18px 36px rgba(156,42,88,.38)}
+.card.hero h2,.card.hero .sub,.card.hero .note,.card.hero li small{color:rgba(255,255,255,.92)}
+.card.hero .big,.card.hero .bigt{color:#fff;text-shadow:0 4px 0 rgba(90,10,45,.35)}
+.card.hero .kv{border-color:rgba(255,255,255,.3)}
+.card.hero .kv b{color:#fff}
+.card.hero .bar{background:rgba(255,255,255,.28);box-shadow:none}
+.card.hero .bar i{background:#fff}
+.card.hero button.go{background:#fff;color:#9c2a58}
+.spills{display:flex;gap:8px;margin-top:14px}
+.spill{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 12px;font-size:14px;color:#fff;white-space:nowrap}
+.spill b{font-weight:800}
+#sg .card:nth-child(n+3),#pf .card:nth-child(n+3){background:rgba(255,255,255,.62);border-radius:34px;padding:20px 20px 24px;box-shadow:inset 0 -6px 0 rgba(240,205,217,.85),0 6px 16px rgba(190,110,140,.1)}
+#sg .card:nth-child(n+3) h2,#pf .card:nth-child(n+3) h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c}
+.card.soft{background:rgba(255,255,255,.62);border-radius:34px;padding:20px 20px 24px;box-shadow:inset 0 -6px 0 rgba(240,205,217,.85),0 6px 16px rgba(190,110,140,.1)}
+.card.soft h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c}
+.card:not(.hero) .kv b{color:#a02c5b}
+#hist li>span[style*="26px"]{color:#a02c5b;font-size:30px!important}
+#hist button.x,#enList button.x{background:transparent;box-shadow:none;color:var(--mute);min-height:36px;padding:0 10px;font-size:14px;font-weight:600}
+.tabs button[aria-pressed="true"]{background:#c94a7c;color:#fff;box-shadow:inset 0 4px 0 rgba(0,0,0,.18)}
+.cnt{color:#a02c5b;font-weight:800}
+.frl li{border:0;padding:3px 0}
+.fr{min-height:58px;padding:6px 12px 6px 8px;border-radius:24px;background:#fdf1f4}
+.fr .nm,li .nm{flex:1;min-width:0;display:flex;align-items:center;gap:10px}
+.av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:800;font-size:18px;color:#fff;flex:none;box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
+.av.sm{width:34px;height:34px;font-size:15px}
+.ago{font-size:14px;font-weight:800;padding:4px 12px;border-radius:999px;background:#fff;color:var(--mute);white-space:nowrap}
+.ago.l1{background:#ffe0ea;color:#a02c5b}
+.ago.l2{background:#c94a7c;color:#fff}
+.ago.lx{font-weight:600;background:transparent}
 </style>
 </head>
 <body>
+<div id="boot" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M56 12C66 11 66 26 75 30C85 34 103 20 107 33C111 46 92 46 93 56C94 66 114 64 108 80C103 93 86 82 81 91C76 99 84 114 68 111C54 108 58 97 46 95C36 93 28 108 19 98C11 88 28 74 26 64C25 54 5 54 10 40C15 27 35 38 43 32C50 27 47 13 56 12Z"/></svg></div>
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
 <div class="card gc">
 <h2 id="gt" style="font-size:34px">18+ only</h2>
@@ -284,7 +321,7 @@ details p{margin:8px 0 0;color:var(--mute)}
 </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" hidden>
 <header>
 <h1>Creamer</h1>
 <div class="who">
@@ -295,25 +332,27 @@ details p{margin:8px 0 0;color:var(--mute)}
 </header>
 <div id="homeView">
 <div class="stack home">
-<section class="card">
+<section class="card hero">
 <div style="font-size:18px">Time since last load</div>
 <div class="big" id="hSince">–</div>
 <p class="sub" id="hLast"></p>
 <div id="hStreak"></div>
 </section>
 
+<div class="eyebrow">Today</div>
 <section class="card b" id="dchCard">
 <h2>Today's challenge</h2>
 <div id="dch"></div>
 </section>
 
+<div class="eyebrow">Recent</div>
 <section class="card">
 <h2>My last loads</h2>
 <ul id="hist"></ul>
 <div class="row" style="margin-top:8px"><button type="button" id="histMore" hidden>Show more</button><button type="button" id="allBtn">All entries</button></div>
 </section>
 
-<section class="card b">
+<section class="card b soft">
 <h2>Friends</h2>
 <ul id="hf"></ul>
 </section>
@@ -339,19 +378,21 @@ details p{margin:8px 0 0;color:var(--mute)}
 
 <div id="friendsView" hidden>
 <div id="fList" class="stack home">
-<section class="card" id="lgCard"></section>
 <section class="card b" id="rqCard" hidden></section>
-<section class="card b">
-<h2>Friends</h2>
+<section class="card" id="frCard">
+<h2>Friends <span class="cnt" id="frCount"></span></h2>
+<p class="sub" style="margin:-4px 0 8px">Longest since their last load comes first.</p>
+<ul id="fl" class="frl"></ul>
+<div class="sec">Add a friend</div>
 <form id="addForm" style="display:flex;gap:10px">
 <input type="text" id="fq" maxlength="21" placeholder="find by username" aria-label="Friend's username" autocomplete="off" autocapitalize="none" spellcheck="false" style="flex:1;width:auto;min-width:0">
 <button type="submit" class="go">Add</button>
 </form>
 <p class="note" id="fMsg" role="status" style="min-height:1.4em"></p>
-<ul id="fl"></ul>
 <p class="note" id="fNote">Demo: the user list is three sample names with made-up loads. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
 </section>
-<section class="card" id="duCard">
+<section class="card soft" id="lgCard"></section>
+<section class="card soft" id="duCard">
 <h2>Duels</h2>
 <div id="duList"></div>
 <div class="sec">New duel</div>
@@ -507,9 +548,9 @@ details p{margin:8px 0 0;color:var(--mute)}
 <div class="wrNav"><button type="button" id="wrPrev">Back</button><button type="button" id="wrNext" class="go">Next</button></div>
 </div>
 
-<nav class="tabs" aria-label="Sections"><button type="button" id="tHome" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</button><button type="button" id="tStats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-8"/></svg>Stats</button><button type="button" id="tFriends" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c2.7 0 4.5 1.8 4.5 4.5"/></svg>Friends</button><button type="button" id="tRewards" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg>Rewards</button><button type="button" id="tProfile" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Profile</button></nav>
+<nav class="tabs" aria-label="Sections" hidden><button type="button" id="tHome" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</button><button type="button" id="tStats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-8"/></svg>Stats</button><button type="button" id="tFriends" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c2.7 0 4.5 1.8 4.5 4.5"/></svg>Friends</button><button type="button" id="tRewards" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg>Rewards</button><button type="button" id="tProfile" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Profile</button></nav>
 
-<button class="drop" id="add" type="button" aria-label="Add a load"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20C68 20 70 32 78 34C88 36 98 28 102 36C106 46 94 50 94 58C94 66 106 70 102 80C98 90 86 84 80 90C72 96 74 108 62 106C52 104 54 94 46 90C36 86 24 94 20 84C16 74 28 68 28 60C28 52 14 48 20 38C26 28 38 34 46 32C54 30 52 20 60 20Z" fill="#fff" stroke="#f0cdd9" stroke-width="3"/><circle cx="107" cy="17" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="13" cy="22" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="109" cy="101" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="15" cy="105" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/></svg><span>+</span></button>
+<button class="drop" id="add" type="button" hidden aria-label="Add a load"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20C68 20 70 32 78 34C88 36 98 28 102 36C106 46 94 50 94 58C94 66 106 70 102 80C98 90 86 84 80 90C72 96 74 108 62 106C52 104 54 94 46 90C36 86 24 94 20 84C16 74 28 68 28 60C28 52 14 48 20 38C26 28 38 34 46 32C54 30 52 20 60 20Z" fill="#fff" stroke="#f0cdd9" stroke-width="3"/><circle cx="107" cy="17" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="13" cy="22" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="109" cy="101" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="15" cy="105" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/></svg><span>+</span></button>
 
 <div class="gate" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="atl" style="z-index:95">
 <div class="card gc">
@@ -645,7 +686,7 @@ function sinceLabel(t, ago) {
 }
 function lastOf(arr) { var m = null; arr.forEach(function (x) { if (!m || x.t > m.t) m = x; }); return m; }
 function tick() {
-  checkNotifs();
+  checkNotifs(); if (uid) renderFriendLists(false);
   var els = document.querySelectorAll('[data-since]');
   for (var i = 0; i < els.length; i++) els[i].textContent = sinceLabel(+els[i].getAttribute('data-since'), els[i].hasAttribute('data-ago'));
 }
@@ -667,6 +708,37 @@ function renderFriendView() {
     $('fName').textContent = '@' + openF;
     $('fBody').innerHTML = '<div class="sgrid">' + body + '</div><div class="row" style="max-width:260px"><button type="button" id="fRemove">Remove friend</button></div>';
   }
+}
+var fKey = '';
+function friendSort() {
+  var now = Date.now();
+  return F.map(function (n) {
+    var u = api.find(n), l = u && !u.priv ? lastOf(u.entries) : null;
+    return {n: n, u: u, gap: !u || u.priv ? -1 : l ? now - l.t : Infinity};
+  }).sort(function (a, b) { return a.gap === b.gap ? (a.n < b.n ? -1 : 1) : b.gap - a.gap; });
+}
+function gapLvl(g) { return g < 0 ? 'x' : g < 43200000 ? '0' : g < 259200000 ? '1' : '2'; }
+function agoCell(f) {
+  if (!f.u) return '<span class="ago lx">unavailable</span>';
+  if (f.u.priv) return '<span class="ago lx">private</span>';
+  var l = lastOf(f.u.entries);
+  return l ? '<b class="ago l' + gapLvl(f.gap) + '" data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="ago l2">no loads yet</span>';
+}
+function avatar(n, sm) {
+  var h = 0; for (var i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) % 360;
+  return '<i class="av' + (sm ? ' sm' : '') + '" style="background:hsl(' + (320 + h % 40) + ',58%,52%)">' + esc(n.charAt(0).toUpperCase()) + '</i>';
+}
+function renderFriendLists(force) {
+  var list = friendSort(), key = list.map(function (f) { return f.n + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : ''); }).join(',');
+  if (!force && key === fKey) return;
+  fKey = key;
+  $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
+  $('fl').innerHTML = list.length ? list.map(function (f) {
+    return '<li><button class="fr" type="button" data-open="' + esc(f.n) + '"><span class="nm">' + avatar(f.n) + '<b>@' + esc(f.n) + '</b></span>' + agoCell(f) + '</button></li>';
+  }).join('') : '<li class="empty">No friends yet. Add one by username below.</li>';
+  $('hf').innerHTML = list.length ? list.slice(0, 5).map(function (f) {
+    return '<li><span class="nm">' + avatar(f.n, true) + '<b>@' + esc(f.n) + '</b></span>' + agoCell(f) + '</li>';
+  }).join('') + (list.length > 5 ? '<li class="empty">+' + (list.length - 5) + ' more in the Friends tab</li>' : '') : '<li class="empty">No friends yet. Add them in the Friends tab.</li>';
 }
 function entryRow(x, yr) {
   var d = new Date(x.t).toLocaleDateString(undefined, yr ? {day: 'numeric', month: 'short', year: 'numeric'} : {day: 'numeric', month: 'short'});
@@ -694,12 +766,7 @@ function render() {
   $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
   renderSettings(); $('hBalN').textContent = totals().bal; updateBadge(); checkNotifs();
   renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
-  $('hf').innerHTML = F.length ? F.map(function (n) {
-    return '<li><span>@' + n + '</span>' + sinceCell(api.find(n)) + '</li>';
-  }).join('') : '<li class="empty">No friends yet. Add them in the Friends tab.</li>';
-  $('fl').innerHTML = F.length ? F.map(function (n) {
-    return '<li><button class="fr" type="button" data-open="' + n + '"><b>@' + n + '</b>' + sinceCell(api.find(n)) + '</button></li>';
-  }).join('') : '<li class="empty">No friends yet. Add one by username.</li>';
+  renderFriendLists(true);
   renderStats();
   renderFriendView();
   applyEq();
@@ -783,7 +850,7 @@ function checkName(n) {
 }
 var auth = $('auth'), authMode = 'in', gate = $('gate'), ok = false;
 function lock() { document.body.style.overflow = (!gate.hidden || !auth.hidden || !$('settingsView').hidden || !$('wel').hidden) ? 'hidden' : ''; }
-function appShow(on) { document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
+function appShow(on) { var bt = $('boot'); if (bt) bt.hidden = true; document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
 function amsg(t) { $('aMsg').textContent = t; }
 function showAuth(m) {
   authMode = m; appShow(false);
@@ -1425,7 +1492,7 @@ function statsHtml(E, mine) {
   var etaD = nextM && pace > 0 ? Math.ceil((nextM - n) / pace) : 0, etaT = new Date(today); etaT.setDate(etaT.getDate() + etaD);
   more.push(card(' b', 'Forecast', kv('Pace', pace.toFixed(2) + ' per day') + kv('Next milestone', nextM ? nextM + (etaD ? ', about ' + fmtDate(etaT.getTime()) : '') : '–') + kv('Projected this month', Math.round(thisM + pace * leftM)) + kv('Projected this year', Math.round(thisY + pace * leftY)) + '<p class="sub">Estimates at your last ' + span + '-day pace. They change as you do.</p>'));
   more.forEach(function (c) { out.push(c); });
-  out.push(card(' span2', 'Badges (' + got + ' of ' + B.length + ')', '<div class="badges">' + B.map(function (b) { return '<div class="bd' + (b[1] ? ' on' : '') + '"><b>' + b[0] + '</b><span>' + b[2] + '</span></div>'; }).join('') + '</div>' + (nextM ? '<p class="sub">Next milestone: ' + nextM + ' loads (' + n + ' so far)</p><div class="bar"><i style="width:' + Math.min(100, n / nextM * 100) + '%"></i></div>' : '<p class="sub">All load milestones reached.</p>')));
+  out.push(card(' span2 soft', 'Badges (' + got + ' of ' + B.length + ')', '<div class="badges">' + B.map(function (b) { return '<div class="bd' + (b[1] ? ' on' : '') + '"><b>' + b[0] + '</b><span>' + b[2] + '</span></div>'; }).join('') + '</div>' + (nextM ? '<p class="sub">Next milestone: ' + nextM + ' loads (' + n + ' so far)</p><div class="bar"><i style="width:' + Math.min(100, n / nextM * 100) + '%"></i></div>' : '<p class="sub">All load milestones reached.</p>')));
   return out.join('');
 }
 function renderStats() { $('sg').innerHTML = statsHtml(E, true); }
@@ -1804,9 +1871,9 @@ function renderRewards() {
     '<p class="sub">Each load earns 10 drops (first 3 a day). The first load of a day adds 5, plus 2 per streak day up to 20.</p>' +
     (bo ? '<p class="sub"><b>Double drops active</b>, ends in ' + fmtGap(bo.to - now) + '.</p>' : '') +
     (cl.length ? '<div class="row" style="max-width:300px"><button type="button" class="go" data-claim="all">Claim all (+' + cl.reduce(function (s, x) { return s + x.r; }, 0) + ')</button></div>' : '');
-  var out = [card(' span2', 'Your level', top), card(dayPick() ? ' locked' : ' shine', dayPick() ? "Today's challenge" : "Choose today's challenge", dailyHtml()), chList(data, 'w', 'Weekly challenges', fmtGap(winOf('w').b - now))];
+  var out = [card(' span2 hero', 'Your level', top), chList(data, 'w', 'Weekly challenges', fmtGap(winOf('w').b - now))];
   var got = BADGES.filter(function (b) { return es[b.id]; }).length;
-  out.push(card(' span2', 'Badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
+  out.push(card(' span2 soft', 'Badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
     var on = es[b.id], c = G.claimed['b:' + b.id];
     var nm = on || !b.s ? b.n : '???', ds = on || !b.s ? b.d : 'Secret badge. Keep exploring.';
     return '<div class="bd' + (on ? ' on' : '') + '" data-b="' + b.id + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
@@ -1852,7 +1919,7 @@ function freezeOk() {
 }
 function renderStreak() {
   var st = curStreak(E), n = G.fz || 0, ok = freezeOk(), h = '';
-  if (st > 0 || n > 0 || ok) h = '<div class="kv"><span>Streak</span><b>' + st + (st === 1 ? ' day' : ' days') + '</b></div><div class="kv"><span>Streak freezes</span><b>' + n + ' of 3</b></div>';
+  if (st > 0 || n > 0 || ok) h = '<div class="spills"><span class="spill">Streak <b>' + st + (st === 1 ? ' day' : ' days') + '</b></span><span class="spill">Freezes <b>' + n + ' of 3</b></span></div>';
   if (ok) h += '<div class="row" style="margin-top:10px"><button type="button" class="go" id="fzUse">Use a freeze on yesterday</button></div><p class="sub">Yesterday had no entry. A freeze keeps your streak alive.</p>';
   $('hStreak').innerHTML = h;
 }
