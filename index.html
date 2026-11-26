@@ -413,6 +413,11 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 #boot .pw1{animation:bpw 3.6s linear infinite}#boot .pw2{animation:bpw 5.2s linear infinite reverse}
 @keyframes bpw{to{transform:translateX(-200px)}}
 @media (prefers-reduced-motion:reduce){#boot .bd,#boot .bpool g{animation:none}#boot .ld{display:none}}
+.fnick{display:flex;gap:10px;align-items:center;max-width:420px}
+.fnick input{flex:1;min-width:0;width:auto}
+.un{font-size:.55em;font-weight:600;color:var(--mute);margin-left:4px;letter-spacing:0}
+#fName .un{display:block;margin:2px 0 0;font-size:16px}
+.fr .un{font-size:12px;display:block;margin:0}
 </style>
 </head>
 <body>
@@ -520,7 +525,7 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 </section>
 </div>
 <div id="fDetail" hidden>
-<div class="fhead"><button type="button" id="fBack">Back</button></div><div class="fwho"><span id="fAv"></span><div id="fName"></div></div>
+<div class="fhead"><button type="button" id="fBack">Back</button></div><div class="fwho"><span id="fAv"></span><div id="fName"></div></div><div class="fnick"><input type="text" id="fNick" maxlength="24" placeholder="Add a nickname" aria-label="Nickname"><button type="button" id="fNickSave" class="go">Save</button></div><p class="sub" style="margin:6px 4px 18px">Only you can see this name. It replaces the username everywhere in your app.</p>
 <div id="fBody"></div>
 </div>
 </div>
@@ -816,9 +821,9 @@ function renderFriendView() {
   if (det) {
     var u = api.find(openF), body;
     if (!u) body = card('', 'Unavailable', '<p class="empty">This user is no longer available.</p>');
-    else if (u.priv) body = card('', 'Private profile', '<p class="empty">@' + openF + ' keeps their stats private.</p>');
+    else if (u.priv) body = card('', 'Private profile', '<p class="empty">' + esc(fn(openF)) + ' keeps their stats private.</p>');
     else body = (u.bio ? card(' b', 'Bio', '<p style="margin:0">' + esc(u.bio) + '</p>') : '') + statsHtml(u.entries, false);
-    $('fName').textContent = '@' + openF; $('fAv').innerHTML = avatar(openF, false);
+    $('fName').innerHTML = fnH(openF); if (document.activeElement !== $('fNick')) $('fNick').value = nickOf(openF); $('fAv').innerHTML = avatar(openF, false);
     $('fBody').innerHTML = '<div class="sgrid">' + body + '</div><div class="row" style="max-width:260px"><button type="button" id="fRemove">Remove friend</button></div>';
   }
 }
@@ -837,20 +842,23 @@ function agoCell(f) {
   var l = lastOf(f.u.entries);
   return l ? '<b class="ago l' + gapLvl(f.gap) + '" data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="ago l2">no loads yet</span>';
 }
+function nickOf(n) { return (S.nick && S.nick[n]) || ''; }
+function fn(n) { return nickOf(n) || '@' + n; }
+function fnH(n) { var k = nickOf(n); return k ? esc(k) + ' <small class="un">@' + esc(n) + '</small>' : '@' + esc(n); }
 function avatar(n, sm) {
   var h = 0; for (var i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) % 360;
-  return '<i class="av' + (sm ? ' sm' : '') + '" style="background:hsl(' + (320 + h % 40) + ',58%,52%)">' + esc(n.charAt(0).toUpperCase()) + '</i>';
+  return '<i class="av' + (sm ? ' sm' : '') + '" style="background:hsl(' + (320 + h % 40) + ',58%,52%)">' + esc((nickOf(n) || n).charAt(0).toUpperCase()) + '</i>';
 }
 function renderFriendLists(force) {
-  var list = friendSort(), key = list.map(function (f) { return f.n + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : ''); }).join(',');
+  var list = friendSort(), key = list.map(function (f) { return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : ''); }).join(',');
   if (!force && key === fKey) return;
   fKey = key;
   $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
   $('fl').innerHTML = list.length ? list.map(function (f) {
-    return '<li><button class="fr" type="button" data-open="' + esc(f.n) + '"><span class="nm">' + avatar(f.n) + '<b>@' + esc(f.n) + '</b></span>' + agoCell(f) + '</button></li>';
+    return '<li><button class="fr" type="button" data-open="' + esc(f.n) + '"><span class="nm">' + avatar(f.n) + '<b>' + fnH(f.n) + '</b></span>' + agoCell(f) + '</button></li>';
   }).join('') : '<li class="empty">No friends yet. Add one by username below.</li>';
   $('hf').innerHTML = list.length ? list.slice(0, 5).map(function (f) {
-    return '<li><span class="nm">' + avatar(f.n, true) + '<b>@' + esc(f.n) + '</b></span>' + agoCell(f) + '</li>';
+    return '<li><span class="nm">' + avatar(f.n, true) + '<b>' + fnH(f.n) + '</b></span>' + agoCell(f) + '</li>';
   }).join('') + (list.length > 5 ? '<li class="empty">+' + (list.length - 5) + ' more in the Friends tab</li>' : '') : '<li class="empty">No friends yet. Add them in the Friends tab.</li>';
 }
 function entryRow(x, yr) {
@@ -1146,24 +1154,24 @@ function checkNotifs() {
       if (n.fr[name] === undefined) { n.fr[name] = mx; return; }
       var nw = u.entries.filter(function (x) { return x.t > n.fr[name]; });
       n.fr[name] = mx;
-      if (nw.length) notify({id: 'fr:' + name, title: '@' + name + ' logged ' + (nw.length > 1 ? nw.length + ' new loads' : 'a new load'), text: nw.length === 1 ? 'Rated ' + nw[0].rate + ' out of 10, ' + nw[0].dur + ' min.' : 'Tap to see their stats.', go: function () { goFriend(name); }});
+      if (nw.length) notify({id: 'fr:' + name, title: fn(name) + ' logged ' + (nw.length > 1 ? nw.length + ' new loads' : 'a new load'), text: nw.length === 1 ? 'Rated ' + nw[0].rate + ' out of 10, ' + nw[0].dur + ' min.' : 'Tap to see their stats.', go: function () { goFriend(name); }});
     });
     Object.keys(n.fr).forEach(function (k) { if (F.indexOf(k) < 0) delete n.fr[k]; });
   }
   if (CLOUD && SOCIAL_OK) {
     var rq = {};
-    SOC.inc.forEach(function (r) { rq[r.id] = 1; if (!n.rq[r.id]) notify({id: 'rq:' + r.id, title: '@' + r.username + ' sent you a friend request', text: 'Tap to review it.', go: function () { goTab('friends'); }}); });
+    SOC.inc.forEach(function (r) { rq[r.id] = 1; if (!n.rq[r.id]) notify({id: 'rq:' + r.id, title: fn(r.username) + ' sent you a friend request', text: 'Tap to review it.', go: function () { goTab('friends'); }}); });
     n.rq = rq;
-    if (n.fi) F.forEach(function (name) { if (n.fl.indexOf(name) < 0 && !MINE[name]) notify({id: 'fa:' + name, title: '@' + name + ' accepted your friend request', text: 'You are now friends.', go: function () { goFriend(name); }}); });
+    if (n.fi) F.forEach(function (name) { if (n.fl.indexOf(name) < 0 && !MINE[name]) notify({id: 'fa:' + name, title: fn(name) + ' accepted your friend request', text: 'You are now friends.', go: function () { goFriend(name); }}); });
     n.fl = F.slice(); n.fi = 1;
     var dn = {};
     (G.du || []).forEach(function (d) {
       var sv = d.done ? 'done' : d.pend === 'in' ? 'pin' : d.pend === 'out' ? 'pout' : 'act', prev = n.du[d.cid];
       dn[d.cid] = sv + '|' + d.f;
-      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: '@' + d.f + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (d.k ? ', ' + d.k + ' LDs at stake.' : '.'), go: function () { goTab('friends'); }}); }
-      else if (prev.split('|')[0] === 'pout' && sv === 'act') notify({id: 'da:' + d.cid, title: '@' + d.f + ' accepted your duel', text: 'It runs for ' + d.days + ' days.', go: function () { goTab('friends'); }});
+      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: fn(d.f) + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (d.k ? ', ' + d.k + ' LDs at stake.' : '.'), go: function () { goTab('friends'); }}); }
+      else if (prev.split('|')[0] === 'pout' && sv === 'act') notify({id: 'da:' + d.cid, title: fn(d.f) + ' accepted your duel', text: 'It runs for ' + d.days + ' days.', go: function () { goTab('friends'); }});
     });
-    Object.keys(n.du).forEach(function (k) { if (!dn[k] && n.du[k].split('|')[0] === 'pout' && !MINEC[k]) notify({id: 'dx:' + k, title: '@' + n.du[k].split('|')[1] + ' declined your duel', text: 'Your stake is back.', go: function () { goTab('friends'); }}); });
+    Object.keys(n.du).forEach(function (k) { if (!dn[k] && n.du[k].split('|')[0] === 'pout' && !MINEC[k]) notify({id: 'dx:' + k, title: fn(n.du[k].split('|')[1]) + ' declined your duel', text: 'Your stake is back.', go: function () { goTab('friends'); }}); });
     n.du = dn;
   }
   if (JSON.stringify(n) !== before) saveG();
@@ -1279,8 +1287,8 @@ function renderRequests() {
   var el = $('rqCard'); if (!el) return;
   var inc = SOC.inc, out = SOC.out; el.hidden = !CLOUD || !(inc.length || out.length);
   if (el.hidden) return;
-  el.innerHTML = '<h2>Friend requests</h2>' + (inc.length ? '<ul>' + inc.map(function (r) { return '<li><span>@' + esc(r.username) + '</span><span><button type="button" class="go x" data-ra="' + r.id + '">Accept</button> <button type="button" class="x" data-rd="' + r.id + '">Decline</button></span></li>'; }).join('') + '</ul>' : '') +
-    (out.length ? '<div class="sec">Sent</div><ul>' + out.map(function (r) { return '<li><span>@' + esc(r.username) + '</span><span><span class="empty">waiting</span> <button type="button" class="x" data-rc="' + r.id + '">Cancel</button></span></li>'; }).join('') + '</ul>' : '');
+  el.innerHTML = '<h2>Friend requests</h2>' + (inc.length ? '<ul>' + inc.map(function (r) { return '<li><span>' + fnH(r.username) + '</span><span><button type="button" class="go x" data-ra="' + r.id + '">Accept</button> <button type="button" class="x" data-rd="' + r.id + '">Decline</button></span></li>'; }).join('') + '</ul>' : '') +
+    (out.length ? '<div class="sec">Sent</div><ul>' + out.map(function (r) { return '<li><span>' + fnH(r.username) + '</span><span><span class="empty">waiting</span> <button type="button" class="x" data-rc="' + r.id + '">Cancel</button></span></li>'; }).join('') + '</ul>' : '');
 }
 $('rqCard').addEventListener('click', function (e) {
   var b = e.target.closest ? e.target.closest('button') : null; if (!b || !CLOUD) return;
@@ -2244,13 +2252,13 @@ function duelSettle() {
   if (msg) { saveG(); if (notifOn()) notify({title: msg, text: 'Tap to see the result.', go: function () { goTab('friends'); }}); else toast(msg); }
 }
 function renderDuels() {
-  var sel = $('duF'), pubF = F.filter(function (f) { var u = api.find(f); return u && !u.priv; }), key = pubF.join(',');
-  if (sel.getAttribute('data-k') !== key) { var cur = sel.value; sel.innerHTML = pubF.length ? pubF.map(function (f) { return '<option value="' + esc(f) + '">@' + esc(f) + '</option>'; }).join('') : '<option value="">No friends with public stats</option>'; sel.setAttribute('data-k', key); if (pubF.indexOf(cur) >= 0) sel.value = cur; }
+  var sel = $('duF'), pubF = F.filter(function (f) { var u = api.find(f); return u && !u.priv; }), key = pubF.map(function (f) { return f + nickOf(f); }).join(',');
+  if (sel.getAttribute('data-k') !== key) { var cur = sel.value; sel.innerHTML = pubF.length ? pubF.map(function (f) { return '<option value="' + esc(f) + '">' + esc(fn(f)) + '</option>'; }).join('') : '<option value="">No friends with public stats</option>'; sel.setAttribute('data-k', key); if (pubF.indexOf(cur) >= 0) sel.value = cur; }
   var bal = totals().bal; Array.prototype.forEach.call($('duK').options, function (o) { o.disabled = +o.value > bal; });
   if (+$('duK').value > bal) $('duK').value = '0';
   var du = G.du || [], act = du.filter(function (d) { return !d.done; }), now = Date.now();
   $('duList').innerHTML = act.length ? act.map(function (d) {
-    var who = '@' + esc(d.f), stake = d.k ? d.k + ' LDs' : 'no stake';
+    var who = esc(fn(d.f)), stake = d.k ? d.k + ' LDs' : 'no stake';
     if (d.pend === 'out') return '<div class="ch"><div class="top"><b>You vs ' + who + '</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days. Waiting for them to accept.</p><div class="row" style="margin-top:8px"><button type="button" class="x" data-dc="' + d.cid + '">Cancel</button></div></div>';
     if (d.pend === 'in') return '<div class="ch"><div class="top"><b>' + who + ' challenges you</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days.</p><div class="row" style="margin-top:8px"><button type="button" class="go x" data-da="' + d.cid + '">Accept</button><button type="button" class="x" data-dd="' + d.cid + '">Decline</button></div></div>';
     var u = api.find(d.f), me = dval(d.st, E, d.a, d.b), th = u && !u.priv ? dval(d.st, u.entries, d.a, d.b) : 0;
@@ -2402,6 +2410,12 @@ segClick('dRel', function (on) { S.dRel = on; saveS(); renderSettings(); });
 segClick('fmtSeg', function (on) { S.h24 = on; saveS(); render(); });
 $('dRate').addEventListener('input', function () { S.dRate = +$('dRate').value; $('dRateV').textContent = S.dRate; saveS(); });
 $('dLen').addEventListener('input', function () { S.dLen = +$('dLen').value; $('dLenV').textContent = S.dLen + ' min'; saveS(); });
+$('fNickSave').addEventListener('click', function () {
+  if (!openF) return; var v = $('fNick').value.trim().slice(0, 24); S.nick = S.nick || {};
+  if (v) S.nick[openF] = v; else delete S.nick[openF];
+  saveS(); render(); renderFriendView(); toast(v ? 'Nickname saved' : 'Nickname removed');
+});
+$('fNick').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); $('fNickSave').click(); } });
 $('tSnd').addEventListener('click', function () { S.snd = S.snd === false; saveS(); renderSettings(); if (S.snd) wet('tap'); });
 $('tHap').addEventListener('click', function () { S.hap = S.hap === false; saveS(); renderSettings(); if (S.hap) buzz([30]); });
 $('tWipe').addEventListener('click', function () { S.wipe = S.wipe === false; saveS(); renderSettings(); });
