@@ -341,22 +341,22 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 @keyframes drift3{0%{transform:translate(0,0) scale(.95)}100%{transform:translate(70px,-60px) scale(1.2)}}
 .slimewrap{position:absolute;top:0;left:0;right:0;height:150px}
 .slime{position:absolute;inset:0;width:100%;height:190px;overflow:visible}
-.sl-main{fill:#fff}
-.sl-edge path{fill:#f1c4d4}
+.sl-main{fill:var(--slF,#fff)}
+.sl-edge path{fill:var(--slE,#f1c4d4)}
 .sl-gl{fill:rgba(255,255,255,.95);stroke:none}
 .sl-main{filter:drop-shadow(0 3px 0 rgba(207,120,160,.22))}
-.sl-d path{fill:#fff}
+.sl-d path{fill:var(--slF,#fff)}
 .sl-d{transform-box:fill-box;transform-origin:50% 0;animation:dripg 6s ease-in-out infinite}
 .sl-d.d2{animation-duration:7.5s;animation-delay:-2s}.sl-d.d3{animation-duration:5.2s;animation-delay:-3.4s}.sl-d.d4{animation-duration:8.4s;animation-delay:-1s}
 @keyframes dripg{0%,100%{transform:scaleY(.85)}50%{transform:scaleY(1.7)}}
-.fall{position:absolute;width:11px;height:15px;border-radius:50% 50% 55% 55%/62% 62% 40% 40%;background:#fff;box-shadow:inset -2px -2px 0 rgba(240,190,210,.7);opacity:0;animation:fallg 6s ease-in infinite}
+.fall{position:absolute;width:11px;height:15px;border-radius:50% 50% 55% 55%/62% 62% 40% 40%;background:var(--slB,#fff);box-shadow:inset -2px -2px 0 rgba(240,190,210,.7);opacity:0;animation:fallg 6s ease-in infinite}
 .fall.f1{left:74.5%;top:96px;animation-delay:2.2s}
 .fall.f2{left:44%;top:112px;animation-duration:7.5s;animation-delay:4.2s}
 .fall.f3{left:13.5%;top:82px;animation-duration:5.2s;animation-delay:.6s}
 @keyframes fallg{0%{transform:translateY(0) scale(.4);opacity:0}8%{opacity:1;transform:translateY(0) scale(1)}70%{opacity:1}100%{transform:translateY(360px) scale(.9);opacity:0}}
 .card{background-image:radial-gradient(ellipse 55% 16% at 24% 7%,rgba(255,255,255,.95),rgba(255,255,255,0) 100%)}
 .card.hero{position:relative;padding-top:48px}
-.card.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:44px;border-radius:44px 44px 0 0;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%2744%27%20viewBox%3D%270%200%20120%2044%27%3E%3Cpath%20fill%3D%27white%27%20d%3D%27M0%200H120V9C112%209%20110%2012%20108%2022C106%2038%2096%2038%2094%2022C92%2012%2088%208%2080%208C72%208%2070%2013%2068%2018C66%2025%2058%2025%2056%2018C54%2011%2050%209%2040%209C32%209%2030%2016%2028%2028C26%2042%2014%2042%2012%2028C10%2016%208%209%200%209Z%27/%3E%3C/svg%3E") repeat-x 0 0/120px 44px;transform-origin:50% 0;animation:cardd 5s ease-in-out infinite alternate;pointer-events:none;filter:drop-shadow(0 3px 0 rgba(90,10,45,.25))}
+.card.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:44px;border-radius:44px 44px 0 0;background:var(--slB,#fff);-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%2744%27%20viewBox%3D%270%200%20120%2044%27%3E%3Cpath%20fill%3D%27white%27%20d%3D%27M0%200H120V9C112%209%20110%2012%20108%2022C106%2038%2096%2038%2094%2022C92%2012%2088%208%2080%208C72%208%2070%2013%2068%2018C66%2025%2058%2025%2056%2018C54%2011%2050%209%2040%209C32%209%2030%2016%2028%2028C26%2042%2014%2042%2012%2028C10%2016%208%209%200%209Z%27/%3E%3C/svg%3E") repeat-x 0 0/120px 44px;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%2744%27%20viewBox%3D%270%200%20120%2044%27%3E%3Cpath%20fill%3D%27white%27%20d%3D%27M0%200H120V9C112%209%20110%2012%20108%2022C106%2038%2096%2038%2094%2022C92%2012%2088%208%2080%208C72%208%2070%2013%2068%2018C66%2025%2058%2025%2056%2018C54%2011%2050%209%2040%209C32%209%2030%2016%2028%2028C26%2042%2014%2042%2012%2028C10%2016%208%209%200%209Z%27/%3E%3C/svg%3E") repeat-x 0 0/120px 44px;transform-origin:50% 0;animation:cardd 5s ease-in-out infinite alternate;pointer-events:none;filter:drop-shadow(0 3px 0 rgba(90,10,45,.25))}
 .card.hero>*{position:relative}
 @keyframes cardd{0%{transform:scaleY(.9)}100%{transform:scaleY(1.3)}}
 .splat{position:fixed;z-index:95;pointer-events:none;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:radial-gradient(circle,#fff 40%,rgba(255,255,255,.2) 75%);box-shadow:0 0 0 2px rgba(255,255,255,.8);animation:splat .55s ease-out forwards}
@@ -372,8 +372,8 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 .jel{animation:jel .5s cubic-bezier(.3,.7,.4,1)}
 .jelS{animation:jelS .45s ease-out}
 #splash{position:fixed;left:0;right:0;top:0;height:100%;z-index:96;pointer-events:none;transform:translateY(-120%);display:none}
-#splash .sbody{position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,#fff 88%,#ffeaf2 100%);box-shadow:inset 0 -10px 0 #f4c3d5}
-#splash svg{position:absolute;left:0;top:calc(100% - 2px);width:100%;height:230px;fill:#fff;filter:drop-shadow(0 6px 0 #f1c4d4)}
+#splash .sbody{position:absolute;inset:0;background:var(--slB,#fff);box-shadow:inset 0 -10px 0 var(--slE,#f4c3d5)}
+#splash svg{position:absolute;left:0;top:calc(100% - 2px);width:100%;height:230px;fill:var(--slF,#fff);filter:drop-shadow(0 6px 0 var(--slE,#f1c4d4))}
 #splash.on{display:block;animation:splashA 2s linear forwards}
 #splash.wp{display:block;animation:wipeA .8s linear forwards}
 @keyframes splashA{0%{transform:translateY(-120%);animation-timing-function:cubic-bezier(.2,.9,.3,1)}16%{transform:translateY(0)}30%{transform:translateY(0);animation-timing-function:cubic-bezier(.55,.05,.9,.6)}100%{transform:translateY(135%)}}
@@ -418,12 +418,135 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 .un{font-size:.55em;font-weight:600;color:var(--mute);margin-left:4px;letter-spacing:0}
 #fName .un{display:block;margin:2px 0 0;font-size:16px}
 .fr .un{font-size:12px;display:block;margin:0}
+
+#runBox{margin-top:14px}
+#runGo{display:inline-flex;align-items:center;gap:8px}
+#runGo svg{width:18px;height:18px;fill:currentColor}
+#runOn{background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.35);border-radius:26px;padding:12px 14px}
+.runl{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:8px}
+.runl::before{content:"";width:10px;height:10px;border-radius:50%;background:#fff;animation:runp 1.2s ease-in-out infinite}
+@keyframes runp{50%{opacity:.25}}
+.runt{font-size:44px;font-weight:800;line-height:1.05;font-variant-numeric:tabular-nums;color:#fff}
+.runb{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.card.hero #runX{background:transparent;color:#fff;box-shadow:none;border:2px solid rgba(255,255,255,.5)}
+
+.hrow{display:flex;gap:12px;align-items:center}
+.htxt{flex:1;min-width:0}
+.card.hero #hSince{font-size:clamp(38px,12.5vw,64px)!important}
+.tank{flex:none;width:86px;text-align:center}
+.tank svg{width:86px;height:142px;display:block;overflow:visible}
+.tank .tg{fill:rgba(255,255,255,.14);stroke:#fff;stroke-width:3.5}
+.tank .twv.f path{fill:var(--slF,#fff)}
+.tank .twv.b path{fill:#ffd9e7}
+.tank .twv.f{animation:twv 2.2s linear infinite}
+.tank .twv.b{animation:twv2 3.4s linear infinite}
+@keyframes twv{to{transform:translateX(-60px)}}
+@keyframes twv2{to{transform:translateX(40px)}}
+.tank .tm{stroke:rgba(255,255,255,.55);stroke-width:2.5;stroke-linecap:round}
+.tank .tgl{fill:none;stroke:rgba(255,255,255,.85);stroke-width:4;stroke-linecap:round}
+.tpc{font-size:20px;font-weight:800;line-height:1.1;margin-top:4px;color:#fff}
+.tsub{font-size:12px;font-weight:700;color:rgba(255,255,255,.88);line-height:1.15}
+.tank.full svg{animation:tfull 2.4s ease-in-out infinite}
+@keyframes tfull{0%,100%{filter:drop-shadow(0 0 0 rgba(255,255,255,0))}50%{filter:drop-shadow(0 0 12px rgba(255,255,255,.9))}}
+@media (prefers-reduced-motion:reduce){.tank .twv,.tank.full svg{animation:none}}
+
+#pinLock{position:fixed;inset:0;z-index:120;background:linear-gradient(#fcdbe7,#f8c4d8);display:flex;align-items:center;justify-content:center;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px))}
+#pinLock[hidden]{display:none}
+.pl-in{width:100%;max-width:320px;text-align:center}
+.pl-logo{font-size:34px;font-weight:800;margin-bottom:6px}
+.pl-t{font-size:18px;font-weight:800}
+.pl-s{font-size:14px;color:var(--mute);min-height:1.4em;margin-top:2px}
+.pl-dots{display:flex;justify-content:center;gap:18px;margin:16px 0 22px}
+.pl-dots i{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 3px #fff;transition:transform .15s}
+.pl-dots i.on{background:#fff;transform:scale(1.15);box-shadow:0 3px 8px rgba(190,110,140,.35)}
+.pl-dots.bad{animation:plbad .4s}
+@keyframes plbad{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.pl-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pl-pad button{min-height:68px;font-size:28px;border-radius:999px;padding:0}
+.pl-pad .pl-alt{font-size:16px;background:transparent;box-shadow:none}
+.pl-link{margin-top:18px;background:transparent;box-shadow:none;color:#a02c5b;font-size:15px}
+
+.it .prv{min-height:36px;font-size:14px}
+.slsw.sp,html.sl-spark .slimewrap::after{background-image:radial-gradient(circle,#fff 0 1.5px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.95) 0 1px,transparent 1.5px)!important}
+.slsw.sp{background-size:14px 10px,9px 7px!important;background-color:#f7eef8}
+html.sl-spark .slimewrap::after{content:"";position:absolute;left:0;right:0;top:0;height:62px;background-size:38px 26px,23px 17px;background-position:0 0,11px 7px;animation:spark 1.6s steps(2) infinite;mix-blend-mode:screen;opacity:.9;filter:drop-shadow(0 0 2px rgba(255,220,240,.9))}
+html.sl-spark .slimewrap::after{background-image:radial-gradient(circle,#fff 0 1.6px,transparent 2.2px),radial-gradient(circle,#ffe7a3 0 1.2px,transparent 1.8px)!important}
+@keyframes spark{50%{background-position:7px 4px,3px 12px;opacity:.55}}
+html.dr_ooze .sl-d{animation-duration:11s!important}
+html.dr_ooze .sl-d{animation-name:dripOoze}
+@keyframes dripOoze{0%,100%{transform:scaleY(.9)}55%{transform:scaleY(2.6)}}
+html.dr_ooze .fall{animation-duration:10s}
+html.dr_jelly .sl-d{animation:dripJel 1.6s cubic-bezier(.3,1.6,.5,1) infinite}
+html.dr_jelly .sl-d.d2{animation-delay:-.4s}html.dr_jelly .sl-d.d3{animation-delay:-.9s}html.dr_jelly .sl-d.d4{animation-delay:-1.2s}
+@keyframes dripJel{0%,100%{transform:scale(1,1)}30%{transform:scale(1.25,.7)}60%{transform:scale(.85,1.5)}}
+.fall.xr{display:none}
+html.dr_rain .fall.xr{display:block}
+html.dr_rain .fall{animation-duration:2.4s}
+.fall.r1{left:6%;top:70px;animation-delay:.3s}.fall.r2{left:24%;top:78px;animation-delay:1.1s}.fall.r3{left:35%;top:74px;animation-delay:1.9s}.fall.r4{left:58%;top:76px;animation-delay:.7s}.fall.r5{left:66%;top:72px;animation-delay:1.5s}.fall.r6{left:91%;top:80px;animation-delay:2.1s}
+#splash.rise{display:block;animation:riseA 2s linear forwards}
+@keyframes riseA{0%{transform:translateY(120%);animation-timing-function:cubic-bezier(.2,.9,.3,1)}20%{transform:translateY(0)}32%{transform:translateY(0);animation-timing-function:cubic-bezier(.55,.05,.9,.6)}100%{transform:translateY(135%)}}
+#splash.splt{display:block;animation:splatA 2s linear forwards}
+@keyframes splatA{0%{transform:none;clip-path:circle(0 at var(--cx) var(--cy));animation-timing-function:cubic-bezier(.2,.9,.3,1)}22%{transform:none;clip-path:circle(150% at var(--cx) var(--cy))}34%{transform:translateY(0);clip-path:circle(150% at var(--cx) var(--cy));animation-timing-function:cubic-bezier(.55,.05,.9,.6)}100%{transform:translateY(135%);clip-path:circle(150% at var(--cx) var(--cy))}}
+.rdrop{position:fixed;top:-30px;z-index:96;pointer-events:none;border-radius:50% 50% 55% 55%/62% 62% 40% 40%;background:var(--slB,#fff);box-shadow:inset -2px -3px 0 rgba(240,190,210,.8),0 2px 4px rgba(190,110,140,.25);animation:rdrop 1s cubic-bezier(.5,0,1,.7) forwards}
+@keyframes rdrop{0%{transform:translateY(0) scaleY(1)}100%{transform:translateY(calc(100vh + 60px)) scaleY(1.6)}}
+@media (prefers-reduced-motion:reduce){html.sl-spark .slimewrap::after{animation:none}.rdrop{display:none}}
+
+.card.evc{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#ffe3ee 45%,#ffe9c7 100%);box-shadow:0 0 0 4px #ffb3cf,inset 0 -10px 0 #f6c9d9,0 14px 30px rgba(207,74,120,.3)}
+.card.evc::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.75) 46%,transparent 60%);background-size:250% 100%;animation:shn 3.2s linear infinite;border-radius:inherit}
+.card.evc>*{position:relative;z-index:1}
+.evh{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.eyb{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#a02c5b}
+.evlive{display:inline-flex;align-items:center;gap:6px;background:#d6336f;color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.evlive::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:runp 1s ease-in-out infinite}
+.evi+.evi{margin-top:14px;padding-top:14px;border-top:2px dashed #f4b8cd}
+.evn{font-size:26px;font-weight:800;line-height:1.1;color:#7e1f46}
+.evi.soon .evn{font-size:20px}
+.evd{margin:4px 0 8px;font-size:16px}
+.evr{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.evr b{color:#c23d71;font-size:17px}
+.evr span{font-size:14px;color:var(--mute);font-weight:700}
+.evt{font-size:14px;color:var(--mute);margin-top:4px}
+.evt b{color:#7e1f46}
+.evi.done .evn{text-decoration:line-through;text-decoration-thickness:3px;opacity:.7}
+@media (prefers-reduced-motion:reduce){.card.evc::after{animation:none}}
+
+.crt{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.crt h2{margin:0}
+.ctank{width:100%;height:auto;display:block;margin:10px 0 6px;overflow:visible}
+.ctank .cg{fill:#f1c3d4;stroke:#e98db0;stroke-width:4}
+.ctank .cgl{fill:none;stroke:rgba(255,255,255,.95);stroke-width:5;stroke-linecap:round}
+.ctank .ctx{font:800 30px "Baloo 2",system-ui,sans-serif;fill:#7e1f46;paint-order:stroke;stroke:rgba(255,255,255,.85);stroke-width:5px}
+.ctank .cwv{animation:twv 2.4s linear infinite}
+.ctank.full{animation:tfull 2.4s ease-in-out infinite}
+.cst{margin:4px 0 10px;font-size:16px}
+.cst b{color:#a02c5b}
+.cml li{padding:6px 0}
+.csw{width:14px;height:14px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 2px #f4a2bf}
+.cc{color:#a02c5b;font-size:20px}
+.cform{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.cform input{width:100%}
+.cinv{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#fdf1f4;border-radius:24px;padding:12px 14px;margin-bottom:10px}
+.cinv span{display:block;font-size:14px;color:var(--mute)}
+#crewHome{cursor:pointer}
+.chm{display:flex;align-items:center;gap:14px}
+.chm-t{flex:1;min-width:0;display:flex;flex-direction:column}
+.chm-t b{font-size:22px;line-height:1.15;overflow-wrap:anywhere}
+.chm-t span:last-child{font-size:14px;color:var(--mute);font-weight:700}
+.chm .ctank{width:130px;flex:none;margin:0}
+.chm .ctank .ctx{font-size:34px}
+@media (prefers-reduced-motion:reduce){.ctank .cwv,.ctank.full{animation:none}}
 </style>
 </head>
 <body>
+<div id="pinLock" hidden role="dialog" aria-modal="true" aria-labelledby="pinT"><div class="pl-in">
+<div class="pl-logo">Creamer</div><div class="pl-t" id="pinT">Enter your PIN</div><div class="pl-s" id="pinS"></div>
+<div class="pl-dots" id="pinDots"><i></i><i></i><i></i><i></i></div>
+<div class="pl-pad" id="pinPad"><button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button><button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" data-k="x" class="pl-alt" id="pinCancel">Cancel</button><button type="button" data-k="0">0</button><button type="button" data-k="b" class="pl-alt" aria-label="Delete">&#9003;</button></div>
+<button type="button" class="pl-link" id="pinForgot">Forgot PIN? Log out</button>
+</div></div>
 <div id="splash" aria-hidden="true"><div class="sbody"></div><svg viewBox="0 0 400 200" preserveAspectRatio="none"><path d="M0 0H400V34C388 34 384 56 382 96C380 140 366 140 364 96C362 52 356 32 340 32C324 32 320 62 318 110C316 170 300 170 298 110C296 54 290 34 272 34C256 34 252 40 250 60C248 84 238 84 236 60C234 38 226 32 212 32C196 32 192 74 190 130C188 196 170 196 168 130C166 70 160 32 142 32C126 32 122 44 120 74C118 106 106 106 104 74C102 44 94 32 78 32C62 32 58 60 56 100C54 150 40 150 38 100C36 50 28 34 14 34C8 34 4 34 0 36Z"/></svg></div>
-<div id="goo" aria-hidden="true"><div id="tl"><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i><i class="bl b4"></i></div><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/></g><path class="sl-main" d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/><g class="sl-d d1"><path d="M298 70h0c-6 0-8 12-8 22c0 8 16 8 16 0c0-10-2-22-8-22Z"/></g><g class="sl-d d2"><path d="M179 84c-7 0-10 14-10 26c0 10 20 10 20 0c0-12-3-26-10-26Z"/></g><g class="sl-d d3"><path d="M55 66c-5 0-7 10-7 18c0 7 14 7 14 0c0-8-2-18-7-18Z"/></g><g class="sl-d d4"><path d="M373 60c-5 0-7 8-7 15c0 6 14 6 14 0c0-7-2-15-7-15Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i></div></div>
-<div id="boot" aria-hidden="true"><i class="bb bb1"></i><i class="bb bb2"></i><i class="bb bb3"></i><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/></g><path class="sl-main" d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/><g class="sl-d d1"><path d="M298 70h0c-6 0-8 12-8 22c0 8 16 8 16 0c0-10-2-22-8-22Z"/></g><g class="sl-d d2"><path d="M179 84c-7 0-10 14-10 26c0 10 20 10 20 0c0-12-3-26-10-26Z"/></g><g class="sl-d d3"><path d="M55 66c-5 0-7 10-7 18c0 7 14 7 14 0c0-8-2-18-7-18Z"/></g><g class="sl-d d4"><path d="M373 60c-5 0-7 8-7 15c0 6 14 6 14 0c0-7-2-15-7-15Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i></div><i class="ld e1"></i><i class="ld e2"></i><i class="ld e3"></i><i class="ld e4"></i><i class="ld e5"></i><i class="ld e6"></i><i class="ld e7"></i><i class="ld e8"></i><i class="ld e9"></i><svg class="bpool" viewBox="0 0 400 120" preserveAspectRatio="none"><g class="pw1"><path d="M-400 30Q-350 8 -300 30T-200 30T-100 30T0 30T100 30T200 30T300 30T400 30T500 30T600 30T700 30T800 30V120H-400Z"/></g><g class="pw2"><path d="M-400 44Q-350 26 -300 44T-200 44T-100 44T0 44T100 44T200 44T300 44T400 44T500 44T600 44T700 44T800 44V120H-400Z"/></g></svg></div>
+<div id="goo" aria-hidden="true"><div id="tl"><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i><i class="bl b4"></i></div><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="slGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c9"/><stop offset="1" stop-color="#f3d06b"/></linearGradient><linearGradient id="slGalaxy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe6ff"/><stop offset=".5" stop-color="#d4c6ff"/><stop offset="1" stop-color="#b8cdfb"/></linearGradient><linearGradient id="slRainbow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd1dc"/><stop offset=".25" stop-color="#ffe9b8"/><stop offset=".5" stop-color="#d8f5c8"/><stop offset=".75" stop-color="#cde6ff"/><stop offset="1" stop-color="#e5d4ff"/></linearGradient></defs><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/></g><path class="sl-main" d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/><g class="sl-d d1"><path d="M298 70h0c-6 0-8 12-8 22c0 8 16 8 16 0c0-10-2-22-8-22Z"/></g><g class="sl-d d2"><path d="M179 84c-7 0-10 14-10 26c0 10 20 10 20 0c0-12-3-26-10-26Z"/></g><g class="sl-d d3"><path d="M55 66c-5 0-7 10-7 18c0 7 14 7 14 0c0-8-2-18-7-18Z"/></g><g class="sl-d d4"><path d="M373 60c-5 0-7 8-7 15c0 6 14 6 14 0c0-7-2-15-7-15Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i><i class="fall xr r1"></i><i class="fall xr r2"></i><i class="fall xr r3"></i><i class="fall xr r4"></i><i class="fall xr r5"></i><i class="fall xr r6"></i></div></div>
+<div id="boot" aria-hidden="true"><i class="bb bb1"></i><i class="bb bb2"></i><i class="bb bb3"></i><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="slGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c9"/><stop offset="1" stop-color="#f3d06b"/></linearGradient><linearGradient id="slGalaxy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe6ff"/><stop offset=".5" stop-color="#d4c6ff"/><stop offset="1" stop-color="#b8cdfb"/></linearGradient><linearGradient id="slRainbow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd1dc"/><stop offset=".25" stop-color="#ffe9b8"/><stop offset=".5" stop-color="#d8f5c8"/><stop offset=".75" stop-color="#cde6ff"/><stop offset="1" stop-color="#e5d4ff"/></linearGradient></defs><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/></g><path class="sl-main" d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/><g class="sl-d d1"><path d="M298 70h0c-6 0-8 12-8 22c0 8 16 8 16 0c0-10-2-22-8-22Z"/></g><g class="sl-d d2"><path d="M179 84c-7 0-10 14-10 26c0 10 20 10 20 0c0-12-3-26-10-26Z"/></g><g class="sl-d d3"><path d="M55 66c-5 0-7 10-7 18c0 7 14 7 14 0c0-8-2-18-7-18Z"/></g><g class="sl-d d4"><path d="M373 60c-5 0-7 8-7 15c0 6 14 6 14 0c0-7-2-15-7-15Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i><i class="fall xr r1"></i><i class="fall xr r2"></i><i class="fall xr r3"></i><i class="fall xr r4"></i><i class="fall xr r5"></i><i class="fall xr r6"></i></div><i class="ld e1"></i><i class="ld e2"></i><i class="ld e3"></i><i class="ld e4"></i><i class="ld e5"></i><i class="ld e6"></i><i class="ld e7"></i><i class="ld e8"></i><i class="ld e9"></i><svg class="bpool" viewBox="0 0 400 120" preserveAspectRatio="none"><g class="pw1"><path d="M-400 30Q-350 8 -300 30T-200 30T-100 30T0 30T100 30T200 30T300 30T400 30T500 30T600 30T700 30T800 30V120H-400Z"/></g><g class="pw2"><path d="M-400 44Q-350 26 -300 44T-200 44T-100 44T0 44T100 44T200 44T300 44T400 44T500 44T600 44T700 44T800 44V120H-400Z"/></g></svg></div>
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
 <div class="card gc">
 <h2 id="gt" style="font-size:34px">18+ only</h2>
@@ -447,13 +570,24 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <div id="homeView">
 <div class="stack home">
 <section class="card hero">
+<div class="hrow"><div class="htxt">
 <div style="font-size:18px">Time since last load</div>
 <div class="big" id="hSince">–</div>
+</div>
+<div class="tank" id="tank" aria-label="Tank level"><svg viewBox="0 0 80 132" aria-hidden="true"><defs><clipPath id="tclip"><rect x="8" y="10" width="64" height="114" rx="24"/></clipPath></defs>
+<rect class="tg" x="5" y="7" width="70" height="120" rx="27"/>
+<g clip-path="url(#tclip)"><g id="tLiq" transform="translate(0,124)"><g id="tRot"><g class="twv b"><path d="M-120 2Q-110 -4 -100 2T-80 2T-60 2T-40 2T-20 2T0 2T20 2T40 2T60 2T80 2T100 2T120 2T140 2T160 2T180 2T200 2V200H-120Z"/></g><g class="twv f"><path d="M-120 0Q-105 -7 -90 0T-60 0T-30 0T0 0T30 0T60 0T90 0T120 0T150 0T180 0T210 0V200H-120Z"/></g></g></g></g>
+<path class="tm" d="M60 38h8M60 67h8M60 96h8"/><path class="tgl" d="M18 30C18 22 22 18 28 16"/>
+</svg><div class="tpc" id="tPct">100%</div><div class="tsub" id="tSub">Full</div></div>
+</div>
 <p class="sub" id="hLast"></p>
+<div id="runBox"><button type="button" class="go" id="runGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Start timer</button><div id="runOn" hidden><div class="runl">Timer running</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div>
 <div id="hStreak"></div>
 </section>
 
 <div class="eyebrow">Today</div>
+<section class="card evc" id="evCard" hidden></section>
+<section class="card soft" id="crewHome" hidden></section>
 <section class="card b" id="dchCard">
 <h2>Today's challenge</h2>
 <div id="dch"></div>
@@ -505,6 +639,7 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <p class="note" id="fMsg" role="status" style="min-height:1.4em"></p>
 <p class="note" id="fNote">Demo: the user list is three sample names with made-up loads. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
 </section>
+<section class="card crewc" id="crewCard"></section>
 <section class="card soft" id="lgCard"></section>
 <section class="card soft" id="duCard">
 <h2>Duels</h2>
@@ -571,6 +706,14 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <input type="text" id="bio" maxlength="80" placeholder="Say something" style="width:100%">
 <p class="note">Shown on your profile and to friends.</p>
 </section>
+<section class="card" id="pinCard">
+<h2>PIN lock</h2>
+<div class="kv"><span>PIN</span><b id="pinState">Off</b></div>
+<div class="row" style="flex-wrap:wrap;gap:10px;margin-top:10px"><button type="button" class="go" id="pinSet">Set a PIN</button><button type="button" id="pinOff" hidden>Remove PIN</button></div>
+<label for="pinAfter">Lock again after leaving the app for</label>
+<select id="pinAfter"><option value="0">Right away</option><option value="1">1 minute</option><option value="5">5 minutes</option><option value="15">15 minutes</option><option value="60">1 hour</option></select>
+<p class="note">The PIN is stored on this device only. If you forget it, log out from the lock screen and log back in with your password.</p>
+</section>
 <section class="card b">
 <h2>Privacy</h2>
 <div class="lab"><span>Who can see my stats</span></div>
@@ -600,6 +743,12 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <div class="lab setrow"><span id="dRelLab">Released</span></div>
 <div class="seg" id="dRel"><button type="button" data-v="1" aria-pressed="true">Yes</button><button type="button" data-v="0" aria-pressed="false">No</button></div>
 </section>
+<section class="card">
+<h2>Tank</h2>
+<label for="tankSel" style="margin-top:0">Fills up in</label>
+<select id="tankSel"><option value="3">3 hours</option><option value="6">6 hours</option><option value="12">12 hours</option><option value="24">1 day</option><option value="36">1.5 days</option><option value="48">2 days</option><option value="72">3 days</option><option value="120">5 days</option><option value="168">1 week</option><option value="336">2 weeks</option></select>
+<p class="note">The tank on Home empties when you log a load and fills back up over this time.</p>
+</section>
 <section class="card b">
 <h2>Tags</h2>
 <form id="tagForm" style="display:flex;gap:10px;margin-top:0">
@@ -612,10 +761,9 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 </section>
 <section class="card">
 <h2>Feedback</h2>
-<div class="kv"><span>Wet sounds</span><button type="button" id="tSnd" role="switch" aria-checked="true">On</button></div>
-<div class="kv"><span>Haptics</span><button type="button" id="tHap" role="switch" aria-checked="true">On</button></div>
+<div class="kv"><span>Tap sounds</span><button type="button" id="tSnd" role="switch" aria-checked="true">On</button></div>
+<div class="kv"><span>Tap vibration</span><button type="button" id="tHap" role="switch" aria-checked="true">On</button></div>
 <div class="kv"><span>Tilt motion</span><button type="button" id="tTilt" role="switch" aria-checked="false">Off</button></div>
-<div class="kv"><span>Slime wipes</span><button type="button" id="tWipe" role="switch" aria-checked="true">On</button></div>
 <div class="kv"><span>Save effect</span><button type="button" id="tFx" role="switch" aria-checked="true">On</button></div>
 <div class="kv"><span>Notifications</span><button type="button" id="tNot" role="switch" aria-checked="true">On</button></div>
 <div class="kv"><span>Pop-up messages</span><button type="button" id="tPop" role="switch" aria-checked="true">On</button></div>
@@ -635,6 +783,8 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <details><summary>What is Creamer?</summary><p>A private tracker. You log entries with a rating, a from and to time, a yes or no and optional tags. The app turns them into stats, streaks, challenges and rewards. It stores numbers and times only.</p></details>
 <details><summary>How do I add an entry?</summary><p>Tap the splash button at the bottom. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
 <details><summary>How do I remove an entry?</summary><p>On Home tap Show more, or open All entries. Tap Remove on the entry, then tap again to confirm.</p></details>
+<details><summary>What is a crew?</summary><p>A crew is you and up to 7 friends sharing one tank. Every load anyone in the crew logs this week fills it. Fill it to the goal before Monday and everyone gets 100 LDs. Crew members see how many loads each member logged this week, even if their stats are private. You can be in one crew at a time.</p></details>
+<details><summary>What are surprise events?</summary><p>Events pop up at random times and last from one hour to a whole day. When one is live it shows on Home with its rule and a countdown. Log a load that fits the rule while it is live and you get the bonus. Everyone gets the same events at the same time.</p></details>
 <details><summary>What are LoadDrops?</summary><p>LoadDrops (LDs for short) are the currency. You earn them from entries, streaks, challenges and badges. Your balance is the white drop at the top. Spend LDs in the Shop: open Rewards, then Shop.</p></details>
 <details><summary>What are XP and levels?</summary><p>XP counts every drop you have ever earned, spent or not. Levels use XP, so spending LDs never lowers your level.</p></details>
 <details><summary>Who can see my stats?</summary><p>Only you, unless you pick "My friends" under Privacy. Then your accepted friends can see your entries.</p></details>
@@ -734,7 +884,7 @@ try {
   if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
 } catch (e) { CLOUDFAIL = true; }
 var uid = '', ACC = {};
-var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, snd: true, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
+var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: true, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
 function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
 var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
 function ukey(n, u) { return 'creamer:u:' + (u || uid) + ':' + n; }
@@ -804,7 +954,7 @@ function sinceLabel(t, ago) {
 }
 function lastOf(arr) { var m = null; arr.forEach(function (x) { if (!m || x.t > m.t) m = x; }); return m; }
 function tick() {
-  checkNotifs(); if (uid) renderFriendLists(false);
+  checkNotifs(); if (uid) { renderFriendLists(false); tankShow(); evTick(); if (CLOUD && Date.now() - crewAt > 120000) crewLoad().then(renderCrew); }
   var els = document.querySelectorAll('[data-since]');
   for (var i = 0; i < els.length; i++) els[i].textContent = sinceLabel(+els[i].getAttribute('data-since'), els[i].hasAttribute('data-ago'));
 }
@@ -887,7 +1037,7 @@ function render() {
   $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
   renderSettings(); $('hBalN').textContent = totals().bal; updateBadge(); checkNotifs();
   renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
-  renderFriendLists(true);
+  renderFriendLists(true); runShow(); tankShow(); renderPin(); renderEvents(); evTick(); renderCrew();
   renderStats();
   renderFriendView();
   applyEq();
@@ -929,7 +1079,7 @@ $('tagBox').addEventListener('click', function (e) {
   var k = selTags.indexOf(t); if (k >= 0) selTags.splice(k, 1); else selTags.push(t);
   renderTagBox();
 });
-function closeM() { $('ov').hidden = true; $('add').focus(); }
+function closeM() { $('ov').hidden = true; fromRun = false; $('add').focus(); }
 
 $('add').addEventListener('click', openM);
 $('cancel').addEventListener('click', closeM);
@@ -945,9 +1095,10 @@ $('save').addEventListener('click', function () {
   var s = span(); showDur(); if (!s || s.err) return;
   var b0 = totals(), e0 = earnedSet();
   E.push({id: Date.now(), t: s.to.getTime(), from: hm(s.fr), to: hm(s.to), dur: s.dur, rate: +$('rt').value, rel: relV, tags: selTags.filter(function (t) { return (S.tags || []).indexOf(t) >= 0; })});
-  saveE(); render(); closeM();
+  saveE(); var evg = evAward(E[E.length - 1]); if (fromRun) { runSet(0); fromRun = false; } render(); closeM();
   var b1 = totals(), e1 = earnedSet(), msg = [], nb = Object.keys(e1).filter(function (k) { return !e0[k]; });
   msg.push(b1.lp > b0.lp ? '+' + (b1.lp - b0.lp) + ' LDs' : 'Daily LD limit reached');
+  if (evg) msg.push(evg);
   if (!notifOn()) {
     if (b1.L > b0.L) msg.push('Level ' + b1.L + ': ' + lvlName(b1.L));
     if (nb.length) msg.push('Badge: ' + BMAP[nb[0]].n + (nb.length > 1 ? ' +' + (nb.length - 1) : ''));
@@ -972,10 +1123,10 @@ function checkName(n) {
 }
 var auth = $('auth'), authMode = 'in', gate = $('gate'), ok = false;
 function lock() { document.body.style.overflow = (!gate.hidden || !auth.hidden || !$('settingsView').hidden || !$('wel').hidden) ? 'hidden' : ''; }
-function appShow(on) { var bt = $('boot'); if (bt) bt.hidden = true; document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
+function appShow(on) { var bt = $('boot'); if (bt) bt.hidden = true; if (on) pinBoot(); document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
 function amsg(t) { $('aMsg').textContent = t; }
 function showAuth(m) {
-  authMode = m; appShow(false);
+  authSeen = true; authMode = m; appShow(false);
   Array.prototype.forEach.call($('authTabs').children, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-m') === m ? 'true' : 'false'); });
   $('fUser').hidden = m !== 'up'; $('fConf').hidden = m !== 'up'; $('aConf').value = ''; $('aGo').textContent = m === 'up' ? 'Create account' : 'Log in';
   $('aPass').setAttribute('autocomplete', m === 'up' ? 'new-password' : 'current-password');
@@ -1003,7 +1154,7 @@ function logoutLocal() {
   try { localStorage.removeItem('creamer:tab'); localStorage.removeItem('creamer:rw'); } catch (e) {}
   clearN(); closeSet(); $('wel').hidden = true;
   try { localStorage.removeItem('creamer:session'); } catch (e) {}
-  uid = ''; CUSER = null; FR = {}; SOC = {inc: [], out: []}; SOCIAL_OK = false; synced = {}; E = []; F = []; P = Object.assign({}, DEF_P); S = Object.assign({}, DEF_S); G = newG(); openF = '';
+  uid = ''; CUSER = null; CREW = null; crewAt = 0; crewMsg = ''; FR = {}; SOC = {inc: [], out: []}; SOCIAL_OK = false; synced = {}; E = []; F = []; P = Object.assign({}, DEF_P); S = Object.assign({}, DEF_S); G = newG(); openF = '';
   applyEq(); showAuth('in'); window.scrollTo(0, 0);
 }
 $('authTabs').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('button') : null; if (b) showAuth(b.getAttribute('data-m')); });
@@ -1259,6 +1410,7 @@ async function refreshSocial() {
     var dr = await sb.rpc('my_duels'); if (dr.error) throw dr.error;
     FR = nf; F = Object.keys(nf).sort(); buildDuels(dr.data || []);
     SOCIAL_OK = true; soErr = 0;
+    await crewLoad();
   } catch (e) { if (!soErr++) toast('Could not load friends. Check your connection.'); }
 }
 function buildDuels(rows) {
@@ -1691,6 +1843,8 @@ function ctxOf(arr) {
   c.variety = c.night > 0 && c.morning > 0 && c.afternoon > 0 && c.evening > 0;
   c.wdAll = Object.keys(c.wd).length === 7; c.spec = Object.keys(c.rs).length === 10; c.avg = n ? c.sum / n : 0;
   c.fr = F.length; c.named = !!P.name; c.owned = Object.keys(G.owned).length; c.spent = G.spent;
+  c.crin = !!G.crin; c.crw = G.crw || 0;
+  var evl = G.evlog || {}, evs = {}; Object.keys(evl).forEach(function (k) { evs[evl[k].id] = 1; }); c.evd = Object.keys(evl).length; c.evk = Object.keys(evs).length; c.evGold = !!evs.gold; c.evLucky = !!evs.lucky7;
   c.chc = Object.keys(G.claimed).filter(function (k) { return k.indexOf('c:') === 0; }).length;
   c.L = lvlOf(loadPoints(arr) + G.bonus);
   var gs = G.st || {}; c.fu = gs.fu || 0; c.dw = gs.dw || 0; c.pr = gs.pr || 0; c.wr = gs.wr || 0; c.tg = (S.tags || []).length; c.tgu = Object.keys(tu).length;
@@ -1769,6 +1923,15 @@ var BADGES = [
   ['x3', 'Back to Back', 'Two entries less than 30 min apart', 30, function (c) { return c.b2b; }, 1],
   ['x4', 'Hot Week', '10 entries within 7 days', 90, function (c) { return c.hot; }, 1],
   ['x5', 'Midnight Snack', 'Start between 00:00 and 00:59', 40, function (c) { return c.snack; }, 1],
+  ['ev1', 'Party Crasher', 'Join a surprise event', 20, function (c) { return c.evd >= 1; }],
+  ['ev5', 'Event Hunter', 'Join 5 different surprise events', 80, function (c) { return c.evk >= 5; }],
+  ['ev12', 'Event Legend', 'Join 12 different surprise events', 200, function (c) { return c.evk >= 12; }],
+  ['ev30', 'Never Miss a Drop', 'Join surprise events on 30 days', 250, function (c) { return c.evd >= 30; }],
+  ['evg', 'Golden Touch', 'Catch the Golden Drip event', 100, function (c) { return c.evGold; }, 1],
+  ['evl', 'Jackpot', 'Catch Lucky Seven with a 7', 77, function (c) { return c.evLucky; }, 1],
+  ['cr0', 'Squad Up', 'Join or start a crew', 20, function (c) { return c.crin; }],
+  ['cr1', 'Crew Goals', 'Fill your crew tank before the week ends', 100, function (c) { return c.crw >= 1; }],
+  ['cr5', 'Dream Team', 'Fill your crew tank in 5 weeks', 250, function (c) { return c.crw >= 5; }],
   ['x6', 'Comeback Legend', 'Return after a break of 30+ days', 120, function (c) { return c.gap >= 30; }, 1]
 ].map(function (b) { return {id: b[0], n: b[1], d: b[2], r: b[3], f: b[4], s: !!b[5], rar: rarOf(b[3])}; });
 var BMAP = {}; BADGES.forEach(function (b) { BMAP[b.id] = b; });
@@ -1919,16 +2082,43 @@ var SHOP = [
   {id: 'fx_sprinkles', kind: 'fx', name: 'Sprinkles', cost: 200},
   {id: 'fx_bubbles', kind: 'fx', name: 'Bubble Pop', cost: 200},
   {id: 'fx_stars', kind: 'fx', name: 'Star Splash', cost: 300, lvl: 5},
+  {id: 'sl_white', kind: 'slime', name: 'Classic white', cost: 0, f: '#fff', b: '#fff', e: '#f1c4d4', c: '#ffffff'},
+  {id: 'sl_vanilla', kind: 'slime', name: 'Vanilla cream', cost: 100, f: '#fff4d6', b: '#fff4d6', e: '#eed9a8', c: '#fff4d6'},
+  {id: 'sl_straw', kind: 'slime', name: 'Strawberry milk', cost: 100, f: '#ffd3e3', b: '#ffd3e3', e: '#ef9fbd', c: '#ffd3e3'},
+  {id: 'sl_matcha', kind: 'slime', name: 'Matcha latte', cost: 150, f: '#dff3d4', b: '#dff3d4', e: '#afd69a', c: '#dff3d4'},
+  {id: 'sl_glitter', kind: 'slime', name: 'Glitter goo', cost: 250, lvl: 3, f: '#fff', b: '#fff', e: '#e7b9d6', c: '#ffffff', spark: 1},
+  {id: 'sl_gold', kind: 'slime', name: 'Liquid gold', cost: 350, lvl: 5, f: 'url(#slGold)', b: 'linear-gradient(180deg,#fff6c9,#f3d06b)', e: '#d9a93a', c: '#f6dc84', spark: 1},
+  {id: 'sl_galaxy', kind: 'slime', name: 'Galaxy goo', cost: 400, lvl: 6, f: 'url(#slGalaxy)', b: 'linear-gradient(180deg,#e6dcff,#b8cdfb)', e: '#9d8fe0', c: '#d6d0ff', spark: 1},
+  {id: 'sl_rainbow', kind: 'slime', name: 'Rainbow swirl', cost: 500, lvl: 8, f: 'url(#slRainbow)', b: 'linear-gradient(90deg,#ffd1dc,#ffe9b8,#d8f5c8,#cde6ff,#e5d4ff)', e: '#d7a9d0', c: '#ffe9f3'},
+  {id: 'dr_classic', kind: 'drip', name: 'Classic drip', cost: 0},
+  {id: 'dr_ooze', kind: 'drip', name: 'Slow ooze', cost: 120, desc: 'Longer, heavier drips that take their time.'},
+  {id: 'dr_jelly', kind: 'drip', name: 'Jelly wobble', cost: 150, desc: 'Drips bounce like jelly.'},
+  {id: 'dr_rain', kind: 'drip', name: 'Downpour', cost: 200, lvl: 3, desc: 'Lots of drops falling all the time.'},
+  {id: 'snd_classic', kind: 'snd', name: 'Squelch', cost: 0},
+  {id: 'snd_bubble', kind: 'snd', name: 'Bubbles', cost: 100},
+  {id: 'snd_pop', kind: 'snd', name: 'Pop', cost: 100},
+  {id: 'snd_jelly', kind: 'snd', name: 'Jelly', cost: 120},
+  {id: 'snd_deep', kind: 'snd', name: 'Deep goo', cost: 150, lvl: 2},
+  {id: 'po_sheet', kind: 'pour', name: 'Slime sheet', cost: 0},
+  {id: 'po_rise', kind: 'pour', name: 'Flood', cost: 150, desc: 'Slime floods up from the bottom.'},
+  {id: 'po_splat', kind: 'pour', name: 'Splat', cost: 200, desc: 'A splat bursts out of the plus button.'},
+  {id: 'po_rain', kind: 'pour', name: 'Downpour', cost: 250, lvl: 4, desc: 'A shower of drops rains down the screen.'},
   {id: 'bo_2x', kind: 'use', name: 'Double LDs, 24h', cost: 120, desc: 'Loads logged in the next 24 hours earn double.'},
   {id: 'fz', kind: 'use', name: 'Streak freeze', cost: 90, desc: 'Covers one missed day so your streak survives. Hold up to 3.'},
   {id: 'cap', kind: 'use', name: 'Mystery Capsule', cost: 60, desc: 'Random prize: LDs back, or a cosmetic you do not own yet.'}
 ];
 var SMAP = {}; SHOP.forEach(function (i) { SMAP[i.id] = i; });
+var DEFEQ = {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none', slime: 'sl_white', drip: 'dr_classic', snd: 'snd_classic', pour: 'po_sheet'};
+function eqOf(k) { var v = G.eq[k]; return SMAP[v] && SMAP[v].kind === k ? v : DEFEQ[k]; }
 function applyEq() {
   var r = document.documentElement.style, th = SMAP[G.eq.theme] || SMAP.strawberry, sp = SMAP[G.eq.splash] || SMAP['default'];
   r.setProperty('--bg', th.bg); r.setProperty('--edge', th.edge); r.setProperty('--bar', th.bar); r.setProperty('--bgink', th.ink);
   r.setProperty('--plus', sp.plus); r.setProperty('--rim', sp.rim);
   var t = SMAP[G.eq.title]; $('hTitle').textContent = t && t.cost ? t.name : '';
+  var sl = SMAP[eqOf('slime')], de = document.documentElement;
+  r.setProperty('--slF', sl.f); r.setProperty('--slB', sl.b); r.setProperty('--slE', sl.e); r.setProperty('--slC', sl.c);
+  de.classList.toggle('sl-spark', !!sl.spark);
+  ['dr_ooze', 'dr_jelly', 'dr_rain'].forEach(function (k) { de.classList.toggle(k, eqOf('drip') === k); });
 }
 function burst(kind) {
   if (!kind || kind === 'none' || !document.createElement) return;
@@ -1967,14 +2157,15 @@ function equip(id) {
   G.eq[it.kind] = id; saveG(); render();
 }
 function itemHtml(it, T) {
-  var owned = !it.cost || G.owned[it.id], on = G.eq[it.kind] === it.id, btn;
+  var owned = !it.cost || G.owned[it.id], on = DEFEQ[it.kind] ? eqOf(it.kind) === it.id : G.eq[it.kind] === it.id, btn;
   if (it.id === 'fz' && (G.fz || 0) >= 3) btn = '<button type="button" disabled>Full (3)</button>';
   else if (it.kind === 'use') btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' LDs</button>';
   else if (on) btn = '<button type="button" disabled>Equipped</button>';
   else if (owned) btn = '<button type="button" class="go" data-eq="' + it.id + '">Equip</button>';
   else if (it.lvl && T.L < it.lvl) btn = '<button type="button" disabled>Level ' + it.lvl + '</button>';
   else btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' LDs</button>';
-  var pv = it.kind === 'theme' ? '<i class="sw" style="background:' + it.bg + '"></i>' : it.kind === 'splash' ? '<i class="sw" style="background:' + it.plus + '"></i>' : '';
+  var pv = it.kind === 'theme' ? '<i class="sw" style="background:' + it.bg + '"></i>' : it.kind === 'splash' ? '<i class="sw" style="background:' + it.plus + '"></i>' : it.kind === 'slime' ? '<i class="sw slsw' + (it.spark ? ' sp' : '') + '" style="background:' + it.b + '"></i>' : '';
+  if (it.kind === 'snd' || it.kind === 'pour') btn = '<button type="button" class="x prv" data-prev="' + it.id + '">Try it</button>' + btn;
   return '<div class="it"><b>' + it.name + '</b>' + pv + (it.desc ? '<span>' + it.desc + '</span>' : '') + btn + '</div>';
 }
 function chList(data, sc, title, reset) {
@@ -2000,8 +2191,8 @@ function renderRewards() {
     var nm = on || !b.s ? b.n : '???', ds = on || !b.s ? b.d : 'Secret badge. Keep exploring.';
     return '<div class="bd' + (on ? ' on' : '') + '" data-b="' + b.id + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
   }).join('') + '</div>'));
-  var heads = {theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
-  ['theme', 'splash', 'title', 'fx', 'use'].forEach(function (k) {
+  var heads = {slime: 'Slime colour', drip: 'Drip style', pour: 'Logging splash', snd: 'Sound pack', theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
+  ['slime', 'drip', 'pour', 'snd', 'theme', 'splash', 'title', 'fx', 'use'].forEach(function (k) {
     shop += '<div class="sec">' + heads[k] + '</div><div class="shop">' + SHOP.filter(function (i) { return i.kind === k; }).map(function (i) { return itemHtml(i, T); }).join('') + '</div>';
   });
   var shopCard = card(' span2 b', 'Shop', '<div class="balbig">' + DROPSVG + '<span>' + T.bal + '</span></div><p class="sub" style="margin:0 0 4px">Your LDs. Spend them on the items below.</p>' + shop);
@@ -2017,6 +2208,7 @@ $('rw').addEventListener('click', function (e) {
   else if ((k = t.getAttribute('data-claim'))) claim(k);
   else if ((k = t.getAttribute('data-buy'))) buy(k);
   else if ((k = t.getAttribute('data-eq'))) equip(k);
+  else if ((k = t.getAttribute('data-prev'))) { var pi = SMAP[k]; if (pi.kind === 'snd') wet('big', k, true); else splash('save', k); }
 });
 
 function dailyHtml() {
@@ -2085,7 +2277,7 @@ function renderSettings() {
   renderWord(); renderTagList(); segSet('visSeg', P.pub); segSet('dRel', S.dRel); segSet('fmtSeg', S.h24 !== false);
   if (document.activeElement !== $('bio')) $('bio').value = P.bio || '';
   $('dRate').value = S.dRate; $('dRateV').textContent = S.dRate; $('dLen').value = S.dLen; $('dLenV').textContent = S.dLen + ' min';
-  [['tFx', S.fx], ['tSnd', S.snd !== false], ['tHap', S.hap !== false], ['tTilt', S.tilt === true], ['tWipe', S.wipe !== false], ['tNot', S.nt !== false], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
+  [['tFx', S.fx], ['tSnd', S.snd !== false], ['tHap', S.hap !== false], ['tTilt', S.tilt === true], ['tNot', S.nt !== false], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
 }
 
 /* Wording setting: swaps the word "load/loads" in all visible text, so the source strings stay unchanged. */
@@ -2418,7 +2610,6 @@ $('fNickSave').addEventListener('click', function () {
 $('fNick').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); $('fNickSave').click(); } });
 $('tSnd').addEventListener('click', function () { S.snd = S.snd === false; saveS(); renderSettings(); if (S.snd) wet('tap'); });
 $('tHap').addEventListener('click', function () { S.hap = S.hap === false; saveS(); renderSettings(); if (S.hap) buzz([30]); });
-$('tWipe').addEventListener('click', function () { S.wipe = S.wipe === false; saveS(); renderSettings(); });
 $('tTilt').addEventListener('click', function () { if (S.tilt === true) { S.tilt = false; saveS(); tiltOff(); renderSettings(); return; } tiltAsk(function (ok) { S.tilt = ok; saveS(); if (ok) tiltOn(); else toast('Tilt is not available or was not allowed'); renderSettings(); }); });
 $('tFx').addEventListener('click', function () { S.fx = !S.fx; saveS(); renderSettings(); });
 $('tNot').addEventListener('click', function () { S.nt = S.nt === false; saveS(); if (S.nt === false) clearN(); renderSettings(); });
@@ -2610,9 +2801,33 @@ function sloosh(a, t, f0, f1, dur, vol, q) {
   g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + dur * 0.25); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
   s.connect(f); f.connect(g); g.connect(a.destination); s.start(t); s.stop(t + dur + 0.02);
 }
-function wet(kind) {
-  if (S.snd === false) return;
-  var a = ac(); if (!a) return; var t = a.currentTime + 0.005, r = Math.random;
+function wet(kind, pk, force) {
+  if (S.snd === false && !force) return;
+  var a = ac(); if (!a) return; var t = a.currentTime + 0.005, r = Math.random, i;
+  pk = pk || eqOf('snd');
+  if (pk === 'snd_bubble') {
+    var nb = kind === 'big' ? 12 : kind === 'smear' ? 1 : 3;
+    for (i = 0; i < nb; i++) bubble(a, t + i * (kind === 'big' ? 0.06 : 0.045) + r() * 0.02, 300 + r() * 300, 800 + r() * 700, 0.07, kind === 'smear' ? 0.05 : 0.14);
+    return;
+  }
+  if (pk === 'snd_pop') {
+    var np = kind === 'big' ? 6 : 1;
+    for (i = 0; i < np; i++) { bubble(a, t + i * 0.09, 500 + r() * 200, 1500 + r() * 600, 0.045, kind === 'smear' ? 0.04 : 0.22); sloosh(a, t + i * 0.09, 3000, 1500, 0.03, 0.05, 1); }
+    return;
+  }
+  if (pk === 'snd_jelly') {
+    var o = a.createOscillator(), g = a.createGain(), lf = a.createOscillator(), lg = a.createGain(), d = kind === 'big' ? 0.9 : kind === 'smear' ? 0.15 : 0.3;
+    o.type = 'sine'; o.frequency.setValueAtTime(kind === 'big' ? 110 : 160, t); o.frequency.exponentialRampToValueAtTime(kind === 'big' ? 70 : 120, t + d);
+    lf.frequency.value = kind === 'big' ? 9 : 14; lg.gain.value = 30; lf.connect(lg); lg.connect(o.frequency);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(kind === 'smear' ? 0.06 : 0.24, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+    o.connect(g); g.connect(a.destination); o.start(t); lf.start(t); o.stop(t + d + 0.02); lf.stop(t + d + 0.02);
+    return;
+  }
+  if (pk === 'snd_deep') {
+    if (kind === 'big') { sloosh(a, t, 600, 90, 0.8, 0.35, 1.5); for (i = 0; i < 4; i++) bubble(a, t + 0.1 + i * 0.12, 55 + r() * 20, 120 + r() * 40, 0.2, 0.25); }
+    else { bubble(a, t, 60 + r() * 20, 130 + r() * 30, kind === 'smear' ? 0.08 : 0.16, kind === 'smear' ? 0.08 : 0.28); sloosh(a, t, 400, 150, 0.12, 0.08, 1.5); }
+    return;
+  }
   if (kind === 'tap') { bubble(a, t, 150 + r() * 70, 360 + r() * 140, 0.11, 0.2); sloosh(a, t, 900, 2600, 0.07, 0.07, 2); }
   else if (kind === 'big') {
     sloosh(a, t, 2200, 320, 0.5, 0.3, 2.5);
@@ -2646,16 +2861,25 @@ document.addEventListener('click', function (e) {
   wet('tap'); buzz([14]);
 }, true);
 var spT = 0;
-function splash(kind) {
+function splash(kind, style) {
   if (REDUCE) return; var el = $('splash'); if (!el) return;
-  el.className = ''; void el.offsetWidth; el.className = kind === 'wipe' ? 'wp' : 'on';
+  style = style || eqOf('pour');
+  if (kind === 'save' && style === 'po_rain') { rainDrops(); return; }
+  if (kind === 'save' && style === 'po_splat') { var ab = $('add').getBoundingClientRect(); el.style.setProperty('--cx', (ab.left + ab.width / 2) + 'px'); el.style.setProperty('--cy', (ab.top + ab.height / 2) + 'px'); }
+  el.className = ''; void el.offsetWidth; el.className = kind === 'wipe' ? 'wp' : style === 'po_rise' ? 'rise' : style === 'po_splat' ? 'splt' : 'on';
   clearTimeout(spT); spT = setTimeout(function () { el.className = ''; }, kind === 'wipe' ? 850 : 2050);
+}
+function rainDrops() {
+  for (var i = 0; i < 46; i++) {
+    var d = document.createElement('i'); d.className = 'rdrop';
+    var w = 8 + Math.random() * 12;
+    d.style.cssText = 'left:' + (Math.random() * 100) + 'vw;width:' + w + 'px;height:' + (w * 1.4) + 'px;animation-delay:' + (Math.random() * 0.9).toFixed(2) + 's;animation-duration:' + (0.8 + Math.random() * 0.7).toFixed(2) + 's';
+    document.body.appendChild(d); (function (q) { setTimeout(function () { q.remove(); }, 2600); })(d);
+  }
 }
 function tabW(v) {
   var cur = ['home', 'entries', 'stats', 'friends', 'rewards', 'profile'].filter(function (k) { return !$(k + 'View').hidden; })[0];
-  if (REDUCE || S.wipe === false || cur === v || (cur === 'entries' && v === 'home')) { tab(v); return; }
-  splash('wipe'); wet('wipe'); buzz([18, 30, 18]);
-  setTimeout(function () { tab(v); }, 230);
+  tab(v);
 }
 (function () {
   if (REDUCE) return;
@@ -2674,7 +2898,7 @@ function tabW(v) {
   }
   function loop(now) {
     cx.setTransform(dpr, 0, 0, dpr, 0, 0); cx.clearRect(0, 0, innerWidth, innerHeight);
-    var gx = (window.TILTX || 0) * 0.5;
+    var gx = (window.TILTX || 0) * 0.5, slC = (getComputedStyle(document.documentElement).getPropertyValue('--slC') || '#fff').trim() || '#fff';
     for (var i = P.length - 1; i >= 0; i--) {
       var q = P[i], age = (now - q.t) / 1000;
       if (age > 4.2) { P.splice(i, 1); continue; }
@@ -2682,7 +2906,7 @@ function tabW(v) {
       var fade = age > 3 ? 1 - (age - 3) / 1.2 : 1, st = Math.min(age * 7, 22), r = q.r * (1 - age * 0.05);
       cx.globalAlpha = fade * 0.92;
       cx.fillStyle = 'rgba(236,150,185,.55)'; cx.beginPath(); cx.ellipse(q.x, q.y + 2, r + 1.5, r + st + 2, 0, 0, 6.3); cx.fill();
-      cx.fillStyle = '#fff'; cx.beginPath(); cx.ellipse(q.x, q.y, r, r + st, 0, 0, 6.3); cx.fill();
+      cx.fillStyle = slC; cx.beginPath(); cx.ellipse(q.x, q.y, r, r + st, 0, 0, 6.3); cx.fill();
       cx.globalAlpha = fade; cx.beginPath(); cx.ellipse(q.x - r * 0.3, q.y - r * 0.35, r * 0.28, r * 0.2, 0, 0, 6.3); cx.fill();
     }
     if (P.length) requestAnimationFrame(loop); else { run = false; cx.clearRect(0, 0, innerWidth, innerHeight); }
@@ -2706,6 +2930,7 @@ function tiltLoop() {
   cgx += (tgx - cgx) * 0.08; cgy += (tgy - cgy) * 0.08; window.TILTX = cgx / 12;
   var t = $('tl'), sw = document.querySelector('.slimewrap');
   if (t) { t.style.setProperty('--tx', (cgx * 3).toFixed(1) + 'px'); t.style.setProperty('--ty', (cgy * 2).toFixed(1) + 'px'); }
+  var tr = $('tRot'); if (tr) tr.setAttribute('transform', 'rotate(' + (-cgx * 0.7).toFixed(2) + ' 40 0)');
   if (sw) { sw.style.setProperty('--sk', (-cgx * 0.55).toFixed(2) + 'deg'); sw.style.setProperty('--sy', (1 + Math.max(-0.2, Math.min(0.7, cgy / 40))).toFixed(2)); }
   tAnim = requestAnimationFrame(tiltLoop);
 }
@@ -2729,6 +2954,338 @@ function tiltResume() {
   document.addEventListener('click', function f() { document.removeEventListener('click', f, true); tiltAsk(function (ok) { tiltWait = false; if (ok) tiltOn(); }); }, true);
 }
 (function () { var rs = renderSettings; renderSettings = function () { rs.apply(this, arguments); tiltResume(); }; })();
+
+/* ===== start / stop timer ===== */
+var fromRun = fromRun || false, runIv = runIv || 0;
+function runGet() { try { return +localStorage.getItem(ukey('run')) || 0; } catch (e) { return 0; } }
+function runSet(t) { try { if (t) localStorage.setItem(ukey('run'), String(t)); else localStorage.removeItem(ukey('run')); } catch (e) {} runShow(); }
+function runFmt(ms) { var s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s / 60) % 60, x = s % 60; return (h ? h + ':' + pad(m) : m) + ':' + pad(x); }
+function runShow() {
+  var t = uid ? runGet() : 0;
+  $('runGo').hidden = !!t; $('runOn').hidden = !t;
+  clearInterval(runIv); runIv = 0;
+  if (t) { var up = function () { $('runT').textContent = runFmt(Date.now() - t); }; up(); runIv = setInterval(up, 1000); }
+}
+$('runGo').addEventListener('click', function () { runSet(Date.now()); toast('Timer started'); });
+$('runX').addEventListener('click', function () { runSet(0); toast('Timer cancelled'); });
+$('runStop').addEventListener('click', function () {
+  var t = runGet(); if (!t) return;
+  var a = new Date(t), b = new Date();
+  if (b - a < 60000) a = new Date(b - 60000);
+  openM(); fromRun = true;
+  $('tf').value = hm(a); $('tt').value = hm(b); $('td').value = ymd(a); showDur();
+});
+
+/* ===== tank ===== */
+function tankHrs() { var h = +S.tank; return h > 0 ? h : 24; }
+function tankShow() {
+  if (!uid) return;
+  var l = lastOf(E), ms = tankHrs() * 3600000, el = l ? Date.now() - l.t : ms, lv = Math.max(0, Math.min(1, el / ms));
+  $('tLiq').setAttribute('transform', 'translate(0,' + (124 - lv * 114).toFixed(1) + ')');
+  $('tPct').textContent = Math.floor(lv * 100) + '%';
+  $('tSub').textContent = lv >= 1 ? 'Full' : 'Full in ' + fmtGap(ms - el);
+  $('tank').classList.toggle('full', lv >= 1);
+  $('tank').setAttribute('aria-label', 'Tank ' + Math.floor(lv * 100) + ' percent full');
+  var sel = $('tankSel'); if (document.activeElement !== sel) sel.value = String(tankHrs());
+}
+$('tankSel').addEventListener('change', function () { S.tank = +$('tankSel').value; saveS(); tankShow(); });
+
+/* ===== PIN lock ===== */
+var authSeen = authSeen || false, pinBooted = pinBooted || false, pinMode = pinMode || '', pinBuf = pinBuf || '', pinFirst = pinFirst || '', pinFails = pinFails || 0, pinWaitTo = pinWaitTo || 0, pinHid = pinHid || 0, pinNext = pinNext || null;
+function pinHash(pin, salt) { var h = 2166136261 >>> 0, str = salt + ':' + pin, r; for (r = 0; r < 5000; r++) for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i) + r; h = Math.imul(h, 16777619) >>> 0; } return h.toString(16); }
+function pinGet() { try { return JSON.parse(localStorage.getItem(ukey('pin')) || 'null'); } catch (e) { return null; } }
+function pinPut(o) { try { if (o) localStorage.setItem(ukey('pin'), JSON.stringify(o)); else localStorage.removeItem(ukey('pin')); } catch (e) {} }
+function pinOn() { return !!(uid && pinGet()); }
+function pinDots(bad) {
+  Array.prototype.forEach.call($('pinDots').children, function (d, i) { d.className = i < pinBuf.length ? 'on' : ''; });
+  if (bad) { var el = $('pinDots'); el.classList.remove('bad'); void el.offsetWidth; el.classList.add('bad'); }
+}
+function pinOpen(mode, next) {
+  pinMode = mode; pinBuf = ''; pinFirst = ''; pinNext = next || null;
+  $('pinT').textContent = mode === 'set' ? 'Choose a 4-digit PIN' : 'Enter your PIN';
+  $('pinS').textContent = mode === 'verify' ? 'Confirm it is you.' : '';
+  $('pinCancel').style.visibility = mode === 'unlock' ? 'hidden' : 'visible';
+  $('pinForgot').hidden = mode !== 'unlock';
+  pinDots(); $('pinLock').hidden = false; document.body.style.overflow = 'hidden';
+}
+function pinClose() { $('pinLock').hidden = true; pinMode = ''; pinBuf = ''; lock(); }
+function pinLockNow() { if (pinOn() && $('pinLock').hidden) { closeSet(); pinOpen('unlock'); } }
+function pinBoot() { if (pinBooted) return; pinBooted = true; if (!authSeen) pinLockNow(); }
+function pinEnter() {
+  var o = pinGet();
+  if (pinMode === 'set') {
+    if (!pinFirst) { pinFirst = pinBuf; pinBuf = ''; $('pinT').textContent = 'Type it again'; pinDots(); return; }
+    if (pinBuf !== pinFirst) { pinFirst = ''; pinBuf = ''; $('pinT').textContent = 'They did not match. Choose a PIN'; pinDots(true); buzz([60, 40, 60]); return; }
+    var salt = Math.random().toString(36).slice(2, 10);
+    pinPut({s: salt, h: pinHash(pinBuf, salt), a: o ? o.a : 1}); pinClose(); renderPin(); toast('PIN set'); return;
+  }
+  if (Date.now() < pinWaitTo) { pinBuf = ''; pinDots(true); return; }
+  if (o && pinHash(pinBuf, o.s) === o.h) {
+    pinFails = 0; var nx = pinNext; pinClose(); if (nx) nx(); return;
+  }
+  pinFails++; pinBuf = ''; pinDots(true); buzz([60, 40, 60]);
+  if (pinFails >= 5) { pinWaitTo = Date.now() + 30000; pinFails = 0; $('pinS').textContent = 'Too many tries. Wait 30 seconds.'; setTimeout(function () { if (!$('pinLock').hidden) $('pinS').textContent = ''; }, 30000); }
+  else $('pinS').textContent = 'Wrong PIN.';
+}
+$('pinPad').addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('button'); if (!b) return;
+  var k = b.getAttribute('data-k');
+  if (k === 'x') { pinClose(); return; }
+  if (k === 'b') { pinBuf = pinBuf.slice(0, -1); pinDots(); return; }
+  if (pinBuf.length >= 4) return;
+  pinBuf += k; pinDots();
+  if (pinBuf.length === 4) setTimeout(pinEnter, 120);
+});
+document.addEventListener('keydown', function (e) {
+  if ($('pinLock').hidden) return;
+  if (/^[0-9]$/.test(e.key) && pinBuf.length < 4) { pinBuf += e.key; pinDots(); if (pinBuf.length === 4) setTimeout(pinEnter, 120); }
+  else if (e.key === 'Backspace') { pinBuf = pinBuf.slice(0, -1); pinDots(); }
+});
+$('pinForgot').addEventListener('click', function () { pinPut(null); pinClose(); logout(); });
+function renderPin() {
+  var o = uid ? pinGet() : null;
+  $('pinState').textContent = o ? 'On' : 'Off'; $('pinSet').textContent = o ? 'Change PIN' : 'Set a PIN'; $('pinOff').hidden = !o;
+  $('pinAfter').value = String(o ? o.a : 1); $('pinAfter').disabled = !o;
+}
+$('pinSet').addEventListener('click', function () { if (pinGet()) pinOpen('verify', function () { pinOpen('set'); }); else pinOpen('set'); });
+$('pinOff').addEventListener('click', function () { pinOpen('verify', function () { pinPut(null); renderPin(); toast('PIN removed'); }); });
+$('pinAfter').addEventListener('change', function () { var o = pinGet(); if (!o) return; o.a = +$('pinAfter').value; pinPut(o); });
+document.addEventListener('visibilitychange', function () {
+  if (!pinOn()) return;
+  var o = pinGet();
+  if (document.hidden) { pinHid = Date.now(); if (!o.a) pinLockNow(); }
+  else if (pinHid && Date.now() - pinHid >= o.a * 60000) pinLockNow();
+});
+(function () { var rs = renderSettings; renderSettings = function () { rs.apply(this, arguments); renderPin(); }; })();
+
+/* ===== surprise events ===== */
+function hm2(x) { return x.from.split(':').map(Number); }
+var EVENTS = [
+  {id: 'rush', n: 'Slime Rush', d: 'Every load pays extra.', r: 25, max: 2, w: 3},
+  {id: 'happy', n: 'Happy Hour', d: 'One load, big bonus. Be quick.', r: 45, max: 1, w: 1},
+  {id: 'perfect', n: 'Perfect Pour', d: 'Rate a load 8 or higher.', r: 40, max: 2, w: 'day', c: function (x) { return x.rate >= 8; }},
+  {id: 'slow', n: 'Slow Drip', d: 'A load of 20 minutes or more.', r: 45, max: 1, w: 'day', c: function (x) { return x.dur >= 20; }},
+  {id: 'quick', n: 'Quick Splash', d: 'A load under 6 minutes.', r: 30, max: 2, w: 4, c: function (x) { return x.dur < 6; }},
+  {id: 'midnight', n: 'Midnight Ooze', d: 'Late loads only.', r: 50, max: 1, w: [21, 24]},
+  {id: 'dew', n: 'Morning Dew', d: 'Start the day wet.', r: 35, max: 1, w: [6, 11]},
+  {id: 'lunch', n: 'Lunch Break', d: 'A midday load pays extra.', r: 35, max: 1, w: [12, 14]},
+  {id: 'afterwork', n: 'After Work', d: 'Unwind and get paid for it.', r: 35, max: 1, w: [17, 20]},
+  {id: 'release', n: 'Full Release', d: 'A load that ends in a release.', r: 30, max: 2, w: 'day', c: function (x) { return x.rel; }},
+  {id: 'hold', n: 'Hold It', d: 'A load with no release.', r: 40, max: 1, w: 'day', c: function (x) { return !x.rel; }},
+  {id: 'lucky7', n: 'Lucky Seven', d: 'Rate a load exactly 7.', r: 77, max: 1, w: 'day', c: function (x) { return x.rate === 7; }},
+  {id: 'ten', n: 'Ten Out of Ten', d: 'A load you rate 10.', r: 100, max: 1, w: 'day', wt: 0.6, c: function (x) { return x.rate === 10; }},
+  {id: 'double', n: 'Double Trouble', d: 'Your second load of the day pays big.', r: 60, max: 1, w: 'day', c: function (x) { var k = dstart(x.t); return E.filter(function (e) { return dstart(e.t) === k; }).length >= 2; }},
+  {id: 'storm', n: 'Cream Storm', d: 'Small bonus on every load, up to 5.', r: 15, max: 5, w: 6},
+  {id: 'gold', n: 'Golden Drip', d: 'Rare. One load, huge bonus.', r: 120, max: 1, w: 2, wt: 0.35},
+  {id: 'haul', n: 'Long Haul', d: 'A load of 30 minutes or more.', r: 80, max: 1, w: 'day', wt: 0.6, c: function (x) { return x.dur >= 30; }},
+  {id: 'tag', n: 'Tag Team', d: 'Log a load with at least one tag.', r: 25, max: 2, w: 'day', c: function (x) { return (x.tags || []).length > 0; }},
+  {id: 'round', n: 'Round Number', d: 'A load lasting a multiple of 5 minutes.', r: 25, max: 2, w: 4, c: function (x) { return x.dur % 5 === 0; }},
+  {id: 'weekend', n: 'Weekend Flood', d: 'Every weekend load pays extra.', r: 30, max: 3, w: 'day', wk: 1},
+  {id: 'pal', n: 'Mirror Mirror', d: 'End a load at a mirror time like 12:21.', r: 111, max: 1, w: 'day', wt: 0.5, c: function (x) { var g = x.to.replace(':', ''); return g.charAt(0) === g.charAt(3) && g.charAt(1) === g.charAt(2); }},
+  {id: 'mystery', n: 'Mystery Goo', d: 'Each load pays a random 10 to 150.', r: 0, max: 2, w: 3},
+  {id: 'freeze', n: 'Ice Cream Social', d: 'A load earns a free streak freeze.', r: 0, max: 1, w: 'day', wt: 0.7},
+  {id: 'mid', n: 'Middle Ground', d: 'Rate a load 4, 5 or 6.', r: 30, max: 2, w: 'day', c: function (x) { return x.rate >= 4 && x.rate <= 6; }},
+  {id: 'early', n: 'Early Bird Squirt', d: 'A load that starts before 8:00.', r: 40, max: 1, w: [4, 8]},
+  {id: 'sync', n: 'Synchro Splash', d: 'Load at the top of the hour, ending at :00.', r: 60, max: 1, w: 'day', wt: 0.6, c: function (x) { return /:00$/.test(x.to); }}
+];
+var EVM = {}; EVENTS.forEach(function (e) { EVM[e.id] = e; });
+function evRng(seed) { var h = 1779033703 ^ seed.length; for (var i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; } return function () { h = Math.imul(h ^ h >>> 16, 2246822507); h = Math.imul(h ^ h >>> 13, 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; }; }
+function evDay(t) {
+  var d = new Date(t); d.setHours(0, 0, 0, 0);
+  var key = ymd(d), rnd = evRng('creamer-ev-v1:' + key), out = [], wkd = d.getDay() === 0 || d.getDay() === 6, roll = rnd();
+  var cnt = roll < 0.35 ? 0 : roll < 0.8 ? 1 : 2, used = {};
+  for (var k = 0; k < cnt; k++) {
+    var pool = EVENTS.filter(function (e) { return !used[e.id] && (!e.wk || wkd); }), tw = pool.reduce(function (a, e) { return a + (e.wt || 1); }, 0), x = rnd() * tw, pick = pool[0];
+    for (var i = 0; i < pool.length; i++) { x -= pool[i].wt || 1; if (x <= 0) { pick = pool[i]; break; } }
+    used[pick.id] = 1;
+    var a, b;
+    if (pick.w === 'day') { a = 0; b = 24; }
+    else if (typeof pick.w === 'number') { a = 8 + Math.floor(rnd() * (23 - 8 - pick.w + 1)); b = a + pick.w; }
+    else { a = pick.w[0]; b = pick.w[1]; }
+    var s0 = new Date(d); s0.setHours(a); var s1 = new Date(d); s1.setHours(b);
+    if (k === 1 && pick.w === 'day' && out[0] && out[0].ev.w === 'day') continue;
+    out.push({ev: pick, key: key + ':' + pick.id, a: s0.getTime(), b: s1.getTime()});
+  }
+  return out;
+}
+function evNow(t) { t = t || Date.now(); return evDay(t).filter(function (o) { return t >= o.a && t < o.b; }); }
+function evLater(t) { t = t || Date.now(); return evDay(t).filter(function (o) { return o.a > t; }); }
+function evUsed(key) { return ((G.evlog || {})[key] || {}).n || 0; }
+function evAward(x) {
+  if (!x) return '';
+  var now = Date.now(), out = [];
+  evNow(now).forEach(function (o) {
+    var e = o.ev;
+    if (x.t < o.a || x.t > Math.min(o.b, now + 60000)) return;
+    if (evUsed(o.key) >= e.max) return;
+    if (e.c && !e.c(x)) return;
+    G.evlog = G.evlog || {};
+    var rec = G.evlog[o.key] || (G.evlog[o.key] = {id: e.id, n: 0, got: 0});
+    var gain = e.r;
+    if (e.id === 'mystery') gain = 10 + Math.floor(evRng('m' + x.id)() * 141);
+    if (e.id === 'freeze') { if ((G.fz || 0) < 3) { G.fz = (G.fz || 0) + 1; gain = 0; out.push(e.n + ': free streak freeze'); } else gain = 40; }
+    rec.n++; rec.got += gain;
+    if (gain) { G.bonus += gain; out.push(e.n + ' +' + gain + ' LDs'); }
+  });
+  if (out.length) { saveG(); }
+  return out.join(' · ');
+}
+function evRule(e) {
+  return e.id === 'mystery' ? 'Random 10–150 LDs per load, up to ' + e.max :
+    e.id === 'freeze' ? 'A free streak freeze for one load' :
+    '+' + e.r + ' LDs' + (e.max > 1 ? ' per load, up to ' + e.max : ' for one load');
+}
+function renderEvents() {
+  if (!uid) return;
+  var now = Date.now(), act = evNow(now), later = evLater(now), el = $('evCard');
+  if (!act.length && !later.length) { el.hidden = true; return; }
+  el.hidden = false;
+  var h = '';
+  if (act.length) {
+    h += '<div class="evh"><span class="evlive">Live</span><span class="eyb">Surprise event' + (act.length > 1 ? 's' : '') + '</span></div>';
+    h += act.map(function (o) {
+      var e = o.ev, u = evUsed(o.key), done = u >= e.max;
+      return '<div class="evi' + (done ? ' done' : '') + '"><div class="evn">' + e.n + '</div><p class="evd">' + e.d + '</p>' +
+        '<div class="evr"><b>' + evRule(e) + '</b>' + (e.max > 1 || done ? '<span>' + Math.min(u, e.max) + ' of ' + e.max + (done ? ', all caught' : '') + '</span>' : '') + '</div>' +
+        '<div class="evt">' + (o.b - o.a >= 86400000 ? 'All day, ends' : 'Ends') + ' in <b data-evend="' + o.b + '">' + fmtGap(o.b - now) + '</b></div></div>';
+    }).join('');
+  } else {
+    h += '<div class="evh"><span class="eyb">Something is brewing</span></div><div class="evi soon"><div class="evn">A surprise event is coming later today</div><p class="evd">Keep an eye on Home. It shows up here when it goes live.</p></div>';
+  }
+  el.innerHTML = h;
+}
+function evTick() {
+  if (!uid) return;
+  var now = Date.now(), act = evNow(now), key = act.map(function (o) { return o.key; }).join(',');
+  if (key !== (evTick.k || '')) { evTick.k = key; renderEvents(); }
+  else Array.prototype.forEach.call(document.querySelectorAll('[data-evend]'), function (b) { b.textContent = fmtGap(+b.getAttribute('data-evend') - now); });
+  G.evseen = G.evseen || {};
+  act.forEach(function (o) {
+    if (G.evseen[o.key]) return;
+    G.evseen[o.key] = 1; var ks = Object.keys(G.evseen); if (ks.length > 40) delete G.evseen[ks[0]]; saveG();
+    notify({id: 'ev:' + o.key, title: 'Surprise event: ' + o.ev.n, text: o.ev.d + ' ' + evRule(o.ev) + '.', go: function () { goTab('home'); }});
+  });
+}
+
+/* ===== crew tank ===== */
+var CREW = CREW || null, crewAt = crewAt || 0, crewMsg = crewMsg || '';
+var CREWC = ['#ffffff', '#ffb3cf', '#ffe08a', '#b9e6a5', '#a9cdfb', '#cdb6ff', '#ffc29e', '#9fe0e6'];
+function crewWeek() { return winOf('w'); }
+function crewDemoGet() { try { return JSON.parse(localStorage.getItem(ukey('crew')) || 'null'); } catch (e) { return null; } }
+function crewDemoPut(o) { try { if (o) localStorage.setItem(ukey('crew'), JSON.stringify(o)); else localStorage.removeItem(ukey('crew')); } catch (e) {} }
+function myWeekCount() { var a = crewWeek().a; return E.filter(function (x) { return x.t >= a; }).length; }
+async function crewLoad() {
+  if (!uid) return;
+  crewAt = Date.now();
+  var a = crewWeek().a;
+  if (!CLOUD) {
+    var d = crewDemoGet();
+    if (!d) { CREW = {ok: true, inv: []}; return; }
+    CREW = {ok: true, inv: [], id: 1, name: d.name, goal: d.goal, mine: true, members: [{n: P.name || 'you', me: true, st: 'in', c: 0}].concat(d.members.filter(function (n) { return F.indexOf(n) >= 0; }).map(function (n) {
+      var u = api.find(n); return {n: n, me: false, st: 'in', c: u ? u.entries.filter(function (x) { return x.t >= a; }).length : 0};
+    }))};
+    return;
+  }
+  try {
+    var r = await sb.rpc('my_crew', {p_since: new Date(a).toISOString()}); if (r.error) throw r.error;
+    var iv = await sb.rpc('my_crew_invites'); if (iv.error) throw iv.error;
+    var rows = r.data || [], c = {ok: true, inv: (iv.data || []).map(function (x) { return {id: x.crew_id, name: x.name, from: x.from_name, cnt: x.members}; })};
+    if (rows.length) { c.id = rows[0].crew_id; c.name = rows[0].name; c.goal = rows[0].goal; c.mine = rows[0].owner_me; c.members = rows.map(function (x) { return {n: x.username, me: x.is_me, st: x.status, c: x.cnt}; }); }
+    CREW = c;
+  } catch (e) { CREW = {ok: false, inv: []}; }
+}
+function crewMembersIn() { return CREW && CREW.members ? CREW.members.filter(function (m) { return m.st === 'in'; }) : []; }
+function crewTotal() { return crewMembersIn().reduce(function (s, m) { return s + (m.me ? myWeekCount() : m.c); }, 0); }
+function crewCheck() {
+  if (!CREW || !CREW.members) return;
+  G.crin = 1;
+  var w = crewWeek(), key = 'w' + w.a, tot = crewTotal();
+  G.crwk = G.crwk || {};
+  if (tot >= CREW.goal && !G.crwk[key]) {
+    G.crwk[key] = 1; G.crw = (G.crw || 0) + 1; G.bonus += 100; saveG();
+    notify({id: 'crew:' + key, title: 'Crew tank is full!', text: CREW.name + ' hit ' + CREW.goal + ' loads this week. +100 LDs for you.', go: function () { goTab('friends'); }});
+    toast('Crew tank full: +100 LDs'); splash('save'); wet('big'); buzz([30, 40, 30, 40, 80]);
+    return true;
+  }
+}
+function crewSvg(big) {
+  var ms = crewMembersIn(), goal = CREW.goal, H = 130, top = 140, y = top, per = H / goal, out = '', topCol = '#fff', tot = 0;
+  ms.forEach(function (m, i) {
+    var c = m.me ? myWeekCount() : m.c; if (!c) return;
+    var h = Math.min(c * per, Math.max(0, y - 10)); if (h <= 0) return;
+    y -= h; tot += c; topCol = CREWC[i % CREWC.length];
+    out += '<rect x="0" y="' + y.toFixed(1) + '" width="240" height="' + (h + 1).toFixed(1) + '" fill="' + topCol + '"/><path d="M0 ' + y.toFixed(1) + 'H240" stroke="rgba(120,40,70,.12)" stroke-width="1.5"/>';
+  });
+  var wave = tot && y > 10 ? '<g transform="translate(0,' + y.toFixed(1) + ')"><g class="cwv"><path fill="' + topCol + '" d="M-60 1Q-45 -6 -30 1T0 1T30 1T60 1T90 1T120 1T150 1T180 1T210 1T240 1T270 1T300 1V4H-60Z"/></g></g>' : '';
+  return '<svg class="ctank' + (tot >= goal ? ' full' : '') + '" viewBox="0 0 240 150" aria-hidden="true"><defs><clipPath id="cclip' + (big ? 'b' : 's') + '"><rect x="10" y="10" width="220" height="130" rx="30"/></clipPath></defs>' +
+    '<rect class="cg" x="6" y="6" width="228" height="138" rx="34"/><g clip-path="url(#cclip' + (big ? 'b' : 's') + ')">' + out + wave + '</g>' +
+    '<path class="cgl" d="M26 40C26 28 32 22 42 20"/><text x="120" y="88" text-anchor="middle" class="ctx">' + tot + ' / ' + goal + '</text></svg>';
+}
+function renderCrew() {
+  if (!uid) return;
+  var el = $('crewCard'), hm0 = $('crewHome');
+  if (!CREW) { el.innerHTML = '<h2>Crew tank</h2><p class="sub">Loading…</p>'; hm0.hidden = true; if (!crewAt) crewLoad().then(renderCrew); return; }
+  if (!CREW.ok) { el.innerHTML = '<h2>Crew tank</h2><p class="sub">Crews are not available right now.</p>'; hm0.hidden = true; return; }
+  crewCheck();
+  var w = crewWeek(), left = fmtGap(w.b - Date.now()), h = '<h2>Crew tank</h2>';
+  if (CREW.inv && CREW.inv.length && !CREW.members) h += CREW.inv.map(function (x) {
+    return '<div class="cinv"><div><b>' + esc(x.name) + '</b><span>' + (x.from ? esc(fn(x.from)) + ' invited you' : 'You are invited') + ', ' + x.cnt + (x.cnt === 1 ? ' member' : ' members') + '</span></div><div class="row"><button type="button" class="go x" data-cra="' + x.id + '">Join</button><button type="button" class="x" data-crd="' + x.id + '">Decline</button></div></div>';
+  }).join('');
+  if (!CREW.members) {
+    h += '<p class="sub">Team up with up to 7 friends. Every load anyone logs fills one shared tank. Fill it before Monday and everyone gets 100 LDs.</p>' +
+      '<div class="cform"><input type="text" id="crName" maxlength="30" placeholder="Crew name" aria-label="Crew name"><select id="crGoal" aria-label="Weekly goal"><option value="10">Goal: 10 loads a week</option><option value="15" selected>Goal: 15 loads a week</option><option value="20">Goal: 20 loads a week</option><option value="30">Goal: 30 loads a week</option><option value="50">Goal: 50 loads a week</option></select><button type="button" class="go" id="crMake">Start a crew</button></div>';
+    hm0.hidden = true;
+  } else {
+    var tot = crewTotal(), ms = CREW.members, full = tot >= CREW.goal;
+    h = '<div class="crt"><h2>' + esc(CREW.name) + '</h2><span class="eyb">Crew tank</span></div>' + crewSvg(true) +
+      '<p class="cst">' + (full ? '<b>Full!</b> Everyone gets 100 LDs this week.' : '<b>' + (CREW.goal - tot) + ' more</b> to fill it. Empties in ' + left + '.') + '</p><ul class="cml">' +
+      ms.map(function (m, i) {
+        var c = m.me ? myWeekCount() : m.c, idx = crewMembersIn().indexOf(m);
+        return '<li><span class="nm"><i class="csw" style="background:' + (m.st === 'in' ? CREWC[idx % CREWC.length] : 'transparent') + '"></i>' + avatar(m.n, true) + '<b>' + (m.me ? 'You' : fnH(m.n)) + '</b></span>' + (m.st === 'in' ? '<b class="cc">' + c + '</b>' : '<span class="empty">invited</span>') + '</li>';
+      }).join('') + '</ul>';
+    var cand = F.filter(function (f) { return !ms.some(function (m) { return m.n === f; }); });
+    if (ms.length < 8) h += '<div class="sec">Invite a friend</div>' + (cand.length ? '<div class="cform"><select id="crInv" aria-label="Friend to invite">' + cand.map(function (f) { return '<option value="' + esc(f) + '">' + esc(fn(f)) + '</option>'; }).join('') + '</select><button type="button" class="go" id="crInvGo">Invite</button></div>' : '<p class="sub">' + (F.length ? 'All your friends are in the crew or invited.' : 'Add a friend first, then invite them here.') + '</p>');
+    if (CREW.mine) h += '<div class="sec">Weekly goal</div><select id="crGoalSet" aria-label="Weekly goal">' + [10, 15, 20, 30, 50, 80].concat([CREW.goal]).filter(function (v, i, a) { return a.indexOf(v) === i; }).sort(function (a, b) { return a - b; }).map(function (v) { return '<option value="' + v + '"' + (v === CREW.goal ? ' selected' : '') + '>' + v + ' loads a week</option>'; }).join('') + '</select>';
+    h += '<div class="row" style="margin-top:14px"><button type="button" class="x" id="crLeave">Leave crew</button></div>';
+    hm0.hidden = false;
+    hm0.innerHTML = '<div class="chm"><div class="chm-t"><span class="eyb">Crew tank</span><b>' + esc(CREW.name) + '</b><span>' + (full ? 'Full! +100 LDs each' : tot + ' of ' + CREW.goal + ' this week') + '</span></div>' + crewSvg(false) + '</div>';
+  }
+  if (crewMsg) h += '<p class="note" role="status">' + esc(crewMsg) + '</p>';
+  el.innerHTML = h;
+}
+async function crewAct(fnName, args, okMsg, demo) {
+  crewMsg = '';
+  if (!CLOUD) { crewMsg = demo() || okMsg || ''; await crewLoad(); render(); clearTimeout(crewAct.t); crewAct.t = setTimeout(function () { crewMsg = ''; renderCrew(); }, 6000); return; }
+  try {
+    var r = await sb.rpc(fnName, args || {}); if (r.error) throw r.error;
+    var M = {in_crew: 'You are already in a crew.', name: 'Give the crew a name.', not_friend: 'You can only invite friends.', busy: 'That friend is already in another crew.', full: 'The crew is full (8 people).', exists: 'Already invited.', gone: 'That invite is no longer open.', no_crew: 'You are not in a crew.'};
+    crewMsg = (r.data && M[r.data]) || okMsg || '';
+  } catch (e) { crewMsg = 'Could not reach the server. Check your connection.'; }
+  await crewLoad(); render();
+  clearTimeout(crewAct.t); crewAct.t = setTimeout(function () { crewMsg = ''; renderCrew(); }, 6000);
+}
+$('crewCard').addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('button'); if (!b) return;
+  var k;
+  if (b.id === 'crMake') {
+    var nm = $('crName').value.trim(), g = +$('crGoal').value;
+    if (!nm) { crewMsg = 'Give the crew a name.'; renderCrew(); return; }
+    crewAct('create_crew', {p_name: nm, p_goal: g}, 'Crew started. Invite your friends.', function () { crewDemoPut({name: nm.slice(0, 30), goal: g, members: []}); });
+  } else if (b.id === 'crInvGo') {
+    var who = $('crInv').value; if (!who) return;
+    crewAct('invite_to_crew', {name: who}, 'Invite sent to ' + fn(who) + '.', function () { var d = crewDemoGet(); d.members.push(who); crewDemoPut(d); return fn(who) + ' joined (demo friends join right away).'; });
+  } else if (b.id === 'crLeave') {
+    if (b.getAttribute('data-arm') !== '1') { b.setAttribute('data-arm', '1'); b.textContent = 'Tap again to leave'; return; }
+    crewAct('leave_crew', {}, 'You left the crew.', function () { crewDemoPut(null); });
+  } else if ((k = b.getAttribute('data-cra'))) crewAct('respond_crew', {p_crew: +k, accept: true}, 'You joined the crew.', function () {});
+  else if ((k = b.getAttribute('data-crd'))) crewAct('respond_crew', {p_crew: +k, accept: false}, 'Invite declined.', function () {});
+});
+$('crewCard').addEventListener('change', function (e) {
+  if (e.target.id !== 'crGoalSet') return;
+  var g = +e.target.value;
+  crewAct('set_crew', {p_name: '', p_goal: g}, 'Goal changed to ' + g + '.', function () { var d = crewDemoGet(); d.goal = g; crewDemoPut(d); });
+});
+$('crewHome').addEventListener('click', function () { goTab('friends'); setTimeout(function () { $('crewCard').scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); });
 </script>
 </body>
 </html>
