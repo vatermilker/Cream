@@ -1422,6 +1422,7 @@ function showAuth(m) {
 }
 
 /* ===== guest mode ===== */
+function hadAcct() { try { return localStorage.getItem('creamer:had') === '1'; } catch (e) { return false; } }
 function startGuest() {
   CLOUD_REAL = CLOUD || CLOUD_REAL; CLOUD = false; GUEST = true;
   ACC.guest = {email: '', username: 'guest', created: Date.now()};
@@ -1454,7 +1455,7 @@ function openJoin() { $('gjoin').hidden = false; lock(); }
 function closeJoin() { $('gjoin').hidden = true; lock(); }
 function findByEmail(em) { for (var k in ACC) if (ACC[k].email === em) return k; return ''; }
 function loadUser(id) {
-  uid = id;
+  uid = id; if (id !== 'guest') { try { localStorage.setItem('creamer:had', '1'); } catch (e) {} }
   E = rd('loads', []); F = rd('friends', []);
   P = Object.assign({}, DEF_P, rd('profile', {})); P.name = ACC[id].username;
   S = Object.assign({}, DEF_S, rd('settings', {}));
@@ -1706,7 +1707,7 @@ async function cloudLoad(user) {
     var pr = await sb.from('profiles').select('username,bio,is_public,discoverable,settings,game').eq('id', user.id).single();
     if (pr.error || !pr.data) { amsg('Could not load your profile. Try again.'); showAuth('in'); amsg('Could not load your profile. Try again.'); return; }
     var rows = await fetchAll(function (a, b) { return sb.from('entries').select('id,ended_at,from_t,to_t,dur,rate,released,tags').eq('user_id', user.id).order('ended_at').order('id').range(a, b); });
-    uid = user.id; CUSER = user;
+    uid = user.id; CUSER = user; try { localStorage.setItem('creamer:had', '1'); } catch (e) {}
     E = rows.map(mapEntry); synced = {}; E.forEach(function (x) { synced[x.id] = true; });
     var d = pr.data;
     P = Object.assign({}, DEF_P, {name: d.username, pub: !!d.is_public, discover: d.discoverable !== false, bio: d.bio || ''});
@@ -1876,7 +1877,7 @@ function cloudInit() {
   });
   sb.auth.getSession().then(function (r) {
     if (recovering) { showReset(); return; }
-    if (r.data && r.data.session) cloudLoad(r.data.session.user); else showAuth(authMode === 'up' ? 'up' : 'in');
+    if (r.data && r.data.session) cloudLoad(r.data.session.user); else showAuth(hadAcct() ? 'in' : 'up');
   }).catch(function () { showAuth('in'); amsg('No connection. Try again.'); });
   setInterval(function () { if (uid && !document.hidden && SOCIAL_OK) refreshSocial().then(function () { render(); }); }, 90000);
 }
@@ -3107,7 +3108,7 @@ else {
   if (CLOUDFAIL) { $('aNote').textContent = 'Could not load the sign-in service, so this page runs in demo mode. Your data stays in this browser. Reload to try again.'; }
   loadAcc();
   var sess = ''; try { sess = localStorage.getItem('creamer:session') || ''; } catch (e) {}
-  if (sess && ACC[sess]) loadUser(sess); else showAuth(Object.keys(ACC).length ? 'in' : 'up');
+  if (sess && ACC[sess]) loadUser(sess); else showAuth(hadAcct() ? 'in' : 'up');
 }
 gate.hidden = ok; lock(); if (!ok) $('yes').focus();
 
