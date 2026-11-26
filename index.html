@@ -628,6 +628,54 @@ html[data-theme] .card h2,html[data-theme] #sg .card h2,html[data-theme] #fBody 
 html[data-theme] #sg .card:not(.hero):not(.lastc) h2,html[data-theme] #fBody .card:not(.hero):not(.lastc) h2,html[data-theme] #pf .card:nth-child(n+3) h2{color:var(--t-mute)}
 html[data-theme] .bar{background:var(--t-edge);box-shadow:none}
 html[data-theme] .bar i{background:var(--t-acc)}
+/* calm pass */
+html[data-theme] .bl,html[data-theme] #boot .bb{display:none}
+html[data-theme="dark"] body{background:var(--t-bg)}
+html[data-theme="dark"] h1,html[data-theme="dark"] .card.hero .big,html[data-theme="dark"] .logb,html[data-theme="dark"] button.go,html[data-theme="dark"] .gear.bal{text-shadow:none;box-shadow:none}
+html[data-theme="dark"] .card.hero{border:1px solid var(--t-edge);box-shadow:none}
+html[data-theme="dark"] .card.evc{box-shadow:none}
+html[data-theme] .card.evc::after{display:none}
+html[data-theme="dark"] .gear.bal{border-color:var(--t-edge)}
+html[data-theme] .pill{animation:none}
+html[data-theme] #dchCard{border:1px solid var(--t-edge)}
+html[data-theme="dark"] .tank{filter:none}
+html[data-theme] .tabs button[aria-pressed="true"]{box-shadow:none}
+html[data-theme="dark"] .tabs button[aria-pressed="true"]{background:rgba(225,29,72,.18)}
+html[data-theme] .sl-edge path{fill:#d9d8de}
+html[data-theme] #boot{background:#08080b}
+html[data-theme] #boot .bpool path{fill:#fff}
+html[data-theme] #boot .pw2 path{fill:#e6e5eb}
+html[data-theme] #boot .ld{box-shadow:none}
+html[data-theme] .card.shine{animation:none;background:var(--t-card);box-shadow:none;border:1px solid var(--t-acc)}
+html[data-theme] .card.shine::after{display:none}
+html[data-theme] .card.locked{box-shadow:none}
+html[data-theme] .tank svg,html[data-theme] .tank .tg{filter:none}
+html[data-theme] #boot::after{content:"CREAMER";position:absolute;left:0;right:0;top:46%;text-align:center;color:#fff;font-family:var(--t-fd);font-size:44px;letter-spacing:6px}
+html[data-theme="shop"] #boot::after{font-size:30px;letter-spacing:3px}
+
+.hlb{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;margin-top:8px;min-height:60px;padding:10px 14px}
+.hlb span{font-size:14px;font-weight:500;opacity:.8}
+.hdots{display:flex;gap:8px;margin-top:14px}
+.hd{width:22px;height:22px;border-radius:50%;border:2px solid var(--edge);display:block}
+.hd.on{background:#fff;border-color:#fff}
+.hlu{margin:8px 0 0;padding-left:20px;font-size:16px;line-height:1.5}
+html[data-theme] .hlb[aria-pressed="true"]{background:var(--t-acc);color:var(--t-acct);border-color:transparent}
+html[data-theme] .tabs button{line-height:1.05;text-align:center;font-size:10px;letter-spacing:.8px}
+html[data-theme] .tabs button{white-space:normal;min-width:0;padding:4px 1px}
+@media (max-width:360px){html[data-theme] h1{font-size:22px;padding:2px 8px;letter-spacing:1px}html[data-theme="dark"] h1{font-size:26px}}
+
+#setMenu{display:grid;gap:10px}
+.smi{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;min-height:68px;padding:12px 16px}
+.smi span{display:flex;flex-direction:column;gap:2px}
+.smi b{font-size:19px}
+.smi small{font-size:14px;font-weight:500;opacity:.75}
+.smi i{font-style:normal;font-size:28px;opacity:.6}
+.sbh{display:flex;align-items:center;gap:10px}
+.sbh h2{flex:1;margin:0}
+html[data-theme] .smi{background:var(--t-card);border:1px solid var(--t-edge);text-align:left}
+.sov{z-index:85}
+body:has(#settingsView:not([hidden])) .tabs{visibility:hidden}
+#setT{font-size:20px;line-height:1.1}
 </style>
 </head>
 <body>
@@ -762,6 +810,10 @@ html[data-theme] .bar i{background:var(--t-acc)}
 <div class="sgrid" id="rw"></div>
 </div>
 
+<div id="healthView" hidden>
+<div class="sgrid" id="hl"></div>
+</div>
+
 <div id="profileView" hidden>
 <div class="row" style="max-width:340px;margin:0 0 16px"><button type="button" class="go wrOpen">Your year in numbers</button></div>
 <div class="sgrid" id="pf"></div>
@@ -769,8 +821,9 @@ html[data-theme] .bar i{background:var(--t-acc)}
 
 <div id="settingsView" class="sov" hidden>
 <div class="sbox" role="dialog" aria-modal="true" aria-label="Settings">
-<div class="sbh"><h2>Settings</h2><button type="button" id="setX">Close</button></div>
+<div class="sbh"><button type="button" id="setBack" hidden aria-label="Back to settings">Back</button><h2 id="setT">Settings</h2><button type="button" id="setX">Close</button></div>
 <div class="stack home">
+<div id="setMenu"></div>
 <section class="card">
 <h2>Account</h2>
 <div class="kv"><span>Username</span><b id="sName">–</b></div>
@@ -913,7 +966,7 @@ html[data-theme] .bar i{background:var(--t-acc)}
 <div class="wrNav"><button type="button" id="wrPrev">Back</button><button type="button" id="wrNext" class="go">Next</button></div>
 </div>
 
-<nav class="tabs" aria-label="Sections" hidden><button type="button" id="tHome" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</button><button type="button" id="tStats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-8"/></svg>Stats</button><button type="button" id="tFriends" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c2.7 0 4.5 1.8 4.5 4.5"/></svg>Friends</button><button type="button" id="tRewards" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg>Rewards</button><button type="button" id="tProfile" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Profile</button></nav>
+<nav class="tabs" aria-label="Sections" hidden><button type="button" id="tHome" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</button><button type="button" id="tStats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-8"/></svg>Stats</button><button type="button" id="tFriends" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c2.7 0 4.5 1.8 4.5 4.5"/></svg>Friends</button><button type="button" id="tRewards" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg>Rewards</button><button type="button" id="tHealth" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M8 12h2l1.5-2.5L13 14l1-2h2"/></svg>Penis health</button><button type="button" id="tProfile" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Profile</button></nav>
 
 
 <div class="gate" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="atl" style="z-index:95">
@@ -980,6 +1033,7 @@ try {
   if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
 } catch (e) { CLOUDFAIL = true; }
 var uid = '', ACC = {};
+var HL = [['k', 'Pelvic floor set', 'Squeeze as if stopping urine, hold 5 seconds, release. 3 sets of 10.'], ['w', 'Water', 'About 2 litres through the day.'], ['h', 'Wash and dry', 'Gentle wash with mild soap, dry well.'], ['m', 'Move', '30 minutes of walking or training.'], ['s', 'Sleep', '7 hours or more.']];
 var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {theme: 'dark', dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: true, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
 function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
 var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
@@ -1126,7 +1180,7 @@ function applyTheme() {
 function render() {
   applyTheme();
   if (!uid) return;
-  leagueSettle(); duelSettle();
+  leagueSettle(); duelSettle(); renderHealth();
   var rows = E.slice().sort(function (a, b) { return b.t - a.t; }).slice(0, histAll ? 20 : 5);
   $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No loads yet. Tap Log a load.</li>';
   if (!$('entriesView').hidden) renderEntries();
@@ -2815,7 +2869,7 @@ $('enSort').addEventListener('click', function (e) { var b = e.target.closest ? 
 $('enMore').addEventListener('click', function () { entMax += 50; renderEntries(); });
 $('allBtn').addEventListener('click', function () { entFilter = ''; entMax = 50; tab('entries'); });
 $('enBack').addEventListener('click', function () { tab('home'); });
-var TABS = ['home', 'entries', 'stats', 'friends', 'rewards', 'profile'];
+var TABS = ['home', 'entries', 'stats', 'friends', 'rewards', 'health', 'profile'];
 function savedTab() {
   var v = 'home'; try { v = localStorage.getItem('creamer:tab') || 'home'; rwSub = localStorage.getItem('creamer:rw') === 'shop' ? 'shop' : 'rw'; } catch (e) {}
   renderRewards();
@@ -2823,7 +2877,7 @@ function savedTab() {
 }
 function tab(v) {
   try { localStorage.setItem('creamer:tab', v); } catch (e) {}
-  ['home', 'entries', 'stats', 'friends', 'rewards', 'profile'].forEach(function (k) {
+  ['home', 'entries', 'stats', 'friends', 'rewards', 'health', 'profile'].forEach(function (k) {
     $(k + 'View').hidden = k !== v;
     var kk = k === 'entries' ? 'home' : k, on = k === v || (v === 'entries' && k === 'home');
     var b = $('t' + kk.charAt(0).toUpperCase() + kk.slice(1));
@@ -2831,9 +2885,32 @@ function tab(v) {
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
   if (v === 'entries') renderEntries();
+  if (v === 'health') renderHealth();
   window.scrollTo(0, 0);
 }
-function openSet() { $('settingsView').hidden = false; $('gear').setAttribute('aria-pressed', 'true'); $('settingsView').querySelector('.sbox').scrollTop = 0; lock(); }
+
+/* ===== Settings sections ===== */
+var SGROUPS = [['acct', 'Account', 'Username, password, profile, log out', ['Account', 'Password', 'Profile', 'Session']], ['look', 'Look and feedback', 'Theme, sounds, vibration, effects', ['Look', 'Feedback']], ['log', 'Logging', 'Defaults, wording, tank, tags', ['Preferences', 'Tank', 'Tags']], ['priv', 'Privacy and security', 'Visibility, discovery, PIN lock', ['Privacy', 'PIN lock']], ['data', 'Your data', 'Export or delete your data', ['Data']], ['help', 'Help', 'Common questions and about', ['Common questions', 'About']]];
+function setGroup(g) {
+  var t = 'Settings';
+  SGROUPS.forEach(function (x) { if (x[0] === g) t = x[1]; });
+  $('setMenu').hidden = !!g; $('setBack').hidden = !g; $('setT').textContent = t;
+  Array.prototype.forEach.call(document.querySelectorAll('#settingsView .stack.home > section'), function (sc) { sc.hidden = sc.getAttribute('data-sg') !== g; });
+  $('settingsView').querySelector('.sbox').scrollTop = 0;
+}
+(function () {
+  var m = '';
+  SGROUPS.forEach(function (x) { m += '<button type="button" class="smi" data-g="' + x[0] + '"><span><b>' + x[1] + '</b><small>' + x[2] + '</small></span><i aria-hidden="true">&rsaquo;</i></button>'; });
+  $('setMenu').innerHTML = m;
+  Array.prototype.forEach.call(document.querySelectorAll('#settingsView .stack.home > section'), function (sc) {
+    var h = sc.querySelector('h2'), n = h ? h.textContent.trim() : '';
+    SGROUPS.forEach(function (x) { if (x[3].indexOf(n) >= 0) sc.setAttribute('data-sg', x[0]); });
+  });
+  $('setMenu').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) setGroup(b.getAttribute('data-g')); });
+  $('setBack').addEventListener('click', function () { setGroup(''); });
+  setGroup('');
+})();
+function openSet() { setGroup(''); $('settingsView').hidden = false; $('gear').setAttribute('aria-pressed', 'true'); $('settingsView').querySelector('.sbox').scrollTop = 0; lock(); }
 function closeSet() { $('settingsView').hidden = true; $('gear').setAttribute('aria-pressed', 'false'); lock(); }
 $('hBal').addEventListener('click', function () { rwSub = 'shop'; try { localStorage.setItem('creamer:rw', 'shop'); } catch (e) {} tab('rewards'); renderRewards(); });
 $('gear').addEventListener('click', function () { if ($('settingsView').hidden) openSet(); else closeSet(); });
@@ -2845,6 +2922,7 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$
 $('tHome').addEventListener('click', function () { tabW('home'); });
 $('tStats').addEventListener('click', function () { tabW('stats'); });
 $('tRewards').addEventListener('click', function () { tabW('rewards'); });
+$('tHealth').addEventListener('click', function () { tabW('health'); });
 $('tProfile').addEventListener('click', function () { tabW('profile'); });
 $('tFriends').addEventListener('click', function () { if (!$('friendsView').hidden) { openF = ''; renderFriendView(); } tabW('friends'); if (CLOUD && uid) refreshSocial().then(render); });
 setInterval(tick, 15000);
@@ -2979,11 +3057,11 @@ function rainDrops() {
   }
 }
 function tabW(v) {
-  var cur = ['home', 'entries', 'stats', 'friends', 'rewards', 'profile'].filter(function (k) { return !$(k + 'View').hidden; })[0];
+  var cur = ['home', 'entries', 'stats', 'friends', 'rewards', 'health', 'profile'].filter(function (k) { return !$(k + 'View').hidden; })[0];
   tab(v);
 }
 (function () {
-  if (REDUCE) return;
+  return; /* finger smear removed */
   var cv = document.createElement('canvas'); cv.id = 'smear'; cv.setAttribute('aria-hidden', 'true'); document.body.appendChild(cv);
   var cx = cv.getContext('2d'), P = [], run = false, lx = 0, ly = 0, down = false, lastSnd = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
   function size() { cv.width = Math.round(innerWidth * dpr); cv.height = Math.round(innerHeight * dpr); }
@@ -3081,7 +3159,7 @@ $('runStop').addEventListener('click', function () {
 function tankHrs() { var h = +S.tank; return h > 0 ? h : 24; }
 function tankShow() {
   if (!uid) return;
-  var l = lastOf(E), ms = tankHrs() * 3600000, el = l ? Date.now() - l.t : ms, lv = Math.max(0, Math.min(1, el / ms));
+  var l = lastOf(E.filter(function (x) { return x.rel; })), ms = tankHrs() * 3600000, el = l ? Date.now() - l.t : ms, lv = Math.max(0, Math.min(1, el / ms));
   $('tLiq').setAttribute('transform', 'translate(0,' + (124 - lv * 114).toFixed(1) + ')');
   $('tPct').textContent = Math.floor(lv * 100) + '%';
   $('tSub').textContent = lv >= 1 ? 'Full' : 'Full in ' + fmtGap(ms - el);
@@ -3090,6 +3168,32 @@ function tankShow() {
   var sel = $('tankSel'); if (document.activeElement !== sel) sel.value = String(tankHrs());
 }
 $('tankSel').addEventListener('change', function () { S.tank = +$('tankSel').value; saveS(); tankShow(); });
+
+
+/* ===== Penis health ===== */
+function hDay(d) { d = d || new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+function hlG() { if (!G.hl) G.hl = {c: {}, m: ''}; return G.hl; }
+function renderHealth() {
+  if (!uid || !$('hl') || !HL) return;
+  var h = hlG(), t = hDay(), done = h.c[t] || [], i, n = done.length, html = '', dots = '', d, k;
+  html += '<section class="card"><h2>Penis health</h2><p class="sub">Daily habits that keep blood flow, nerves and skin in good shape.</p><div class="bar" style="margin-top:12px"><i style="width:' + Math.round(n / HL.length * 100) + '%"></i></div><p class="sub">' + n + ' of ' + HL.length + ' done today</p>';
+  HL.forEach(function (x) { var on = done.indexOf(x[0]) >= 0; html += '<button type="button" class="hlb" data-k="' + x[0] + '" aria-pressed="' + on + '"><b>' + x[1] + '</b><span>' + x[2] + '</span></button>'; });
+  for (i = 6; i >= 0; i--) { d = new Date(); d.setDate(d.getDate() - i); k = hDay(d); dots += '<i class="hd' + ((h.c[k] || []).length >= HL.length ? ' on' : '') + '" title="' + k + '"></i>'; }
+  html += '<div class="hdots" aria-label="Last 7 days, filled when all habits were done">' + dots + '</div></section>';
+  var last = h.m ? new Date(h.m + 'T12:00:00') : null, ago = last ? Math.floor((Date.now() - last.getTime()) / 86400000) : -1;
+  html += '<section class="card"><h2>Monthly self-check</h2><p class="sub">Once a month, in good light: look at the skin and feel along the shaft and testicles. You are looking for lumps, swelling, sores, colour changes or anything new that hurts.</p><p class="sub">' + (last ? 'Last check: ' + h.m + (ago >= 30 ? ' (due now)' : ' (next in ' + (30 - ago) + ' days)') : 'No check logged yet.') + '</p><div class="row" style="margin-top:10px"><button type="button" class="go" id="hlChk">I did my check today</button></div></section>';
+  html += '<section class="card"><h2>See a doctor if</h2><ul class="hlu"><li>A lump, swelling or hard spot that stays</li><li>Pain that does not go away</li><li>Blood in urine or semen</li><li>Discharge, sores, rash or a strong smell</li><li>Painful curve or sudden change in shape</li><li>Erection that lasts over 4 hours: go to emergency care</li></ul><p class="note">General information, not medical advice.</p></section>';
+  $('hl').innerHTML = html;
+}
+$('hl').addEventListener('click', function (e) {
+  var b = e.target.closest('button'); if (!b) return;
+  var h = hlG(), t = hDay(), c, k, keep = Date.now() - 40 * 86400000;
+  if (b.id === 'hlChk') { h.m = t; saveG(); renderHealth(); toast('Self-check logged'); return; }
+  k = b.getAttribute('data-k'); if (!k) return;
+  c = h.c[t] || []; h.c[t] = c.indexOf(k) >= 0 ? c.filter(function (x) { return x !== k; }) : c.concat(k);
+  Object.keys(h.c).forEach(function (d) { if (new Date(d + 'T12:00:00').getTime() < keep) delete h.c[d]; });
+  saveG(); renderHealth();
+});
 
 /* ===== PIN lock ===== */
 var authSeen = authSeen || false, pinBooted = pinBooted || false, pinMode = pinMode || '', pinBuf = pinBuf || '', pinFirst = pinFirst || '', pinFails = pinFails || 0, pinWaitTo = pinWaitTo || 0, pinHid = pinHid || 0, pinNext = pinNext || null;
