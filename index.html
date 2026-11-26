@@ -10,7 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Creamer">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <title>Creamer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&display=swap" rel="stylesheet">
@@ -238,10 +238,10 @@ header{flex-wrap:nowrap}
 .sbh button{height:44px;min-height:44px;padding:0 18px}
 @media(min-width:700px){.sov{align-items:center}.sbox{border-radius:36px}}
 .bal{gap:6px;padding:0 14px}
-.bal svg{width:20px;height:20px;fill:#d9547f;stroke:none}
+.bal svg{width:22px;height:22px;fill:#fff;stroke:#d9547f;stroke-width:1.7;stroke-linejoin:round;filter:drop-shadow(0 1px 0 rgba(217,84,127,.35))}
 .bal span{font-weight:800;font-size:17px}
 .balbig{display:flex;align-items:center;gap:10px;font-size:30px;font-weight:800;margin:-2px 0 6px}
-.balbig svg{width:34px;height:34px;fill:#d9547f}
+.balbig svg{width:38px;height:38px;fill:#fff;stroke:#d9547f;stroke-width:1.5;stroke-linejoin:round}
 details{border-top:2px solid var(--edge);padding:12px 0}
 details:first-of-type{border-top:0}
 summary{font-weight:800;cursor:pointer;font-size:17px}
@@ -269,9 +269,13 @@ details p{margin:8px 0 0;color:var(--mute)}
 @keyframes ntIn{from{transform:translateY(-30px);opacity:0}to{transform:none;opacity:1}}
 .bd.hl{outline:4px solid #cf4a78;outline-offset:2px;animation:bdHl .9s ease-in-out 4}
 @keyframes bdHl{50%{transform:scale(1.05)}}
-@media(max-width:400px){#gear{font-size:0;gap:0;padding:0 14px}#hTitle{display:none}.who{gap:8px}}
+@media(max-width:640px){#gear{font-size:0;gap:0;padding:0 14px}#hTitle{display:none}.who{gap:8px}}
 
 /* design pass: hierarchy */
+html,body{overflow-x:hidden;max-width:100%}
+header{min-width:0}
+.who{flex:0 1 auto;min-width:0}
+h1{min-width:0}
 body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 #boot{position:fixed;inset:0;z-index:90;background:linear-gradient(#fcdbe7,#f8c4d8);display:flex;align-items:center;justify-content:center}
 #boot svg{width:120px;height:120px;fill:#fff;filter:drop-shadow(0 8px 14px rgba(190,110,140,.35));animation:bootp 1.2s ease-in-out infinite}
@@ -288,8 +292,8 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 .spills{display:flex;gap:8px;margin-top:14px}
 .spill{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 12px;font-size:14px;color:#fff;white-space:nowrap}
 .spill b{font-weight:800}
-#sg .card:nth-child(n+3),#pf .card:nth-child(n+3){background:rgba(255,255,255,.62);border-radius:34px;padding:20px 20px 24px;box-shadow:inset 0 -6px 0 rgba(240,205,217,.85),0 6px 16px rgba(190,110,140,.1)}
-#sg .card:nth-child(n+3) h2,#pf .card:nth-child(n+3) h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c}
+#pf .card:nth-child(n+3){background:rgba(255,255,255,.62);border-radius:34px;padding:20px 20px 24px;box-shadow:inset 0 -6px 0 rgba(240,205,217,.85),0 6px 16px rgba(190,110,140,.1)}
+#pf .card:nth-child(n+3) h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c}
 .card.soft{background:rgba(255,255,255,.62);border-radius:34px;padding:20px 20px 24px;box-shadow:inset 0 -6px 0 rgba(240,205,217,.85),0 6px 16px rgba(190,110,140,.1)}
 .card.soft h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c}
 .card:not(.hero) .kv b{color:#a02c5b}
@@ -306,9 +310,65 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 .ago.l1{background:#ffe0ea;color:#a02c5b}
 .ago.l2{background:#c94a7c;color:#fff}
 .ago.lx{font-weight:600;background:transparent}
+
+/* stats cards: one system for Stats tab and friend view */
+.card.hero .tiles b{color:#fff;font-size:26px;white-space:nowrap;text-shadow:0 3px 0 rgba(90,10,45,.3)}
+.card.hero .tiles span{color:rgba(255,255,255,.85)}
+.card.hero .tiles>div{background:rgba(255,255,255,.14);border-radius:20px;padding:10px 12px}.card.hero .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card.lastc{background:linear-gradient(165deg,#fff 0%,#ffe9f1 100%);box-shadow:0 0 0 4px #f4a2bf,inset 0 -12px 0 #f6c9d9,0 14px 30px rgba(207,74,120,.28)}
+.card.lastc h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#a02c5b}
+.card.lastc .bigt{color:#c23d71}
+#sg .card:not(.hero):not(.lastc),#fBody .card:not(.hero):not(.lastc){background:rgba(255,255,255,.62);border-radius:34px;padding:20px 20px 24px;box-shadow:inset 0 -6px 0 rgba(240,205,217,.85),0 6px 16px rgba(190,110,140,.1)}
+#sg .card:not(.hero):not(.lastc) h2,#fBody .card:not(.hero):not(.lastc) h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#8a5a6c}
+#sg .card:has(.chart):not(.hero):not(.lastc),#fBody .card:has(.chart):not(.hero):not(.lastc){background:#fff;box-shadow:inset 0 -8px 0 var(--edge),0 10px 22px rgba(190,110,140,.16)}
+.fhead{margin-bottom:14px}
+.fwho{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.fwho .av{width:60px;height:60px;font-size:26px}
+#fName{font-size:28px;font-weight:800;line-height:1.1}
+#fRemove{background:transparent;box-shadow:none;color:#a02c5b;border:2px solid #f4a2bf}
+
+/* wet / slime layer */
+#goo{position:absolute;top:0;left:0;right:0;height:100%;overflow:hidden;pointer-events:none;z-index:0}
+.wrap,.tabs{position:relative}
+.tabs{position:fixed}
+.wrap{z-index:1}
+.bl{position:fixed;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(255,255,255,.75),rgba(255,255,255,.28) 55%,rgba(255,255,255,0) 72%);will-change:transform;opacity:.9}
+.b1{width:340px;height:340px;left:-110px;top:18vh;animation:drift1 19s ease-in-out infinite alternate}
+.b2{width:280px;height:280px;right:-90px;top:46vh;animation:drift2 23s ease-in-out infinite alternate}
+.b3{width:380px;height:380px;left:10vw;bottom:-150px;animation:drift3 27s ease-in-out infinite alternate}
+.b4{width:200px;height:200px;right:12vw;top:4vh;animation:drift1 17s ease-in-out infinite alternate-reverse}
+@keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(90px,70px) scale(1.18)}}
+@keyframes drift2{0%{transform:translate(0,0) scale(1.1)}100%{transform:translate(-80px,-90px) scale(.9)}}
+@keyframes drift3{0%{transform:translate(0,0) scale(.95)}100%{transform:translate(70px,-60px) scale(1.2)}}
+.slimewrap{position:absolute;top:0;left:0;right:0;height:150px}
+.slime{position:absolute;inset:0;width:100%;height:190px;overflow:visible}
+.sl-main{fill:#fff}
+.sl-edge path{fill:#f1c4d4}
+.sl-gl{fill:rgba(255,255,255,.95);stroke:none}
+.sl-main{filter:drop-shadow(0 3px 0 rgba(207,120,160,.22))}
+.sl-d path{fill:#fff}
+.sl-d{transform-box:fill-box;transform-origin:50% 0;animation:dripg 6s ease-in-out infinite}
+.sl-d.d2{animation-duration:7.5s;animation-delay:-2s}.sl-d.d3{animation-duration:5.2s;animation-delay:-3.4s}.sl-d.d4{animation-duration:8.4s;animation-delay:-1s}
+@keyframes dripg{0%,100%{transform:scaleY(.85)}50%{transform:scaleY(1.7)}}
+.fall{position:absolute;width:11px;height:15px;border-radius:50% 50% 55% 55%/62% 62% 40% 40%;background:#fff;box-shadow:inset -2px -2px 0 rgba(240,190,210,.7);opacity:0;animation:fallg 6s ease-in infinite}
+.fall.f1{left:74.5%;top:96px;animation-delay:2.2s}
+.fall.f2{left:44%;top:112px;animation-duration:7.5s;animation-delay:4.2s}
+.fall.f3{left:13.5%;top:82px;animation-duration:5.2s;animation-delay:.6s}
+@keyframes fallg{0%{transform:translateY(0) scale(.4);opacity:0}8%{opacity:1;transform:translateY(0) scale(1)}70%{opacity:1}100%{transform:translateY(360px) scale(.9);opacity:0}}
+.card{background-image:radial-gradient(ellipse 55% 16% at 24% 7%,rgba(255,255,255,.95),rgba(255,255,255,0) 100%)}
+.card.hero{position:relative;padding-top:48px}
+.card.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:44px;border-radius:44px 44px 0 0;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%2744%27%20viewBox%3D%270%200%20120%2044%27%3E%3Cpath%20fill%3D%27white%27%20d%3D%27M0%200H120V9C112%209%20110%2012%20108%2022C106%2038%2096%2038%2094%2022C92%2012%2088%208%2080%208C72%208%2070%2013%2068%2018C66%2025%2058%2025%2056%2018C54%2011%2050%209%2040%209C32%209%2030%2016%2028%2028C26%2042%2014%2042%2012%2028C10%2016%208%209%200%209Z%27/%3E%3C/svg%3E") repeat-x 0 0/120px 44px;transform-origin:50% 0;animation:cardd 5s ease-in-out infinite alternate;pointer-events:none;filter:drop-shadow(0 3px 0 rgba(90,10,45,.25))}
+.card.hero>*{position:relative}
+@keyframes cardd{0%{transform:scaleY(.9)}100%{transform:scaleY(1.3)}}
+.splat{position:fixed;z-index:95;pointer-events:none;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:radial-gradient(circle,#fff 40%,rgba(255,255,255,.2) 75%);box-shadow:0 0 0 2px rgba(255,255,255,.8);animation:splat .55s ease-out forwards}
+@keyframes splat{0%{transform:scale(.3);opacity:1}100%{transform:scale(2.6);opacity:0}}
+.sp{position:fixed;z-index:95;pointer-events:none;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#fff;box-shadow:inset -1px -1px 0 rgba(240,190,210,.9);animation:spd .6s ease-out forwards}
+@keyframes spd{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bl,.sl-d,.fall,.card.hero::before{animation:none}.fall{display:none}}
 </style>
 </head>
 <body>
+<div id="goo" aria-hidden="true"><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i><i class="bl b4"></i><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/></g><path class="sl-main" d="M0 0H400V34C388 34 384 40 382 52C380 70 366 70 364 52C362 40 356 32 340 32C324 32 320 42 318 60C316 84 300 84 298 60C296 44 290 34 272 34C256 34 252 40 250 48C248 58 238 58 236 48C234 38 226 32 212 32C196 32 192 44 190 66C188 100 170 100 168 66C166 46 160 32 142 32C126 32 122 40 120 52C118 66 106 66 104 52C102 40 94 32 78 32C62 32 58 44 56 58C54 76 40 76 38 58C36 42 28 34 14 34C8 34 4 34 0 36Z"/><g class="sl-d d1"><path d="M298 70h0c-6 0-8 12-8 22c0 8 16 8 16 0c0-10-2-22-8-22Z"/></g><g class="sl-d d2"><path d="M179 84c-7 0-10 14-10 26c0 10 20 10 20 0c0-12-3-26-10-26Z"/></g><g class="sl-d d3"><path d="M55 66c-5 0-7 10-7 18c0 7 14 7 14 0c0-8-2-18-7-18Z"/></g><g class="sl-d d4"><path d="M373 60c-5 0-7 8-7 15c0 6 14 6 14 0c0-7-2-15-7-15Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i></div></div>
 <div id="boot" aria-hidden="true"><svg viewBox="0 0 120 120"><path d="M56 12C66 11 66 26 75 30C85 34 103 20 107 33C111 46 92 46 93 56C94 66 114 64 108 80C103 93 86 82 81 91C76 99 84 114 68 111C54 108 58 97 46 95C36 93 28 108 19 98C11 88 28 74 26 64C25 54 5 54 10 40C15 27 35 38 43 32C50 27 47 13 56 12Z"/></svg></div>
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
 <div class="card gc">
@@ -326,7 +386,7 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <h1>Creamer</h1>
 <div class="who">
 <span id="hTitle" class="sub" style="margin:0"></span>
-<button id="hBal" class="gear bal" type="button" aria-label="Your drops"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5.5 10 5.5 14.5a6.5 6.5 0 0 0 13 0C18.5 10 12 2.5 12 2.5Z"/></svg><span id="hBalN">0</span></button>
+<button id="hBal" class="gear bal" type="button" aria-label="Your LDs"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5.5 10 5.5 14.5a6.5 6.5 0 0 0 13 0C18.5 10 12 2.5 12 2.5Z"/></svg><span id="hBalN">0</span></button>
 <button id="gear" class="gear" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></button>
 </div>
 </header>
@@ -403,7 +463,7 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <label for="duD">Length</label>
 <select id="duD"><option value="3">3 days</option><option value="7">7 days</option></select>
 <label for="duK">Stake</label>
-<select id="duK"><option value="0">No stake</option><option value="20">20 drops</option><option value="50">50 drops</option><option value="100">100 drops</option></select>
+<select id="duK"><option value="0">No stake</option><option value="20">20 LDs</option><option value="50">50 LDs</option><option value="100">100 LDs</option></select>
 <div class="row"><button type="button" class="go" id="duGo">Start duel</button></div>
 <p class="note" id="duMsg" role="status" style="min-height:1.4em"></p>
 <div id="duHist"></div>
@@ -411,7 +471,7 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 </section>
 </div>
 <div id="fDetail" hidden>
-<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap"><button type="button" id="fBack">Back</button><div style="font-size:32px;font-weight:800" id="fName"></div></div>
+<div class="fhead"><button type="button" id="fBack">Back</button></div><div class="fwho"><span id="fAv"></span><div id="fName"></div></div>
 <div id="fBody"></div>
 </div>
 </div>
@@ -517,8 +577,8 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 <details><summary>What is Creamer?</summary><p>A private tracker. You log entries with a rating, a from and to time, a yes or no and optional tags. The app turns them into stats, streaks, challenges and rewards. It stores numbers and times only.</p></details>
 <details><summary>How do I add an entry?</summary><p>Tap the splash button at the bottom. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
 <details><summary>How do I remove an entry?</summary><p>On Home tap Show more, or open All entries. Tap Remove on the entry, then tap again to confirm.</p></details>
-<details><summary>What are drops?</summary><p>Drops are the currency. You earn them from entries, streaks, challenges and badges. Your balance is the droplet at the top. Spend drops in the Shop: open Rewards, then Shop.</p></details>
-<details><summary>What are XP and levels?</summary><p>XP counts every drop you have ever earned, spent or not. Levels use XP, so spending drops never lowers your level.</p></details>
+<details><summary>What are LoadDrops?</summary><p>LoadDrops (LDs for short) are the currency. You earn them from entries, streaks, challenges and badges. Your balance is the white drop at the top. Spend LDs in the Shop: open Rewards, then Shop.</p></details>
+<details><summary>What are XP and levels?</summary><p>XP counts every drop you have ever earned, spent or not. Levels use XP, so spending LDs never lowers your level.</p></details>
 <details><summary>Who can see my stats?</summary><p>Only you, unless you pick "My friends" under Privacy. Then your accepted friends can see your entries.</p></details>
 <details><summary>How do friends and duels work?</summary><p>Open Friends and type a username. They have to accept. Duels and the weekly league need friends whose stats are set to "My friends".</p></details>
 <details><summary>Can I change the word used in the app?</summary><p>Yes. Pick or type a word under Wording in Settings. It changes everywhere in the app on your screen.</p></details>
@@ -705,7 +765,7 @@ function renderFriendView() {
     if (!u) body = card('', 'Unavailable', '<p class="empty">This user is no longer available.</p>');
     else if (u.priv) body = card('', 'Private profile', '<p class="empty">@' + openF + ' keeps their stats private.</p>');
     else body = (u.bio ? card(' b', 'Bio', '<p style="margin:0">' + esc(u.bio) + '</p>') : '') + statsHtml(u.entries, false);
-    $('fName').textContent = '@' + openF;
+    $('fName').textContent = '@' + openF; $('fAv').innerHTML = avatar(openF, false);
     $('fBody').innerHTML = '<div class="sgrid">' + body + '</div><div class="row" style="max-width:260px"><button type="button" id="fRemove">Remove friend</button></div>';
   }
 }
@@ -826,7 +886,7 @@ $('save').addEventListener('click', function () {
   E.push({id: Date.now(), t: s.to.getTime(), from: hm(s.fr), to: hm(s.to), dur: s.dur, rate: +$('rt').value, rel: relV, tags: selTags.filter(function (t) { return (S.tags || []).indexOf(t) >= 0; })});
   saveE(); render(); closeM();
   var b1 = totals(), e1 = earnedSet(), msg = [], nb = Object.keys(e1).filter(function (k) { return !e0[k]; });
-  msg.push(b1.lp > b0.lp ? '+' + (b1.lp - b0.lp) + ' drops' : 'Daily drop limit reached');
+  msg.push(b1.lp > b0.lp ? '+' + (b1.lp - b0.lp) + ' LDs' : 'Daily LD limit reached');
   if (!notifOn()) {
     if (b1.L > b0.L) msg.push('Level ' + b1.L + ': ' + lvlName(b1.L));
     if (nb.length) msg.push('Badge: ' + BMAP[nb[0]].n + (nb.length > 1 ? ' +' + (nb.length - 1) : ''));
@@ -1009,17 +1069,17 @@ function checkNotifs() {
   n.st = hit;
   // challenges
   var newc = Object.keys(clm).filter(function (k) { return k.charAt(0) === 'c' && !n.cl[k]; });
-  if (newc.length) notify({id: 'cl', title: newc.length > 1 ? newc.length + ' challenges complete' : 'Challenge complete', text: 'Claim +' + newc.reduce(function (a, k) { return a + clm[k]; }, 0) + ' drops.', go: function () { goTab('rewards'); }});
+  if (newc.length) notify({id: 'cl', title: newc.length > 1 ? newc.length + ' challenges complete' : 'Challenge complete', text: 'Claim +' + newc.reduce(function (a, k) { return a + clm[k]; }, 0) + ' LDs.', go: function () { goTab('rewards'); }});
   n.cl = clm;
   // league
   var lw = G.lg && G.lg.last && !G.lg.last.idle ? String(G.lg.last.week) : '';
   if (lw && n.lg !== lw) {
     var L = G.lg.last;
-    notify({id: 'lg', title: 'Weekly league result', text: ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : '') + (L.prize > 0 ? '. +' + L.prize + ' drops to claim.' : '.'), go: function () { goTab('friends'); }});
+    notify({id: 'lg', title: 'Weekly league result', text: ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : '') + (L.prize > 0 ? '. +' + L.prize + ' LDs to claim.' : '.'), go: function () { goTab('friends'); }});
   }
   if (lw) n.lg = lw;
   // daily and weekly reminders
-  if (n.dd !== key) { if (!dayPick()) notify({id: 'dd', title: "Choose today's challenge", text: 'Pick one for extra drops.', go: function () { goTab('rewards'); }}); n.dd = key; }
+  if (n.dd !== key) { if (!dayPick()) notify({id: 'dd', title: "Choose today's challenge", text: 'Pick one for extra LDs.', go: function () { goTab('rewards'); }}); n.dd = key; }
   if (n.wk !== wk) { notify({id: 'wk', title: 'New weekly challenges', text: 'Three fresh ones for this week.', go: function () { goTab('rewards'); }}); n.wk = wk; }
   var today = dstart(now.getTime()), loggedToday = E.some(function (x) { return dstart(x.t) === today; });
   if (now.getHours() >= 19 && st >= 2 && !loggedToday && n.sk !== key) { notify({id: 'sk', title: 'Your ' + st + '-day streak ends tonight', text: 'Log a load before midnight to keep it.', go: goAdd}); n.sk = key; }
@@ -1046,7 +1106,7 @@ function checkNotifs() {
     (G.du || []).forEach(function (d) {
       var sv = d.done ? 'done' : d.pend === 'in' ? 'pin' : d.pend === 'out' ? 'pout' : 'act', prev = n.du[d.cid];
       dn[d.cid] = sv + '|' + d.f;
-      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: '@' + d.f + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (d.k ? ', ' + d.k + ' drops at stake.' : '.'), go: function () { goTab('friends'); }}); }
+      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: '@' + d.f + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (d.k ? ', ' + d.k + ' LDs at stake.' : '.'), go: function () { goTab('friends'); }}); }
       else if (prev.split('|')[0] === 'pout' && sv === 'act') notify({id: 'da:' + d.cid, title: '@' + d.f + ' accepted your duel', text: 'It runs for ' + d.days + ' days.', go: function () { goTab('friends'); }});
     });
     Object.keys(n.du).forEach(function (k) { if (!dn[k] && n.du[k].split('|')[0] === 'pout' && !MINEC[k]) notify({id: 'dx:' + k, title: '@' + n.du[k].split('|')[1] + ' declined your duel', text: 'Your stake is back.', go: function () { goTab('friends'); }}); });
@@ -1371,8 +1431,8 @@ function statsHtml(E, mine) {
   var hrL = hrs.map(function (_, h) { return h % 6 === 0 ? pad(h) : ''; });
   var rcL = rc.map(function (_, r) { return String(r + 1); });
   var out = [];
-  out.push(card(' span2', 'Overview', '<div class="tiles">' + tile(n, 'loads') + tile(fmtDur(tot), 'total time') + tile(avgOf(rsum, n), 'avg rating') + tile(Math.round(rel / n * 100) + '%', 'released') + tile(fmtDur(avgD), 'avg length') + tile(dl.length, 'active days') + tile((n / dl.length).toFixed(1), 'per active day') + '</div>'));
-  out.push(card('', 'Last load', '<div class="bigt" data-since="' + last.t + '" data-ago="1">' + sinceLabel(last.t, true) + '</div>' + kv('Date', fmtDate(last.t)) + kv('Time', ft(last.from) + '–' + ft(last.to)) + kv('Length', fmtDur(last.dur)) + kv('Rating', last.rate + ' / 10') + kv('Released', last.rel ? 'yes' : 'no') + (n > 1 ? kv('Gap before it', fmtGap(prevGap)) : '')));
+  out.push(card(' span2 hero', 'Overview', '<div class="tiles">' + tile(n, 'loads') + tile(fmtDur(tot), 'total time') + tile(avgOf(rsum, n), 'avg rating') + tile(Math.round(rel / n * 100) + '%', 'released') + tile(fmtDur(avgD), 'avg length') + tile(dl.length, 'active days') + tile((n / dl.length).toFixed(1), 'per active day') + '</div>'));
+  out.push(card(' lastc', 'Last load', '<div class="bigt" data-since="' + last.t + '" data-ago="1">' + sinceLabel(last.t, true) + '</div>' + kv('Date', fmtDate(last.t)) + kv('Time', ft(last.from) + '–' + ft(last.to)) + kv('Length', fmtDur(last.dur)) + kv('Rating', last.rate + ' / 10') + kv('Released', last.rel ? 'yes' : 'no') + (n > 1 ? kv('Gap before it', fmtGap(prevGap)) : '')));
   out.push(card(' b', 'Records', kv('Most loads in one day', busiest.n + ' (' + fmtDate(busiest.t) + ')') + kv('Highest rated', hi.rate + ' (' + fmtDate(hi.t) + ')') + kv('Lowest rated', lo.rate + ' (' + fmtDate(lo.t) + ')') + kv('Longest load', fmtDur(lg.dur) + ' (' + fmtDate(lg.t) + ')') + kv('Shortest load', fmtDur(sh.dur) + ' (' + fmtDate(sh.t) + ')') + kv('Best day, avg rating', (bestDay.sum / bestDay.n).toFixed(1) + ' (' + fmtDate(bestDay.t) + ')')));
   out.push(card(' b', 'Streaks and gaps', kv('Current streak', cur + (cur === 1 ? ' day' : ' days')) + kv('Longest streak', longest + (longest === 1 ? ' day' : ' days')) + kv('Time since last load', '<span data-since="' + last.t + '">' + sinceLabel(last.t, false) + '</span>') + kv('Longest gap', n > 1 ? fmtGap(maxGap) : '–') + kv('Average gap', n > 1 ? fmtGap(avgGap) : '–')));
   out.push(card('', 'Last 35 days', '<div class="hm">' + hm + '</div><p class="sub">Oldest first. Darker is more loads. The outlined square is today.</p>'));
@@ -1496,7 +1556,7 @@ function statsHtml(E, mine) {
   return out.join('');
 }
 function renderStats() { $('sg').innerHTML = statsHtml(E, true); }
-/* ---------- game: drops, levels, badges, challenges, shop ---------- */
+/* ---------- game: LDs, levels, badges, challenges, shop ---------- */
 function saveG() { if (CLOUD) queueProf(); else wr('game', G); }
 function asc(a, b) { return a.t - b.t; }
 function toast(m) { if (!S.pop) return; var t = $('toast'); t.textContent = m; t.hidden = false; clearTimeout(tTimer); tTimer = setTimeout(function () { t.hidden = true; }, 3800); }
@@ -1631,7 +1691,7 @@ var BADGES = [
   ['f5', 'Popular', '5 friends', 80, function (c) { return c.fr >= 5; }],
   ['g1', 'First Purchase', 'Buy something in the shop', 20, function (c) { return c.owned >= 1 || c.spent > 0; }],
   ['g3', 'Collector', 'Own 5 shop items', 60, function (c) { return c.owned >= 5; }],
-  ['g4', 'Big Spender', 'Spend 500 drops', 100, function (c) { return c.spent >= 500; }],
+  ['g4', 'Big Spender', 'Spend 500 LDs', 100, function (c) { return c.spent >= 500; }],
   ['g5', 'Level 5', 'Reach level 5', 50, function (c) { return c.L >= 5; }],
   ['g10', 'Level 10', 'Reach level 10', 200, function (c) { return c.L >= 10; }],
   ['g11', 'Challenger', 'Claim 10 challenges', 60, function (c) { return c.chc >= 10; }],
@@ -1771,7 +1831,7 @@ function claim(key) {
   list.forEach(function (x) { G.claimed[x.key] = 1; G.bonus += x.r; tot += x.r; });
   if (!tot) return;
   var L0 = lvlOf(totals().xp - tot); saveG(); render();
-  var L1 = totals().L; toast('+' + tot + ' drops claimed' + (L1 > L0 && !notifOn() ? ' · Level ' + L1 + ': ' + lvlName(L1) : ''));
+  var L1 = totals().L; toast('+' + tot + ' LDs claimed' + (L1 > L0 && !notifOn() ? ' · Level ' + L1 + ': ' + lvlName(L1) : ''));
 }
 
 var SHOP = [
@@ -1797,9 +1857,9 @@ var SHOP = [
   {id: 'fx_sprinkles', kind: 'fx', name: 'Sprinkles', cost: 200},
   {id: 'fx_bubbles', kind: 'fx', name: 'Bubble Pop', cost: 200},
   {id: 'fx_stars', kind: 'fx', name: 'Star Splash', cost: 300, lvl: 5},
-  {id: 'bo_2x', kind: 'use', name: 'Double Drops, 24h', cost: 120, desc: 'Loads logged in the next 24 hours earn double.'},
+  {id: 'bo_2x', kind: 'use', name: 'Double LDs, 24h', cost: 120, desc: 'Loads logged in the next 24 hours earn double.'},
   {id: 'fz', kind: 'use', name: 'Streak freeze', cost: 90, desc: 'Covers one missed day so your streak survives. Hold up to 3.'},
-  {id: 'cap', kind: 'use', name: 'Mystery Capsule', cost: 60, desc: 'Random prize: drops back, or a cosmetic you do not own yet.'}
+  {id: 'cap', kind: 'use', name: 'Mystery Capsule', cost: 60, desc: 'Random prize: LDs back, or a cosmetic you do not own yet.'}
 ];
 var SMAP = {}; SHOP.forEach(function (i) { SMAP[i.id] = i; });
 function applyEq() {
@@ -1829,13 +1889,13 @@ function buy(id) {
   if (id === 'fz') { G.fz = (G.fz || 0) + 1; toast('Streak freeze added (' + G.fz + ' of 3)'); }
   else if (id === 'bo_2x') {
     var now = Date.now(), from = G.boosts.reduce(function (m, b) { return Math.max(m, b.to); }, now);
-    G.boosts.push({from: from, to: from + 86400000}); toast('Double drops are on for 24 hours');
+    G.boosts.push({from: from, to: from + 86400000}); toast('Double LDs are on for 24 hours');
   } else if (id === 'cap') {
     var r = Math.random(), gain = 0, free = SHOP.filter(function (x) { return x.kind !== 'use' && x.cost && x.cost <= 250 && !x.lvl && !G.owned[x.id]; });
     if (r < 0.5) gain = 15 + Math.floor(Math.random() * 31);
     else if (r < 0.8) gain = 55 + Math.floor(Math.random() * 31);
     else if (r < 0.93 || !free.length) gain = 100 + Math.floor(Math.random() * 81);
-    if (gain) { G.bonus += gain; toast('Capsule: +' + gain + ' drops'); }
+    if (gain) { G.bonus += gain; toast('Capsule: +' + gain + ' LDs'); }
     else { var pz = free[Math.floor(Math.random() * free.length)]; G.owned[pz.id] = 1; toast('Capsule: you got ' + pz.name + '!'); }
   } else { G.owned[id] = 1; G.eq[it.kind] = id; toast('Bought ' + it.name); }
   saveG(); render();
@@ -1847,11 +1907,11 @@ function equip(id) {
 function itemHtml(it, T) {
   var owned = !it.cost || G.owned[it.id], on = G.eq[it.kind] === it.id, btn;
   if (it.id === 'fz' && (G.fz || 0) >= 3) btn = '<button type="button" disabled>Full (3)</button>';
-  else if (it.kind === 'use') btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' drops</button>';
+  else if (it.kind === 'use') btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' LDs</button>';
   else if (on) btn = '<button type="button" disabled>Equipped</button>';
   else if (owned) btn = '<button type="button" class="go" data-eq="' + it.id + '">Equip</button>';
   else if (it.lvl && T.L < it.lvl) btn = '<button type="button" disabled>Level ' + it.lvl + '</button>';
-  else btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' drops</button>';
+  else btn = '<button type="button" data-buy="' + it.id + '"' + (T.bal < it.cost ? ' disabled' : '') + '>' + it.cost + ' LDs</button>';
   var pv = it.kind === 'theme' ? '<i class="sw" style="background:' + it.bg + '"></i>' : it.kind === 'splash' ? '<i class="sw" style="background:' + it.plus + '"></i>' : '';
   return '<div class="it"><b>' + it.name + '</b>' + pv + (it.desc ? '<span>' + it.desc + '</span>' : '') + btn + '</div>';
 }
@@ -1866,10 +1926,10 @@ var rwSub = 'rw', DROPSVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d
 function renderRewards() {
   var T = totals(), now = Date.now(), cur = xpFor(T.L), nxt = xpFor(T.L + 1), es = earnedSet(), cl = claimables(), data = chData();
   var t = SMAP[G.eq.title], ttl = t && t.cost ? t.name : '', bo = G.boosts.filter(function (b) { return now >= b.from && now < b.to; })[0];
-  var top = '<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div style="font-size:18px">Level ' + T.L + '</div><div class="bigt">' + lvlName(T.L) + '</div>' + (ttl ? '<p class="sub">' + ttl + '</p>' : '') + '</div><div style="text-align:right"><div style="font-size:18px">Drops</div><div class="bigt">' + T.bal + '</div></div></div>' +
+  var top = '<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div style="font-size:18px">Level ' + T.L + '</div><div class="bigt">' + lvlName(T.L) + '</div>' + (ttl ? '<p class="sub">' + ttl + '</p>' : '') + '</div><div style="text-align:right"><div style="font-size:18px">LDs</div><div class="bigt">' + T.bal + '</div></div></div>' +
     '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '. XP is every drop you have earned, spent or not.</p>' +
-    '<p class="sub">Each load earns 10 drops (first 3 a day). The first load of a day adds 5, plus 2 per streak day up to 20.</p>' +
-    (bo ? '<p class="sub"><b>Double drops active</b>, ends in ' + fmtGap(bo.to - now) + '.</p>' : '') +
+    '<p class="sub">Each load earns 10 LDs (first 3 a day). The first load of a day adds 5, plus 2 per streak day up to 20.</p>' +
+    (bo ? '<p class="sub"><b>Double LDs active</b>, ends in ' + fmtGap(bo.to - now) + '.</p>' : '') +
     (cl.length ? '<div class="row" style="max-width:300px"><button type="button" class="go" data-claim="all">Claim all (+' + cl.reduce(function (s, x) { return s + x.r; }, 0) + ')</button></div>' : '');
   var out = [card(' span2 hero', 'Your level', top), chList(data, 'w', 'Weekly challenges', fmtGap(winOf('w').b - now))];
   var got = BADGES.filter(function (b) { return es[b.id]; }).length;
@@ -1882,7 +1942,7 @@ function renderRewards() {
   ['theme', 'splash', 'title', 'fx', 'use'].forEach(function (k) {
     shop += '<div class="sec">' + heads[k] + '</div><div class="shop">' + SHOP.filter(function (i) { return i.kind === k; }).map(function (i) { return itemHtml(i, T); }).join('') + '</div>';
   });
-  var shopCard = card(' span2 b', 'Shop', '<div class="balbig">' + DROPSVG + '<span>' + T.bal + '</span></div><p class="sub" style="margin:0 0 4px">Your drops. Spend them on the items below.</p>' + shop);
+  var shopCard = card(' span2 b', 'Shop', '<div class="balbig">' + DROPSVG + '<span>' + T.bal + '</span></div><p class="sub" style="margin:0 0 4px">Your LDs. Spend them on the items below.</p>' + shop);
   var seg = '<div class="span2"><div class="seg" id="rwSeg"><button type="button" data-sub="rw" aria-pressed="' + (rwSub !== 'shop') + '">Rewards</button><button type="button" data-sub="shop" aria-pressed="' + (rwSub === 'shop') + '">Shop</button></div></div>';
   $('hBalN').textContent = T.bal;
   $('rw').innerHTML = seg + (rwSub === 'shop' ? shopCard : out.join(''));
@@ -2100,7 +2160,7 @@ function renderLeague() {
   }
   var L = G.lg.last;
   if (L) {
-    h += '<div class="sec">Last week</div><p style="margin:0">' + (L.idle ? 'No entries, no result.' : ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : ', stayed in ' + TIERS[L.to]) + (L.prize ? ', +' + L.prize + ' drops' : '')) + '</p>';
+    h += '<div class="sec">Last week</div><p style="margin:0">' + (L.idle ? 'No entries, no result.' : ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : ', stayed in ' + TIERS[L.to]) + (L.prize ? ', +' + L.prize + ' LDs' : '')) + '</p>';
     if (G.lg.prize && G.lg.prize.r > 0 && !G.claimed[G.lg.prize.key]) h += '<div class="row" style="max-width:260px"><button type="button" class="go" data-claim="' + G.lg.prize.key + '">Claim +' + G.lg.prize.r + '</button></div>';
   }
   el.innerHTML = h;
@@ -2123,7 +2183,7 @@ function duelSettle() {
     if (d.done || d.pend || d.b > now) return;
     var u = api.find(d.f), avail = !!(u && !u.priv), mine = dval(d.st, E, d.a, d.b), th = avail ? dval(d.st, u.entries, d.a, d.b) : 0;
     d.done = true; d.my = mine; d.th = th; d.res = CLOUD && !avail ? 'd' : mine > th ? 'w' : mine < th ? 'l' : 'd';
-    msg = d.res === 'w' ? 'You won the duel against @' + d.f + (d.k ? ' (+' + d.k + ' drops)' : '') : d.res === 'l' ? 'You lost the duel against @' + d.f + (d.k ? ' (-' + d.k + ' drops)' : '') : 'The duel against @' + d.f + ' ended in a draw';
+    msg = d.res === 'w' ? 'You won the duel against @' + d.f + (d.k ? ' (+' + d.k + ' LDs)' : '') : d.res === 'l' ? 'You lost the duel against @' + d.f + (d.k ? ' (-' + d.k + ' LDs)' : '') : 'The duel against @' + d.f + ' ended in a draw';
     if (d.res === 'w') { G.bonus += d.k; G.st = Object.assign({}, G.st, {dw: ((G.st || {}).dw || 0) + 1}); } else if (d.res === 'l') G.lost = (G.lost || 0) + d.k;
     if (CLOUD) { G.dset = Object.assign({}, G.dset); G.dset[d.cid] = {f: d.f, st: d.st, k: d.k, my: mine, th: th, res: d.res}; }
   });
@@ -2136,7 +2196,7 @@ function renderDuels() {
   if (+$('duK').value > bal) $('duK').value = '0';
   var du = G.du || [], act = du.filter(function (d) { return !d.done; }), now = Date.now();
   $('duList').innerHTML = act.length ? act.map(function (d) {
-    var who = '@' + esc(d.f), stake = d.k ? d.k + ' drops' : 'no stake';
+    var who = '@' + esc(d.f), stake = d.k ? d.k + ' LDs' : 'no stake';
     if (d.pend === 'out') return '<div class="ch"><div class="top"><b>You vs ' + who + '</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days. Waiting for them to accept.</p><div class="row" style="margin-top:8px"><button type="button" class="x" data-dc="' + d.cid + '">Cancel</button></div></div>';
     if (d.pend === 'in') return '<div class="ch"><div class="top"><b>' + who + ' challenges you</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days.</p><div class="row" style="margin-top:8px"><button type="button" class="go x" data-da="' + d.cid + '">Accept</button><button type="button" class="x" data-dd="' + d.cid + '">Decline</button></div></div>';
     var u = api.find(d.f), me = dval(d.st, E, d.a, d.b), th = u && !u.priv ? dval(d.st, u.entries, d.a, d.b) : 0;
@@ -2150,7 +2210,7 @@ $('duList').addEventListener('click', function (e) {
   var da = b.getAttribute('data-da'), dd = b.getAttribute('data-dd'), dc = b.getAttribute('data-dc'), done = function () { return refreshSocial().then(render); };
   if (da) {
     var d = (G.du || []).filter(function (x) { return String(x.cid) === da; })[0];
-    if (d && d.k > totals().bal) { $('duMsg').textContent = 'Not enough drops for this stake.'; return; }
+    if (d && d.k > totals().bal) { $('duMsg').textContent = 'Not enough LDs for this stake.'; return; }
     sb.rpc('respond_duel', {duel_id: +da, accept: true}).then(done);
   } else if (dd) sb.rpc('respond_duel', {duel_id: +dd, accept: false}).then(done);
   else if (dc) { MINEC[dc] = 1; sb.rpc('cancel_duel', {duel_id: +dc}).then(done); }
@@ -2160,7 +2220,7 @@ $('duGo').addEventListener('click', function () {
   if (!f) { m.textContent = 'Pick a friend with public stats first.'; return; }
   if (du.filter(function (d) { return !d.done; }).length >= 3) { m.textContent = 'You can run 3 duels at a time.'; return; }
   if (du.some(function (d) { return !d.done && d.f === f; })) { m.textContent = 'You already have a duel with @' + f + '.'; return; }
-  if (k > totals().bal) { m.textContent = 'Not enough drops for this stake.'; return; }
+  if (k > totals().bal) { m.textContent = 'Not enough LDs for this stake.'; return; }
   if (CLOUD) {
     sb.rpc('create_duel', {opp_name: f, p_stat: st, p_days: days, p_stake: k}).then(function (r) {
       var t = {ok: 'Challenge sent. They need to accept.', not_friend: 'You are not friends with @' + f + '.', not_public: 'Both of you need "My friends" stats (Settings, Privacy).', exists: 'You already have a duel with @' + f + '.', limit: 'You can run 3 duels at a time.', auth: 'Log in again.'};
@@ -2209,7 +2269,7 @@ function wrapSlides(yr) {
   out.push({bg: bg(), k: 'Longest streak', big: longest + (longest === 1 ? ' day' : ' days'), c: 'in a row' + (G.fd && Object.keys(G.fd).length ? ', freezes included.' : '.')});
   var tk = Object.keys(tg).sort(function (x, y) { return tg[y] - tg[x]; });
   if (tk.length) out.push({bg: bg(), k: 'Top tag', big: esc(tk[0]), c: 'used ' + tg[tk[0]] + ' times' + (tk.length > 1 ? '. Next: ' + tk.slice(1, 3).map(function (t) { return esc(t) + ' (' + tg[t] + ')'; }).join(', ') + '.' : '.')});
-  out.push({bg: bg(), k: 'Right now', big: 'Level ' + T.L, c: lvlName(T.L) + ', ' + T.bal + ' drops, ' + got + ' of ' + BADGES.length + ' badges.'});
+  out.push({bg: bg(), k: 'Right now', big: 'Level ' + T.L, c: lvlName(T.L) + ', ' + T.bal + ' LDs, ' + got + ' of ' + BADGES.length + ' badges.'});
   var lines = [['Entries', n], ['Active days', days.length], ['Total time', fmtDur(tot)], ['Average rating', avg], ['Longest streak', longest + ' d'], ['Style', titles[topP]], ['Busiest weekday', WN[pw]], ['Best month', MN[mk % 100]]];
   if (tk.length) lines.push(['Top tag', tk[0]]);
   out.push({bg: bg(), k: 'Summary', big: lab, c: '', list: lines});
@@ -2231,7 +2291,7 @@ function drawWrap() {
 var WEL = [
   ['Welcome to Creamer', 'A private tracker for your own numbers: when, how long and how it rated. It turns your entries into stats, streaks and rewards. You never write text, only ratings, times and tags.'],
   ['Log an entry', 'Tap the splash button at the bottom. Set the rating, the from and to times and the yes or no, add tags if you like, then save. Home shows the time since your last entry and your streak.'],
-  ['Stats and drops', 'Stats shows your patterns by hour, weekday and month. Every entry earns drops. Your balance is the droplet at the top. Tap it to open the Shop.'],
+  ['Stats and LDs', 'Stats shows your patterns by hour, weekday and month. Every entry earns LDs. Your balance is the white drop at the top. Tap it to open the Shop.'],
   ['Challenges and friends', 'Rewards has a daily challenge that you pick once a day, weekly challenges, badges and a league. Add friends by username in the Friends tab. You decide who sees your stats.'],
   ['Make it yours', 'The gear at the top opens Settings: wording, default rating, tags and privacy. The Common questions section there answers the rest.']
 ], welI = 0, welKeep = false;
@@ -2360,7 +2420,7 @@ function renderProfile() {
     (P.bio ? '<p style="margin:14px 0 0">' + esc(P.bio) + '</p>' : '<p class="sub">No bio yet. Add one in Settings.</p>') + '<div class="row" style="max-width:260px"><button type="button" id="pfSet">Settings</button></div>';
   var nxt = xpFor(T.L + 1), cur = xpFor(T.L);
   $('pf').innerHTML = card(' span2', 'Profile', head) +
-    card(' b', 'Level ' + T.L + ': ' + lvlName(T.L), '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + T.bal + ' drops, ' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '.</p>') +
+    card(' b', 'Level ' + T.L + ': ' + lvlName(T.L), '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + T.bal + ' LDs, ' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '.</p>') +
     card('', 'Numbers', '<div class="tiles">' + tile(E.length, 'loads') + tile(curStreak(E), 'day streak') + tile(c.streak, 'best streak') + tile(avgOf(c.sum, c.n), 'avg rating') + tile(got.length + '/' + BADGES.length, 'badges') + tile(F.length, 'friends') + '</div>') +
     card(' span2 b', 'Top badges', top.length ? '<div class="badges">' + top.map(function (b) { return '<div class="bd on"><b>' + b.n + '</b><span>' + b.d + '</span></div>'; }).join('') + '</div>' : '<p class="empty">No badges yet.</p>');
 }
@@ -2432,6 +2492,24 @@ else {
   if (sess && ACC[sess]) loadUser(sess); else showAuth(Object.keys(ACC).length ? 'in' : 'up');
 }
 gate.hidden = ok; lock(); if (!ok) $('yes').focus();
+
+/* tap splat */
+(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('pointerdown', function (e) {
+    var b = e.target.closest && e.target.closest('button,.tabs button,summary');
+    if (!b) return;
+    var x = e.clientX, y = e.clientY, i, el;
+    el = document.createElement('i'); el.className = 'splat'; el.style.left = x + 'px'; el.style.top = y + 'px'; document.body.appendChild(el);
+    setTimeout(function () { el.remove(); }, 600);
+    for (i = 0; i < 6; i++) {
+      var a = Math.PI * 2 * i / 6 + Math.random() * 0.8, d = 26 + Math.random() * 26;
+      el = document.createElement('i'); el.className = 'sp'; el.style.left = x + 'px'; el.style.top = y + 'px';
+      el.style.setProperty('--dx', Math.cos(a) * d + 'px'); el.style.setProperty('--dy', Math.sin(a) * d + 14 + 'px');
+      document.body.appendChild(el); (function (q) { setTimeout(function () { q.remove(); }, 650); })(el);
+    }
+  }, true);
+})();
 </script>
 </body>
 </html>
