@@ -741,7 +741,6 @@ html[data-theme=shop] .note.hint{margin:6px 0 0;font-size:13px}
 #authTabs button{min-width:0;padding-left:6px;padding-right:6px;font-size:15px;white-space:nowrap}
 #authTabs{max-width:100%}
 
-.lbonus{border-color:#e11d48!important}
 .gjp{margin:0 0 10px!important;font-size:16px!important}
 .gjl{list-style:none;margin:0 0 14px;padding:0;text-align:left}
 .gjl li{border:0;display:block;padding:6px 0 6px 18px;position:relative;font-size:16px}
@@ -794,6 +793,27 @@ html[data-theme] .wel{background:rgba(8,8,11,.92)}
   #auth .lhero .logo{font-size:72px!important}
   #auth .lh{font-size:44px!important}
   #auth .ls{font-size:19px!important}
+}
+
+.lsm{margin:10px 0 0!important;font-size:13px!important;color:var(--t-mute,#a9a9b8)}
+.lh{font-size:30px!important;line-height:1.12!important}
+.lmain{padding:14px!important}
+.lmain h3{font-size:21px}
+.lmain .lart{flex:0 0 84px;height:84px}
+.lmain .lart svg{width:68px;height:68px}
+.lsec{text-align:left;padding:4px 2px}
+.lsec h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--t-mute,#a9a9b8)}
+.lsec div{display:flex;flex-wrap:wrap;gap:8px}
+.lsec span{padding:6px 12px;border-radius:999px;background:var(--t-card,#121217);border:1px solid var(--t-edge,#2c2c37);font-size:14px;color:var(--t-ink,#f4f4f7)}
+@media (min-width:1000px){
+  #auth .lmain{flex-direction:column;align-items:flex-start}
+  #auth .lmain .lart{width:100%;height:150px;flex:0 0 auto}
+  #auth .lmain .lart svg{width:110px;height:110px}
+  #auth .lmain h3{font-size:24px}
+  #auth .lmain p{font-size:17px}
+  #auth .lsec{grid-column:1/-1}
+  #auth .lh{font-size:42px!important;white-space:nowrap}
+  #auth .lcta{max-width:640px;margin:0 auto}
 }
 </style>
 </head>
@@ -1102,25 +1122,16 @@ html[data-theme] .wel{background:rgba(8,8,11,.92)}
 <header class="lhero">
 <svg class="ldrip" viewBox="0 0 480 80" preserveAspectRatio="none" aria-hidden="true"><rect width="480" height="10" fill="#f4f4f6"/><path d="M24.0,10 L56.0,10 Q47.0,10 47.0,19 L47.0,44 L33.0,44 L33.0,19 Q33.0,10 24.0,10 Z" fill="#f4f4f6"/><circle cx="40" cy="44" r="7.0" fill="#f4f4f6"/><circle cx="40" cy="50.3" r="8.049999999999999" fill="#f4f4f6"/><path d="M95.0,10 L125.0,10 Q116.0,10 116.0,19 L116.0,28 L104.0,28 L104.0,19 Q104.0,10 95.0,10 Z" fill="#f4f4f6"/><circle cx="110" cy="28" r="6.0" fill="#f4f4f6"/><circle cx="110" cy="33.4" r="6.8999999999999995" fill="#f4f4f6"/><path d="M173.0,10 L207.0,10 Q198.0,10 198.0,19 L198.0,62 L182.0,62 L182.0,19 Q182.0,10 173.0,10 Z" fill="#f4f4f6"/><circle cx="190" cy="62" r="8.0" fill="#f4f4f6"/><circle cx="190" cy="69.2" r="9.2" fill="#f4f4f6"/><path d="M255.0,10 L285.0,10 Q276.0,10 276.0,19 L276.0,34 L264.0,34 L264.0,19 Q264.0,10 255.0,10 Z" fill="#f4f4f6"/><circle cx="270" cy="34" r="6.0" fill="#f4f4f6"/><circle cx="270" cy="39.4" r="6.8999999999999995" fill="#f4f4f6"/><path d="M324.0,10 L356.0,10 Q347.0,10 347.0,19 L347.0,52 L333.0,52 L333.0,19 Q333.0,10 324.0,10 Z" fill="#f4f4f6"/><circle cx="340" cy="52" r="7.0" fill="#f4f4f6"/><circle cx="340" cy="58.3" r="8.049999999999999" fill="#f4f4f6"/><path d="M415.0,10 L445.0,10 Q436.0,10 436.0,19 L436.0,30 L424.0,30 L424.0,19 Q424.0,10 415.0,10 Z" fill="#f4f4f6"/><circle cx="430" cy="30" r="6.0" fill="#f4f4f6"/><circle cx="430" cy="35.4" r="6.8999999999999995" fill="#f4f4f6"/></svg>
 <h2 id="atl" class="logo">Creamer</h2>
-<div class="gstrip hide-in"><span>No account needed to look around.</span><button type="button" data-go="guest">Try it as a guest</button></div>
-<p class="lh hide-in">Track it. Time it. Beat your record.</p>
-<p class="ls hide-in">A private log for adults who like numbers. Record each load, watch the stats, earn rewards.</p>
-<div class="lchips hide-in"><span>Free</span><span>No account needed</span><span>18+ only</span><span>Private by default</span></div>
-<div class="lcta hide-in"><button type="button" class="go" data-go="up">Create free account</button><button type="button" data-go="guest">Try it now, no account needed</button><button type="button" data-go="in">I have an account</button></div>
+<p class="lh hide-in">Log it. Track it. Compare with friends.</p>
+<p class="ls hide-in">A private tracker for adults. Free.</p>
+<div class="lcta hide-in"><button type="button" class="go" data-go="up">Create free account</button><button type="button" data-go="guest">Try it first, no account needed</button></div>
+<p class="lsm hide-in">18+ only. +100 LDs on sign-up.</p>
 </header>
-<section class="lf lbonus hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><rect x="24" y="48" width="72" height="56" rx="10" fill="#e11d48"/><rect x="18" y="36" width="84" height="20" rx="8" fill="#f4f4f6"/><rect x="54" y="36" width="12" height="68" fill="#f4f4f6"/><path d="M60 36 C60 36 44 34 44 24 C44 14 58 16 60 36 C62 16 76 14 76 24 C76 34 60 36 60 36 Z" fill="none" stroke="#f4f4f6" stroke-width="5" stroke-linejoin="round"/></svg></div><div><h3>Account bonuses</h3><p>+100 LDs on sign-up. Your guest entries carry over. Your data is saved to your account and works on any device. Friends, duels, crews, the shop, challenges, badges and leagues unlock.</p></div></section>
-<section class="lf hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><div><h3>A tank that fills over time</h3><p>Your tank refills as time passes and empties when you log a load as released. One glance shows where you stand.</p></div></section>
-<section class="lf hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M14 104 H108" stroke="currentColor" stroke-width="2" opacity=".4"/><rect x="20" y="64" width="14" height="40" rx="3" fill="#f4f4f6" opacity=".55"/><rect x="42" y="44" width="14" height="60" rx="3" fill="#f4f4f6" opacity=".75"/><rect x="64" y="74" width="14" height="30" rx="3" fill="#f4f4f6" opacity=".55"/><rect x="86" y="24" width="14" height="80" rx="3" fill="#e11d48"/><path d="M20 58 L49 38 L71 68 L93 18" fill="none" stroke="#f4f4f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Real numbers</h3><p>Time since the last load, average gaps, ratings and streaks, in stats you can read at a glance.</p></div></section>
-<section class="lf hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><div><h3>Rewards that stack up</h3><p>Every load earns LDs. Spend them on slime colors, effects and tank looks. Level up and collect badges.</p></div></section>
-<section class="lf hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><div><h3>Friends, duels and crews</h3><p>Add friends by username, compare stats, challenge them to duels for LDs, or form a crew.</p></div></section>
-<section class="lf hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><div><h3>Daily challenges and events</h3><p>New challenges and surprise events appear on your Home tab with bonus LDs.</p></div></section>
-<section class="lf hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><div><h3>Private by design</h3><p>Only numbers and timestamps are stored. No photos, notes or location. Entries stay private unless you share them. Add a PIN lock, and delete your account whenever you want.</p></div></section>
-<section class="lmid hide-in"><b>Not sure yet?</b><p>You do not have to sign up to try Creamer. Log a few loads as a guest and create an account later. Your entries carry over.</p><button type="button" class="go" data-go="guest">Try it as a guest</button></section>
-<section class="lhow hide-in"><h3>How it works</h3>
-<ol><li><b>1</b><span>Create an account with a username and an email. Takes under a minute.</span></li>
-<li><b>2</b><span>Tap Log a load after each one. Pick start, end, rating and whether it was released.</span></li>
-<li><b>3</b><span>Watch your stats, streaks and rewards grow.</span></li></ol></section>
-<h3 class="lform hide-in">Ready? Create your account</h3>
+<section class="lf lmain hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="46" fill="none" stroke="#f4f4f6" stroke-width="5" opacity=".9"/><path d="M60 32 V60 L78 72" fill="none" stroke="#f4f4f6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="96" cy="94" r="18" fill="#e11d48"/><path d="M96 85 v18 M87 94 h18" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg></div><div><h3>Log your loads</h3><p>Start, end, rating. Done in seconds.</p></div></section>
+<section class="lf lmain hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M14 104 H108" stroke="#a9a9b8" stroke-width="2" opacity=".5"/><rect x="20" y="64" width="14" height="40" rx="3" fill="#f4f4f6" opacity=".55"/><rect x="42" y="44" width="14" height="60" rx="3" fill="#f4f4f6" opacity=".75"/><rect x="64" y="74" width="14" height="30" rx="3" fill="#f4f4f6" opacity=".55"/><rect x="86" y="24" width="14" height="80" rx="3" fill="#e11d48"/><path d="M20 58 L49 38 L71 68 L93 18" fill="none" stroke="#f4f4f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Track your stats</h3><p>Streaks, averages, ratings and time since the last one.</p></div></section>
+<section class="lf lmain hide-in"><div class="lart"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="38" cy="42" r="15" fill="#f4f4f6"/><path d="M12 96 Q12 66 38 66 Q64 66 64 96 Z" fill="#f4f4f6"/><circle cx="86" cy="50" r="12" fill="#e11d48"/><path d="M66 96 Q66 72 86 72 Q106 72 106 96 Z" fill="#e11d48"/><path d="M80 28 h22 M80 36 h14" stroke="#a9a9b8" stroke-width="3" stroke-linecap="round"/></svg></div><div><h3>Add friends</h3><p>See their stats and streaks next to yours.</p></div></section>
+<section class="lsec hide-in"><h3>Also inside</h3><div><span>Live tank</span><span>Rewards and shop</span><span>Duels and crews</span><span>Daily challenges</span><span>PIN lock</span><span>Private by default</span></div></section>
+<h3 class="lform hide-in">Create your account</h3>
 <div class="card gc" id="authCard">
 <div class="seg" id="authTabs"><button type="button" data-m="in" aria-pressed="true">Log in</button><button type="button" data-m="up" aria-pressed="false">Create account</button></div>
 <form id="authForm" novalidate>
@@ -1341,11 +1352,11 @@ function render() {
   var rows = E.slice().sort(function (a, b) { return b.t - a.t; }).slice(0, histAll ? 20 : 5);
   $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No loads yet. Tap Log a load.</li>';
   if (!$('entriesView').hidden) renderEntries();
-  var l = lastOf(E), hs = $('hSince');
+  var l = lastOf(E.filter(function (x) { return x.rel; })), hs = $('hSince');
   if (l) {
     hs.setAttribute('data-since', l.t); hs.textContent = sinceLabel(l.t, false);
-    $('hLast').textContent = 'Last load ' + (ymd(new Date(l.t - l.dur * 60000)) !== ymd(new Date(l.t)) ? spanTxt(l, false) : fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to)) + ', rating ' + l.rate + ', ' + (l.rel ? 'released' : 'not released') + '.';
-  } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = 'No loads yet. Tap Log a load.'; }
+    $('hLast').textContent = 'Last released load ' + (ymd(new Date(l.t - l.dur * 60000)) !== ymd(new Date(l.t)) ? spanTxt(l, false) : fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to)) + ', rating ' + l.rate + '.';
+  } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = E.length ? 'No released loads yet. The timer starts when you log one as released.' : 'No loads yet. Tap Log a load.'; }
   $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
   renderSettings(); $('hBalN').textContent = totals().bal; updateBadge(); checkNotifs();
   renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
