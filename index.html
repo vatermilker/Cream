@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="theme-color" content="#fbd3e1">
+<meta name="theme-color" content="#08080b">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="manifest" href="manifest.webmanifest">
@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <title>Creamer</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Archivo+Black&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fbd3e1;--bgink:#3b2a33;--card:#fff;--edge:#f0cdd9;--ink:#3b2a33;--mute:#6f5560;--bar:#f7d3de;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}
@@ -535,6 +535,99 @@ html.dr_rain .fall{animation-duration:2.4s}
 .chm .ctank{width:130px;flex:none;margin:0}
 .chm .ctank .ctx{font-size:34px}
 @media (prefers-reduced-motion:reduce){.ctank .cwv,.ctank.full{animation:none}}
+/* ===== Looks: After dark (default) and Workshop ===== */
+html[data-theme]{--bg:var(--t-bg);--card:var(--t-card);--edge:var(--t-edge);--ink:var(--t-ink);--bgink:var(--t-ink);--mute:var(--t-mute);--bar:var(--t-nav)}
+html[data-theme="dark"]{--t-bg:#08080b;--t-card:#121217;--t-in:#1b1b23;--t-edge:#2c2c37;--t-ink:#f4f4f7;--t-mute:#a9a9b8;--t-acc:#e11d48;--t-acc2:#ff6b88;--t-acct:#fff;--t-nav:#0b0b0f;--t-h1:#16161d;--t-h2:#0c0c11;--t-glow:rgba(255,45,85,.45);--t-rad:12px;--t-fb:"Barlow Condensed",system-ui,sans-serif;--t-fd:"Bebas Neue",sans-serif;--t-fm:"Bebas Neue",sans-serif}
+html[data-theme="shop"]{--t-bg:#141517;--t-card:#202225;--t-in:#2a2d31;--t-edge:#3a3d42;--t-ink:#ececec;--t-mute:#b5b8bd;--t-acc:#f5c518;--t-acc2:#f5c518;--t-acct:#111;--t-nav:#101113;--t-h1:#2c2f33;--t-h2:#1c1e21;--t-glow:rgba(0,0,0,.5);--t-rad:4px;--t-fb:"Oswald",system-ui,sans-serif;--t-fd:"Archivo Black",sans-serif;--t-fm:"JetBrains Mono",ui-monospace,monospace}
+html[data-theme] body{background:var(--t-bg);color:var(--t-ink);font-family:var(--t-fb);font-weight:500}
+html[data-theme="dark"] body{background:radial-gradient(90% 40% at 50% 30%,rgba(255,45,85,.12),transparent) fixed,var(--t-bg);font-size:19px}
+html[data-theme] .wrap{padding-bottom:130px}
+html[data-theme] h1,html[data-theme] .card h2,html[data-theme] .bigt,html[data-theme] .tpc{font-family:var(--t-fd)}
+html[data-theme="dark"] h1{letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 12px #ff2d55,0 0 28px rgba(255,45,85,.6)}
+html[data-theme="shop"] h1{letter-spacing:1px;text-transform:uppercase;font-size:34px}
+html[data-theme="dark"] .card h2{font-weight:400;font-size:28px;letter-spacing:1.5px}
+html[data-theme="shop"] .card h2{font-size:18px;text-transform:uppercase;letter-spacing:.5px}
+html[data-theme] .eyebrow{color:var(--t-acc2);font-family:var(--t-fb);font-weight:700}
+html[data-theme] .card,html[data-theme] .card.b,html[data-theme] .card.soft{background:var(--t-card);color:var(--t-ink);border:1px solid var(--t-edge);border-radius:var(--t-rad);box-shadow:none}
+html[data-theme] #sg .card:not(.hero):not(.lastc),html[data-theme] #fBody .card:not(.hero):not(.lastc),html[data-theme] #sg .card:has(.chart):not(.hero):not(.lastc),html[data-theme] #fBody .card:has(.chart):not(.hero):not(.lastc){background:var(--t-card);border:1px solid var(--t-edge);border-radius:var(--t-rad);box-shadow:none}
+html[data-theme] #sg .card:not(.hero):not(.lastc) h2,html[data-theme] #fBody .card:not(.hero):not(.lastc) h2{color:var(--t-mute);font-family:var(--t-fb);font-size:14px;font-weight:700}
+html[data-theme] .card.hero{background:linear-gradient(180deg,var(--t-h1),var(--t-h2));color:#fff;border:1px solid var(--t-edge);padding-top:48px}
+html[data-theme="dark"] .card.hero{border:1.5px solid #ff2d55;box-shadow:0 0 26px var(--t-glow),inset 0 0 30px rgba(255,45,85,.12)}
+html[data-theme] .card.hero::before{border-radius:var(--t-rad) var(--t-rad) 0 0}
+html[data-theme] .card.hero .big{font-family:var(--t-fm);text-shadow:none;letter-spacing:1px}
+html[data-theme="dark"] .card.hero .big{text-transform:uppercase;font-size:72px;line-height:.95;text-shadow:0 0 14px rgba(255,45,85,.8)}
+html[data-theme="shop"] .card.hero .big{font-size:40px;line-height:1.08;letter-spacing:-1px}
+html[data-theme] .card.hero h2,html[data-theme] .card.hero .sub{color:rgba(255,255,255,.88)}
+html[data-theme] .card:not(.hero) .kv b{color:var(--t-acc2)}
+html[data-theme] .card.hero .tiles>div{border-radius:var(--t-rad);background:rgba(255,255,255,.08)}
+html[data-theme] .card.hero .bar,html[data-theme] .bar{border-radius:var(--t-rad)}
+/* buttons and fields */
+html[data-theme] button{font-family:var(--t-fb);font-weight:700;border-radius:var(--t-rad);box-shadow:none;border:1px solid var(--t-edge);background:var(--t-in);color:var(--t-ink)}
+html[data-theme="dark"] button{letter-spacing:.5px}
+html[data-theme] button.go,html[data-theme] .row .go{background:var(--t-acc);color:var(--t-acct);border-color:transparent}
+html[data-theme="dark"] button.go{box-shadow:0 0 16px rgba(255,45,85,.55)}
+html[data-theme] .card.hero button.go{background:var(--t-acc);color:var(--t-acct)}
+html[data-theme] .card.hero #runGo{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);box-shadow:none}
+html[data-theme] .card.hero #runStop{background:var(--t-acc);color:var(--t-acct)}
+.hact{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:stretch}
+.hact #runBox{margin-top:0;flex:0 0 auto}
+.hact:has(#runOn:not([hidden])) #runBox{flex:1 1 100%}
+.hact:has(#runOn:not([hidden])) .logb{display:none}
+.logb{flex:1 1 140px;min-height:56px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:20px;padding:0 18px}
+.logb svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:3;stroke-linecap:round}
+html[data-theme] .logb{background:var(--t-acc);color:var(--t-acct);border-color:transparent;text-transform:uppercase;letter-spacing:2px}
+html[data-theme="dark"] .logb{box-shadow:0 0 20px rgba(255,45,85,.7);font-family:var(--t-fd);font-size:26px;font-weight:400;letter-spacing:3px}
+html[data-theme] .logb:active{transform:scale(.97)}
+html[data-theme] input[type=text],html[data-theme] input[type=email],html[data-theme] input[type=password],html[data-theme] input[type=time],html[data-theme] input[type=date],html[data-theme] input[type=number],html[data-theme] textarea,html[data-theme] select{background-color:var(--t-in);color:var(--t-ink);border:1px solid var(--t-edge);border-radius:var(--t-rad);box-shadow:none;font-family:var(--t-fb)}
+html[data-theme] input[type=range]{accent-color:var(--t-acc)}
+html[data-theme] .chips button,html[data-theme] .seg button{background:var(--t-in);color:var(--t-ink)}
+html[data-theme] .chips button[aria-pressed="true"],html[data-theme] .seg button[aria-pressed="true"],html[data-theme] .gear[aria-pressed="true"]{background:var(--t-acc);color:var(--t-acct);box-shadow:none;border-color:transparent}
+html[data-theme] .gear{background:var(--t-card);border:1px solid var(--t-edge);color:var(--t-ink)}
+html[data-theme="dark"] .gear.bal{border-color:#e11d48;box-shadow:0 0 12px rgba(255,45,85,.45)}
+html[data-theme] .pill{background:var(--t-acc);color:var(--t-acct);border-radius:var(--t-rad)}
+/* tab bar */
+html[data-theme] .tabs{background:var(--t-nav);border-radius:0;border-top:1px solid var(--t-edge);box-shadow:none}
+html[data-theme] .tabs button{background:transparent;border:0;color:var(--t-mute);border-radius:10px;box-shadow:none;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+html[data-theme="dark"] .tabs button[aria-pressed="true"]{background:rgba(255,45,85,.16);color:#fff;box-shadow:inset 0 0 0 1px #ff2d55}
+html[data-theme="shop"] .tabs button[aria-pressed="true"]{background:var(--t-card);color:#f5c518;border-radius:2px;box-shadow:inset 0 3px 0 #f5c518}
+/* overlays and screens */
+html[data-theme] .ov{background:rgba(0,0,0,.72)}
+html[data-theme] .ov .card{border-radius:18px 18px 0 0}
+html[data-theme] .gate{background:var(--t-bg)}
+html[data-theme] .wr{background:var(--t-bg)}
+html[data-theme] #wrDots i{background:rgba(255,255,255,.2)}
+html[data-theme] #wrDots i.on{background:var(--t-acc)}
+html[data-theme] #boot{background:radial-gradient(80% 50% at 50% 60%,rgba(255,45,85,.18),transparent),#08080b}
+html[data-theme="shop"] #boot{background:#141517}
+html[data-theme] .sub,html[data-theme] .note,html[data-theme] .mini div{color:var(--t-mute)}
+html[data-theme] .mini b{color:var(--t-ink)}
+html[data-theme] .wrap{padding-top:calc(54px + env(safe-area-inset-top,0px))}
+html[data-theme] h1{display:inline-block;background:var(--t-bg);border:1px solid var(--t-edge);border-radius:var(--t-rad);padding:2px 12px}
+html[data-theme="dark"] h1{color:#ff3b64;text-shadow:0 0 12px rgba(255,45,85,.7)}
+html[data-theme="shop"] h1{color:#ececec;border-left:8px solid #f5c518;text-shadow:none}
+html[data-theme="dark"] .bl{background:radial-gradient(circle at 40% 35%,rgba(255,45,85,.3),rgba(255,45,85,.08) 55%,transparent 72%);opacity:.7}
+html[data-theme="shop"] .bl{opacity:.05}
+html[data-theme] #dchCard{border:1.5px solid var(--t-acc)}
+html[data-theme] .htxt>div:first-child{font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--t-acc2);font-weight:700}
+html[data-theme] #pf .card:nth-child(n+3){background:var(--t-card);border:1px solid var(--t-edge);border-radius:var(--t-rad);box-shadow:none}
+html[data-theme] #pf .card:nth-child(n+3) h2{color:var(--t-mute);font-family:var(--t-fb);font-size:14px;font-weight:700}
+html[data-theme] .who{flex-wrap:nowrap}
+html[data-theme] h1{font-size:28px;padding:2px 10px;letter-spacing:2px}
+html[data-theme="dark"] h1{font-size:34px}
+html[data-theme="shop"] h1{font-size:24px;letter-spacing:1px}
+html[data-theme] .card.evc{background:var(--t-card);border:1.5px solid var(--t-acc);box-shadow:none}
+html[data-theme="dark"] .card.evc{box-shadow:0 0 18px rgba(255,45,85,.4),inset 0 0 24px rgba(255,45,85,.1)}
+html[data-theme] .card.evc::after{background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.1) 46%,transparent 60%);background-size:250% 100%}
+html[data-theme] .card.hero{padding-left:22px;padding-right:22px}
+html[data-theme] .it,html[data-theme] .bd,html[data-theme] .tag,html[data-theme] .fr,html[data-theme] .lgme,html[data-theme] .nt .ntx,html[data-theme] .cinv,html[data-theme] .ago.l1{background:var(--t-in);color:var(--t-ink);box-shadow:none;border:1px solid var(--t-edge);border-radius:var(--t-rad)}
+html[data-theme] .fr:hover{background:var(--t-edge)}
+html[data-theme] .it span,html[data-theme] .bd span{color:var(--t-mute)}
+html[data-theme] .it .sw{box-shadow:inset 0 0 0 1px var(--t-edge)}
+html[data-theme] .ch{border-bottom:1px dashed var(--t-edge)}
+html[data-theme] .card h2,html[data-theme] #sg .card h2,html[data-theme] #fBody .card h2{color:var(--t-ink)}
+html[data-theme] #sg .card:not(.hero):not(.lastc) h2,html[data-theme] #fBody .card:not(.hero):not(.lastc) h2,html[data-theme] #pf .card:nth-child(n+3) h2{color:var(--t-mute)}
+html[data-theme] .bar{background:var(--t-edge);box-shadow:none}
+html[data-theme] .bar i{background:var(--t-acc)}
 </style>
 </head>
 <body>
@@ -581,7 +674,7 @@ html.dr_rain .fall{animation-duration:2.4s}
 </svg><div class="tpc" id="tPct">100%</div><div class="tsub" id="tSub">Full</div></div>
 </div>
 <p class="sub" id="hLast"></p>
-<div id="runBox"><button type="button" class="go" id="runGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Start timer</button><div id="runOn" hidden><div class="runl">Timer running</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div>
+<div class="hact"><button class="logb" id="add" type="button" hidden aria-label="Log a load"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>Log a load</button><div id="runBox"><button type="button" class="go" id="runGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Timer</button><div id="runOn" hidden><div class="runl">Timer running</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div></div>
 <div id="hStreak"></div>
 </section>
 
@@ -760,6 +853,10 @@ html.dr_rain .fall{animation-duration:2.4s}
 <p class="note">Add as many as you like. They show up when you log an entry, and you can pick any of them. Removing a tag keeps it on old entries.</p>
 </section>
 <section class="card">
+<h2>Look</h2>
+<div class="seg" id="themeSeg"><button type="button" data-t="dark" aria-pressed="true">After dark</button><button type="button" data-t="shop" aria-pressed="false">Workshop</button></div>
+</section>
+<section class="card">
 <h2>Feedback</h2>
 <div class="kv"><span>Tap sounds</span><button type="button" id="tSnd" role="switch" aria-checked="true">On</button></div>
 <div class="kv"><span>Tap vibration</span><button type="button" id="tHap" role="switch" aria-checked="true">On</button></div>
@@ -781,7 +878,7 @@ html.dr_rain .fall{animation-duration:2.4s}
 <section class="card" id="faqCard">
 <h2>Common questions</h2>
 <details><summary>What is Creamer?</summary><p>A private tracker. You log entries with a rating, a from and to time, a yes or no and optional tags. The app turns them into stats, streaks, challenges and rewards. It stores numbers and times only.</p></details>
-<details><summary>How do I add an entry?</summary><p>Tap the splash button at the bottom. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
+<details><summary>How do I add an entry?</summary><p>Tap Log a load on the Home screen. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
 <details><summary>How do I remove an entry?</summary><p>On Home tap Show more, or open All entries. Tap Remove on the entry, then tap again to confirm.</p></details>
 <details><summary>What is a crew?</summary><p>A crew is you and up to 7 friends sharing one tank. Every load anyone in the crew logs this week fills it. Fill it to the goal before Monday and everyone gets 100 LDs. Crew members see how many loads each member logged this week, even if their stats are private. You can be in one crew at a time.</p></details>
 <details><summary>What are surprise events?</summary><p>Events pop up at random times and last from one hour to a whole day. When one is live it shows on Home with its rule and a countdown. Log a load that fits the rule while it is live and you get the bonus. Everyone gets the same events at the same time.</p></details>
@@ -818,7 +915,6 @@ html.dr_rain .fall{animation-duration:2.4s}
 
 <nav class="tabs" aria-label="Sections" hidden><button type="button" id="tHome" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</button><button type="button" id="tStats" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-8"/></svg>Stats</button><button type="button" id="tFriends" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14c2.7 0 4.5 1.8 4.5 4.5"/></svg>Friends</button><button type="button" id="tRewards" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3"/><path d="M12 13v4M8 20h8M10 17h4"/></svg>Rewards</button><button type="button" id="tProfile" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Profile</button></nav>
 
-<button class="drop" id="add" type="button" hidden aria-label="Add a load"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20C68 20 70 32 78 34C88 36 98 28 102 36C106 46 94 50 94 58C94 66 106 70 102 80C98 90 86 84 80 90C72 96 74 108 62 106C52 104 54 94 46 90C36 86 24 94 20 84C16 74 28 68 28 60C28 52 14 48 20 38C26 28 38 34 46 32C54 30 52 20 60 20Z" fill="#fff" stroke="#f0cdd9" stroke-width="3"/><circle cx="107" cy="17" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="13" cy="22" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="109" cy="101" r="5" fill="#fff" stroke="#f0cdd9" stroke-width="2"/><circle cx="15" cy="105" r="6" fill="#fff" stroke="#f0cdd9" stroke-width="2"/></svg><span>+</span></button>
 
 <div class="gate" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="atl" style="z-index:95">
 <div class="card gc">
@@ -884,7 +980,7 @@ try {
   if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
 } catch (e) { CLOUDFAIL = true; }
 var uid = '', ACC = {};
-var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: true, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
+var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {theme: 'dark', dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: true, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
 function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
 var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
 function ukey(n, u) { return 'creamer:u:' + (u || uid) + ':' + n; }
@@ -1023,17 +1119,22 @@ function delClick(e) {
   delArm = id; render();
   delT = setTimeout(function () { delArm = ''; render(); }, 3000);
 }
+function applyTheme() {
+  var t = S.theme === 'shop' ? 'shop' : 'dark', m = document.querySelector('meta[name=theme-color]');
+  document.documentElement.setAttribute('data-theme', t); if (m) m.setAttribute('content', t === 'shop' ? '#141517' : '#08080b');
+}
 function render() {
+  applyTheme();
   if (!uid) return;
   leagueSettle(); duelSettle();
   var rows = E.slice().sort(function (a, b) { return b.t - a.t; }).slice(0, histAll ? 20 : 5);
-  $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No loads yet. Tap the splash.</li>';
+  $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No loads yet. Tap Log a load.</li>';
   if (!$('entriesView').hidden) renderEntries();
   var l = lastOf(E), hs = $('hSince');
   if (l) {
     hs.setAttribute('data-since', l.t); hs.textContent = sinceLabel(l.t, false);
     $('hLast').textContent = 'Last load ' + fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to) + ', rating ' + l.rate + ', ' + (l.rel ? 'released' : 'not released') + '.';
-  } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = 'No loads yet. Tap the splash.'; }
+  } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = 'No loads yet. Tap Log a load.'; }
   $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
   renderSettings(); $('hBalN').textContent = totals().bal; updateBadge(); checkNotifs();
   renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
@@ -1123,7 +1224,7 @@ function checkName(n) {
 }
 var auth = $('auth'), authMode = 'in', gate = $('gate'), ok = false;
 function lock() { document.body.style.overflow = (!gate.hidden || !auth.hidden || !$('settingsView').hidden || !$('wel').hidden) ? 'hidden' : ''; }
-function appShow(on) { var bt = $('boot'); if (bt) bt.hidden = true; if (on) pinBoot(); document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
+function appShow(on) { applyTheme(); var bt = $('boot'); if (bt) bt.hidden = true; if (on) pinBoot(); document.querySelector('.wrap').hidden = !on; $('add').hidden = !on; document.querySelector('.tabs').hidden = !on; }
 function amsg(t) { $('aMsg').textContent = t; }
 function showAuth(m) {
   authSeen = true; authMode = m; appShow(false);
@@ -1576,7 +1677,7 @@ function bars(vals, labels, tip, fixedMax) {
 function avgOf(sum, c) { return c ? (sum / c).toFixed(1) : '–'; }
 
 function statsHtml(E, mine) {
-  if (!E.length) return card('', 'No stats yet', '<p class="empty">' + (mine ? 'Add a load with the splash button and everything shows up here.' : 'No loads logged yet.') + '</p>');
+  if (!E.length) return card('', 'No stats yet', '<p class="empty">' + (mine ? 'Add a load with Log a load and everything shows up here.' : 'No loads logged yet.') + '</p>');
   var s = E.slice().sort(function (a, b) { return a.t - b.t; }), n = s.length, now = Date.now(), DAY = 86400000, i, j;
   var tot = 0, rsum = 0, rel = 0, relR = 0, unrR = 0;
   s.forEach(function (x) { tot += x.dur; rsum += x.rate; if (x.rel) { rel++; relR += x.rate; } else unrR += x.rate; });
@@ -2101,7 +2202,7 @@ var SHOP = [
   {id: 'snd_deep', kind: 'snd', name: 'Deep goo', cost: 150, lvl: 2},
   {id: 'po_sheet', kind: 'pour', name: 'Slime sheet', cost: 0},
   {id: 'po_rise', kind: 'pour', name: 'Flood', cost: 150, desc: 'Slime floods up from the bottom.'},
-  {id: 'po_splat', kind: 'pour', name: 'Splat', cost: 200, desc: 'A splat bursts out of the plus button.'},
+  {id: 'po_splat', kind: 'pour', name: 'Splat', cost: 200, desc: 'A splat bursts out of the Log button.'},
   {id: 'po_rain', kind: 'pour', name: 'Downpour', cost: 250, lvl: 4, desc: 'A shower of drops rains down the screen.'},
   {id: 'bo_2x', kind: 'use', name: 'Double LDs, 24h', cost: 120, desc: 'Loads logged in the next 24 hours earn double.'},
   {id: 'fz', kind: 'use', name: 'Streak freeze', cost: 90, desc: 'Covers one missed day so your streak survives. Hold up to 3.'},
@@ -2112,8 +2213,6 @@ var DEFEQ = {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'
 function eqOf(k) { var v = G.eq[k]; return SMAP[v] && SMAP[v].kind === k ? v : DEFEQ[k]; }
 function applyEq() {
   var r = document.documentElement.style, th = SMAP[G.eq.theme] || SMAP.strawberry, sp = SMAP[G.eq.splash] || SMAP['default'];
-  r.setProperty('--bg', th.bg); r.setProperty('--edge', th.edge); r.setProperty('--bar', th.bar); r.setProperty('--bgink', th.ink);
-  r.setProperty('--plus', sp.plus); r.setProperty('--rim', sp.rim);
   var t = SMAP[G.eq.title]; $('hTitle').textContent = t && t.cost ? t.name : '';
   var sl = SMAP[eqOf('slime')], de = document.documentElement;
   r.setProperty('--slF', sl.f); r.setProperty('--slB', sl.b); r.setProperty('--slE', sl.e); r.setProperty('--slC', sl.c);
@@ -2192,7 +2291,7 @@ function renderRewards() {
     return '<div class="bd' + (on ? ' on' : '') + '" data-b="' + b.id + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
   }).join('') + '</div>'));
   var heads = {slime: 'Slime colour', drip: 'Drip style', pour: 'Logging splash', snd: 'Sound pack', theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
-  ['slime', 'drip', 'pour', 'snd', 'theme', 'splash', 'title', 'fx', 'use'].forEach(function (k) {
+  ['slime', 'drip', 'pour', 'snd', 'title', 'fx', 'use'].forEach(function (k) {
     shop += '<div class="sec">' + heads[k] + '</div><div class="shop">' + SHOP.filter(function (i) { return i.kind === k; }).map(function (i) { return itemHtml(i, T); }).join('') + '</div>';
   });
   var shopCard = card(' span2 b', 'Shop', '<div class="balbig">' + DROPSVG + '<span>' + T.bal + '</span></div><p class="sub" style="margin:0 0 4px">Your LDs. Spend them on the items below.</p>' + shop);
@@ -2274,6 +2373,7 @@ function segSet(id, on) { Array.prototype.forEach.call($(id).children, function 
 function renderSettings() {
   $('sName').textContent = P.name ? '@' + P.name : '–';
   $('sMail').textContent = CLOUD ? (CUSER ? CUSER.email : '–') : (uid && ACC[uid] ? ACC[uid].email : '–');
+  Array.prototype.forEach.call($('themeSeg').children, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-t') === (S.theme === 'shop' ? 'shop' : 'dark') ? 'true' : 'false'); });
   renderWord(); renderTagList(); segSet('visSeg', P.pub); segSet('dRel', S.dRel); segSet('fmtSeg', S.h24 !== false);
   if (document.activeElement !== $('bio')) $('bio').value = P.bio || '';
   $('dRate').value = S.dRate; $('dRateV').textContent = S.dRate; $('dLen').value = S.dLen; $('dLenV').textContent = S.dLen + ' min';
@@ -2544,7 +2644,7 @@ function drawWrap() {
 }
 var WEL = [
   ['Welcome to Creamer', 'A private tracker for your own numbers: when, how long and how it rated. It turns your entries into stats, streaks and rewards. You never write text, only ratings, times and tags.'],
-  ['Log an entry', 'Tap the splash button at the bottom. Set the rating, the from and to times and the yes or no, add tags if you like, then save. Home shows the time since your last entry and your streak.'],
+  ['Log an entry', 'Tap Log a load on the Home screen. Set the rating, the from and to times and the yes or no, add tags if you like, then save. Home shows the time since your last entry and your streak.'],
   ['Stats and LDs', 'Stats shows your patterns by hour, weekday and month. Every entry earns LDs. Your balance is the white drop at the top. Tap it to open the Shop.'],
   ['Challenges and friends', 'Rewards has a daily challenge that you pick once a day, weekly challenges, badges and a league. Add friends by username in the Friends tab. You decide who sees your stats.'],
   ['Make it yours', 'The gear at the top opens Settings: wording, default rating, tags and privacy. The Common questions section there answers the rest.']
@@ -2608,6 +2708,7 @@ $('fNickSave').addEventListener('click', function () {
   saveS(); render(); renderFriendView(); toast(v ? 'Nickname saved' : 'Nickname removed');
 });
 $('fNick').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); $('fNickSave').click(); } });
+$('themeSeg').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; S.theme = b.getAttribute('data-t') === 'shop' ? 'shop' : 'dark'; saveS(); applyTheme(); renderSettings(); });
 $('tSnd').addEventListener('click', function () { S.snd = S.snd === false; saveS(); renderSettings(); if (S.snd) wet('tap'); });
 $('tHap').addEventListener('click', function () { S.hap = S.hap === false; saveS(); renderSettings(); if (S.hap) buzz([30]); });
 $('tTilt').addEventListener('click', function () { if (S.tilt === true) { S.tilt = false; saveS(); tiltOff(); renderSettings(); return; } tiltAsk(function (ok) { S.tilt = ok; saveS(); if (ok) tiltOn(); else toast('Tilt is not available or was not allowed'); renderSettings(); }); });
