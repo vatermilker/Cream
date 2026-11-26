@@ -803,7 +803,6 @@ html,body{max-width:100%;overflow-x:hidden;overscroll-behavior-x:none;touch-acti
 </div>
 </div>
 <div id="statsView" hidden>
-<div class="row" style="max-width:340px;margin:0 0 16px"><button type="button" class="go wrOpen">Your year in numbers</button></div>
 <div class="sgrid" id="sg"></div>
 </div>
 
@@ -853,7 +852,6 @@ html,body{max-width:100%;overflow-x:hidden;overscroll-behavior-x:none;touch-acti
 </div>
 
 <div id="profileView" hidden>
-<div class="row" style="max-width:340px;margin:0 0 16px"><button type="button" class="go wrOpen">Your year in numbers</button></div>
 <div class="sgrid" id="pf"></div>
 </div>
 
@@ -2747,9 +2745,9 @@ function drawWrap() {
   $('wrPrev').disabled = wrI === 0; $('wrNext').disabled = wrI === wrS.length - 1;
 }
 var WEL = [
-  ['Welcome to Creamer', 'A private tracker for your own numbers: when, how long and how it rated. It turns your entries into stats, streaks and rewards. You never write text, only ratings, times and tags.'],
-  ['Log an entry', 'Tap Log a load on the Home screen. Set the rating, the from and to times and the yes or no, add tags if you like, then save. Home shows the time since your last entry and your streak.'],
-  ['Stats and LDs', 'Stats shows your patterns by hour, weekday and month. Every entry earns LDs. Your balance is the white drop at the top. Tap it to open the Shop.'],
+  ['Welcome to Creamer', 'A private tracker for your and your friends loads: when, how long and how good it was rated. It turns your entries into stats, streaks and rewards. Basically a social media for your dong.'],
+  ['Log an entry', 'Tap Log a load on the Home screen. Set the rating, time and tags if you like. Home shows the time since your last load and your streak.'],
+  ['Stats and LDs', 'Stats shows your patterns by hour, weekday and month. Every entry earns currency LoadDrops (LDs). Tap your balance to open the Shop.'],
   ['Challenges and friends', 'Rewards has a daily challenge that you pick once a day, weekly challenges, badges and a league. Add friends by username in the Friends tab. You decide who sees your stats.'],
   ['Make it yours', 'The gear at the top opens Settings: wording, default rating, tags and privacy. The Common questions section there answers the rest.']
 ], welI = 0, welKeep = false;
