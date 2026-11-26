@@ -758,6 +758,43 @@ html[data-theme] .wel{background:rgba(8,8,11,.92)}
 .lmid p,.lbot p{margin:6px 0 12px!important;font-size:15px!important}
 .lmid button,.lbot button{width:100%}
 .lbot{margin-top:14px}
+
+/* ===== desktop ===== */
+@media (min-width:1000px){
+  .tabs{left:0!important;right:auto!important;top:0!important;bottom:0!important;width:200px!important;flex-direction:column!important;justify-content:flex-start!important;gap:6px!important;padding:96px 14px 20px!important;border-radius:0!important;border-right:1px solid var(--t-edge,#2c2c37)!important}
+  .tabs button{flex:none!important;max-width:none!important;width:100%!important;flex-direction:row!important;justify-content:flex-start!important;gap:12px!important;min-height:48px!important;padding:0 16px!important;font-size:15px!important;border-radius:12px!important}
+  .tabs button svg{flex:0 0 auto}
+  .wrap{max-width:1280px!important;padding:28px 40px 60px 240px!important}
+  #add{right:40px!important}
+  #homeView .stack.home,#fList.stack.home,#entriesView .stack{max-width:none!important}
+  #homeView .stack.home{display:block!important;column-count:2;column-gap:20px}
+  #homeView .stack.home>*{break-inside:avoid;margin-bottom:20px}
+  #homeView .stack.home>.hero,#homeView .stack.home>#guestBar,#homeView .stack.home>#gStat{column-span:all}
+  #homeView .stack.home>.eyebrow{break-after:avoid;margin-bottom:8px}
+  #statsView .sgrid,#pf.sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #fList.stack{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #auth{padding-top:28px}
+  #auth .lp{max-width:1120px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+  #auth .lp>*{min-width:0}
+  #auth .lhero,#auth .lbonus,#auth .lmid,#auth .lhow,#auth .lform,#auth #authCard{grid-column:1/-1}
+  #auth .lhero{max-width:760px;margin:0 auto!important}
+  #auth .ldrip{width:100vw;margin:-28px calc(50% - 50vw) 0}
+  #auth .lcta{flex-direction:row}
+  #auth .lcta button{flex:1}
+  #auth .lf{flex-direction:column;align-items:flex-start;gap:14px}
+  #auth .lart{flex:0 0 auto;width:100%;height:120px}
+  #auth .lbonus{flex-direction:row;align-items:center}
+  #auth .lbonus .lart{width:120px;flex:0 0 120px}
+  #auth .lhow ol{flex-direction:row;gap:24px}
+  #auth .lhow li{flex:1}
+  #auth #authCard{max-width:460px;width:100%;margin:0 auto}
+  #auth .lform{text-align:center}
+  #auth.m-in .lp{display:flex;max-width:460px}
+  .gstrip{max-width:760px;margin-left:auto;margin-right:auto}
+  #auth .lhero .logo{font-size:72px!important}
+  #auth .lh{font-size:44px!important}
+  #auth .ls{font-size:19px!important}
+}
 </style>
 </head>
 <body>
