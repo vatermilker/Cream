@@ -537,7 +537,7 @@ html.dr_rain .fall{animation-duration:2.4s}
 @media (prefers-reduced-motion:reduce){.ctank .cwv,.ctank.full{animation:none}}
 /* ===== Looks: After dark (default) and Workshop ===== */
 html[data-theme]{--bg:var(--t-bg);--card:var(--t-card);--edge:var(--t-edge);--ink:var(--t-ink);--bgink:var(--t-ink);--mute:var(--t-mute);--bar:var(--t-nav)}
-html[data-theme="dark"]{--t-bg:#08080b;--t-card:#121217;--t-in:#1b1b23;--t-edge:#2c2c37;--t-ink:#f4f4f7;--t-mute:#b9b9c7;--t-acc:#e11d48;--t-acc2:#ff6b88;--t-acct:#fff;--t-nav:#0b0b0f;--t-h1:#16161d;--t-h2:#0c0c11;--t-glow:rgba(255,45,85,.45);--t-rad:12px;--t-fb:"Barlow Condensed",system-ui,sans-serif;--t-fd:"Bebas Neue",sans-serif;--t-fm:"Bebas Neue",sans-serif}
+html[data-theme="dark"]{--t-bg:#08080b;--t-card:#121217;--t-in:#1b1b23;--t-edge:#2c2c37;--t-ink:#f4f4f7;--t-mute:#a9a9b8;--t-acc:#e11d48;--t-acc2:#ff6b88;--t-acct:#fff;--t-nav:#0b0b0f;--t-h1:#16161d;--t-h2:#0c0c11;--t-glow:rgba(255,45,85,.45);--t-rad:12px;--t-fb:"Barlow Condensed",system-ui,sans-serif;--t-fd:"Bebas Neue",sans-serif;--t-fm:"Bebas Neue",sans-serif}
 html[data-theme="shop"]{--t-bg:#141517;--t-card:#202225;--t-in:#2a2d31;--t-edge:#3a3d42;--t-ink:#ececec;--t-mute:#b5b8bd;--t-acc:#f5c518;--t-acc2:#f5c518;--t-acct:#111;--t-nav:#101113;--t-h1:#2c2f33;--t-h2:#1c1e21;--t-glow:rgba(0,0,0,.5);--t-rad:4px;--t-fb:"Oswald",system-ui,sans-serif;--t-fd:"Archivo Black",sans-serif;--t-fm:"JetBrains Mono",ui-monospace,monospace}
 html[data-theme] body{background:var(--t-bg);color:var(--t-ink);font-family:var(--t-fb);font-weight:500}
 html[data-theme="dark"] body{background:radial-gradient(90% 40% at 50% 30%,rgba(255,45,85,.12),transparent) fixed,var(--t-bg);font-size:19px}
@@ -930,119 +930,6 @@ details p{margin:8px 0 0;font-size:16px;line-height:1.5;color:var(--t-mute,#a9a9
   .wprv{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
   .wph{width:320px}
 }
-
-/* ===== simple home: one hero, everything else quiet ===== */
-#homeView .stack.home>.eyebrow{display:none}
-#homeView .card.hero{padding:22px 20px 20px}
-#homeView .card.hero .htxt>div:first-child{font-size:14px!important;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
-#homeView .card.hero #hSince{font-size:clamp(46px,15vw,80px)!important}
-#homeView .card.hero #hLast{font-size:14px;opacity:.7;margin-top:6px}
-#homeView .hact{flex-direction:column;gap:6px;margin-top:18px}
-#homeView .logb{flex:0 0 auto;width:100%;min-height:76px;font-size:24px;border-radius:20px}
-html[data-theme="dark"] #homeView .logb{font-size:30px}
-#homeView .hact #runBox{width:100%}
-#homeView .hact #runGo{width:100%;background:transparent!important;border:0!important;box-shadow:none!important;min-height:40px;font-size:15px;opacity:.75;text-decoration:underline;text-underline-offset:4px}
-#homeView .stack.home>.card:not(.hero):not(#guestBar):not(#evCard){background:transparent!important;border:0!important;box-shadow:none!important;padding:6px 4px!important;border-radius:0}
-#homeView .stack.home .card:not(.hero) h2{font-size:15px!important;letter-spacing:.12em;text-transform:uppercase;color:var(--t-mute,#a9a9b8)!important;font-family:var(--t-fb,inherit)!important;font-weight:800;margin:0 0 8px}
-#todayBox{display:flex;flex-direction:column;gap:10px}
-#homeView #dchCard{background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;border-radius:var(--t-rad,16px)!important;padding:14px 16px!important;box-shadow:none!important}
-#homeView #dchCard.up{border-left:4px solid var(--t-acc,#e11d48)!important}
-#homeView #dchCard h2{cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin:0;color:var(--t-ink,#f4f4f7)!important;font-size:17px!important;letter-spacing:.02em;text-transform:none}
-#homeView #dchCard h2::after{content:"\203A";font-size:26px;line-height:1;transition:transform .2s;color:var(--t-mute,#a9a9b8);margin-left:auto;background:none;padding:0;letter-spacing:0;font-family:inherit}
-#homeView #dchCard.dc-open h2::after{transform:rotate(90deg)}
-.dsum{margin:4px 0 0;font-size:14px;color:var(--t-mute,#a9a9b8);cursor:pointer}
-#dchCard:not(.dc-open) #dch{display:none}
-#dchCard.dc-open .dsum{display:none}
-#dchCard.dc-open #dch{margin-top:10px}
-#homeView #gStat .gs{gap:8px}
-#homeView #gStat .gs>div{background:transparent;padding:0;flex-direction:row;align-items:baseline;gap:6px}
-#homeView #gStat .gs b{font-size:18px}
-#homeView #gStat #gsNext{display:none}
-#homeView #gStat{opacity:.8}
-
-/* ===== calm, unified app ===== */
-#goo{display:none!important}
-html[data-theme] .wrap>header h1{color:var(--t-ink)!important;background:none!important;border:0!important;padding:0!important;text-shadow:none!important;box-shadow:none!important;letter-spacing:.04em}
-html[data-theme] .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));top:auto;background:var(--t-card);color:var(--t-ink);border:1px solid var(--t-edge);box-shadow:0 10px 30px rgba(0,0,0,.5);border-radius:14px;padding:12px 18px;font-size:15px;font-weight:600;width:max-content;max-width:min(92vw,420px)}
-@media (min-width:1000px){html[data-theme] .toast{bottom:28px;left:calc(50% + 100px)}}
-html[data-theme] :is(#homeView,#statsView,#friendsView,#rewardsView,#profileView,#entriesView,#fDetail,#settingsView) .card h2{font-family:var(--t-fb,inherit)!important;font-size:14px!important;font-weight:800!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--t-mute)!important;margin:0 0 12px!important;line-height:1.3!important;text-shadow:none!important}
-html[data-theme] .eyebrow{color:var(--t-mute)!important}
-html[data-theme] .card:not(.hero) .kv b,html[data-theme] .card .kv b{color:var(--t-ink)!important}
-html[data-theme] .bar i{background:var(--t-ink)}
-html[data-theme] .sub{font-size:15px}
-html[data-theme] .note{font-size:14px;color:var(--t-mute)}
-html[data-theme] .bd span{font-size:13px}
-html[data-theme] .rar{font-size:12px!important}
-#homeView .card.hero #hSince.hz{font-size:clamp(28px,8.5vw,42px)!important;text-transform:none!important;letter-spacing:0!important;overflow-wrap:normal!important;word-break:normal!important}
-/* folds */
-section.card.fold{cursor:pointer;padding:16px 18px!important;background-image:none!important}
-section.card.fold>*:not(h2){display:none!important}
-section.card.fold.open{cursor:auto}
-section.card.fold.open>*:not(h2){display:revert!important}
-section.card.fold.open>.tiles,section.card.fold.open>.badges,section.card.fold.open>.chart,section.card.fold.open>.hm,section.card.fold.open>.split,section.card.fold.open>.row,section.card.fold.open>.shop,section.card.fold.open>.gs{display:revert!important}
-section.card.fold.open>.chart,section.card.fold.open>.split,section.card.fold.open>.row,section.card.fold.open>.kv{display:flex!important}
-section.card.fold.open>.badges,section.card.fold.open>.tiles,section.card.fold.open>.hm{display:grid!important}
-html[data-theme] :is(#statsView,#friendsView,#rewardsView,#profileView) section.card.fold>h2{display:flex!important;align-items:center;justify-content:space-between;gap:10px;margin:0!important;cursor:pointer;font-family:var(--t-fb,inherit)!important;font-size:18px!important;letter-spacing:.01em!important;text-transform:none!important;color:var(--t-ink)!important;font-weight:700!important}
-section.card.fold>h2::after{content:"\203A";font-size:26px;line-height:1;color:var(--t-mute);transition:transform .2s;flex:0 0 auto}
-section.card.fold.open>h2{margin-bottom:14px!important}
-section.card.fold.open>h2::after{transform:rotate(90deg)}
-section.card.fold:not(.open)[data-sum]::after{content:attr(data-sum);display:block;margin-top:4px;font-size:14px;color:var(--t-mute);line-height:1.4}
-#sg,#rw,#pf,#fList{row-gap:10px}
-#fList.stack.home,#fList{gap:10px}
-#stAll{width:100%;margin-top:4px;background:transparent!important;border:1px solid var(--t-edge)!important;box-shadow:none!important;color:var(--t-ink)}
-section.card.fold[hidden]{display:none!important}
-html[data-theme] .hm i{background:var(--t-in)}
-html[data-theme] .hm i[style]{background:color-mix(in srgb,var(--t-acc2) calc(var(--a) * 100%),var(--t-in))}
-#sg>.hero{order:-2}#sg>.hmc{order:-1}
-/* rewards: next badges */
-.nbx{display:grid;gap:8px}
-.nbx>div{display:grid;grid-template-columns:1fr auto;column-gap:12px;align-items:center;background:var(--t-in);border-radius:var(--t-rad,12px);padding:12px 14px}
-.nbx b{font-size:17px;color:var(--t-ink)}
-.nbx span{grid-column:1;font-size:14px;color:var(--t-mute)}
-.nbx i{grid-column:2;grid-row:1/3;font-style:normal;font-weight:800;color:var(--t-ink)}
-.lx{opacity:.85}
-.plv{display:flex;justify-content:space-between;gap:10px;margin:16px 0 6px;font-weight:700;font-size:15px}
-
-html[data-theme] .card.hero .htxt>div:first-child{color:var(--t-mute)!important;opacity:1!important}
-html[data-theme] #homeView #dchCard>h2{font-size:18px!important;letter-spacing:.01em!important;text-transform:none!important;color:var(--t-ink)!important;font-weight:700!important;margin:0!important;display:flex!important}
-html[data-theme] .rt{color:var(--t-ink)!important;white-space:nowrap}
-
-@media (min-width:1000px){
-  #sg,#rw,#pf{grid-auto-flow:row dense;align-items:start}
-  #sg>.hmc{grid-row:span 4}
-  #sg>.fold:not(.open),#rw>.fold:not(.open){grid-column:auto!important}
-  .hm{max-width:440px}
-}
-
-/* ===== minimal loading screen ===== */
-#boot{background:#08080b!important;flex-direction:column;gap:26px}
-#boot>*:not(.bmark){display:none!important}
-#boot::after{content:""!important;position:static!important;width:56px;height:3px;border-radius:3px;font-size:0;background:linear-gradient(90deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.75) 50%,rgba(255,255,255,.08) 100%) 0 0/200% 100%;animation:bload 1.1s linear infinite}
-html[data-theme="shop"] #boot{background:#141517!important}
-#boot .bmark{position:static!important;margin:0!important;width:76px!important;height:76px!important;border-radius:18px;animation:bpulse 1.8s ease-in-out infinite}
-@keyframes bpulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.94);opacity:.8}}
-@keyframes bload{to{background-position:-200% 0}}
-@media (prefers-reduced-motion:reduce){#boot .bmark,#boot::after{animation:none}}
-/* ===== friend cards ===== */
-#fl.frl{display:flex;flex-direction:column;gap:10px;margin:4px 0 10px}
-#fl.frl>li{padding:0;border:0}
-.frc{width:100%;display:flex;flex-direction:column;align-items:stretch;gap:12px;text-align:left;padding:16px!important;min-height:0;height:auto;border-radius:var(--t-rad,16px)!important;background:var(--t-in,#1b1b23)!important;border:1px solid var(--t-edge,#2c2c37)!important;box-shadow:none!important;color:var(--t-ink,#f4f4f7);font-weight:500;letter-spacing:0;text-transform:none!important;font-family:var(--t-fb,inherit)}
-.frc.g2{border-left:4px solid var(--t-acc,#e11d48)!important}
-.frh{display:flex;align-items:center;gap:12px;min-width:0}
-.frh .av{width:44px;height:44px;font-size:19px;flex:0 0 auto}
-.frn{flex:1;min-width:0;font-size:19px;line-height:1.2;overflow-wrap:anywhere}
-.frn b{font-weight:800}
-.frn .un{display:block;font-size:13px;color:var(--t-mute);font-weight:500}
-.frgo{font-style:normal;font-size:28px;line-height:1;color:var(--t-mute)}
-.frmid{display:flex;flex-direction:column;gap:2px}
-.frbig{font:700 clamp(34px,10vw,46px)/1 var(--t-fd,inherit);color:var(--t-ink);letter-spacing:.02em}
-.frbig.fz{font-size:24px;color:var(--t-mute)}
-.frlab{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--t-mute)}
-.frl2{display:flex;flex-direction:column;gap:2px;padding-top:12px;border-top:1px solid var(--t-edge,#2c2c37);font-size:15px;color:var(--t-ink)}
-.frl2>span:last-child{color:var(--t-mute);font-size:14px}
-.frm{font-size:15px;color:var(--t-mute)}
-@media (min-width:1000px){#fl.frl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:380px){#homeView .logb{font-size:21px!important;letter-spacing:1px!important;padding:0 10px}}
 </style>
 </head>
 <body>
@@ -1091,7 +978,7 @@ html[data-theme="shop"] #boot{background:#141517!important}
 </svg><div class="tpc" id="tPct">100%</div><div class="tsub" id="tSub">Full</div></div>
 </div>
 <p class="sub" id="hLast"></p>
-<div class="hact"><button class="logb" id="add" type="button" hidden aria-label="Log a session"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>Log a session</button><div id="runBox"><button type="button" class="go" id="runGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Timer</button><div id="runOn" hidden><div class="runl">Timer running</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div></div>
+<div class="hact"><button class="logb" id="add" type="button" hidden aria-label="Log a load"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>Log a load</button><div id="runBox"><button type="button" class="go" id="runGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Timer</button><div id="runOn" hidden><div class="runl">Timer running</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div></div>
 <div id="hStreak"></div>
 </section>
 
@@ -1100,17 +987,16 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <section class="card evc" id="evCard" hidden></section>
 <section class="card soft" id="crewHome" hidden></section>
 <section class="card b" id="dchCard">
-<h2 id="dchH" role="button" tabindex="0" aria-expanded="false">Today's challenge</h2>
-<p class="dsum" id="dchSum"></p>
+<h2>Today's challenge</h2>
 <div id="dch"></div>
 </section>
 </div>
 
 <div class="eyebrow">Recent</div>
 <section class="card">
-<h2>My last sessions</h2>
+<h2>My last loads</h2>
 <ul id="hist"></ul>
-<div class="row" style="margin-top:8px"><button type="button" id="histMore" hidden>Show more</button><button type="button" id="allBtn">All sessions</button></div>
+<div class="row" style="margin-top:8px"><button type="button" id="histMore" hidden>Show more</button><button type="button" id="allBtn">All entries</button></div>
 </section>
 
 <section class="card b soft">
@@ -1120,7 +1006,7 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <section class="card" id="gStat" aria-label="Everyone">
 <h2>Everyone, right now</h2>
 <div class="gs"><div><b id="gsAct">–</b><span>active this week</span></div><div><b id="gsMem">–</b><span>members</span></div></div>
-<div class="gl"><span>Sessions logged by everyone</span><b id="gsLoads">–</b></div>
+<div class="gl"><span>Loads logged by everyone</span><b id="gsLoads">–</b></div>
 <div class="gmeter" role="img" aria-label="Progress to the next milestone"><i id="gsBar"></i></div>
 <p class="sub" id="gsNext"></p>
 </section>
@@ -1130,7 +1016,7 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <div id="entriesView" hidden>
 <div class="stack">
 <section class="card">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">All sessions</h2><button type="button" id="enBack">Back</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">All entries</h2><button type="button" id="enBack">Back</button></div>
 <p class="sub" id="enCount"></p>
 <div class="chips" id="enTags"></div>
 <div class="seg" id="enSort"><button type="button" data-s="new" aria-pressed="true">Newest first</button><button type="button" data-s="old" aria-pressed="false">Oldest first</button></div>
@@ -1148,7 +1034,7 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <section class="card b" id="rqCard" hidden></section>
 <section class="card" id="frCard">
 <h2>Friends <span class="cnt" id="frCount"></span></h2>
-<p class="sub" id="frSort" style="margin:-4px 0 8px">Longest since their last load comes first.</p>
+<p class="sub" style="margin:-4px 0 8px">Longest since their last load comes first.</p>
 <ul id="fl" class="frl"></ul>
 <div class="sec">Add a friend</div>
 <form id="addForm" style="display:flex;gap:10px">
@@ -1156,18 +1042,18 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <button type="submit" class="go">Add</button>
 </form>
 <p class="note" id="fMsg" role="status" style="min-height:1.4em"></p>
-<p class="note" id="fNote">Demo: the user list is three sample names with made-up sessions. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
+<p class="note" id="fNote">Demo: the user list is three sample names with made-up loads. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
 </section>
-<section class="card crewc" id="crewCard" data-k="crew" data-sum="Team up with friends and fill one shared tank each week."></section>
-<section class="card soft" id="lgCard" data-k="league" data-sum="A weekly ranking against your friends."></section>
-<section class="card soft" id="duCard" data-k="duels" data-sum="Challenge a friend, with or without LDs at stake.">
+<section class="card crewc" id="crewCard"></section>
+<section class="card soft" id="lgCard"></section>
+<section class="card soft" id="duCard">
 <h2>Duels</h2>
 <div id="duList"></div>
 <div class="sec">New duel</div>
 <label for="duF" style="margin-top:0">Opponent</label>
 <select id="duF"></select>
 <label for="duS">What counts</label>
-<select id="duS"><option value="n">Most sessions</option><option value="m">Most total minutes</option><option value="a">Highest average rating (3+ sessions)</option><option value="d">Most active days</option></select>
+<select id="duS"><option value="n">Most entries</option><option value="m">Most total minutes</option><option value="a">Highest average rating (3+ entries)</option><option value="d">Most active days</option></select>
 <label for="duD">Length</label>
 <select id="duD"><option value="3">3 days</option><option value="7">7 days</option></select>
 <label for="duK">Stake</label>
@@ -1245,8 +1131,8 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <div class="lab" style="margin-top:0"><span>Time format</span></div>
 <div class="seg" id="fmtSeg"><button type="button" data-v="1" aria-pressed="true">24-hour</button><button type="button" data-v="0" aria-pressed="false">12-hour</button></div>
 <div class="sec" data-nosub>Wording</div>
-<p class="sub" data-nosub style="margin-top:0">Word used for a load (a released session), everywhere in the app. Pick from the list.</p>
-<select id="wSel" data-nosub aria-label="Word for a load"></select>
+<p class="sub" data-nosub style="margin-top:0">Word used for a logged entry, everywhere in the app. Pick from the list.</p>
+<select id="wSel" data-nosub aria-label="Word for an entry"></select>
 <div id="wCustom" hidden data-nosub>
 <label for="wS">Singular</label>
 <input type="text" id="wS" maxlength="20" autocomplete="off" spellcheck="false" placeholder="one word" style="width:100%">
@@ -1254,19 +1140,19 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <input type="text" id="wP" maxlength="20" autocomplete="off" spellcheck="false" placeholder="optional" style="width:100%">
 </div>
 <p class="sub" data-nosub>Preview: <b id="wEx">1 load, 5 loads</b></p>
-<div class="sec">New session defaults</div>
+<div class="sec">New load defaults</div>
 <label for="dRate" style="margin-top:0">Rating <b id="dRateV">5</b></label>
 <input type="range" id="dRate" min="1" max="10" value="5">
 <label for="dLen">Length <b id="dLenV">10 min</b></label>
 <input type="range" id="dLen" min="1" max="60" value="10">
-<div class="lab setrow"><span id="dRelLab">Released?</span></div>
+<div class="lab setrow"><span id="dRelLab">Load Released?</span></div>
 <div class="seg" id="dRel"><button type="button" data-v="1" aria-pressed="true">Yes</button><button type="button" data-v="0" aria-pressed="false">No</button></div>
 </section>
 <section class="card">
 <h2>Tank</h2>
 <label for="tankSel" style="margin-top:0">Fills up in</label>
 <select id="tankSel"><option value="3">3 hours</option><option value="6">6 hours</option><option value="12">12 hours</option><option value="24">1 day</option><option value="36">1.5 days</option><option value="48">2 days</option><option value="72">3 days</option><option value="120">5 days</option><option value="168">1 week</option><option value="336">2 weeks</option></select>
-<p class="note">The tank on Home empties when you log a load (a released session) and fills back up over this time.</p>
+<p class="note">The tank on Home empties when you log a load and fills back up over this time.</p>
 </section>
 <section class="card b">
 <h2>Tags</h2>
@@ -1276,7 +1162,7 @@ html[data-theme="shop"] #boot{background:#141517!important}
 </form>
 <p class="note" id="tagMsg" role="status" style="min-height:1.4em"></p>
 <div class="chips" id="tagList"></div>
-<p class="note">Add as many as you like. They show up when you log a session, and you can pick any of them. Removing a tag keeps it on old sessions.</p>
+<p class="note">Add as many as you like. They show up when you log an entry, and you can pick any of them. Removing a tag keeps it on old entries.</p>
 </section>
 <section class="card">
 <h2>Look</h2>
@@ -1303,14 +1189,14 @@ html[data-theme="shop"] #boot{background:#141517!important}
 </section>
 <section class="card" id="faqCard">
 <h2>Common questions</h2>
-<details><summary>What is Creamer?</summary><p>A private tracker. You log sessions with a rating, a from and to time, a yes or no and optional tags. The app turns them into stats, streaks, challenges and rewards. It stores numbers and times only.</p></details>
-<details><summary>How do I add a session?</summary><p>Tap Log a session on the Home screen. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
-<details><summary>How do I remove a session?</summary><p>On Home tap Show more, or open All sessions. Tap Remove on the session, then tap again to confirm.</p></details>
-<details><summary>What is a crew?</summary><p>A crew is you and up to 7 friends sharing one tank. Every session anyone in the crew logs this week fills it. Fill it to the goal before Monday and everyone gets 100 LDs. Crew members see how many sessions each member logged this week, even if their stats are private. You can be in one crew at a time.</p></details>
-<details><summary>What are surprise events?</summary><p>Events pop up at random times and last from one hour to a whole day. When one is live it shows on Home with its rule and a countdown. Log a session that fits the rule while it is live and you get the bonus. Everyone gets the same events at the same time.</p></details>
-<details><summary>What are LoadDrops?</summary><p>LoadDrops (LDs for short) are the currency. You earn them from sessions, streaks, challenges and badges. Your balance is the white drop at the top. Spend LDs in the Shop: open Rewards, then Shop.</p></details>
+<details><summary>What is Creamer?</summary><p>A private tracker. You log entries with a rating, a from and to time, a yes or no and optional tags. The app turns them into stats, streaks, challenges and rewards. It stores numbers and times only.</p></details>
+<details><summary>How do I add an entry?</summary><p>Tap Log a load on the Home screen. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
+<details><summary>How do I remove an entry?</summary><p>On Home tap Show more, or open All entries. Tap Remove on the entry, then tap again to confirm.</p></details>
+<details><summary>What is a crew?</summary><p>A crew is you and up to 7 friends sharing one tank. Every load anyone in the crew logs this week fills it. Fill it to the goal before Monday and everyone gets 100 LDs. Crew members see how many loads each member logged this week, even if their stats are private. You can be in one crew at a time.</p></details>
+<details><summary>What are surprise events?</summary><p>Events pop up at random times and last from one hour to a whole day. When one is live it shows on Home with its rule and a countdown. Log a load that fits the rule while it is live and you get the bonus. Everyone gets the same events at the same time.</p></details>
+<details><summary>What are LoadDrops?</summary><p>LoadDrops (LDs for short) are the currency. You earn them from entries, streaks, challenges and badges. Your balance is the white drop at the top. Spend LDs in the Shop: open Rewards, then Shop.</p></details>
 <details><summary>What are XP and levels?</summary><p>XP counts every drop you have ever earned, spent or not. Levels use XP, so spending LDs never lowers your level.</p></details>
-<details><summary>Who can see my stats?</summary><p>Only you, unless you pick "My friends" under Privacy. Then your accepted friends can see your sessions.</p></details>
+<details><summary>Who can see my stats?</summary><p>Only you, unless you pick "My friends" under Privacy. Then your accepted friends can see your entries.</p></details>
 <details><summary>How do friends and duels work?</summary><p>Open Friends and type a username. They have to accept. Duels and the weekly league need friends whose stats are set to "My friends".</p></details>
 <details><summary>Can I change the word used in the app?</summary><p>Yes. Pick or type a word under Wording in Settings. It changes everywhere in the app on your screen.</p></details>
 <details><summary>I forgot my password</summary><p>Log out, type your email on the login screen and tap Forgot password. A reset link arrives by email.</p></details>
@@ -1330,8 +1216,8 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <p class="toast" id="toast" role="status" hidden></p>
 <div id="nots" aria-live="polite"></div>
 <div class="wel" id="gjoin" hidden role="dialog" aria-modal="true" aria-label="Create an account">
-<div class="card welBox"><div id="gjBody"><h2>Unlock the full app</h2><p class="gjp">You are in guest mode. Your sessions stay on this device only.</p>
-<ul class="gjl"><li>+100 LDs welcome bonus</li><li>Your guest sessions carry over</li><li>Saved to your account, on any device</li><li>Friends, duels and crews</li><li>Shop, challenges, badges and leagues</li></ul></div>
+<div class="card welBox"><div id="gjBody"><h2>Unlock the full app</h2><p class="gjp">You are in guest mode. Your entries stay on this device only.</p>
+<ul class="gjl"><li>+100 LDs welcome bonus</li><li>Your guest entries carry over</li><li>Saved to your account, on any device</li><li>Friends, duels and crews</li><li>Shop, challenges, badges and leagues</li></ul></div>
 <div class="welNav"><button type="button" id="gjNo">Keep trying</button><button type="button" id="gjYes" class="go">Create account</button></div></div>
 </div>
 <div class="wel" id="wel" hidden role="dialog" aria-modal="true" aria-label="Welcome">
@@ -1357,29 +1243,29 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <nav class="wnav hide-in" aria-label="Creamer"><div class="wc wnavi"><span class="wbrand"><svg viewBox="0 0 160 160" aria-hidden="true"><use href="#lg"/></svg>Creamer</span><span class="wnr"><button type="button" class="wl" data-go="in">Log in</button><button type="button" class="go wsm" data-go="up">Create account</button></span></div></nav>
 <section class="whero hide-in"><div class="wc wsplit">
 <div class="wtxt"><p class="wk">A private tracker for adults</p>
-<h2 class="wh">Every session. Every number. Yours.</h2>
-<p class="wsub">Log a session in seconds. Creamer turns it into stats and streaks, and lets you compare with friends. Free, private and 18+ only.</p>
+<h2 class="wh">Every load. Every number. Yours.</h2>
+<p class="wsub">Log a load in seconds. Creamer turns it into stats and streaks, and lets you compare with friends. Free, private and 18+ only.</p>
 <div class="wcta2"><button type="button" class="go" data-go="up">Create free account</button><button type="button" data-go="guest">Try it first, no account needed</button></div>
 <p class="wfine">+100 LDs on sign-up. Nothing to pay.</p></div>
-<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Time since last load</div><div class="wrow2"><div class="wbig">3H 42M</div><svg viewBox="0 0 120 120" width="54" height="54" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="#a9a9b8" stroke-width="4" opacity=".6"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/></svg></div><div class="wbtn">+ LOG A SESSION</div><div class="wchips"><span>Streak 5 days</span><span>Freezes 2 of 3</span></div></div>
-<div class="wmc"><div class="wlab">Today</div><div class="wrow"><span>A session of 15+ min</span><b>+25</b></div><div class="wrow"><span>Log 3 sessions</span><b>+40</b></div></div></div></div>
+<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Time since last load</div><div class="wrow2"><div class="wbig">3H 42M</div><svg viewBox="0 0 120 120" width="54" height="54" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="#a9a9b8" stroke-width="4" opacity=".6"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/></svg></div><div class="wbtn">+ LOG A LOAD</div><div class="wchips"><span>Streak 5 days</span><span>Freezes 2 of 3</span></div></div>
+<div class="wmc"><div class="wlab">Today</div><div class="wrow"><span>A load of 15+ min</span><b>+25</b></div><div class="wrow"><span>Log 3 loads</span><b>+40</b></div></div></div></div>
 </div></section>
 <section class="wband hide-in"><div class="wc"><span>Free</span><span>18+ only</span><span>Private by default</span><span>Phone and computer</span></div></section>
 <section class="wsec hide-in"><div class="wc wsplit">
-<div class="wtxt"><p class="wk">Log</p><h3 class="wt2">Log a session in seconds</h3><p class="wp">Pick the start and end, add a rating, and say whether it was released. A session can run over several days. Use the built-in timer if you want it counted live.</p><ul class="wul"><li>Date and time for start and end</li><li>Rating from 1 to 10</li><li>Released yes makes it a load and restarts your timer</li><li>Errors shown if a time is wrong</li></ul></div>
-<div class="wmock"><div class="wph"><div class="wmc"><div class="wt">New session</div><div class="wlab">Started</div><div class="wf2"><i>24 Nov 2026</i><i>22:10</i></div><div class="wlab">Ended</div><div class="wf2"><i>24 Nov 2026</i><i>22:25</i></div><div class="wnote">Duration: 15 min</div><div class="wlab">Rating <b>7</b></div><div class="wbar"><u style="width:70%"></u></div><div class="wlab">Released?</div><div class="wseg"><i class="on">Yes</i><i>No</i></div><div class="wbtn">Save</div></div></div></div></div></section>
+<div class="wtxt"><p class="wk">Log</p><h3 class="wt2">Log a load in seconds</h3><p class="wp">Pick the start and end, add a rating, and say whether it was released. A load can run over several days. Use the built-in timer if you want it counted live.</p><ul class="wul"><li>Date and time for start and end</li><li>Rating from 1 to 10</li><li>Released yes or no, which resets your tank</li><li>Errors shown if a time is wrong</li></ul></div>
+<div class="wmock"><div class="wph"><div class="wmc"><div class="wt">New load</div><div class="wlab">Started</div><div class="wf2"><i>24 Nov 2026</i><i>22:10</i></div><div class="wlab">Ended</div><div class="wf2"><i>24 Nov 2026</i><i>22:25</i></div><div class="wnote">Duration: 15 min</div><div class="wlab">Rating <b>7</b></div><div class="wbar"><u style="width:70%"></u></div><div class="wlab">Load Released?</div><div class="wseg"><i class="on">Yes</i><i>No</i></div><div class="wbtn">Save</div></div></div></div></div></section>
 <section class="wsec hide-in"><div class="wc wsplit rev">
-<div class="wtxt"><p class="wk">Stats</p><h3 class="wt2">See where you stand</h3><p class="wp">Time since your last load, average gaps, ratings and streaks, with charts by day, week and month. Streak freezes cover the days you miss.</p><ul class="wul"><li>Time since last, live</li><li>Average rating and gap</li><li>Streaks and best streak</li><li>Daily, weekly and monthly charts</li></ul></div>
-<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Sessions, last 7 days</div><div class="wchart"><u style="height:35%"></u><u style="height:55%"></u><u style="height:30%"></u><u style="height:70%"></u><u style="height:45%"></u><u style="height:90%" class=hi></u><u style="height:60%"></u></div><div class="wdays"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
+<div class="wtxt"><p class="wk">Stats</p><h3 class="wt2">See where you stand</h3><p class="wp">Time since your last released load, average gaps, ratings and streaks, with charts by day, week and month. Streak freezes cover the days you miss.</p><ul class="wul"><li>Time since last, live</li><li>Average rating and gap</li><li>Streaks and best streak</li><li>Daily, weekly and monthly charts</li></ul></div>
+<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Loads, last 7 days</div><div class="wchart"><u style="height:35%"></u><u style="height:55%"></u><u style="height:30%"></u><u style="height:70%"></u><u style="height:45%"></u><u style="height:90%" class=hi></u><u style="height:60%"></u></div><div class="wdays"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
 <div class="wmc wgrid3"><div><b>6.4</b><span>avg rating</span></div><div><b>12</b><span>best streak</span></div><div><b>9h</b><span>avg gap</span></div></div></div></div></div></section>
 <section class="wsec hide-in"><div class="wc wsplit">
 <div class="wtxt"><p class="wk">Friends</p><h3 class="wt2">Compare with friends</h3><p class="wp">Add friends by username and see their time since last load and stats, if they share them. Challenge them to duels, join a crew and climb the leagues.</p><ul class="wul"><li>Add by username</li><li>Their stats next to yours</li><li>Duels for LDs, crews and leagues</li><li>Everyone is private until they choose to share</li></ul></div>
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Friends</div><div class="wfr"><i>M</i><span>@mike</span><b>2h 10m</b></div><div class="wfr"><i>D</i><span>@dan</span><b>1d 4h</b></div><div class="wfr"><i>A</i><span>@alex</span><b class="mu">private</b></div></div>
 <div class="wmc"><div class="wlab">Duel</div><div class="wrow"><span>You vs @mike</span><b>+50</b></div><div class="wbtn alt">Challenge</div></div></div></div></div></section>
-<section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs, badges and a shop</h4><p>Earn LDs on every session. 80 badges, slime colors, effects and levels.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Daily challenges</h4><p>A new challenge each day and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels, crews, leagues</h4><p>Go head to head, team up with a crew, or climb a league.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="60" r="32" fill="#f4f4f6"/><circle cx="76" cy="60" r="32" fill="#e11d48" opacity=".9"/></svg></div><h4>Two looks</h4><p>After dark or Workshop. Switch any time in Settings.</p></div></div></div></section>
-<section class="wsec hide-in wsoft"><div class="wc"><p class="wk">How it works</p><h3 class="wt2">Up and running in a minute</h3><ol class="wsteps"><li><b>1</b><div><h4>Create an account</h4><p>A username and an email. Or try it as a guest first.</p></div></li><li><b>2</b><div><h4>Log a session</h4><p>Tap Log a session whenever you want. Start, end, rating, released.</p></div></li><li><b>3</b><div><h4>Watch it add up</h4><p>Stats, streaks, rewards and your friends fill in on their own.</p></div></li></ol></div></section>
+<section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a released load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs, badges and a shop</h4><p>Earn LDs on every load. 80 badges, slime colors, effects and levels.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Daily challenges</h4><p>A new challenge each day and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels, crews, leagues</h4><p>Go head to head, team up with a crew, or climb a league.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="60" r="32" fill="#f4f4f6"/><circle cx="76" cy="60" r="32" fill="#e11d48" opacity=".9"/></svg></div><h4>Two looks</h4><p>After dark or Workshop. Switch any time in Settings.</p></div></div></div></section>
+<section class="wsec hide-in wsoft"><div class="wc"><p class="wk">How it works</p><h3 class="wt2">Up and running in a minute</h3><ol class="wsteps"><li><b>1</b><div><h4>Create an account</h4><p>A username and an email. Or try it as a guest first.</p></div></li><li><b>2</b><div><h4>Log a load</h4><p>Tap Log a load whenever you want. Start, end, rating, released.</p></div></li><li><b>3</b><div><h4>Watch it add up</h4><p>Stats, streaks, rewards and your friends fill in on their own.</p></div></li></ol></div></section>
 <section class="wsec hide-in"><div class="wc"><p class="wk">Privacy</p><h3 class="wt2">Only numbers. Always yours.</h3><div class="wprv"><div><h4>Numbers and timestamps only</h4><p>No photos, no notes, no location.</p></div><div><h4>Private by default</h4><p>Friends see your stats only if you allow it.</p></div><div><h4>Your data, your call</h4><p>Add a PIN lock, or delete your account any time.</p></div><div><h4>Adults only</h4><p>Creamer is for people 18 and older.</p></div></div></div></section>
-<section class="wsec hide-in wsoft"><div class="wc wnarrow"><p class="wk">Questions</p><h3 class="wt2">Good to know</h3><details><summary>Is it free?</summary><p>Yes. There is nothing to pay.</p></details><details><summary>Do I need an account?</summary><p>No. You can try it as a guest. Guest sessions stay on your device, and they carry over if you create an account later.</p></details><details><summary>What do you store?</summary><p>Your username, email, and the times, ratings and released answers you log. No photos, notes or location.</p></details><details><summary>Who can see my sessions?</summary><p>Only you, unless you choose to share with friends in Settings.</p></details><details><summary>Can I delete my account?</summary><p>Yes, from Settings. It removes your account and your sessions.</p></details><details><summary>Does it work on a computer?</summary><p>Yes. It works in any browser on a phone or a computer, and you can add it to your home screen.</p></details></div></section>
+<section class="wsec hide-in wsoft"><div class="wc wnarrow"><p class="wk">Questions</p><h3 class="wt2">Good to know</h3><details><summary>Is it free?</summary><p>Yes. There is nothing to pay.</p></details><details><summary>Do I need an account?</summary><p>No. You can try it as a guest. Guest entries stay on your device, and they carry over if you create an account later.</p></details><details><summary>What do you store?</summary><p>Your username, email, and the times, ratings and released answers you log. No photos, notes or location.</p></details><details><summary>Who can see my entries?</summary><p>Only you, unless you choose to share with friends in Settings.</p></details><details><summary>Can I delete my account?</summary><p>Yes, from Settings. It removes your account and your entries.</p></details><details><summary>Does it work on a computer?</summary><p>Yes. It works in any browser on a phone or a computer, and you can add it to your home screen.</p></details></div></section>
 <section class="wsec wfinal"><div class="wc wnarrow"><h3 class="wt2 hide-in" style="text-align:center">Create your account</h3><p class="wp hide-in" style="text-align:center">Free. Takes under a minute. +100 LDs on sign-up.</p>
 <div class="card gc" id="authCard">
 <div class="seg" id="authTabs"><button type="button" data-m="in" aria-pressed="true">Log in</button><button type="button" data-m="up" aria-pressed="false">Create account</button></div>
@@ -1414,7 +1300,7 @@ html[data-theme="shop"] #boot{background:#141517!important}
 
 <div class="ov" id="ov" hidden>
 <div class="card" role="dialog" aria-modal="true" aria-labelledby="mt">
-<h2 id="mt" style="font-size:26px">New session</h2>
+<h2 id="mt" style="font-size:26px">New load</h2>
 <label for="rt">Rating <b id="rtV" style="font-size:24px">5</b></label>
 <input type="range" id="rt" min="1" max="10" value="5">
 <div class="lab"><span>Started</span></div>
@@ -1422,12 +1308,11 @@ html[data-theme="shop"] #boot{background:#141517!important}
 <div class="lab"><span>Ended</span></div>
 <div class="dtr"><input type="date" id="te" aria-label="End date" min="2000-01-01"><input type="time" id="tt" aria-label="End time"></div>
 <div class="note" id="durV" role="alert" style="margin-top:8px;min-height:1.4em"></div>
-<div class="lab"><span id="relLab">Released?</span></div>
+<div class="lab"><span id="relLab">Load Released?</span></div>
 <div class="seg" id="rel">
 <button type="button" data-v="1" aria-pressed="true">Yes</button>
 <button type="button" data-v="0" aria-pressed="false">No</button>
 </div>
-<p class="note" style="margin:6px 0 0">Yes makes this session a load and restarts your timer.</p>
 <div class="lab" id="tagLab" hidden><span>Tags</span></div>
 <div class="chips" id="tagBox"></div>
 <p class="note" id="tagNone" style="margin:10px 0 0">No tags yet. Add them in Settings.</p>
@@ -1447,7 +1332,7 @@ try {
   if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
 } catch (e) { CLOUDFAIL = true; }
 var uid = '', ACC = {};
-var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {theme: 'dark', dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: false, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
+var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {theme: 'dark', dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: true, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
 function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
 var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
 function ukey(n, u) { return 'creamer:u:' + (u || uid) + ':' + n; }
@@ -1462,7 +1347,7 @@ var GUEST = false, CLOUD_REAL = CLOUD, JOINB = 100;
 function saveAcc() { try { var c = Object.assign({}, ACC); delete c.guest; localStorage.setItem('creamer:accounts', JSON.stringify(c)); } catch (e) {} }
 var SEED = {soft_harbor: {n: 34, d: 60, bio: 'Night shifts and slow mornings.'}, quiet_fox: {n: 18, d: 60, bio: 'Keeping it simple.'}, dusk_wren: {n: 52, d: 75, bio: 'Here for the badges.'}}, DEMO = {}, openF = '';
 function rng(a) { return function () { a = (a + 0x6D2B79F5) | 0; var t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
-/* Made-up sessions for the three sample users. Real friends come from the backend later. */
+/* Made-up loads for the three sample users. Real friends come from the backend later. */
 function demoFor(name) {
   var hk = Math.floor(Date.now() / 3600000), cc = DEMO[name];
   if (cc && cc.hk === hk) return cc.list;
@@ -1545,7 +1430,7 @@ var fKey = '';
 function friendSort() {
   var now = Date.now();
   return F.map(function (n) {
-    var u = api.find(n), l = u && !u.priv ? lastOf((u.entries || []).filter(function (x) { return x.rel; })) : null;
+    var u = api.find(n), l = u && !u.priv ? lastOf(u.entries) : null;
     return {n: n, u: u, gap: !u || u.priv ? -1 : l ? now - l.t : Infinity};
   }).sort(function (a, b) { return a.gap === b.gap ? (a.n < b.n ? -1 : 1) : b.gap - a.gap; });
 }
@@ -1553,17 +1438,8 @@ function gapLvl(g) { return g < 0 ? 'x' : g < 43200000 ? '0' : g < 259200000 ? '
 function agoCell(f) {
   if (!f.u) return '<span class="ago lx">unavailable</span>';
   if (f.u.priv) return '<span class="ago lx">private</span>';
-  var l = lastOf((f.u.entries || []).filter(function (x) { return x.rel; }));
+  var l = lastOf(f.u.entries);
   return l ? '<b class="ago l' + gapLvl(f.gap) + '" data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="ago l2">no loads yet</span>';
-}
-function friendCard(f) {
-  var top = '<span class="frh">' + avatar(f.n) + '<span class="frn"><b>' + fnH(f.n) + '</b></span><i class="frgo" aria-hidden="true">&#8250;</i></span>';
-  if (!f.u) return top + '<span class="frm">Unavailable</span>';
-  if (f.u.priv) return top + '<span class="frm">Keeps their stats private</span>';
-  var es = f.u.entries || [], ll = lastOf(es.filter(function (x) { return x.rel; })), le = lastOf(es);
-  var big = ll ? '<span class="frbig" data-since="' + ll.t + '">' + sinceLabel(ll.t, false) + '</span><span class="frlab">since last load</span>' : '<span class="frbig fz">No loads yet</span>';
-  var last = le ? '<span class="frl2"><span class="frlab">Last session</span><span>' + spanTxt(le, false) + '</span><span>' + fmtMin(le.dur) + ' · rating ' + le.rate + '/10 · ' + (le.rel ? 'load' : 'not released') + '</span></span>' : '<span class="frl2"><span>No sessions yet</span></span>';
-  return top + '<span class="frmid">' + big + '</span>' + last;
 }
 function nickOf(n) { return (S.nick && S.nick[n]) || ''; }
 function fn(n) { return nickOf(n) || '@' + n; }
@@ -1573,16 +1449,16 @@ function avatar(n, sm) {
   return '<i class="av' + (sm ? ' sm' : '') + '" style="background:hsl(' + (320 + h % 40) + ',58%,52%)">' + esc((nickOf(n) || n).charAt(0).toUpperCase()) + '</i>';
 }
 function renderFriendLists(force) {
-  var list = friendSort(), key = list.map(function (f) { var le = f.u && !f.u.priv ? lastOf(f.u.entries || []) : null; return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : '') + (le ? le.id + '' + le.t : ''); }).join(',');
+  var list = friendSort(), key = list.map(function (f) { return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : ''); }).join(',');
   if (!force && key === fKey) return;
   fKey = key;
-  $('frCount').textContent = F.length ? '(' + F.length + ')' : ''; $('frSort').hidden = F.length < 2;
+  $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
   $('fl').innerHTML = list.length ? list.map(function (f) {
-    return '<li><button class="frc g' + gapLvl(f.gap) + '" type="button" data-open="' + esc(f.n) + '">' + friendCard(f) + '</button></li>';
+    return '<li><button class="fr" type="button" data-open="' + esc(f.n) + '"><span class="nm">' + avatar(f.n) + '<b>' + fnH(f.n) + '</b></span>' + agoCell(f) + '</button></li>';
   }).join('') : '<li class="empty">No friends yet. Add one by username below.</li>';
   $('hf').innerHTML = list.length ? list.slice(0, 5).map(function (f) {
     return '<li><span class="nm">' + avatar(f.n, true) + '<b>' + fnH(f.n) + '</b></span>' + agoCell(f) + '</li>';
-  }).join('') + (list.length > 5 ? '<li class="empty">+' + (list.length - 5) + ' more in the Friends tab</li>' : '') : '<li class="empty">No friends yet.</li><li class="empty"><button type="button" data-gotab="friends">Add a friend</button></li>';
+  }).join('') + (list.length > 5 ? '<li class="empty">+' + (list.length - 5) + ' more in the Friends tab</li>' : '') : '<li class="empty">No friends yet. Add them in the Friends tab.</li>';
 }
 function spanTxt(x, yr) {
   var e = new Date(x.t), st = new Date(x.t - x.dur * 60000), o = yr ? {day: 'numeric', month: 'short', year: 'numeric'} : {day: 'numeric', month: 'short'};
@@ -1592,7 +1468,7 @@ function spanTxt(x, yr) {
 function entryRow(x, yr) {
   var d = new Date(x.t).toLocaleDateString(undefined, yr ? {day: 'numeric', month: 'short', year: 'numeric'} : {day: 'numeric', month: 'short'});
   var tg = x.tags && x.tags.length ? '<small class="tg">' + x.tags.map(esc).join(', ') + '</small>' : '';
-  return '<li><span>' + spanTxt(x, yr) + '<small>' + fmtMin(x.dur) + ' · ' + (x.rel ? 'load' : 'not released') + '</small>' + tg + '</span><span class="rt" style="font-size:24px;font-weight:800">' + x.rate + '<i style="font-style:normal;font-size:13px;font-weight:600;opacity:.6">/10</i></span><button class="x" type="button" data-id="' + x.id + '" aria-label="Delete session">' + (delArm === String(x.id) ? 'sure?' : 'delete') + '</button></li>';
+  return '<li><span>' + spanTxt(x, yr) + '<small>' + fmtMin(x.dur) + ' · released: ' + (x.rel ? 'yes' : 'no') + '</small>' + tg + '</span><span style="font-size:26px;font-weight:800">' + x.rate + '</span><button class="x" type="button" data-id="' + x.id + '" aria-label="Delete entry">' + (delArm === String(x.id) ? 'sure?' : 'delete') + '</button></li>';
 }
 function delClick(e) {
   var id = e.target.getAttribute && e.target.getAttribute('data-id'); if (!id) return;
@@ -1610,14 +1486,13 @@ function render() {
   if (!uid) return;
   leagueSettle(); duelSettle();
   var rows = E.slice().sort(function (a, b) { return b.t - a.t; }).slice(0, histAll ? 20 : 5);
-  $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No sessions yet. Tap Log a session.</li>';
+  $('hist').innerHTML = rows.length ? rows.map(entryRow).join('') : '<li class="empty">No loads yet. Tap Log a load.</li>';
   if (!$('entriesView').hidden) renderEntries();
   var l = lastOf(E.filter(function (x) { return x.rel; })), hs = $('hSince');
   if (l) {
     hs.setAttribute('data-since', l.t); hs.textContent = sinceLabel(l.t, false);
-    $('hLast').textContent = 'Last load ' + (ymd(new Date(l.t - l.dur * 60000)) !== ymd(new Date(l.t)) ? spanTxt(l, false) : fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to)) + ', rating ' + l.rate + '.';
-  } else { hs.removeAttribute('data-since'); hs.textContent = 'No loads yet'; $('hLast').textContent = E.length ? 'The timer starts when you log a session as released.' : 'Tap the button below to log your first session.'; }
-  hs.classList.toggle('hz', !l);
+    $('hLast').textContent = 'Last released load ' + (ymd(new Date(l.t - l.dur * 60000)) !== ymd(new Date(l.t)) ? spanTxt(l, false) : fmtDate(l.t) + ', ' + ft(l.from) + '–' + ft(l.to)) + ', rating ' + l.rate + '.';
+  } else { hs.removeAttribute('data-since'); hs.textContent = '–'; $('hLast').textContent = E.length ? 'No released loads yet. The timer starts when you log one as released.' : 'No loads yet. Tap Log a load.'; }
   $('histMore').hidden = E.length <= 5; $('histMore').textContent = histAll ? 'Show less' : 'Show more';
   renderSettings(); $('hBalN').textContent = totals().bal; updateBadge(); checkNotifs();
   renderHomeCh(); renderStreak(); renderLeague(); renderRequests(); renderDuels();
@@ -1645,7 +1520,7 @@ function span() {
   if (to - now > 60000) return {err: 'The end is in the future.'};
   if (to <= fr) return {err: 'The end has to be after the start.'};
   var dur = Math.round((to - fr) / 60000);
-  if (dur > 20160) return {err: 'The longest session is 14 days.'};
+  if (dur > 20160) return {err: 'The longest entry is 14 days.'};
   return {to: to, fr: fr, dur: dur};
 }
 function showDur() {
@@ -1758,7 +1633,7 @@ function joinBonus() {
   if (g.S) { ['theme', 'snd', 'hap', 'fx', 'w', 'tank', 'tilt'].forEach(function (k) { if (g.S[k] !== undefined) S[k] = g.S[k]; }); saveS(); }
   G.joined = 1; G.bonus += JOINB; saveG();
   ['loads', 'settings', 'game', 'profile'].forEach(function (k) { try { localStorage.removeItem('creamer:u:guest:' + k); } catch (e) {} });
-  render(); toast('Welcome bonus: +' + JOINB + ' LDs' + (n ? '. ' + n + ' guest ' + (n === 1 ? 'session' : 'sessions') + ' imported.' : ''));
+  render(); toast('Welcome bonus: +' + JOINB + ' LDs' + (n ? '. ' + n + ' guest ' + (n === 1 ? 'entry' : 'entries') + ' imported.' : ''));
 }
 function openJoin() { $('gjoin').hidden = false; lock(); }
 function closeJoin() { $('gjoin').hidden = true; lock(); }
@@ -1767,7 +1642,7 @@ function loadUser(id) {
   uid = id; if (id !== 'guest') { try { localStorage.setItem('creamer:had', '1'); } catch (e) {} }
   E = rd('loads', []); F = rd('friends', []);
   P = Object.assign({}, DEF_P, rd('profile', {})); P.name = ACC[id].username;
-  S = Object.assign({}, DEF_S, rd('settings', {})); if (!S.sndOpt) { S.snd = false; S.sndOpt = 1; }
+  S = Object.assign({}, DEF_S, rd('settings', {}));
   G = Object.assign(newG(), rd('game', {})); G.eq = Object.assign(newG().eq, G.eq || {});
   openF = ''; histAll = false;
   try { localStorage.setItem('creamer:session', id); } catch (e) {}
@@ -1934,7 +1809,7 @@ function checkNotifs() {
   if (n.dd !== key) { if (!dayPick()) notify({id: 'dd', title: "Choose today's challenge", text: 'Pick one for extra LDs.', go: function () { goTab('rewards'); }}); n.dd = key; }
   if (n.wk !== wk) { notify({id: 'wk', title: 'New weekly challenges', text: 'Three fresh ones for this week.', go: function () { goTab('rewards'); }}); n.wk = wk; }
   var today = dstart(now.getTime()), loggedToday = E.some(function (x) { return dstart(x.t) === today; });
-  if (now.getHours() >= 19 && st >= 2 && !loggedToday && n.sk !== key) { notify({id: 'sk', title: 'Your ' + st + '-day streak ends tonight', text: 'Log a session before midnight to keep it.', go: goAdd}); n.sk = key; }
+  if (now.getHours() >= 19 && st >= 2 && !loggedToday && n.sk !== key) { notify({id: 'sk', title: 'Your ' + st + '-day streak ends tonight', text: 'Log a load before midnight to keep it.', go: goAdd}); n.sk = key; }
   // social
   if (!CLOUD || SOCIAL_OK) {
     F.forEach(function (name) {
@@ -1944,7 +1819,7 @@ function checkNotifs() {
       if (n.fr[name] === undefined) { n.fr[name] = mx; return; }
       var nw = u.entries.filter(function (x) { return x.t > n.fr[name]; });
       n.fr[name] = mx;
-      if (nw.length) notify({id: 'fr:' + name, title: fn(name) + ' logged ' + (nw.length > 1 ? nw.length + ' new sessions' : 'a new session'), text: nw.length === 1 ? 'Rated ' + nw[0].rate + ' out of 10, ' + nw[0].dur + ' min.' : 'Tap to see their stats.', go: function () { goFriend(name); }});
+      if (nw.length) notify({id: 'fr:' + name, title: fn(name) + ' logged ' + (nw.length > 1 ? nw.length + ' new loads' : 'a new load'), text: nw.length === 1 ? 'Rated ' + nw[0].rate + ' out of 10, ' + nw[0].dur + ' min.' : 'Tap to see their stats.', go: function () { goFriend(name); }});
     });
     Object.keys(n.fr).forEach(function (k) { if (F.indexOf(k) < 0) delete n.fr[k]; });
   }
@@ -2020,7 +1895,7 @@ async function cloudLoad(user) {
     E = rows.map(mapEntry); synced = {}; E.forEach(function (x) { synced[x.id] = true; });
     var d = pr.data;
     P = Object.assign({}, DEF_P, {name: d.username, pub: !!d.is_public, discover: d.discoverable !== false, bio: d.bio || ''});
-    S = Object.assign({}, DEF_S, d.settings || {}); if (!S.sndOpt) { S.snd = false; S.sndOpt = 1; }
+    S = Object.assign({}, DEF_S, d.settings || {});
     G = Object.assign(newG(), d.game || {}); G.eq = Object.assign(newG().eq, G.eq || {}); G.du = [];
     F = []; FR = {}; SOCIAL_OK = false;
     await refreshSocial();
@@ -2215,7 +2090,7 @@ function bars(vals, labels, tip, fixedMax) {
 function avgOf(sum, c) { return c ? (sum / c).toFixed(1) : '–'; }
 
 function statsHtml(E, mine) {
-  if (!E.length) return card(' span2 hero', 'No stats yet', '<p class="sub">' + (mine ? 'Log your first session and your charts, streaks and records show up here.' : 'No sessions logged yet.') + '</p>' + (mine ? '<div class="row" style="max-width:320px"><button type="button" class="go" data-logit="1">Log a session</button></div>' : ''));
+  if (!E.length) return card('', 'No stats yet', '<p class="empty">' + (mine ? 'Add a load with Log a load and everything shows up here.' : 'No loads logged yet.') + '</p>');
   var s = E.slice().sort(function (a, b) { return a.t - b.t; }), n = s.length, now = Date.now(), DAY = 86400000, i, j;
   var tot = 0, rsum = 0, rel = 0, relR = 0, unrR = 0;
   s.forEach(function (x) { tot += x.dur; rsum += x.rate; if (x.rel) { rel++; relR += x.rate; } else unrR += x.rate; });
@@ -2270,13 +2145,13 @@ function statsHtml(E, mine) {
   for (j = 34; j >= 0; j--) {
     var dt = new Date(today); dt.setDate(dt.getDate() - j);
     var c = (days[dt.getTime()] || {n: 0}).n;
-    hm += '<i' + (j === 0 ? ' class="t"' : '') + ' title="' + fmtDate(dt.getTime()) + ': ' + c + '"' + (c ? ' style="--a:' + (0.3 + 0.7 * c / mx).toFixed(2) + '"' : '') + '></i>';
+    hm += '<i' + (j === 0 ? ' class="t"' : '') + ' title="' + fmtDate(dt.getTime()) + ': ' + c + '"' + (c ? ' style="background:rgba(247,169,194,' + (0.3 + 0.7 * c / mx).toFixed(2) + ')"' : '') + '></i>';
   }
 
   var B = [
-    ['First session', n >= 1, '1 session'], ['Ten up', n >= 10, '10 sessions'], ['Quarter', n >= 25, '25 sessions'], ['Half century', n >= 50, '50 sessions'], ['Century', n >= 100, '100 sessions'],
+    ['First load', n >= 1, '1 load'], ['Ten up', n >= 10, '10 loads'], ['Quarter', n >= 25, '25 loads'], ['Half century', n >= 50, '50 loads'], ['Century', n >= 100, '100 loads'],
     ['Hat trick', busiest.n >= 3, '3 in one day'], ['Streaker', longest >= 3, '3-day streak'], ['Week warrior', longest >= 7, '7-day streak'],
-    ['Perfect ten', hi.rate === 10, 'a 10/10 session'], ['Marathon', lg.dur >= 30, 'a 30+ min session'], ['Night owl', per.Night >= 5, '5 night sessions'], ['Early bird', per.Morning >= 5, '5 morning sessions']
+    ['Perfect ten', hi.rate === 10, 'a 10/10 load'], ['Marathon', lg.dur >= 30, 'a 30+ min load'], ['Night owl', per.Night >= 5, '5 night loads'], ['Early bird', per.Morning >= 5, '5 morning loads']
   ];
   var MS = [1, 10, 25, 50, 100, 250], nextM = 0; for (j = 0; j < MS.length; j++) if (MS[j] > n) { nextM = MS[j]; break; }
   var got = B.filter(function (b) { return b[1]; }).length;
@@ -2284,17 +2159,16 @@ function statsHtml(E, mine) {
   var hrL = hrs.map(function (_, h) { return h % 6 === 0 ? pad(h) : ''; });
   var rcL = rc.map(function (_, r) { return String(r + 1); });
   var out = [];
-  out.push(card(' span2 hero', 'Overview', '<div class="tiles">' + tile(n, n === 1 ? 'session' : 'sessions') + tile(rel, rel === 1 ? 'load' : 'loads') + tile(avgOf(rsum, n), 'avg rating') + tile(cur + (cur === 1 ? ' day' : ' days'), 'streak') + '</div>'));
-  out.push(card('', 'More numbers', kv('Average gap', gaps.length ? fmtGap(avgGap) : '–') + kv('Total time', fmtDur(tot)) + kv('Released', Math.round(rel / n * 100) + '%') + kv('Average length', fmtDur(avgD)) + kv('Active days', dl.length) + kv('Per active day', (n / dl.length).toFixed(1))));
-  out.push(card(' lastc', 'Last session', '<div class="bigt" data-since="' + last.t + '" data-ago="1">' + sinceLabel(last.t, true) + '</div>' + kv('Date', fmtDate(last.t)) + kv('Time', ft(last.from) + '–' + ft(last.to)) + kv('Length', fmtDur(last.dur)) + kv('Rating', last.rate + ' / 10') + kv('Released', last.rel ? 'yes' : 'no') + (n > 1 ? kv('Gap before it', fmtGap(prevGap)) : '')));
-  out.push(card(' b', 'Records', kv('Most sessions in one day', busiest.n + ' (' + fmtDate(busiest.t) + ')') + kv('Highest rated', hi.rate + ' (' + fmtDate(hi.t) + ')') + kv('Lowest rated', lo.rate + ' (' + fmtDate(lo.t) + ')') + kv('Longest session', fmtDur(lg.dur) + ' (' + fmtDate(lg.t) + ')') + kv('Shortest session', fmtDur(sh.dur) + ' (' + fmtDate(sh.t) + ')') + kv('Best day, avg rating', (bestDay.sum / bestDay.n).toFixed(1) + ' (' + fmtDate(bestDay.t) + ')')));
+  out.push(card(' span2 hero', 'Overview', '<div class="tiles">' + tile(n, 'loads') + tile(fmtDur(tot), 'total time') + tile(avgOf(rsum, n), 'avg rating') + tile(Math.round(rel / n * 100) + '%', 'released') + tile(fmtDur(avgD), 'avg length') + tile(dl.length, 'active days') + tile((n / dl.length).toFixed(1), 'per active day') + '</div>'));
+  out.push(card(' lastc', 'Last load', '<div class="bigt" data-since="' + last.t + '" data-ago="1">' + sinceLabel(last.t, true) + '</div>' + kv('Date', fmtDate(last.t)) + kv('Time', ft(last.from) + '–' + ft(last.to)) + kv('Length', fmtDur(last.dur)) + kv('Rating', last.rate + ' / 10') + kv('Released', last.rel ? 'yes' : 'no') + (n > 1 ? kv('Gap before it', fmtGap(prevGap)) : '')));
+  out.push(card(' b', 'Records', kv('Most loads in one day', busiest.n + ' (' + fmtDate(busiest.t) + ')') + kv('Highest rated', hi.rate + ' (' + fmtDate(hi.t) + ')') + kv('Lowest rated', lo.rate + ' (' + fmtDate(lo.t) + ')') + kv('Longest load', fmtDur(lg.dur) + ' (' + fmtDate(lg.t) + ')') + kv('Shortest load', fmtDur(sh.dur) + ' (' + fmtDate(sh.t) + ')') + kv('Best day, avg rating', (bestDay.sum / bestDay.n).toFixed(1) + ' (' + fmtDate(bestDay.t) + ')')));
   out.push(card(' b', 'Streaks and gaps', kv('Current streak', cur + (cur === 1 ? ' day' : ' days')) + kv('Longest streak', longest + (longest === 1 ? ' day' : ' days')) + kv('Time since last load', '<span data-since="' + last.t + '">' + sinceLabel(last.t, false) + '</span>') + kv('Longest gap', n > 1 ? fmtGap(maxGap) : '–') + kv('Average gap', n > 1 ? fmtGap(avgGap) : '–')));
-  out.push(card('', 'Last 35 days', '<div class="hm">' + hm + '</div><p class="sub">Oldest first. Brighter means more sessions. The outlined square is today.</p>'));
+  out.push(card('', 'Last 35 days', '<div class="hm">' + hm + '</div><p class="sub">Oldest first. Darker is more loads. The outlined square is today.</p>'));
   out.push(card('', 'This month', '<div class="bigt">' + thisM + '</div><p class="sub">' + (diff === 0 ? 'Same as last month (' + lastM + ').' : (diff > 0 ? '+' + diff + ' vs' : diff + ' vs') + ' last month (' + lastM + ').') + '</p>'));
-  out.push(card(' span2', 'Time of day', '<div class="chart sm">' + bars(hrs, hrL, function (h, v) { return pad(h) + ':00, ' + v; }) + '</div>' + kv('Title', titles[topP] + ' (' + Math.round(per[topP] / n * 100) + '% of sessions start ' + topP.toLowerCase() + ')') + kv('Peak hour', pad(peakH) + ':00') + kv('Pace', pace + ' (avg ' + fmtDur(avgD) + ')')));
+  out.push(card(' span2', 'Time of day', '<div class="chart sm">' + bars(hrs, hrL, function (h, v) { return pad(h) + ':00, ' + v; }) + '</div>' + kv('Title', titles[topP] + ' (' + Math.round(per[topP] / n * 100) + '% of loads start ' + topP.toLowerCase() + ')') + kv('Peak hour', pad(peakH) + ':00') + kv('Pace', pace + ' (avg ' + fmtDur(avgD) + ')')));
   out.push(card('', 'Weekdays', '<div class="chart">' + bars(wd, ['M', 'T', 'W', 'T', 'F', 'S', 'S'], function (d, v) { return WN[d] + ': ' + v; }) + '</div><p class="sub">Busiest: ' + WN[peakW] + '.</p>'));
   out.push(card(' b', 'Rating spread', '<div class="chart sm">' + bars(rc, rcL, function (r, v) { return 'Rating ' + (r + 1) + ': ' + v; }) + '</div><p class="sub">Most common rating: ' + modeR + '.</p>'));
-  out.push(card('', 'Sweet spot', '<div class="chart">' + bars(ba, BL, function (b, v) { return BL[b] + ' min: ' + v.toFixed(1) + ' avg, ' + bc[b] + ' sessions'; }, 10) + '</div><p class="sub">Best average rating: ' + BL[bestB] + ' min (' + ba[bestB].toFixed(1) + ').</p>'));
+  out.push(card('', 'Sweet spot', '<div class="chart">' + bars(ba, BL, function (b, v) { return BL[b] + ' min: ' + v.toFixed(1) + ' avg, ' + bc[b] + ' loads'; }, 10) + '</div><p class="sub">Best average rating: ' + BL[bestB] + ' min (' + ba[bestB].toFixed(1) + ').</p>'));
   out.push(card(' b', 'Released or not', '<div class="split"><i style="width:' + (rel / n * 100) + '%;background:#f7a9c2"></i><i style="width:' + (unr / n * 100) + '%;background:#fdf1f4"></i></div>' + kv('Released', rel + ', avg rating ' + avgOf(relR, rel)) + kv('Not released', unr + ', avg rating ' + avgOf(unrR, unr))));
   /* ---- more stats ---- */
   var back = function (k) { var d = new Date(today); d.setDate(d.getDate() - k); return d.getTime(); };
@@ -2308,7 +2182,7 @@ function statsHtml(E, mine) {
   var cToday = (days[today] || {n: 0}).n, cYest = (days[back(1)] || {n: 0}).n, weeks = Math.max(1, daysSince / 7), months = Math.max(1, daysSince / 30.44);
   var more = [];
 
-  more.push(card('', 'Calendar', kv('Today', cToday) + kv('Yesterday', cYest) + kv('This week', thisW + ' (last week ' + lastW + ')') + kv('Last 7 days', c7) + kv('Last 30 days', c30) + kv('This year', thisY) + kv('Per week', (n / weeks).toFixed(1)) + kv('Per month', (n / months).toFixed(1)) + kv('First session', fmtDate(first.t) + ' ' + new Date(first.t).getFullYear()) + kv('Days since first', daysSince) + kv('Active days', Math.round(dl.length / daysSince * 100) + '%')));
+  more.push(card('', 'Calendar', kv('Today', cToday) + kv('Yesterday', cYest) + kv('This week', thisW + ' (last week ' + lastW + ')') + kv('Last 7 days', c7) + kv('Last 30 days', c30) + kv('This year', thisY) + kv('Per week', (n / weeks).toFixed(1)) + kv('Per month', (n / months).toFixed(1)) + kv('First load', fmtDate(first.t) + ' ' + new Date(first.t).getFullYear()) + kv('Days since first', daysSince) + kv('Active days', Math.round(dl.length / daysSince * 100) + '%')));
 
   var topD = dl.slice().sort(function (a, b) { return b.n - a.n || b.t - a.t; }).slice(0, 3);
   var topR = s.slice().sort(function (a, b) { return b.rate - a.rate || b.t - a.t; }).slice(0, 3);
@@ -2355,7 +2229,7 @@ function statsHtml(E, mine) {
   var gW = grp(function (x) { return (new Date(x.t).getDay() + 6) % 7; }, function (k) { return WN[k]; });
   var gP = grp(function (x) { var h = new Date(x.t - x.dur * 60000).getHours(); return h >= 5 && h < 12 ? 'Morning' : h >= 12 && h < 17 ? 'Afternoon' : h >= 17 && h < 22 ? 'Evening' : 'Night'; }, String);
   var gM = grp(function (x) { return new Date(x.t).getMonth(); }, function (k) { return MN[k]; });
-  more.push(card('', 'Best and worst', kv('Best weekday', gW.b) + kv('Weakest weekday', gW.w) + kv('Best time of day', gP.b) + kv('Weakest time of day', gP.w) + kv('Best month', gM.b) + kv('Weakest month', gM.w) + '<p class="sub">Average rating. Groups need 2 or more sessions.</p>'));
+  more.push(card('', 'Best and worst', kv('Best weekday', gW.b) + kv('Weakest weekday', gW.w) + kv('Best time of day', gP.b) + kv('Weakest time of day', gP.w) + kv('Best month', gM.b) + kv('Weakest month', gM.w) + '<p class="sub">Average rating. Groups need 2 or more entries.</p>'));
 
   var ds = s.map(function (x) { return x.dur; }), dsS = ds.slice().sort(function (p, q) { return p - q; });
   more.push(card(' b', 'Length', '<div class="chart sm">' + bars(bc, BL, function (k, v) { return BL[k] + ' min: ' + v; }) + '</div>' + kv('Median', fmtDur(med(ds))) + kv('Longest 10% start at', fmtDur(dsS[Math.min(n - 1, Math.floor(0.9 * n))])) + kv('Total hours', (tot / 60).toFixed(1) + ' h') + kv('30 min or more', ds.filter(function (v) { return v >= 30; }).length) + kv('Under 5 min', ds.filter(function (v) { return v < 5; }).length)));
@@ -2371,7 +2245,7 @@ function statsHtml(E, mine) {
   s.forEach(function (x) { sxy += (x.dur - mxl) * (x.rate - rsum / n); sxx += (x.dur - mxl) * (x.dur - mxl); syy += (x.rate - rsum / n) * (x.rate - rsum / n); });
   var rr = n >= 5 && sxx && syy ? sxy / Math.sqrt(sxx * syy) : null;
   var after = function (min, max) { var a = []; for (i = 1; i < n; i++) { var g = s[i].t - s[i - 1].t; if (g >= min && g < max) a.push(s[i].rate); } return a.length ? avgA(a).toFixed(1) + ' (' + a.length + ')' : '–'; };
-  more.push(card(' b', 'What goes with what', kv('Length and rating', rr === null ? 'needs 5 sessions' : (Math.abs(rr) < 0.3 ? 'no clear link' : rr > 0 ? 'longer rates higher' : 'shorter rates higher') + ' (r ' + rr.toFixed(2) + ')') + kv('After under 24h', after(0, DAY)) + kv('After 24h or more', after(DAY, Infinity)) + kv('After 3 days or more', after(3 * DAY, Infinity)) + '<p class="sub">Average rating of the session that followed the gap, with the count.</p>'));
+  more.push(card(' b', 'What goes with what', kv('Length and rating', rr === null ? 'needs 5 entries' : (Math.abs(rr) < 0.3 ? 'no clear link' : rr > 0 ? 'longer rates higher' : 'shorter rates higher') + ' (r ' + rr.toFixed(2) + ')') + kv('After under 24h', after(0, DAY)) + kv('After 24h or more', after(DAY, Infinity)) + kv('After 3 days or more', after(3 * DAY, Infinity)) + '<p class="sub">Average rating of the entry that followed the gap, with the count.</p>'));
 
   var runBest = function (f) { var b = 0, c = 0; s.forEach(function (x) { c = f(x) ? c + 1 : 0; if (c > b) b = c; }); return b; };
   var startH = function (x) { return new Date(x.t - x.dur * 60000).getHours(); };
@@ -2382,15 +2256,15 @@ function statsHtml(E, mine) {
   var tk = Object.keys(tmap).sort(function (a, b) { return tmap[b].c - tmap[a].c; });
   if (tk.length) {
     var tb = tk.filter(function (t) { return tmap[t].c >= 2; }).sort(function (a, b) { return tmap[b].r / tmap[b].c - tmap[a].r / tmap[a].c; })[0];
-    more.push(card(' span2', 'Tags', tk.slice(0, 12).map(function (t) { return kv(esc(t), tmap[t].c + ' · rating ' + avgOf(tmap[t].r, tmap[t].c) + ' · ' + fmtDur(tmap[t].d / tmap[t].c)); }).join('') + kv('Best rated tag', tb ? esc(tb) + ' (' + (tmap[tb].r / tmap[tb].c).toFixed(1) + ')' : '–') + kv('Sessions without a tag', s.filter(function (x) { return !(x.tags && x.tags.length); }).length) + '<p class="sub">Count · average rating · average length. Best rated needs 2 or more sessions.</p>'));
+    more.push(card(' span2', 'Tags', tk.slice(0, 12).map(function (t) { return kv(esc(t), tmap[t].c + ' · rating ' + avgOf(tmap[t].r, tmap[t].c) + ' · ' + fmtDur(tmap[t].d / tmap[t].c)); }).join('') + kv('Best rated tag', tb ? esc(tb) + ' (' + (tmap[tb].r / tmap[tb].c).toFixed(1) + ')' : '–') + kv('Entries without a tag', s.filter(function (x) { return !(x.tags && x.tags.length); }).length) + '<p class="sub">Count · average rating · average length. Best rated needs 2 or more entries.</p>'));
   }
   var ins = [], overall = rsum / n, overD = tot / n;
   var TPn = function (x) { var h = new Date(x.t - x.dur * 60000).getHours(); return h >= 5 && h < 12 ? 'in the morning' : h >= 12 && h < 17 ? 'in the afternoon' : h >= 17 && h < 22 ? 'in the evening' : 'at night'; };
   tk.forEach(function (t) {
     var o = tmap[t]; if (o.c < 3) return;
     var dr = o.r / o.c - overall, dd = o.d / o.c / overD - 1, te = s.filter(function (x) { return (x.tags || []).indexOf(t) >= 0; });
-    if (Math.abs(dr) >= 0.5) ins.push({w: Math.abs(dr), t: 'Sessions tagged ' + esc(t) + ' rate ' + Math.abs(dr).toFixed(1) + (dr > 0 ? ' higher' : ' lower') + ' than your average.'});
-    if (Math.abs(dd) >= 0.3) ins.push({w: Math.abs(dd) * 3, t: esc(t) + ' sessions run ' + Math.round(Math.abs(dd) * 100) + '% ' + (dd > 0 ? 'longer' : 'shorter') + ' than usual.'});
+    if (Math.abs(dr) >= 0.5) ins.push({w: Math.abs(dr), t: 'Entries tagged ' + esc(t) + ' rate ' + Math.abs(dr).toFixed(1) + (dr > 0 ? ' higher' : ' lower') + ' than your average.'});
+    if (Math.abs(dd) >= 0.3) ins.push({w: Math.abs(dd) * 3, t: esc(t) + ' entries run ' + Math.round(Math.abs(dd) * 100) + '% ' + (dd > 0 ? 'longer' : 'shorter') + ' than usual.'});
     var pc = {}; te.forEach(function (x) { var q = TPn(x); pc[q] = (pc[q] || 0) + 1; });
     var pk = Object.keys(pc).sort(function (p1, p2) { return pc[p2] - pc[p1]; })[0];
     if (pc[pk] / o.c >= 0.6) ins.push({w: 0.4, t: esc(t) + ' mostly happens ' + pk + '.'});
@@ -2399,13 +2273,14 @@ function statsHtml(E, mine) {
   var pb = Object.keys(pm).sort(function (p1, p2) { return pm[p2] - pm[p1]; })[0];
   if (pb && pm[pb] >= 2) ins.push({w: 0.35, t: 'Most common pair: ' + esc(pb.split('\u0001')[0]) + ' and ' + esc(pb.split('\u0001')[1]) + ' (' + pm[pb] + ' times).'});
   var untag = s.filter(function (x) { return !(x.tags && x.tags.length); }).length;
-  if (tk.length && untag / n >= 0.5) ins.push({w: 0.2, t: Math.round(untag / n * 100) + '% of your sessions have no tag.'});
+  if (tk.length && untag / n >= 0.5) ins.push({w: 0.2, t: Math.round(untag / n * 100) + '% of your entries have no tag.'});
   ins.sort(function (p1, p2) { return p2.w - p1.w; });
-  more.push(card(' b', 'Tag insights', ins.length ? ins.slice(0, 5).map(function (q) { return '<p style="margin:8px 0">' + q.t + '</p>'; }).join('') : '<p class="sub" style="margin:0">' + (tk.length ? 'Use the same tag on 3 or more sessions and insights show up here.' : 'Add tags in Settings and use them when you log a session. Insights show up here.') + '</p>'));
+  more.push(card(' b', 'Tag insights', ins.length ? ins.slice(0, 5).map(function (q) { return '<p style="margin:8px 0">' + q.t + '</p>'; }).join('') : '<p class="sub" style="margin:0">' + (tk.length ? 'Use the same tag on 3 or more entries and insights show up here.' : 'Add tags in Settings and use them when you log an entry. Insights show up here.') + '</p>'));
   var span = Math.max(1, Math.min(30, daysSince)), pace = c30 / span, dim = new Date(d0.getFullYear(), d0.getMonth() + 1, 0).getDate(), leftM = dim - d0.getDate(), leftY = Math.round((new Date(d0.getFullYear(), 11, 31).getTime() - today) / DAY);
   var etaD = nextM && pace > 0 ? Math.ceil((nextM - n) / pace) : 0, etaT = new Date(today); etaT.setDate(etaT.getDate() + etaD);
   more.push(card(' b', 'Forecast', kv('Pace', pace.toFixed(2) + ' per day') + kv('Next milestone', nextM ? nextM + (etaD ? ', about ' + fmtDate(etaT.getTime()) : '') : '–') + kv('Projected this month', Math.round(thisM + pace * leftM)) + kv('Projected this year', Math.round(thisY + pace * leftY)) + '<p class="sub">Estimates at your last ' + span + '-day pace. They change as you do.</p>'));
   more.forEach(function (c) { out.push(c); });
+  out.push(card(' span2 soft', 'Badges (' + got + ' of ' + B.length + ')', '<div class="badges">' + B.map(function (b) { return '<div class="bd' + (b[1] ? ' on' : '') + '"><b>' + b[0] + '</b><span>' + b[2] + '</span></div>'; }).join('') + '</div>' + (nextM ? '<p class="sub">Next milestone: ' + nextM + ' loads (' + n + ' so far)</p><div class="bar"><i style="width:' + Math.min(100, n / nextM * 100) + '%"></i></div>' : '<p class="sub">All load milestones reached.</p>')));
   return out.join('');
 }
 function renderStats() { $('sg').innerHTML = statsHtml(E, true); }
@@ -2492,54 +2367,54 @@ function ctxOf(arr) {
 function rarOf(r) { return r <= 20 ? 'Common' : r <= 45 ? 'Uncommon' : r <= 75 ? 'Rare' : r <= 120 ? 'Epic' : 'Legendary'; }
 var RC = {Common: 'c', Uncommon: 'u', Rare: 'r', Epic: 'e', Legendary: 'l'};
 var BADGES = [
-  ['m1', 'First Drop', 'Log your first session', 10, function (c) { return c.n >= 1; }],
-  ['m10', 'Puddle', '10 sessions', 25, function (c) { return c.n >= 10; }],
-  ['m25', 'Pond', '25 sessions', 50, function (c) { return c.n >= 25; }],
-  ['m50', 'Lake', '50 sessions', 100, function (c) { return c.n >= 50; }],
-  ['m100', 'Ocean', '100 sessions', 200, function (c) { return c.n >= 100; }],
-  ['m250', 'Tsunami', '250 sessions', 500, function (c) { return c.n >= 250; }],
+  ['m1', 'First Drop', 'Log your first load', 10, function (c) { return c.n >= 1; }],
+  ['m10', 'Puddle', '10 loads', 25, function (c) { return c.n >= 10; }],
+  ['m25', 'Pond', '25 loads', 50, function (c) { return c.n >= 25; }],
+  ['m50', 'Lake', '50 loads', 100, function (c) { return c.n >= 50; }],
+  ['m100', 'Ocean', '100 loads', 200, function (c) { return c.n >= 100; }],
+  ['m250', 'Tsunami', '250 loads', 500, function (c) { return c.n >= 250; }],
   ['s2', 'Two-Day Drip', '2-day streak', 15, function (c) { return c.streak >= 2; }],
   ['s3', 'Slow Drip', '3-day streak', 25, function (c) { return c.streak >= 3; }],
   ['s7', 'Steady Stream', '7-day streak', 75, function (c) { return c.streak >= 7; }],
   ['s14', 'Fortnight Flow', '14-day streak', 150, function (c) { return c.streak >= 14; }],
   ['s30', 'Moon Cycle', '30-day streak', 400, function (c) { return c.streak >= 30; }],
-  ['d3', 'Hat Trick', '3 sessions in one day', 20, function (c) { return c.busy >= 3; }],
-  ['d4', 'Fab Four', '4 sessions in one day', 40, function (c) { return c.busy >= 4; }],
-  ['d5', 'High Five', '5 sessions in one day', 80, function (c) { return c.busy >= 5; }],
-  ['t1', 'Night Owl', '5 sessions starting 22:00 to 04:59', 30, function (c) { return c.night >= 5; }],
-  ['t2', 'Early Bird', '5 sessions starting 05:00 to 11:59', 30, function (c) { return c.morning >= 5; }],
-  ['t3', 'Lunch Break', '5 sessions starting 12:00 to 16:59', 30, function (c) { return c.afternoon >= 5; }],
-  ['t4', 'Golden Hour', '5 sessions starting 17:00 to 21:59', 30, function (c) { return c.evening >= 5; }],
-  ['t5', 'Full Cycle', 'Sessions in all four parts of the day', 60, function (c) { return c.variety; }],
-  ['t6', 'Sunrise', 'A session starting 05:00 to 05:59', 40, function (c) { return c.dawn; }],
-  ['t7', 'Date Line', 'A session that crosses midnight', 40, function (c) { return c.cross; }],
-  ['t8', 'Witching Hour', 'A session starting 03:00 to 03:59', 40, function (c) { return c.witch; }, 1],
-  ['t9', 'Make a Wish', 'A session ending at 11:11 or 22:22', 50, function (c) { return c.angel; }, 1],
-  ['t10', 'Mirror Time', 'A session ending on a palindrome time, like 12:21', 50, function (c) { return c.pal; }, 1],
-  ['l1', 'Flash', 'A session of 2 min or less', 15, function (c) { return c.minDur <= 2; }],
-  ['l2', 'Slow Burn', 'A session of 30+ min', 30, function (c) { return c.maxDur >= 30; }],
-  ['l3', 'Marathon', 'A session of 60+ min', 60, function (c) { return c.maxDur >= 60; }],
-  ['l4', 'Ultra', 'A session of 120+ min', 120, function (c) { return c.maxDur >= 120; }],
-  ['l5', 'Round Number', 'A session of exactly 10 min', 20, function (c) { return c.round10; }],
-  ['r1', 'Perfect Ten', 'Rate a session 10', 25, function (c) { return c.hi === 10; }],
-  ['r2', 'Tough Crowd', 'Rate a session 1', 15, function (c) { return c.lo === 1; }],
-  ['r3', 'Metronome', '5 sessions in a row with the same rating', 40, function (c) { return c.metro; }],
-  ['r4', 'Rollercoaster', 'Two sessions in a row rated 7 or more apart', 40, function (c) { return c.swing; }],
-  ['r5', 'Staircase', 'Three sessions in a row, each rated higher', 40, function (c) { return c.ladder; }],
+  ['d3', 'Hat Trick', '3 loads in one day', 20, function (c) { return c.busy >= 3; }],
+  ['d4', 'Fab Four', '4 loads in one day', 40, function (c) { return c.busy >= 4; }],
+  ['d5', 'High Five', '5 loads in one day', 80, function (c) { return c.busy >= 5; }],
+  ['t1', 'Night Owl', '5 loads starting 22:00 to 04:59', 30, function (c) { return c.night >= 5; }],
+  ['t2', 'Early Bird', '5 loads starting 05:00 to 11:59', 30, function (c) { return c.morning >= 5; }],
+  ['t3', 'Lunch Break', '5 loads starting 12:00 to 16:59', 30, function (c) { return c.afternoon >= 5; }],
+  ['t4', 'Golden Hour', '5 loads starting 17:00 to 21:59', 30, function (c) { return c.evening >= 5; }],
+  ['t5', 'Full Cycle', 'Loads in all four parts of the day', 60, function (c) { return c.variety; }],
+  ['t6', 'Sunrise', 'A load starting 05:00 to 05:59', 40, function (c) { return c.dawn; }],
+  ['t7', 'Date Line', 'A load that crosses midnight', 40, function (c) { return c.cross; }],
+  ['t8', 'Witching Hour', 'A load starting 03:00 to 03:59', 40, function (c) { return c.witch; }, 1],
+  ['t9', 'Make a Wish', 'A load ending at 11:11 or 22:22', 50, function (c) { return c.angel; }, 1],
+  ['t10', 'Mirror Time', 'A load ending on a palindrome time, like 12:21', 50, function (c) { return c.pal; }, 1],
+  ['l1', 'Flash', 'A load of 2 min or less', 15, function (c) { return c.minDur <= 2; }],
+  ['l2', 'Slow Burn', 'A load of 30+ min', 30, function (c) { return c.maxDur >= 30; }],
+  ['l3', 'Marathon', 'A load of 60+ min', 60, function (c) { return c.maxDur >= 60; }],
+  ['l4', 'Ultra', 'A load of 120+ min', 120, function (c) { return c.maxDur >= 120; }],
+  ['l5', 'Round Number', 'A load of exactly 10 min', 20, function (c) { return c.round10; }],
+  ['r1', 'Perfect Ten', 'Rate a load 10', 25, function (c) { return c.hi === 10; }],
+  ['r2', 'Tough Crowd', 'Rate a load 1', 15, function (c) { return c.lo === 1; }],
+  ['r3', 'Metronome', '5 loads in a row with the same rating', 40, function (c) { return c.metro; }],
+  ['r4', 'Rollercoaster', 'Two loads in a row rated 7 or more apart', 40, function (c) { return c.swing; }],
+  ['r5', 'Staircase', 'Three loads in a row, each rated higher', 40, function (c) { return c.ladder; }],
   ['r6', 'Double Ten', 'Two 10s in a row', 60, function (c) { return c.tens2; }],
-  ['r7', 'Connoisseur', 'Average rating 8+ over 10+ sessions', 80, function (c) { return c.n >= 10 && c.avg >= 8; }],
+  ['r7', 'Connoisseur', 'Average rating 8+ over 10+ loads', 80, function (c) { return c.n >= 10 && c.avg >= 8; }],
   ['r8', 'Full Spectrum', 'Use every rating from 1 to 10', 100, function (c) { return c.spec; }],
-  ['r9', 'Lucky Sevens', 'A 7 min session rated 7', 40, function (c) { return c.lucky7; }, 1],
-  ['r10', 'Bullseye', 'A 10 min session rated 10', 60, function (c) { return c.bull; }, 1],
-  ['c1', 'Weekend Warrior', '10 sessions on weekends', 40, function (c) { return c.wk >= 10; }],
-  ['c2', 'Monday Mood', 'A session on a Monday', 10, function (c) { return c.mon >= 1; }],
-  ['c3', 'Seven Days', 'Sessions on all 7 weekdays', 50, function (c) { return c.wdAll; }],
+  ['r9', 'Lucky Sevens', 'A 7 min load rated 7', 40, function (c) { return c.lucky7; }, 1],
+  ['r10', 'Bullseye', 'A 10 min load rated 10', 60, function (c) { return c.bull; }, 1],
+  ['c1', 'Weekend Warrior', '10 loads on weekends', 40, function (c) { return c.wk >= 10; }],
+  ['c2', 'Monday Mood', 'A load on a Monday', 10, function (c) { return c.mon >= 1; }],
+  ['c3', 'Seven Days', 'Loads on all 7 weekdays', 50, function (c) { return c.wdAll; }],
   ['c4', 'Comeback Kid', 'Return after a break of 7+ days', 50, function (c) { return c.gap >= 7; }],
-  ['c5', 'New Year', 'A session on January 1', 50, function (c) { return c.ny; }, 1],
-  ['c6', 'Leap Day', 'A session on February 29', 100, function (c) { return c.leap; }, 1],
-  ['c7', 'Friday the 13th', 'A session on Friday the 13th', 60, function (c) { return c.f13; }, 1],
-  ['c8', 'Heartbeat', 'A session on February 14', 40, function (c) { return c.vday; }, 1],
-  ['c9', 'Spooky', 'A session on October 31', 40, function (c) { return c.hween; }, 1],
+  ['c5', 'New Year', 'A load on January 1', 50, function (c) { return c.ny; }, 1],
+  ['c6', 'Leap Day', 'A load on February 29', 100, function (c) { return c.leap; }, 1],
+  ['c7', 'Friday the 13th', 'A load on Friday the 13th', 60, function (c) { return c.f13; }, 1],
+  ['c8', 'Heartbeat', 'A load on February 14', 40, function (c) { return c.vday; }, 1],
+  ['c9', 'Spooky', 'A load on October 31', 40, function (c) { return c.hween; }, 1],
   ['f0', 'Name Tag', 'Claim a username', 10, function (c) { return c.named; }],
   ['f1', 'Social Butterfly', 'Add a friend', 20, function (c) { return c.fr >= 1; }],
   ['f3', 'Squad', '3 friends', 40, function (c) { return c.fr >= 3; }],
@@ -2556,11 +2431,11 @@ var BADGES = [
   ['z4', 'Climber', 'Get promoted in a league', 60, function (c) { return c.pr >= 1; }],
   ['z5', 'Storyteller', 'Open your year in numbers', 20, function (c) { return c.wr >= 1; }],
   ['z6', 'Label Maker', 'Create 5 tags', 25, function (c) { return c.tg >= 5; }],
-  ['z7', 'Archivist', 'Use 10 different tags on sessions', 60, function (c) { return c.tgu >= 10; }],
-  ['x1', 'Triple Seven', 'Three sessions in one day, all rated 7', 70, function (c) { return c.t7; }, 1],
+  ['z7', 'Archivist', 'Use 10 different tags on entries', 60, function (c) { return c.tgu >= 10; }],
+  ['x1', 'Triple Seven', 'Three entries in one day, all rated 7', 70, function (c) { return c.t7; }, 1],
   ['x2', 'Clockwork', 'Start at the same minute on 3 different days', 50, function (c) { return c.clock; }, 1],
-  ['x3', 'Back to Back', 'Two sessions less than 30 min apart', 30, function (c) { return c.b2b; }, 1],
-  ['x4', 'Hot Week', '10 sessions within 7 days', 90, function (c) { return c.hot; }, 1],
+  ['x3', 'Back to Back', 'Two entries less than 30 min apart', 30, function (c) { return c.b2b; }, 1],
+  ['x4', 'Hot Week', '10 entries within 7 days', 90, function (c) { return c.hot; }, 1],
   ['x5', 'Midnight Snack', 'Start between 00:00 and 00:59', 40, function (c) { return c.snack; }, 1],
   ['ev1', 'Party Crasher', 'Join a surprise event', 20, function (c) { return c.evd >= 1; }],
   ['ev5', 'Event Hunter', 'Join 5 different surprise events', 80, function (c) { return c.evk >= 5; }],
@@ -2581,75 +2456,75 @@ function per(x) { var h = sh(x); return h >= 22 || h < 5 ? 'n' : h < 12 ? 'm' : 
 function cnt(a, f) { return a.filter(f).length; }
 var CH = {
   d: [
-    {id: 'd1', n: 'Log a session', g: 1, r: 15, p: function (a) { return a.length; }},
-    {id: 'd2', n: 'Log 2 sessions', g: 2, r: 25, p: function (a) { return a.length; }},
-    {id: 'd3', n: 'A session of 10+ min', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.dur >= 10; }); }},
-    {id: 'd4', n: 'A session rated 8 or higher', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate >= 8; }); }},
-    {id: 'd5', n: 'A session that starts before 12:00', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return sh(x) < 12; }); }},
-    {id: 'd6', n: 'A session that starts after 21:00', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return sh(x) >= 21; }); }},
-    {id: 'd7', n: 'A load', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
-    {id: 'd8', n: 'A session rated exactly 7', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate === 7; }); }},
+    {id: 'd1', n: 'Log a load', g: 1, r: 15, p: function (a) { return a.length; }},
+    {id: 'd2', n: 'Log 2 loads', g: 2, r: 25, p: function (a) { return a.length; }},
+    {id: 'd3', n: 'A load of 10+ min', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.dur >= 10; }); }},
+    {id: 'd4', n: 'A load rated 8 or higher', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate >= 8; }); }},
+    {id: 'd5', n: 'A load that starts before 12:00', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return sh(x) < 12; }); }},
+    {id: 'd6', n: 'A load that starts after 21:00', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return sh(x) >= 21; }); }},
+    {id: 'd7', n: 'A released load', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
+    {id: 'd8', n: 'A load rated exactly 7', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate === 7; }); }},
     {id: 'd9', n: 'A quick one: 5 min or less', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.dur <= 5; }); }},
-    {id: 'd10', n: 'A session of 20+ min', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return x.dur >= 20; }); }},
-    {id: 'd11', n: 'Log 3 sessions', g: 3, r: 40, p: function (a) { return a.length; }},
-    {id: 'd12', n: 'Two sessions rated 6 or higher', g: 2, r: 35, p: function (a) { return cnt(a, function (x) { return x.rate >= 6; }); }},
-    {id: 'd13', n: 'A session that starts 12:00 to 16:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 12 && h < 17; }); }},
-    {id: 'd14', n: 'A session rated 9 or 10', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return x.rate >= 9; }); }},
-    {id: 'd15', n: 'A session of 15+ min', g: 1, r: 25, p: function (a) { return cnt(a, function (x) { return x.dur >= 15; }); }},
-    {id: 'd16', n: 'Two sessions of 5+ min', g: 2, r: 30, p: function (a) { return cnt(a, function (x) { return x.dur >= 5; }); }},
-    {id: 'd17', n: 'A session rated 6 or higher', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rate >= 6; }); }},
-    {id: 'd18', n: 'Two loads', g: 2, r: 30, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
-    {id: 'd19', n: 'A session rated 10', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return x.rate === 10; }); }},
-    {id: 'd20', n: 'A session that starts 05:00 to 08:59', g: 1, r: 25, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 5 && h < 9; }); }},
-    {id: 'd21', n: 'A session that starts 17:00 to 20:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 17 && h < 21; }); }},
-    {id: 'd22', n: 'A session rated 5 or lower', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rate <= 5; }); }},
+    {id: 'd10', n: 'A load of 20+ min', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return x.dur >= 20; }); }},
+    {id: 'd11', n: 'Log 3 loads', g: 3, r: 40, p: function (a) { return a.length; }},
+    {id: 'd12', n: 'Two loads rated 6 or higher', g: 2, r: 35, p: function (a) { return cnt(a, function (x) { return x.rate >= 6; }); }},
+    {id: 'd13', n: 'A load that starts 12:00 to 16:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 12 && h < 17; }); }},
+    {id: 'd14', n: 'A load rated 9 or 10', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return x.rate >= 9; }); }},
+    {id: 'd15', n: 'A load of 15+ min', g: 1, r: 25, p: function (a) { return cnt(a, function (x) { return x.dur >= 15; }); }},
+    {id: 'd16', n: 'Two loads of 5+ min', g: 2, r: 30, p: function (a) { return cnt(a, function (x) { return x.dur >= 5; }); }},
+    {id: 'd17', n: 'A load rated 6 or higher', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rate >= 6; }); }},
+    {id: 'd18', n: 'Two released loads', g: 2, r: 30, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
+    {id: 'd19', n: 'A load rated 10', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return x.rate === 10; }); }},
+    {id: 'd20', n: 'A load that starts 05:00 to 08:59', g: 1, r: 25, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 5 && h < 9; }); }},
+    {id: 'd21', n: 'A load that starts 17:00 to 20:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 17 && h < 21; }); }},
+    {id: 'd22', n: 'A load rated 5 or lower', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.rate <= 5; }); }},
     {id: 'd23', n: '30 minutes in total', g: 30, r: 35, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }},
     {id: 'd24', n: '45 minutes in total', g: 45, r: 45, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }},
-    {id: 'd25', n: 'A session that starts after midnight', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return sh(x) < 5; }); }},
-    {id: 'd26', n: 'A tagged session', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return (x.tags || []).length > 0; }); }},
-    {id: 'd27', n: 'Three sessions rated 5 or higher', g: 3, r: 45, p: function (a) { return cnt(a, function (x) { return x.rate >= 5; }); }},
-    {id: 'd28', n: 'A session rated 7 or higher', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate >= 7; }); }},
-    {id: 'd29', n: 'A session under 3 min', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.dur < 3; }); }},
-    {id: 'd30', n: 'A session that starts 21:00 to 22:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 21 && h < 23; }); }}
+    {id: 'd25', n: 'A load that starts after midnight', g: 1, r: 30, p: function (a) { return cnt(a, function (x) { return sh(x) < 5; }); }},
+    {id: 'd26', n: 'A tagged load', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return (x.tags || []).length > 0; }); }},
+    {id: 'd27', n: 'Three loads rated 5 or higher', g: 3, r: 45, p: function (a) { return cnt(a, function (x) { return x.rate >= 5; }); }},
+    {id: 'd28', n: 'A load rated 7 or higher', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { return x.rate >= 7; }); }},
+    {id: 'd29', n: 'A load under 3 min', g: 1, r: 15, p: function (a) { return cnt(a, function (x) { return x.dur < 3; }); }},
+    {id: 'd30', n: 'A load that starts 21:00 to 22:59', g: 1, r: 20, p: function (a) { return cnt(a, function (x) { var h = sh(x); return h >= 21 && h < 23; }); }}
   ],
   w: [
-    {id: 'w1', n: 'Log 5 sessions', g: 5, r: 60, p: function (a) { return a.length; }},
+    {id: 'w1', n: 'Log 5 loads', g: 5, r: 60, p: function (a) { return a.length; }},
     {id: 'w2', n: 'Log on 3 different days', g: 3, r: 60, p: function (a) { var d = {}; a.forEach(function (x) { d[dstart(x.t)] = 1; }); return Object.keys(d).length; }},
     {id: 'w3', n: '60 minutes in total', g: 60, r: 60, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }},
-    {id: 'w4', n: 'Average rating 7+ across 3 sessions', g: 1, r: 70, p: function (a) { return a.length >= 3 && a.reduce(function (s, x) { return s + x.rate; }, 0) / a.length >= 7 ? 1 : 0; }},
-    {id: 'w5', n: 'A session on Saturday or Sunday', g: 1, r: 50, p: function (a) { return cnt(a, function (x) { var w = new Date(x.t).getDay(); return w === 0 || w === 6; }); }},
-    {id: 'w6', n: 'Sessions in 3 parts of the day', g: 3, r: 80, p: function (a) { var d = {}; a.forEach(function (x) { d[per(x)] = 1; }); return Object.keys(d).length; }},
-    {id: 'w7', n: 'Take a break: 24h+ between two sessions', g: 1, r: 70, p: function (a) { for (var i = 1; i < a.length; i++) if (a[i].t - a[i - 1].t >= 86400000) return 1; return 0; }},
+    {id: 'w4', n: 'Average rating 7+ across 3 loads', g: 1, r: 70, p: function (a) { return a.length >= 3 && a.reduce(function (s, x) { return s + x.rate; }, 0) / a.length >= 7 ? 1 : 0; }},
+    {id: 'w5', n: 'A load on Saturday or Sunday', g: 1, r: 50, p: function (a) { return cnt(a, function (x) { var w = new Date(x.t).getDay(); return w === 0 || w === 6; }); }},
+    {id: 'w6', n: 'Loads in 3 parts of the day', g: 3, r: 80, p: function (a) { var d = {}; a.forEach(function (x) { d[per(x)] = 1; }); return Object.keys(d).length; }},
+    {id: 'w7', n: 'Take a break: 24h+ between two loads', g: 1, r: 70, p: function (a) { for (var i = 1; i < a.length; i++) if (a[i].t - a[i - 1].t >= 86400000) return 1; return 0; }},
     {id: 'w8', n: 'A 3-day streak', g: 3, r: 100, p: function (a) { var m = dayStreakMap(a), b = 0; Object.keys(m).forEach(function (k) { b = Math.max(b, m[k]); }); return b; }},
-    {id: 'w9', n: 'Log 8 sessions', g: 8, r: 90, p: function (a) { return a.length; }},
-    {id: 'w10', n: 'Log 12 sessions', g: 12, r: 130, p: function (a) { return a.length; }},
+    {id: 'w9', n: 'Log 8 loads', g: 8, r: 90, p: function (a) { return a.length; }},
+    {id: 'w10', n: 'Log 12 loads', g: 12, r: 130, p: function (a) { return a.length; }},
     {id: 'w11', n: 'Log on 5 different days', g: 5, r: 120, p: function (a) { var d = {}; a.forEach(function (x) { d[dstart(x.t)] = 1; }); return Object.keys(d).length; }},
     {id: 'w12', n: 'Log on all 7 days', g: 7, r: 200, p: function (a) { var d = {}; a.forEach(function (x) { d[dstart(x.t)] = 1; }); return Object.keys(d).length; }},
     {id: 'w13', n: '120 minutes in total', g: 120, r: 100, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }},
     {id: 'w14', n: '200 minutes in total', g: 200, r: 150, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }},
-    {id: 'w15', n: 'Two sessions rated 9 or 10', g: 2, r: 90, p: function (a) { return cnt(a, function (x) { return x.rate >= 9; }); }},
-    {id: 'w16', n: 'Three sessions rated 8 or higher', g: 3, r: 90, p: function (a) { return cnt(a, function (x) { return x.rate >= 8; }); }},
-    {id: 'w17', n: 'A session of 25+ min', g: 1, r: 60, p: function (a) { return cnt(a, function (x) { return x.dur >= 25; }); }},
+    {id: 'w15', n: 'Two loads rated 9 or 10', g: 2, r: 90, p: function (a) { return cnt(a, function (x) { return x.rate >= 9; }); }},
+    {id: 'w16', n: 'Three loads rated 8 or higher', g: 3, r: 90, p: function (a) { return cnt(a, function (x) { return x.rate >= 8; }); }},
+    {id: 'w17', n: 'A load of 25+ min', g: 1, r: 60, p: function (a) { return cnt(a, function (x) { return x.dur >= 25; }); }},
     {id: 'w18', n: 'Three quick ones: 5 min or less', g: 3, r: 50, p: function (a) { return cnt(a, function (x) { return x.dur <= 5; }); }},
-    {id: 'w19', n: 'Two loads', g: 2, r: 50, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
-    {id: 'w20', n: 'Four loads', g: 4, r: 90, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
-    {id: 'w21', n: 'A session on both Saturday and Sunday', g: 2, r: 90, p: function (a) { var d = {}; a.forEach(function (x) { var w = new Date(x.t).getDay(); if (w === 0 || w === 6) d[w] = 1; }); return Object.keys(d).length; }},
-    {id: 'w22', n: 'A session that starts before 08:00', g: 1, r: 60, p: function (a) { return cnt(a, function (x) { return sh(x) < 8; }); }},
-    {id: 'w23', n: 'A session that starts after 23:00', g: 1, r: 60, p: function (a) { return cnt(a, function (x) { return sh(x) >= 23; }); }},
-    {id: 'w24', n: 'Sessions in all 4 parts of the day', g: 4, r: 120, p: function (a) { var d = {}; a.forEach(function (x) { d[per(x)] = 1; }); return Object.keys(d).length; }},
+    {id: 'w19', n: 'Two released loads', g: 2, r: 50, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
+    {id: 'w20', n: 'Four released loads', g: 4, r: 90, p: function (a) { return cnt(a, function (x) { return x.rel; }); }},
+    {id: 'w21', n: 'A load on both Saturday and Sunday', g: 2, r: 90, p: function (a) { var d = {}; a.forEach(function (x) { var w = new Date(x.t).getDay(); if (w === 0 || w === 6) d[w] = 1; }); return Object.keys(d).length; }},
+    {id: 'w22', n: 'A load that starts before 08:00', g: 1, r: 60, p: function (a) { return cnt(a, function (x) { return sh(x) < 8; }); }},
+    {id: 'w23', n: 'A load that starts after 23:00', g: 1, r: 60, p: function (a) { return cnt(a, function (x) { return sh(x) >= 23; }); }},
+    {id: 'w24', n: 'Loads in all 4 parts of the day', g: 4, r: 120, p: function (a) { var d = {}; a.forEach(function (x) { d[per(x)] = 1; }); return Object.keys(d).length; }},
     {id: 'w25', n: 'A 2-day streak', g: 2, r: 50, p: function (a) { var m = dayStreakMap(a), b = 0; Object.keys(m).forEach(function (k) { b = Math.max(b, m[k]); }); return b; }},
     {id: 'w26', n: 'A 5-day streak', g: 5, r: 160, p: function (a) { var m = dayStreakMap(a), b = 0; Object.keys(m).forEach(function (k) { b = Math.max(b, m[k]); }); return b; }},
-    {id: 'w27', n: 'Three tagged sessions', g: 3, r: 60, p: function (a) { return cnt(a, function (x) { return (x.tags || []).length > 0; }); }},
+    {id: 'w27', n: 'Three tagged loads', g: 3, r: 60, p: function (a) { return cnt(a, function (x) { return (x.tags || []).length > 0; }); }},
     {id: 'w28', n: 'Use 2 different tags', g: 2, r: 60, p: function (a) { var d = {}; a.forEach(function (x) { (x.tags || []).forEach(function (t) { d[t] = 1; }); }); return Object.keys(d).length; }},
-    {id: 'w29', n: 'Average rating 8+ across 4 sessions', g: 1, r: 100, p: function (a) { return a.length >= 4 && a.reduce(function (s, x) { return s + x.rate; }, 0) / a.length >= 8 ? 1 : 0; }},
-    {id: 'w30', n: 'A session of 30+ min', g: 1, r: 80, p: function (a) { return cnt(a, function (x) { return x.dur >= 30; }); }},
-    {id: 'w31', n: 'Two sessions on one day', g: 2, r: 40, p: function (a) { var d = {}, m = 0; a.forEach(function (x) { var k = dstart(x.t); d[k] = (d[k] || 0) + 1; m = Math.max(m, d[k]); }); return m; }},
-    {id: 'w32', n: 'Three sessions on one day', g: 3, r: 70, p: function (a) { var d = {}, m = 0; a.forEach(function (x) { var k = dstart(x.t); d[k] = (d[k] || 0) + 1; m = Math.max(m, d[k]); }); return m; }},
-    {id: 'w33', n: 'A session on Wednesday', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return new Date(x.t).getDay() === 3; }); }},
-    {id: 'w34', n: 'A session on Monday', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return new Date(x.t).getDay() === 1; }); }},
-    {id: 'w35', n: 'A session on Friday', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return new Date(x.t).getDay() === 5; }); }},
+    {id: 'w29', n: 'Average rating 8+ across 4 loads', g: 1, r: 100, p: function (a) { return a.length >= 4 && a.reduce(function (s, x) { return s + x.rate; }, 0) / a.length >= 8 ? 1 : 0; }},
+    {id: 'w30', n: 'A load of 30+ min', g: 1, r: 80, p: function (a) { return cnt(a, function (x) { return x.dur >= 30; }); }},
+    {id: 'w31', n: 'Two loads on one day', g: 2, r: 40, p: function (a) { var d = {}, m = 0; a.forEach(function (x) { var k = dstart(x.t); d[k] = (d[k] || 0) + 1; m = Math.max(m, d[k]); }); return m; }},
+    {id: 'w32', n: 'Three loads on one day', g: 3, r: 70, p: function (a) { var d = {}, m = 0; a.forEach(function (x) { var k = dstart(x.t); d[k] = (d[k] || 0) + 1; m = Math.max(m, d[k]); }); return m; }},
+    {id: 'w33', n: 'A load on Wednesday', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return new Date(x.t).getDay() === 3; }); }},
+    {id: 'w34', n: 'A load on Monday', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return new Date(x.t).getDay() === 1; }); }},
+    {id: 'w35', n: 'A load on Friday', g: 1, r: 40, p: function (a) { return cnt(a, function (x) { return new Date(x.t).getDay() === 5; }); }},
     {id: 'w36', n: '40 rating points in total', g: 40, r: 80, p: function (a) { return a.reduce(function (s, x) { return s + x.rate; }, 0); }},
-    {id: 'w37', n: 'Log 7 sessions', g: 7, r: 80, p: function (a) { return a.length; }},
+    {id: 'w37', n: 'Log 7 loads', g: 7, r: 80, p: function (a) { return a.length; }},
     {id: 'w38', n: '90 minutes in total', g: 90, r: 80, p: function (a) { return a.reduce(function (s, x) { return s + x.dur; }, 0); }}
   ]
 };
@@ -2742,7 +2617,7 @@ var SHOP = [
   {id: 'po_rise', kind: 'pour', name: 'Flood', cost: 150, desc: 'Slime floods up from the bottom.'},
   {id: 'po_splat', kind: 'pour', name: 'Splat', cost: 200, desc: 'A splat bursts out of the Log button.'},
   {id: 'po_rain', kind: 'pour', name: 'Downpour', cost: 250, lvl: 4, desc: 'A shower of drops rains down the screen.'},
-  {id: 'bo_2x', kind: 'use', name: 'Double LDs, 24h', cost: 120, desc: 'Sessions logged in the next 24 hours earn double.'},
+  {id: 'bo_2x', kind: 'use', name: 'Double LDs, 24h', cost: 120, desc: 'Loads logged in the next 24 hours earn double.'},
   {id: 'fz', kind: 'use', name: 'Streak freeze', cost: 90, desc: 'Covers one missed day so your streak survives. Hold up to 3.'},
   {id: 'cap', kind: 'use', name: 'Mystery Capsule', cost: 60, desc: 'Random prize: LDs back, or a cosmetic you do not own yet.'}
 ];
@@ -2817,20 +2692,17 @@ function renderRewards() {
   var T = totals(), now = Date.now(), cur = xpFor(T.L), nxt = xpFor(T.L + 1), es = earnedSet(), cl = claimables(), data = chData();
   var t = SMAP[G.eq.title], ttl = t && t.cost ? t.name : '', bo = G.boosts.filter(function (b) { return now >= b.from && now < b.to; })[0];
   var top = '<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div style="font-size:18px">Level ' + T.L + '</div><div class="bigt">' + lvlName(T.L) + '</div>' + (ttl ? '<p class="sub">' + ttl + '</p>' : '') + '</div><div style="text-align:right"><div style="font-size:18px">LDs</div><div class="bigt">' + T.bal + '</div></div></div>' +
-    '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + (nxt - T.xp) + ' more LDs earned to reach level ' + (T.L + 1) + '.</p>' +
-    '<p class="sub lx">LDs are drops you earn for sessions, streaks, challenges and badges. Spend them in the Shop. Spending never lowers your level.</p>' +
+    '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '. XP is every drop you have earned, spent or not.</p>' +
+    '<p class="sub">Each load earns 10 LDs (first 3 a day). The first load of a day adds 5, plus 2 per streak day up to 20.</p>' +
     (bo ? '<p class="sub"><b>Double LDs active</b>, ends in ' + fmtGap(bo.to - now) + '.</p>' : '') +
     (cl.length ? '<div class="row" style="max-width:300px"><button type="button" class="go" data-claim="all">Claim all (+' + cl.reduce(function (s, x) { return s + x.r; }, 0) + ')</button></div>' : '');
   var out = [card(' span2 hero', 'Your level', top), chList(data, 'w', 'Weekly challenges', fmtGap(winOf('w').b - now))];
   var got = BADGES.filter(function (b) { return es[b.id]; }).length;
-  var nextB = BADGES.filter(function (b) { return !es[b.id] && !b.s; }).sort(function (a, b) { return a.r - b.r; }).slice(0, 3);
-  if (nextB.length) out.push(card('', 'Next badges to get', '<div class="nbx">' + nextB.map(function (b) { return '<div><b>' + b.n + '</b><span>' + b.d + '</span><i>+' + b.r + '</i></div>'; }).join('') + '</div>'));
-  out.push(card(' span2 soft', 'All badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
+  out.push(card(' span2 soft', 'Badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
     var on = es[b.id], c = G.claimed['b:' + b.id];
     var nm = on || !b.s ? b.n : '???', ds = on || !b.s ? b.d : 'Secret badge. Keep exploring.';
     return '<div class="bd' + (on ? ' on' : '') + '" data-b="' + b.id + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
   }).join('') + '</div>'));
-  out.push(card(' span2', 'How to earn LDs', '<p class="sub">Each session earns 10 LDs, for the first 3 sessions a day. The first session of a day adds 5, plus 2 per streak day, up to 20. Challenges and badges add their own reward.</p>'));
   var heads = {slime: 'Slime colour', drip: 'Drip style', pour: 'Logging splash', snd: 'Sound pack', theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
   ['slime', 'drip', 'pour', 'snd', 'title', 'fx', 'use'].forEach(function (k) {
     shop += '<div class="sec">' + heads[k] + '</div><div class="shop">' + SHOP.filter(function (i) { return i.kind === k; }).map(function (i) { return itemHtml(i, T); }).join('') + '</div>';
@@ -2874,7 +2746,7 @@ function freezeOk() {
 function renderStreak() {
   var st = curStreak(E), n = G.fz || 0, ok = freezeOk(), h = '';
   if (st > 0 || n > 0 || ok) h = '<div class="spills"><span class="spill">Streak <b>' + st + (st === 1 ? ' day' : ' days') + '</b></span><span class="spill">Freezes <b>' + n + ' of 3</b></span></div>';
-  if (ok) h += '<div class="row" style="margin-top:10px"><button type="button" class="go" id="fzUse">Use a freeze on yesterday</button></div><p class="sub">Yesterday had no session. A freeze keeps your streak alive.</p>';
+  if (ok) h += '<div class="row" style="margin-top:10px"><button type="button" class="go" id="fzUse">Use a freeze on yesterday</button></div><p class="sub">Yesterday had no entry. A freeze keeps your streak alive.</p>';
   $('hStreak').innerHTML = h;
 }
 $('hStreak').addEventListener('click', function (e) {
@@ -2887,14 +2759,7 @@ function renderHomeCh() {
   $('dch').innerHTML = dailyHtml();
   c.classList.toggle('shine', !pk); c.classList.toggle('locked', !!pk); c.classList.toggle('up', !pk); updUp();
   c.querySelector('h2').textContent = pk ? "Today's challenge" : "Choose today's challenge";
-  c.classList.toggle('dc-open', dchOpen); $('dchH').setAttribute('aria-expanded', dchOpen ? 'true' : 'false');
-  $('dchSum').textContent = pk ? 'Locked in for today. Tap to see progress.' : 'Pick one and earn bonus LDs. Tap to choose.';
 }
-var dchOpen = false;
-function dchTog() { dchOpen = !dchOpen; renderHomeCh(); }
-$('dchH').addEventListener('click', dchTog);
-$('dchSum').addEventListener('click', dchTog);
-$('dchH').addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dchTog(); } });
 function pickDaily(k) {
   if (dayPick() || !CHD[k]) return;
   if (k === selPick) return;
@@ -2925,7 +2790,7 @@ function renderSettings() {
   renderWord(); renderTagList(); segSet('visSeg', P.pub); segSet('dRel', S.dRel); segSet('fmtSeg', S.h24 !== false);
   if (document.activeElement !== $('bio')) $('bio').value = P.bio || '';
   $('dRate').value = S.dRate; $('dRateV').textContent = S.dRate; $('dLen').value = S.dLen; $('dLenV').textContent = S.dLen + ' min';
-  [['tFx', S.fx], ['tSnd', S.snd === true], ['tHap', S.hap !== false], ['tTilt', S.tilt === true], ['tNot', S.nt !== false], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
+  [['tFx', S.fx], ['tSnd', S.snd !== false], ['tHap', S.hap !== false], ['tTilt', S.tilt === true], ['tNot', S.nt !== false], ['tPop', S.pop], ['tFind', P.discover !== false]].forEach(function (q) { var b = $(q[0]); b.setAttribute('aria-checked', q[1] ? 'true' : 'false'); b.textContent = q[1] ? 'On' : 'Off'; });
 }
 
 /* Wording setting: swaps the word "load/loads" in all visible text, so the source strings stay unchanged. */
@@ -2993,7 +2858,7 @@ function renderWord() {
   if (document.activeElement !== $('wS')) $('wS').value = w.s || '';
   if (document.activeElement !== $('wP')) $('wP').value = w.p || '';
   $('wEx').textContent = '1 ' + t[0] + ', 5 ' + t[1];
-  var lb = 'Released?';
+  var lb = t[0].charAt(0).toUpperCase() + t[0].slice(1) + ' Released?';
   $('relLab').textContent = lb; $('dRelLab').textContent = lb;
   queueSwap();
 }
@@ -3058,11 +2923,11 @@ function renderLeague() {
     var show = rows.slice(0, 8), mi = rows.map(function (r) { return r.me; }).indexOf(true);
     if (mi >= 8) show.push(rows[mi]);
     h += '<ul style="margin-top:8px">' + show.map(function (r) { var rk = rows.indexOf(r) + 1; return '<li' + (r.me ? ' class="lgme"' : '') + '><span>' + rk + '. @' + esc(r.name) + '</span><b>' + r.score + '</b></li>'; }).join('') + '</ul>';
-    h += '<p class="sub">Score: 10 per session, 3 a day count. At week end the top third moves up, the bottom third moves down.</p>';
+    h += '<p class="sub">Score: 10 per entry, 3 a day count. At week end the top third moves up, the bottom third moves down.</p>';
   }
   var L = G.lg.last;
   if (L) {
-    h += '<div class="sec">Last week</div><p style="margin:0">' + (L.idle ? 'No sessions, no result.' : ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : ', stayed in ' + TIERS[L.to]) + (L.prize ? ', +' + L.prize + ' LDs' : '')) + '</p>';
+    h += '<div class="sec">Last week</div><p style="margin:0">' + (L.idle ? 'No entries, no result.' : ord(L.rank) + ' of ' + L.of + (L.to > L.from ? ', moved up to ' + TIERS[L.to] : L.to < L.from ? ', moved down to ' + TIERS[L.to] : ', stayed in ' + TIERS[L.to]) + (L.prize ? ', +' + L.prize + ' LDs' : '')) + '</p>';
     if (G.lg.prize && G.lg.prize.r > 0 && !G.claimed[G.lg.prize.key]) h += '<div class="row" style="max-width:260px"><button type="button" class="go" data-claim="' + G.lg.prize.key + '">Claim +' + G.lg.prize.r + '</button></div>';
   }
   el.innerHTML = h;
@@ -3071,7 +2936,7 @@ $('lgCard').addEventListener('click', function (e) { var b = e.target.closest ? 
 
 /* ---------- Duels ---------- */
 var DS = {
-  n: ['Most sessions', function (a) { return a.length; }],
+  n: ['Most entries', function (a) { return a.length; }],
   m: ['Most total minutes', function (a) { return a.reduce(function (t, x) { return t + x.dur; }, 0); }],
   a: ['Highest average rating', function (a) { return a.length >= 3 ? a.reduce(function (t, x) { return t + x.rate; }, 0) / a.length : 0; }],
   d: ['Most active days', function (a) { var d = {}; a.forEach(function (x) { d[dstart(x.t)] = 1; }); return Object.keys(d).length; }]
@@ -3143,7 +3008,7 @@ function wrapSlides(yr) {
   var s = E.filter(function (x) { return x.t >= a && x.t < b; }).sort(asc), n = s.length, lab = yr ? String(yr) : 'All time', q = 0, i;
   var out = [{bg: BGS[0], k: 'Your year', big: lab, c: 'in numbers.', chips: true}];
   var bg = function () { return BGS[(++q) % BGS.length]; };
-  if (!n) { out.push({bg: bg(), k: 'Nothing here yet', big: '0', c: 'Log a session and come back.'}); return out; }
+  if (!n) { out.push({bg: bg(), k: 'Nothing here yet', big: '0', c: 'Log an entry and come back.'}); return out; }
   var tot = 0, rsum = 0, rc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], per = {Morning: 0, Afternoon: 0, Evening: 0, Night: 0}, hrs = [], wd = [0, 0, 0, 0, 0, 0, 0], mo = {}, dm = {}, tg = {};
   for (i = 0; i < 24; i++) hrs.push(0);
   s.forEach(function (x) {
@@ -3163,11 +3028,11 @@ function wrapSlides(yr) {
   var sm = dayStreakMap(s, G.fd), longest = 1; Object.keys(sm).forEach(function (k) { if (sm[k] > longest) longest = sm[k]; });
   var avg = (rsum / n).toFixed(1), modeR = rc.indexOf(Math.max.apply(null, rc)) + 1, T = totals(), got = BADGES.filter(function (x) { return earnedSet()[x.id]; }).length;
   out.push({bg: bg(), k: 'You logged', big: n, c: (n === 1 ? 'entry' : 'entries') + ' on ' + days.length + (days.length === 1 ? ' different day.' : ' different days.')});
-  out.push({bg: bg(), k: 'Time spent', big: fmtDur(tot), c: 'in total, ' + fmtDur(tot / n) + ' per session on average.'});
+  out.push({bg: bg(), k: 'Time spent', big: fmtDur(tot), c: 'in total, ' + fmtDur(tot / n) + ' per entry on average.'});
   out.push({bg: bg(), k: 'Average rating', big: avg, c: 'Most common rating: ' + modeR + '. Tens given: ' + rc[9] + '.'});
-  out.push({bg: bg(), k: 'Your style', big: titles[topP], c: Math.round(per[topP] / n * 100) + '% of your sessions start ' + ph[topP] + '. Peak hour: ' + pad(peakH) + ':00.'});
-  out.push({bg: bg(), k: 'Busiest weekday', big: WN[pw], c: wd[pw] + ' sessions landed on a ' + WN[pw] + '.'});
-  out.push({bg: bg(), k: 'Best month', big: MN[mk % 100], c: mo[mk] + ' sessions. Busiest single day: ' + fmtDate(busy) + ' with ' + dm[busy] + '.'});
+  out.push({bg: bg(), k: 'Your style', big: titles[topP], c: Math.round(per[topP] / n * 100) + '% of your entries start ' + ph[topP] + '. Peak hour: ' + pad(peakH) + ':00.'});
+  out.push({bg: bg(), k: 'Busiest weekday', big: WN[pw], c: wd[pw] + ' entries landed on a ' + WN[pw] + '.'});
+  out.push({bg: bg(), k: 'Best month', big: MN[mk % 100], c: mo[mk] + ' entries. Busiest single day: ' + fmtDate(busy) + ' with ' + dm[busy] + '.'});
   out.push({bg: bg(), k: 'Longest streak', big: longest + (longest === 1 ? ' day' : ' days'), c: 'in a row' + (G.fd && Object.keys(G.fd).length ? ', freezes included.' : '.')});
   var tk = Object.keys(tg).sort(function (x, y) { return tg[y] - tg[x]; });
   if (tk.length) out.push({bg: bg(), k: 'Top tag', big: esc(tk[0]), c: 'used ' + tg[tk[0]] + ' times' + (tk.length > 1 ? '. Next: ' + tk.slice(1, 3).map(function (t) { return esc(t) + ' (' + tg[t] + ')'; }).join(', ') + '.' : '.')});
@@ -3191,9 +3056,9 @@ function drawWrap() {
   $('wrPrev').disabled = wrI === 0; $('wrNext').disabled = wrI === wrS.length - 1;
 }
 var WEL = [
-  ['Welcome to Creamer', 'A private tracker for your own numbers: when, how long and how it rated. It turns your sessions into stats, streaks and rewards. You never write text, only ratings, times and tags.'],
-  ['Log a session', 'Tap Log a session on the Home screen. Set the rating, the from and to times and the yes or no, add tags if you like, then save. Home shows the time since your last session and your streak.'],
-  ['Stats and LDs', 'Stats shows your patterns by hour, weekday and month. Every session earns LDs. Your balance is the white drop at the top. Tap it to open the Shop.'],
+  ['Welcome to Creamer', 'A private tracker for your own numbers: when, how long and how it rated. It turns your entries into stats, streaks and rewards. You never write text, only ratings, times and tags.'],
+  ['Log an entry', 'Tap Log a load on the Home screen. Set the rating, the from and to times and the yes or no, add tags if you like, then save. Home shows the time since your last entry and your streak.'],
+  ['Stats and LDs', 'Stats shows your patterns by hour, weekday and month. Every entry earns LDs. Your balance is the white drop at the top. Tap it to open the Shop.'],
   ['Challenges and friends', 'Rewards has a daily challenge that you pick once a day, weekly challenges, badges and a league. Add friends by username in the Friends tab. You decide who sees your stats.'],
   ['Make it yours', 'The gear at the top opens Settings: wording, default rating, tags and privacy. The Common questions section there answers the rest.']
 ], welI = 0, welKeep = false;
@@ -3257,7 +3122,7 @@ $('fNickSave').addEventListener('click', function () {
 });
 $('fNick').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); $('fNickSave').click(); } });
 $('themeSeg').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; S.theme = b.getAttribute('data-t') === 'shop' ? 'shop' : 'dark'; saveS(); applyTheme(); renderSettings(); });
-$('tSnd').addEventListener('click', function () { S.snd = S.snd !== true; S.sndOpt = 1; saveS(); renderSettings(); if (S.snd) wet('tap'); });
+$('tSnd').addEventListener('click', function () { S.snd = S.snd === false; saveS(); renderSettings(); if (S.snd) wet('tap'); });
 $('tHap').addEventListener('click', function () { S.hap = S.hap === false; saveS(); renderSettings(); if (S.hap) buzz([30]); });
 $('tTilt').addEventListener('click', function () { if (S.tilt === true) { S.tilt = false; saveS(); tiltOff(); renderSettings(); return; } tiltAsk(function (ok) { S.tilt = ok; saveS(); if (ok) tiltOn(); else toast('Tilt is not available or was not allowed'); renderSettings(); }); });
 $('tFx').addEventListener('click', function () { S.fx = !S.fx; saveS(); renderSettings(); });
@@ -3307,7 +3172,7 @@ $('dCopy').addEventListener('click', function () {
   var txt = JSON.stringify({loads: E, profile: P, friends: F, game: G, settings: S}), m = $('dMsg');
   try { navigator.clipboard.writeText(txt).then(function () { m.textContent = 'Copied to clipboard.'; }, function () { m.textContent = "Couldn't copy here."; }); } catch (e) { m.textContent = "Couldn't copy here."; }
 });
-twoStep('dReset', 'Erase my data', 'Tap again to erase sessions and rewards', function () {
+twoStep('dReset', 'Erase my data', 'Tap again to erase loads and rewards', function () {
   if (CLOUD) { cloudErase(); return; }
   var id = uid; wipeUser(id); loadUser(id); toast('Data erased');
 });
@@ -3326,14 +3191,14 @@ function curStreak(arr) {
 function renderProfile() {
   if (!uid || (!CLOUD && !ACC[uid])) return;
   var T = totals(), c = ctxOf(E), es = earnedSet(), sp = SMAP[G.eq.splash] || SMAP['default'], t = SMAP[G.eq.title], ttl = t && t.cost ? t.name : '';
-  var got = BADGES.filter(function (b) { return es[b.id]; }), top = got.slice().sort(function (a, b) { return b.r - a.r; }).slice(0, 4);
+  var got = BADGES.filter(function (b) { return es[b.id]; }), top = got.slice().sort(function (a, b) { return b.r - a.r; }).slice(0, 8);
   var joined = new Date(CLOUD ? CUSER.created_at : ACC[uid].created).toLocaleDateString(undefined, {month: 'long', year: 'numeric'});
   var head = '<div style="display:flex;gap:16px;align-items:center"><div class="av" style="background:' + sp.plus + '">' + esc(P.name.charAt(0).toUpperCase()) + '</div><div style="min-width:0"><div class="bigt" style="font-size:30px;overflow-wrap:anywhere">@' + P.name + '</div>' + (ttl ? '<p class="sub" style="margin:2px 0 0">' + ttl + '</p>' : '') + '<p class="sub" style="margin:2px 0 0">Joined ' + joined + ' · ' + (P.pub ? 'public' : 'private') + '</p></div></div>' +
     (P.bio ? '<p style="margin:14px 0 0">' + esc(P.bio) + '</p>' : '<p class="sub">No bio yet. Add one in Settings.</p>') + '<div class="row" style="max-width:260px"><button type="button" id="pfSet">Settings</button></div>';
   var nxt = xpFor(T.L + 1), cur = xpFor(T.L);
-  $('pf').innerHTML = card(' span2 hero', 'Profile', head + '<div class="plv"><span>Level ' + T.L + ' · ' + lvlName(T.L) + '</span><span>' + T.bal + ' LDs</span></div><div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div>') +
-    
-    card('', 'Numbers', '<div class="tiles">' + tile(E.length, 'sessions') + tile(E.filter(function (x) { return x.rel; }).length, 'loads') + tile(curStreak(E), 'day streak') + tile(c.streak, 'best streak') + tile(avgOf(c.sum, c.n), 'avg rating') + tile(got.length + '/' + BADGES.length, 'badges') + '</div>') +
+  $('pf').innerHTML = card(' span2', 'Profile', head) +
+    card(' b', 'Level ' + T.L + ': ' + lvlName(T.L), '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + T.bal + ' LDs, ' + (nxt - T.xp) + ' XP to level ' + (T.L + 1) + '.</p>') +
+    card('', 'Numbers', '<div class="tiles">' + tile(E.length, 'loads') + tile(curStreak(E), 'day streak') + tile(c.streak, 'best streak') + tile(avgOf(c.sum, c.n), 'avg rating') + tile(got.length + '/' + BADGES.length, 'badges') + tile(F.length, 'friends') + '</div>') +
     card(' span2 b', 'Top badges', top.length ? '<div class="badges">' + top.map(function (b) { return '<div class="bd on"><b>' + b.n + '</b><span>' + b.d + '</span></div>'; }).join('') + '</div>' : '<p class="empty">No badges yet.</p>');
 }
 $('pf').addEventListener('click', function (e) { if (e.target.id === 'pfSet') openSet(); });
@@ -3343,7 +3208,7 @@ function renderEntries() {
   if (entFilter && !used[entFilter]) entFilter = '';
   $('enTags').innerHTML = names.length ? '<button type="button" data-f="" aria-pressed="' + (entFilter === '') + '">All</button>' + names.map(function (t, i) { return '<button type="button" data-f="' + i + '" aria-pressed="' + (entFilter === t) + '">' + esc(t) + ' ' + used[t] + '</button>'; }).join('') : '';
   var rows = E.filter(function (x) { return !entFilter || (x.tags || []).indexOf(entFilter) >= 0; }).sort(function (a, b) { return entSort === 'old' ? a.t - b.t : b.t - a.t; });
-  $('enCount').textContent = rows.length + (rows.length === 1 ? ' session' : ' sessions') + (entFilter ? ' with this tag' : ' in total');
+  $('enCount').textContent = rows.length + (rows.length === 1 ? ' entry' : ' entries') + (entFilter ? ' with this tag' : ' in total');
   var out = '', last = '';
   rows.slice(0, entMax).forEach(function (x) {
     var m = new Date(x.t).toLocaleDateString(undefined, {month: 'long', year: 'numeric'});
@@ -3477,7 +3342,7 @@ function sloosh(a, t, f0, f1, dur, vol, q) {
   s.connect(f); f.connect(g); g.connect(a.destination); s.start(t); s.stop(t + dur + 0.02);
 }
 function wet(kind, pk, force) {
-  if (S.snd !== true && !force) return;
+  if (S.snd === false && !force) return;
   var a = ac(); if (!a) return; var t = a.currentTime + 0.005, r = Math.random, i;
   pk = pk || eqOf('snd');
   if (pk === 'snd_bubble') {
@@ -3668,13 +3533,12 @@ $('tankSel').addEventListener('change', function () { S.tank = +$('tankSel').val
 
 
 /* ===== global numbers ===== */
-var GST = GST || {members: null, active: null, loads: null, at: 0, demo: false};
-function gmsList() { return [100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000, 250000, 500000, 1000000, 5000000]; }
+var GST = GST || {members: null, active: null, loads: null, at: 0, demo: false}, GMS = [100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000, 250000, 500000, 1000000, 5000000];
 function renderGlobal() {
   if (!$('gsLoads')) return;
   var n = function (v) { return v === null ? '–' : (+v).toLocaleString(); };
   $('gsAct').textContent = n(GST.active); $('gsMem').textContent = n(GST.members); $('gsLoads').textContent = n(GST.loads);
-  var L = GST.loads, nx = 0, pv = 0, i, GMS = gmsList();
+  var L = GST.loads, nx = 0, pv = 0, i;
   if (L !== null) { for (i = 0; i < GMS.length; i++) { if (GMS[i] > L) { nx = GMS[i]; break; } pv = GMS[i]; } if (!nx) nx = L + 1; }
   $('gsBar').style.width = nx ? Math.max(2, Math.round((L - pv) / (nx - pv) * 100)) + '%' : '0%';
   $('gsNext').textContent = nx ? (nx - L).toLocaleString() + ' more until ' + nx.toLocaleString() + (GST.demo ? '. Demo mode shows only your own numbers.' : '.') : '';
@@ -3762,32 +3626,32 @@ document.addEventListener('visibilitychange', function () {
 /* ===== surprise events ===== */
 function hm2(x) { return x.from.split(':').map(Number); }
 var EVENTS = [
-  {id: 'rush', n: 'Slime Rush', d: 'Every session pays extra.', r: 25, max: 2, w: 3},
-  {id: 'happy', n: 'Happy Hour', d: 'One session, big bonus. Be quick.', r: 45, max: 1, w: 1},
-  {id: 'perfect', n: 'Perfect Pour', d: 'Rate a session 8 or higher.', r: 40, max: 2, w: 'day', c: function (x) { return x.rate >= 8; }},
-  {id: 'slow', n: 'Slow Drip', d: 'A session of 20 minutes or more.', r: 45, max: 1, w: 'day', c: function (x) { return x.dur >= 20; }},
-  {id: 'quick', n: 'Quick Splash', d: 'A session under 6 minutes.', r: 30, max: 2, w: 4, c: function (x) { return x.dur < 6; }},
-  {id: 'midnight', n: 'Midnight Ooze', d: 'Late sessions only.', r: 50, max: 1, w: [21, 24]},
+  {id: 'rush', n: 'Slime Rush', d: 'Every load pays extra.', r: 25, max: 2, w: 3},
+  {id: 'happy', n: 'Happy Hour', d: 'One load, big bonus. Be quick.', r: 45, max: 1, w: 1},
+  {id: 'perfect', n: 'Perfect Pour', d: 'Rate a load 8 or higher.', r: 40, max: 2, w: 'day', c: function (x) { return x.rate >= 8; }},
+  {id: 'slow', n: 'Slow Drip', d: 'A load of 20 minutes or more.', r: 45, max: 1, w: 'day', c: function (x) { return x.dur >= 20; }},
+  {id: 'quick', n: 'Quick Splash', d: 'A load under 6 minutes.', r: 30, max: 2, w: 4, c: function (x) { return x.dur < 6; }},
+  {id: 'midnight', n: 'Midnight Ooze', d: 'Late loads only.', r: 50, max: 1, w: [21, 24]},
   {id: 'dew', n: 'Morning Dew', d: 'Start the day wet.', r: 35, max: 1, w: [6, 11]},
-  {id: 'lunch', n: 'Lunch Break', d: 'A midday session pays extra.', r: 35, max: 1, w: [12, 14]},
+  {id: 'lunch', n: 'Lunch Break', d: 'A midday load pays extra.', r: 35, max: 1, w: [12, 14]},
   {id: 'afterwork', n: 'After Work', d: 'Unwind and get paid for it.', r: 35, max: 1, w: [17, 20]},
-  {id: 'release', n: 'Full Release', d: 'A session that ends in a release.', r: 30, max: 2, w: 'day', c: function (x) { return x.rel; }},
-  {id: 'hold', n: 'Hold It', d: 'A session with no release.', r: 40, max: 1, w: 'day', c: function (x) { return !x.rel; }},
-  {id: 'lucky7', n: 'Lucky Seven', d: 'Rate a session exactly 7.', r: 77, max: 1, w: 'day', c: function (x) { return x.rate === 7; }},
-  {id: 'ten', n: 'Ten Out of Ten', d: 'A session you rate 10.', r: 100, max: 1, w: 'day', wt: 0.6, c: function (x) { return x.rate === 10; }},
-  {id: 'double', n: 'Double Trouble', d: 'Your second session of the day pays big.', r: 60, max: 1, w: 'day', c: function (x) { var k = dstart(x.t); return E.filter(function (e) { return dstart(e.t) === k; }).length >= 2; }},
-  {id: 'storm', n: 'Cream Storm', d: 'Small bonus on every session, up to 5.', r: 15, max: 5, w: 6},
-  {id: 'gold', n: 'Golden Drip', d: 'Rare. One session, huge bonus.', r: 120, max: 1, w: 2, wt: 0.35},
-  {id: 'haul', n: 'Long Haul', d: 'A session of 30 minutes or more.', r: 80, max: 1, w: 'day', wt: 0.6, c: function (x) { return x.dur >= 30; }},
-  {id: 'tag', n: 'Tag Team', d: 'Log a session with at least one tag.', r: 25, max: 2, w: 'day', c: function (x) { return (x.tags || []).length > 0; }},
-  {id: 'round', n: 'Round Number', d: 'A session lasting a multiple of 5 minutes.', r: 25, max: 2, w: 4, c: function (x) { return x.dur % 5 === 0; }},
-  {id: 'weekend', n: 'Weekend Flood', d: 'Every weekend session pays extra.', r: 30, max: 3, w: 'day', wk: 1},
-  {id: 'pal', n: 'Mirror Mirror', d: 'End a session at a mirror time like 12:21.', r: 111, max: 1, w: 'day', wt: 0.5, c: function (x) { var g = x.to.replace(':', ''); return g.charAt(0) === g.charAt(3) && g.charAt(1) === g.charAt(2); }},
-  {id: 'mystery', n: 'Mystery Goo', d: 'Each session pays a random 10 to 150.', r: 0, max: 2, w: 3},
-  {id: 'freeze', n: 'Ice Cream Social', d: 'A session earns a free streak freeze.', r: 0, max: 1, w: 'day', wt: 0.7},
-  {id: 'mid', n: 'Middle Ground', d: 'Rate a session 4, 5 or 6.', r: 30, max: 2, w: 'day', c: function (x) { return x.rate >= 4 && x.rate <= 6; }},
-  {id: 'early', n: 'Early Bird Squirt', d: 'A session that starts before 8:00.', r: 40, max: 1, w: [4, 8]},
-  {id: 'sync', n: 'Synchro Splash', d: 'Session at the top of the hour, ending at :00.', r: 60, max: 1, w: 'day', wt: 0.6, c: function (x) { return /:00$/.test(x.to); }}
+  {id: 'release', n: 'Full Release', d: 'A load that ends in a release.', r: 30, max: 2, w: 'day', c: function (x) { return x.rel; }},
+  {id: 'hold', n: 'Hold It', d: 'A load with no release.', r: 40, max: 1, w: 'day', c: function (x) { return !x.rel; }},
+  {id: 'lucky7', n: 'Lucky Seven', d: 'Rate a load exactly 7.', r: 77, max: 1, w: 'day', c: function (x) { return x.rate === 7; }},
+  {id: 'ten', n: 'Ten Out of Ten', d: 'A load you rate 10.', r: 100, max: 1, w: 'day', wt: 0.6, c: function (x) { return x.rate === 10; }},
+  {id: 'double', n: 'Double Trouble', d: 'Your second load of the day pays big.', r: 60, max: 1, w: 'day', c: function (x) { var k = dstart(x.t); return E.filter(function (e) { return dstart(e.t) === k; }).length >= 2; }},
+  {id: 'storm', n: 'Cream Storm', d: 'Small bonus on every load, up to 5.', r: 15, max: 5, w: 6},
+  {id: 'gold', n: 'Golden Drip', d: 'Rare. One load, huge bonus.', r: 120, max: 1, w: 2, wt: 0.35},
+  {id: 'haul', n: 'Long Haul', d: 'A load of 30 minutes or more.', r: 80, max: 1, w: 'day', wt: 0.6, c: function (x) { return x.dur >= 30; }},
+  {id: 'tag', n: 'Tag Team', d: 'Log a load with at least one tag.', r: 25, max: 2, w: 'day', c: function (x) { return (x.tags || []).length > 0; }},
+  {id: 'round', n: 'Round Number', d: 'A load lasting a multiple of 5 minutes.', r: 25, max: 2, w: 4, c: function (x) { return x.dur % 5 === 0; }},
+  {id: 'weekend', n: 'Weekend Flood', d: 'Every weekend load pays extra.', r: 30, max: 3, w: 'day', wk: 1},
+  {id: 'pal', n: 'Mirror Mirror', d: 'End a load at a mirror time like 12:21.', r: 111, max: 1, w: 'day', wt: 0.5, c: function (x) { var g = x.to.replace(':', ''); return g.charAt(0) === g.charAt(3) && g.charAt(1) === g.charAt(2); }},
+  {id: 'mystery', n: 'Mystery Goo', d: 'Each load pays a random 10 to 150.', r: 0, max: 2, w: 3},
+  {id: 'freeze', n: 'Ice Cream Social', d: 'A load earns a free streak freeze.', r: 0, max: 1, w: 'day', wt: 0.7},
+  {id: 'mid', n: 'Middle Ground', d: 'Rate a load 4, 5 or 6.', r: 30, max: 2, w: 'day', c: function (x) { return x.rate >= 4 && x.rate <= 6; }},
+  {id: 'early', n: 'Early Bird Squirt', d: 'A load that starts before 8:00.', r: 40, max: 1, w: [4, 8]},
+  {id: 'sync', n: 'Synchro Splash', d: 'Load at the top of the hour, ending at :00.', r: 60, max: 1, w: 'day', wt: 0.6, c: function (x) { return /:00$/.test(x.to); }}
 ];
 var EVM = {}; EVENTS.forEach(function (e) { EVM[e.id] = e; });
 function evRng(seed) { var h = 1779033703 ^ seed.length; for (var i = 0; i < seed.length; i++) { h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; } return function () { h = Math.imul(h ^ h >>> 16, 2246822507); h = Math.imul(h ^ h >>> 13, 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; }; }
@@ -3832,9 +3696,9 @@ function evAward(x) {
   return out.join(' · ');
 }
 function evRule(e) {
-  return e.id === 'mystery' ? 'Random 10–150 LDs per session, up to ' + e.max :
-    e.id === 'freeze' ? 'A free streak freeze for one session' :
-    '+' + e.r + ' LDs' + (e.max > 1 ? ' per session, up to ' + e.max : ' for one session');
+  return e.id === 'mystery' ? 'Random 10–150 LDs per load, up to ' + e.max :
+    e.id === 'freeze' ? 'A free streak freeze for one load' :
+    '+' + e.r + ' LDs' + (e.max > 1 ? ' per load, up to ' + e.max : ' for one load');
 }
 function renderEvents() {
   if (!uid) return;
@@ -3911,7 +3775,7 @@ function crewCheck() {
   G.crwk = G.crwk || {};
   if (tot >= CREW.goal && !G.crwk[key]) {
     G.crwk[key] = 1; G.crw = (G.crw || 0) + 1; G.bonus += 100; saveG();
-    notify({id: 'crew:' + key, title: 'Crew tank is full!', text: CREW.name + ' hit ' + CREW.goal + ' sessions this week. +100 LDs for you.', go: function () { goTab('friends'); }});
+    notify({id: 'crew:' + key, title: 'Crew tank is full!', text: CREW.name + ' hit ' + CREW.goal + ' loads this week. +100 LDs for you.', go: function () { goTab('friends'); }});
     toast('Crew tank full: +100 LDs'); splash('save'); wet('big'); buzz([30, 40, 30, 40, 80]);
     return true;
   }
@@ -3940,8 +3804,8 @@ function renderCrew() {
     return '<div class="cinv"><div><b>' + esc(x.name) + '</b><span>' + (x.from ? esc(fn(x.from)) + ' invited you' : 'You are invited') + ', ' + x.cnt + (x.cnt === 1 ? ' member' : ' members') + '</span></div><div class="row"><button type="button" class="go x" data-cra="' + x.id + '">Join</button><button type="button" class="x" data-crd="' + x.id + '">Decline</button></div></div>';
   }).join('');
   if (!CREW.members) {
-    h += '<p class="sub">Team up with up to 7 friends. Every session anyone logs fills one shared tank. Fill it before Monday and everyone gets 100 LDs.</p>' +
-      '<div class="cform"><input type="text" id="crName" maxlength="30" placeholder="Crew name" aria-label="Crew name"><select id="crGoal" aria-label="Weekly goal"><option value="10">Goal: 10 sessions a week</option><option value="15" selected>Goal: 15 sessions a week</option><option value="20">Goal: 20 sessions a week</option><option value="30">Goal: 30 sessions a week</option><option value="50">Goal: 50 sessions a week</option></select><button type="button" class="go" id="crMake">Start a crew</button></div>';
+    h += '<p class="sub">Team up with up to 7 friends. Every load anyone logs fills one shared tank. Fill it before Monday and everyone gets 100 LDs.</p>' +
+      '<div class="cform"><input type="text" id="crName" maxlength="30" placeholder="Crew name" aria-label="Crew name"><select id="crGoal" aria-label="Weekly goal"><option value="10">Goal: 10 loads a week</option><option value="15" selected>Goal: 15 loads a week</option><option value="20">Goal: 20 loads a week</option><option value="30">Goal: 30 loads a week</option><option value="50">Goal: 50 loads a week</option></select><button type="button" class="go" id="crMake">Start a crew</button></div>';
     hm0.hidden = true;
   } else {
     var tot = crewTotal(), ms = CREW.members, full = tot >= CREW.goal;
@@ -3953,7 +3817,7 @@ function renderCrew() {
       }).join('') + '</ul>';
     var cand = F.filter(function (f) { return !ms.some(function (m) { return m.n === f; }); });
     if (ms.length < 8) h += '<div class="sec">Invite a friend</div>' + (cand.length ? '<div class="cform"><select id="crInv" aria-label="Friend to invite">' + cand.map(function (f) { return '<option value="' + esc(f) + '">' + esc(fn(f)) + '</option>'; }).join('') + '</select><button type="button" class="go" id="crInvGo">Invite</button></div>' : '<p class="sub">' + (F.length ? 'All your friends are in the crew or invited.' : 'Add a friend first, then invite them here.') + '</p>');
-    if (CREW.mine) h += '<div class="sec">Weekly goal</div><select id="crGoalSet" aria-label="Weekly goal">' + [10, 15, 20, 30, 50, 80].concat([CREW.goal]).filter(function (v, i, a) { return a.indexOf(v) === i; }).sort(function (a, b) { return a - b; }).map(function (v) { return '<option value="' + v + '"' + (v === CREW.goal ? ' selected' : '') + '>' + v + ' sessions a week</option>'; }).join('') + '</select>';
+    if (CREW.mine) h += '<div class="sec">Weekly goal</div><select id="crGoalSet" aria-label="Weekly goal">' + [10, 15, 20, 30, 50, 80].concat([CREW.goal]).filter(function (v, i, a) { return a.indexOf(v) === i; }).sort(function (a, b) { return a - b; }).map(function (v) { return '<option value="' + v + '"' + (v === CREW.goal ? ' selected' : '') + '>' + v + ' loads a week</option>'; }).join('') + '</select>';
     h += '<div class="row" style="margin-top:14px"><button type="button" class="x" id="crLeave">Leave crew</button></div>';
     hm0.hidden = false;
     hm0.innerHTML = '<div class="chm"><div class="chm-t"><span class="eyb">Crew tank</span><b>' + esc(CREW.name) + '</b><span>' + (full ? 'Full! +100 LDs each' : tot + ' of ' + CREW.goal + ' this week') + '</span></div>' + crewSvg(false) + '</div>';
@@ -3994,53 +3858,6 @@ $('crewCard').addEventListener('change', function (e) {
   crewAct('set_crew', {p_name: '', p_goal: g}, 'Goal changed to ' + g + '.', function () { var d = crewDemoGet(); d.goal = g; crewDemoPut(d); });
 });
 $('crewHome').addEventListener('click', function () { goTab('friends'); setTimeout(function () { $('crewCard').scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); });
-
-/* ===== folds: secondary cards collapse to one row ===== */
-var FOLD = {}, KEEP = {'Overview': 1, 'No stats yet': 1, 'Last 35 days': 1, 'Weekly challenges': 1, 'Next badges to get': 1, 'Shop': 1, 'Numbers': 1, 'Top badges': 1, 'Profile': 1, 'Your level': 1};
-var FSUM = {'All badges': 'Every badge, what it takes and its reward.', 'How to earn LDs': 'Where LDs come from.', 'More numbers': 'Average gap, total time, released share, average length.', 'Last session': 'Details of your most recent session.', 'Records': 'Your highs and lows.', 'Streaks and gaps': 'Current and longest streaks, gaps between sessions.', 'This month': 'Compared with last month.', 'Time of day': 'When your sessions happen.', 'Weekdays': 'Your busiest days.', 'Rating spread': 'How you rate your sessions.', 'Sweet spot': 'Which length rates best.', 'Released or not': 'Released share and ratings.', 'Calendar': 'Counts by day, week, month and year.', 'Podium': 'Top 3 days, ratings and lengths.', 'Last 12 months': 'Sessions per month.'};
-function foldAll() {
-  ['statsView', 'friendsView', 'rewardsView', 'profileView'].forEach(function (v) {
-    var root = $(v); if (!root) return;
-    Array.prototype.forEach.call(root.querySelectorAll('section.card'), function (c) {
-      if (c.id === 'frCard' || c.id === 'rqCard' || c.classList.contains('hero')) return;
-      if (c.parentElement && c.parentElement.closest('section.card')) return;
-      var h = c.querySelector(':scope > h2'); if (!h) return;
-      var t = h.textContent.replace(/\s*\(.*$/, '').trim(), k = c.getAttribute('data-k') || t;
-      if (KEEP[t]) { c.classList.remove('fold'); if (t === 'Last 35 days' && !c.classList.contains('hmc')) c.classList.add('hmc'); return; }
-      if (!c.getAttribute('data-k')) c.setAttribute('data-k', k);
-      if (!c.getAttribute('data-sum') && FSUM[t]) c.setAttribute('data-sum', FSUM[t]);
-      if (!c.classList.contains('fold')) c.classList.add('fold');
-      var o = !!FOLD[k]; if (c.classList.contains('open') !== o) c.classList.toggle('open', o);
-      if (h.getAttribute('role') !== 'button') { h.setAttribute('role', 'button'); h.setAttribute('tabindex', '0'); }
-      if (h.getAttribute('aria-expanded') !== String(o)) h.setAttribute('aria-expanded', String(o));
-    });
-  });
-  statsMore();
-}
-var allSt = false;
-function statsMore() {
-  var sg = $('sg'); if (!sg) return;
-  var f = sg.querySelectorAll(':scope > section.fold'), b = $('stAll');
-  Array.prototype.forEach.call(f, function (c, i) { var x = !allSt && i >= 6; if (c.hidden !== x) c.hidden = x; });
-  if (f.length > 6) {
-    if (!b) { b = document.createElement('button'); b.type = 'button'; b.id = 'stAll'; b.className = 'span2'; b.addEventListener('click', function () { allSt = !allSt; statsMore(); }); }
-    if (b.parentElement !== sg || sg.lastElementChild !== b) sg.appendChild(b);
-    var t = allSt ? 'Show fewer stats' : 'Show all stats (' + (f.length - 6) + ' more)'; if (b.textContent !== t) b.textContent = t;
-  } else if (b && b.parentElement) b.parentElement.removeChild(b);
-}
-function foldTog(c) { var k = c.getAttribute('data-k'); FOLD[k] = !FOLD[k]; foldAll(); }
-document.addEventListener('click', function (e) {
-  var g = e.target.closest && e.target.closest('[data-gotab]'); if (g) { goTab(g.getAttribute('data-gotab')); return; }
-  if (e.target.closest && e.target.closest('[data-logit]')) { tab('home'); setTimeout(function () { $('add').click(); }, 50); return; }
-  var c = e.target.closest && e.target.closest('section.fold'); if (!c) return;
-  var h = e.target.closest('h2');
-  if (c.classList.contains('open') && !(h && h.parentElement === c)) return;
-  foldTog(c);
-});
-document.addEventListener('keydown', function (e) {
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('section.fold > h2')) { e.preventDefault(); foldTog(e.target.parentElement); }
-});
-(function () { var q = 0; new MutationObserver(function () { if (q) return; q = 1; Promise.resolve().then(function () { q = 0; foldAll(); }); }).observe(document.querySelector('.wrap'), {childList: true, subtree: true}); foldAll(); })();
 </script>
 </body>
 </html>
