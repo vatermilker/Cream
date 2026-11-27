@@ -367,9 +367,9 @@ body{background:linear-gradient(#fcdbe7 0,#f8c4d8 100%) fixed}
 /* wet: jelly, splash, smear, tilt */
 #tl{position:fixed;inset:0;transform:translate(var(--tx,0px),var(--ty,0px));will-change:transform}
 .slimewrap{transform-origin:50% 0;transform:skewX(var(--sk,0deg)) scaleY(var(--sy,1))}
-@keyframes jel{0%{transform:scale(1)}22%{transform:scale(.9,1.12)}48%{transform:scale(1.08,.92)}72%{transform:scale(.97,1.03)}100%{transform:scale(1)}}
+@keyframes jel{0%{transform:scale(1)}35%{transform:scale(.965)}100%{transform:scale(1)}}
 @keyframes jelS{0%{transform:scale(1)}30%{transform:scale(.985,1.012)}60%{transform:scale(1.01,.992)}100%{transform:scale(1)}}
-.jel{animation:jel .5s cubic-bezier(.3,.7,.4,1)}
+.jel{animation:jel .28s ease-out}
 .jelS{animation:jelS .45s ease-out}
 #splash{position:fixed;left:0;right:0;top:0;height:100%;z-index:96;pointer-events:none;transform:translateY(-120%);display:none}
 #splash .sbody{position:absolute;inset:0;background:var(--slB,#fff);box-shadow:inset 0 -10px 0 var(--slE,#f4c3d5)}
@@ -1069,23 +1069,23 @@ html[data-theme] .go{box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 24px 
 /* ===== springs ===== */
 @keyframes ovIn{from{opacity:0}}
 @keyframes ovOut{to{opacity:0}}
-@keyframes popIn{from{opacity:0;transform:translateY(28px) scale(.94)}}
+@keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.98)}}
 @keyframes popOut{to{opacity:0;transform:translateY(20px) scale(.96)}}
 @keyframes sheetUp{from{transform:translateY(105%)}}
 @keyframes sheetDown{to{transform:translateY(105%)}}
 html:not(.nofx) .ov:not([hidden]){animation:ovIn .25s ease-out}
-html:not(.nofx) .ov:not([hidden])>.card{animation:popIn .55s cubic-bezier(.22,1.3,.36,1)}
+html:not(.nofx) .ov:not([hidden])>.card{animation:popIn .32s cubic-bezier(.2,.8,.3,1)}
 html:not(.nofx) .ov.out{animation:ovOut .22s ease-in forwards;pointer-events:none}
 html:not(.nofx) .ov.out>.card{animation:popOut .22s ease-in forwards}
 @media (max-width:640px){
-  html:not(.nofx) .ov:not([hidden])>.card{animation:sheetUp .6s cubic-bezier(.22,1.18,.36,1)}
+  html:not(.nofx) .ov:not([hidden])>.card{animation:sheetUp .42s cubic-bezier(.2,.85,.3,1)}
   html:not(.nofx) .ov.out>.card{animation:sheetDown .24s cubic-bezier(.5,0,.8,.4) forwards}
 }
-html:not(.nofx) .wel:not([hidden])>.welBox{animation:popIn .55s cubic-bezier(.22,1.3,.36,1)}
-@keyframes vinR{from{opacity:0;transform:translateX(26px)}}
-@keyframes vinL{from{opacity:0;transform:translateX(-26px)}}
-html:not(.nofx) .vin.vr{animation:vinR .42s cubic-bezier(.2,.9,.3,1)}
-html:not(.nofx) .vin.vl{animation:vinL .42s cubic-bezier(.2,.9,.3,1)}
+html:not(.nofx) .wel:not([hidden])>.welBox{animation:popIn .32s cubic-bezier(.2,.8,.3,1)}
+@keyframes vinR{from{opacity:0;transform:translateY(6px)}}
+@keyframes vinL{from{opacity:0;transform:translateY(6px)}}
+html:not(.nofx) .vin.vr{animation:vinR .26s ease-out}
+html:not(.nofx) .vin.vl{animation:vinL .26s ease-out}
 
 /* ===== breathing log button ===== */
 html[data-theme] #homeView .logb{position:relative;isolation:isolate;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important}
@@ -1175,6 +1175,26 @@ html.nofx #holdHint{display:none}
 html[data-theme] .card.hero::before{display:none!important}
 html[data-theme] .card.hero{padding-top:20px!important}
 #homeView .card.hero #hSince.hz{font-size:clamp(26px,7.5vw,38px)!important;line-height:1.05!important}
+
+/* ===== Home A: big tank in the middle ===== */
+#homeView .card.hero{background:transparent!important;border:0!important;box-shadow:none!important;padding:4px 0 8px!important;text-align:center}
+#homeView .card.hero .hrow{flex-direction:column;align-items:center;gap:0}
+#homeView .card.hero .htxt{text-align:center;width:100%}
+#homeView .card.hero .htxt>div:first-child{font-size:13px!important;letter-spacing:.16em}
+#homeView .card.hero #hSince{font-size:clamp(56px,18vw,80px)!important;line-height:1!important;margin-top:4px;text-align:center}
+#homeView .card.hero #hSince.hz{font-size:clamp(34px,10vw,46px)!important}
+#homeView .tank{width:max(118px,min(196px,52vw,calc((100svh - 480px) * .6)));margin-top:16px;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:8px}
+#homeView .tank svg{width:100%!important;height:auto!important;aspect-ratio:80/132;filter:drop-shadow(0 0 26px rgba(255,255,255,.13))!important;margin-bottom:10px}
+#homeView .tank .tg{stroke-width:3}
+#homeView .tpc{font-size:22px;margin:0}
+#homeView .tsub{font-size:16px;font-weight:600;color:var(--t-mute,#b9b9c7)}
+#homeView .card.hero #hLast{text-align:center;font-size:14px!important;color:var(--t-mute,#b9b9c7);margin:6px 0 0}
+#homeView .card.hero .hact{margin-top:16px;align-items:stretch}
+#homeView .card.hero .hact #runBox{display:flex;justify-content:center;width:100%}
+#homeView .card.hero .hact #runGo{width:auto!important;margin:0 auto}
+#homeView .card.hero #hStreak{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;margin-top:4px}
+#homeView .card.hero #hStreak>*{background:transparent!important;border:0!important;padding:0!important;font-size:15px!important;color:var(--t-mute,#b9b9c7)!important;box-shadow:none!important}
+@media (min-width:1000px){#homeView .tank{width:210px}}
 </style>
 </head>
 <body>
@@ -3673,7 +3693,7 @@ document.addEventListener('pointerdown', function (e) {
   if (REDUCE || !e.target.closest) return;
   var b = e.target.closest('button,summary'), c = !b && e.target.closest('.card');
   var el = b || c; if (!el || el.disabled) return;
-  var cl = b ? 'jel' : 'jelS'; el.classList.remove('jel', 'jelS'); void el.offsetWidth; el.classList.add(cl);
+  if (!b) return; var cl = 'jel'; el.classList.remove('jel', 'jelS'); void el.offsetWidth; el.classList.add(cl);
   setTimeout(function () { el.classList.remove(cl); }, 520);
 }, true);
 document.addEventListener('click', function (e) {
