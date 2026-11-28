@@ -1289,6 +1289,30 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 .mtank.big .mto{stroke-width:2.5}
 .ftk span{font:400 22px/1 var(--t-fd,inherit);color:var(--t-ink)}
 @media (max-width:360px){.frr .frt b{font-size:22px}.mtank{width:20px;height:34px}}
+
+/* ===== rating buttons ===== */
+.rtl{display:flex;justify-content:space-between;align-items:baseline}
+.rtq{font-size:15px;color:var(--t-acc2,#ff6b88);font-weight:700}
+.rtq.set{font:400 26px/1 var(--t-fd,inherit);color:var(--t-ink)}
+.rtg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:6px 0 4px;border-radius:14px}
+.rtg button{min-height:52px;padding:0;font:400 26px/1 var(--t-fd,inherit);border-radius:12px!important;background:var(--t-in,#1b1b23)!important;border:1px solid var(--t-edge,#2c2c37)!important;color:var(--t-ink)!important;box-shadow:none!important;width:auto}
+.rtg button[aria-checked="true"]{background:var(--t-ink,#f4f4f7)!important;color:#0b0b0f!important;border-color:var(--t-ink,#f4f4f7)!important;transform:scale(1.04)}
+.rtg.need{animation:rtneed .5s ease;box-shadow:0 0 0 2px var(--t-acc,#e11d48)}
+@keyframes rtneed{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.rterr{color:var(--t-acc2,#ff6b88)!important;margin:4px 0 0!important}
+
+/* ===== soft pop-ups: fade only, no movement ===== */
+@keyframes softIn{from{opacity:0}to{opacity:1}}
+@keyframes softOut{from{opacity:1}to{opacity:0}}
+html:not(.nofx) .ov:not([hidden]){animation:softIn .2s ease-out!important}
+html:not(.nofx) .ov:not([hidden])>.card{animation:softIn .24s ease-out!important;transform:none!important}
+html:not(.nofx) .ov.out{animation:softOut .18s ease-in forwards!important}
+html:not(.nofx) .ov.out>.card{animation:none!important}
+html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn .24s ease-out!important}
+.hcard{animation:softIn .35s ease-out!important}
+#holo:not([hidden]){animation:softIn .25s ease-out}
+.nt{animation:softIn .25s ease-out!important}
+#pour.in .psheet{animation:pfall .9s cubic-bezier(.45,0,.55,1) forwards!important}
 </style>
 </head>
 <body>
@@ -1489,9 +1513,8 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 </div>
 <p class="sub" data-nosub>Preview: <b id="wEx">1 load, 5 loads</b></p>
 <div class="sec">New session defaults</div>
-<label for="dRate" style="margin-top:0">Rating <b id="dRateV">5</b></label>
-<input type="range" id="dRate" min="1" max="10" value="5">
-<label for="dLen">Length <b id="dLenV">10 min</b></label>
+<div hidden><label for="dRate">Rating <b id="dRateV">5</b></label><input type="range" id="dRate" min="1" max="10" value="5"></div>
+<label for="dLen" style="margin-top:0">Length <b id="dLenV">10 min</b></label>
 <input type="range" id="dLen" min="1" max="60" value="10">
 <div class="lab setrow"><span id="dRelLab">Released?</span></div>
 <div class="seg" id="dRel"><button type="button" data-v="1" aria-pressed="true">Yes</button><button type="button" data-v="0" aria-pressed="false">No</button></div>
@@ -1673,8 +1696,10 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 <div class="ov" id="ov" hidden>
 <div class="card" role="dialog" aria-modal="true" aria-labelledby="mt">
 <h2 id="mt" style="font-size:26px">New session</h2>
-<label for="rt">Rating <b id="rtV" style="font-size:24px">5</b></label>
-<input type="range" id="rt" min="1" max="10" value="5">
+<div class="lab rtl"><span id="rtLab">Rating</span><span class="rtq" id="rtV">Tap a number</span></div>
+<div class="rtg" id="rtG" role="radiogroup" aria-labelledby="rtLab"><button type="button" role="radio" aria-checked="false" data-r="1">1</button><button type="button" role="radio" aria-checked="false" data-r="2">2</button><button type="button" role="radio" aria-checked="false" data-r="3">3</button><button type="button" role="radio" aria-checked="false" data-r="4">4</button><button type="button" role="radio" aria-checked="false" data-r="5">5</button><button type="button" role="radio" aria-checked="false" data-r="6">6</button><button type="button" role="radio" aria-checked="false" data-r="7">7</button><button type="button" role="radio" aria-checked="false" data-r="8">8</button><button type="button" role="radio" aria-checked="false" data-r="9">9</button><button type="button" role="radio" aria-checked="false" data-r="10">10</button></div>
+<p class="note rterr" id="rtErr" role="alert" hidden>Pick a rating from 1 to 10 first.</p>
+<input type="hidden" id="rt" value="">
 <div class="lab"><span>Started</span></div>
 <div class="dtr"><input type="date" id="td" aria-label="Start date" min="2000-01-01"><input type="time" id="tf" aria-label="Start time"></div>
 <div class="lab"><span>Ended</span></div>
@@ -1955,8 +1980,8 @@ function setRel(v) {
 function openM() {
   var now = new Date(), f = new Date(now - S.dLen * 60000);
   $('tt').value = hm(now); $('tf').value = hm(f); $('td').max = ymd(now); $('te').max = ymd(now); $('td').value = ymd(f); $('te').value = ymd(now);
-  $('rt').value = S.dRate; $('rtV').textContent = S.dRate; setRel(S.dRel); showDur(); selTags = []; renderTagBox();
-  clearTimeout($('ov')._t); $('ov').classList.remove('out'); $('ov').hidden = false; $('rt').focus();
+  rtSet(''); setRel(S.dRel); showDur(); selTags = []; renderTagBox();
+  clearTimeout($('ov')._t); $('ov').classList.remove('out'); $('ov').hidden = false; $('rtG').querySelector('button').focus();
 }
 function renderTagBox() {
   var tg = S.tags || [];
@@ -1976,13 +2001,20 @@ $('cancel').addEventListener('click', closeM);
 var ovDown = false;
 $('ov').addEventListener('pointerdown', function (e) { ovDown = e.target === $('ov'); });
 $('ov').addEventListener('click', function (e) { if (e.target === $('ov') && ovDown) closeM(); ovDown = false; });
-$('rt').addEventListener('input', function () { $('rtV').textContent = $('rt').value; });
+function rtSet(v) {
+  $('rt').value = v; $('rtErr').hidden = true; $('rtG').classList.remove('need');
+  Array.prototype.forEach.call($('rtG').children, function (b) { var on = b.getAttribute('data-r') === String(v); b.setAttribute('aria-checked', String(on)); b.tabIndex = on || (!v && b.getAttribute('data-r') === '1') ? 0 : -1; });
+  $('rtV').textContent = v ? v + ' / 10' : 'Tap a number'; $('rtV').classList.toggle('set', !!v);
+}
+$('rtG').addEventListener('click', function (e) { var b = e.target.closest('[data-r]'); if (b) { rtSet(b.getAttribute('data-r')); buzz([8]); } });
+$('rtG').addEventListener('keydown', function (e) { var v = +$('rt').value || 0, k = e.key; if (k === 'ArrowRight' || k === 'ArrowUp') v = Math.min(10, v + 1); else if (k === 'ArrowLeft' || k === 'ArrowDown') v = Math.max(1, v - 1); else return; e.preventDefault(); rtSet(v); $('rtG').querySelector('[data-r="' + v + '"]').focus(); });
 $('tf').addEventListener('input', showDur);
 $('tt').addEventListener('input', showDur);
 $('td').addEventListener('input', function () { if ($('te').value && $('td').value && $('te').value < $('td').value) $('te').value = $('td').value; showDur(); });
 $('te').addEventListener('input', showDur);
 $('rel').addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-v]'); if (!b) return; var v = b.getAttribute('data-v'); if (v === '1' && !relV && e.detail > 0 && FXON()) return; setRel(v === '1'); });
 $('save').addEventListener('click', function () {
+  if (!$('rt').value) { $('rtErr').hidden = false; var g = $('rtG'); g.classList.remove('need'); void g.offsetWidth; g.classList.add('need'); g.scrollIntoView({block: 'center', behavior: 'smooth'}); buzz([30, 40, 30]); return; }
   var s = span(); showDur(); if (!s || s.err) return;
   var b0 = totals(), e0 = earnedSet();
   E.push({id: Date.now(), t: s.to.getTime(), from: hm(s.fr), to: hm(s.to), dur: s.dur, rate: +$('rt').value, rel: relV, tags: selTags.filter(function (t) { return (S.tags || []).indexOf(t) >= 0; })});
