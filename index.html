@@ -1609,6 +1609,9 @@ html.awlock,html.awlock body{overflow:hidden}
 .peav{width:46px;height:46px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font:400 24px "Bebas Neue",sans-serif;color:#fff;background:radial-gradient(circle at 35% 30%,#ff4d73,#9d0f30 70%);box-shadow:0 0 0 2px #b9bdc5}
 .pepn{display:flex;flex-direction:column;min-width:0}.pepn b{font-size:19px;overflow-wrap:anywhere}.pepn b small{font-weight:500;font-size:15px;color:#b9b9c7}.pepn>small{font-size:14px;color:#b9b9c7}
 
+html[data-theme] .nt{background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;border-top-color:rgba(255,255,255,.18)!important;box-shadow:0 12px 34px rgba(0,0,0,.55)!important;color:var(--t-ink,#f4f4f7)}
+html[data-theme] .nt .ntb{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb b{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb span{color:var(--t-mute,#b9b9c7)}
+
 #holo{position:fixed;inset:0;z-index:98;background:rgba(4,4,6,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;perspective:900px;padding:20px}
 #holo[hidden]{display:none}
 .hcard{--hx:50%;--hy:50%;--rx:0deg;--ry:0deg;position:relative;width:min(280px,78vw);aspect-ratio:5/7;border-radius:22px;background:linear-gradient(160deg,#1c1c24,#0d0d12);border:1px solid rgba(255,255,255,.25);box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 60px rgba(255,255,255,.12);overflow:hidden;transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;animation:hflip 1s cubic-bezier(.2,1.2,.3,1)}
@@ -3038,6 +3041,7 @@ async function cloudLoad(user) {
     P = Object.assign({}, DEF_P, {name: d.username, pub: !!d.is_public, discover: d.discoverable !== false, bio: d.bio || ''});
     S = Object.assign({}, DEF_S, d.settings || {}); if (!S.sndOpt) { S.snd = false; S.sndOpt = 1; }
     P.dname = S.dname || ''; P.pin = S.pin || [];
+    try { var ld = JSON.parse(localStorage.getItem('creamer:pf:' + user.id) || 'null'); if (ld && ld.t > (S.pfT || 0)) { P.dname = ld.dname || ''; P.pin = ld.pin || []; if (typeof ld.bio === 'string') P.bio = ld.bio; } } catch (e) {}
     G = Object.assign(newG(), d.game || {}); G.eq = Object.assign(newG().eq, G.eq || {}); G.du = [];
     F = []; FR = {}; SOCIAL_OK = false;
     await refreshSocial();
@@ -3128,7 +3132,7 @@ function cloudSyncEntries() {
     if (changed) render();
   })();
 }
-var PROF_NOCOL = false;
+var PROF_NOCOL = false, PROF_LASTERR = '';
 function queueProf() { if (!CLOUD || !uid) return; clearTimeout(profT); profT = setTimeout(pushProf, 700); }
 async function pushProf() {
   profT = 0; if (!CLOUD || !uid) return;
@@ -3136,8 +3140,9 @@ async function pushProf() {
   var row = {bio: P.bio || '', is_public: !!P.pub, discoverable: P.discover !== false, settings: S, game: g};
   if (!PROF_NOCOL) { row.display_name = P.dname || null; try { row.pins = pinDesc(); } catch (e) { row.pins = []; } }
   var r = await sb.from('profiles').update(row).eq('id', uid);
-  if (r.error && !PROF_NOCOL && /display_name|pins|column/i.test(String(r.error.message || ''))) { PROF_NOCOL = true; delete row.display_name; delete row.pins; r = await sb.from('profiles').update(row).eq('id', uid); }
-  if (r.error) { if (!profErr++) toast('Could not save your changes. Check your connection.'); } else profErr = 0;
+  if (r.error && !PROF_NOCOL) { console.warn('profile save with name failed', r.error); delete row.display_name; delete row.pins; var r2 = await sb.from('profiles').update(row).eq('id', uid); if (!r2.error) PROF_NOCOL = true; r = r2; }
+  if (r.error) { console.warn('profile save failed', r.error); var em = String(r.error.message || r.error.code || r.error.status || 'unknown'); if (em !== PROF_LASTERR) { PROF_LASTERR = em; toast('Not saved: ' + em.slice(0, 140)); } }
+  else PROF_LASTERR = '';
 }
 function flushProf() { if (profT) { clearTimeout(profT); return pushProf(); } return Promise.resolve(); }
 window.addEventListener('pagehide', function () { if (CLOUD && profT) { clearTimeout(profT); pushProf(); } });
@@ -5716,7 +5721,8 @@ $('peX').addEventListener('click', peClose);
 $('peSave').addEventListener('click', function () {
   if (!PE) return;
   P.dname = cleanName($('peName').value); P.bio = $('peBio').value.slice(0, 80); P.pin = PE.pin.slice(0, 3);
-  P.pind = pinDesc(); S.dname = P.dname; S.pin = P.pin;
+  P.pind = pinDesc(); S.dname = P.dname; S.pin = P.pin; S.pfT = Date.now();
+  try { localStorage.setItem('creamer:pf:' + uid, JSON.stringify({t: S.pfT, dname: P.dname, pin: P.pin, bio: P.bio})); } catch (e) {}
   saveP(); saveS(); peClose(); render(); toast('Profile saved');
 });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('peOv').hidden) peClose(); });
