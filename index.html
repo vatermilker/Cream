@@ -1313,6 +1313,108 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 #holo:not([hidden]){animation:softIn .25s ease-out}
 .nt{animation:softIn .25s ease-out!important}
 #pour.in .psheet{animation:pfall .9s cubic-bezier(.45,0,.55,1) forwards!important}
+
+/* ===== even, centered date and time fields ===== */
+.dtr{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dtr input{-webkit-appearance:none;appearance:none;box-sizing:border-box;width:100%!important;height:54px!important;min-height:54px;padding:0 10px!important;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;text-align-last:center;line-height:normal;font-family:var(--t-fb,inherit);font-size:20px!important;font-weight:600;font-variant-numeric:tabular-nums}
+.dtr input::-webkit-date-and-time-value{text-align:center;margin:0;width:100%;min-height:1.2em}
+.dtr input::-webkit-datetime-edit{padding:0;display:inline-flex;justify-content:center}
+.dtr input::-webkit-datetime-edit-fields-wrapper{padding:0}
+.dtr input::-webkit-calendar-picker-indicator{margin:0 0 0 4px;opacity:.6}
+@media (max-width:360px){.dtr input{font-size:17px!important;padding:0 6px!important}.dtr input::-webkit-calendar-picker-indicator{display:none}}
+
+/* ===== rewards rework ===== */
+.rwbal{display:flex;align-items:center;gap:10px}
+.rwbal svg{width:40px;height:40px;fill:none;stroke:var(--t-acc2,#ff6b88);stroke-width:2}
+.rwbal b{font:400 clamp(64px,20vw,96px)/.9 var(--t-fd,inherit);color:var(--t-ink)}
+.rwbal span{font:400 28px/1 var(--t-fd,inherit);color:var(--t-mute);align-self:flex-end;margin-bottom:8px}
+.rwtoday{margin:6px 0 14px;font-size:16px;color:var(--t-ink);font-weight:600}
+.rwhow{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:8px}
+.rwhow li{display:grid!important;grid-template-columns:96px 1fr;gap:10px;align-items:baseline;border:0!important;padding:0!important;text-align:left}
+.rwhow b{font:400 22px/1 var(--t-fd,inherit);color:var(--t-ink)}
+.rwhow span{font-size:15px;color:var(--t-mute);line-height:1.35}
+.rwbc{margin:0 0 4px;font-size:17px;color:var(--t-mute)}
+.rwbc b{font:400 34px/1 var(--t-fd,inherit);color:var(--t-ink)}
+.rwshop{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:4px}
+.rwshop .go{min-height:64px;font-size:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+.rwshop .go svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2}
+.rwshop .sub{text-align:center;margin:0}
+.rwback{width:auto!important}
+
+/* ===== social ===== */
+#feedWrap[hidden],#nudgeBar[hidden],#rxHome[hidden]{display:none!important}
+.fey{display:flex;justify-content:space-between;align-items:center;margin:6px 2px 8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--t-mute)}
+.fey button{width:auto;min-height:36px;padding:0 12px;font-size:14px;text-transform:none;letter-spacing:0;background:transparent!important;border:0!important;box-shadow:none!important;color:var(--t-ink)!important;text-decoration:underline;text-underline-offset:3px}
+.feedl{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.fitem{display:flex;gap:10px;align-items:flex-start;background:var(--t-card,#121217);border:1px solid var(--t-edge,#2c2c37);border-top-color:rgba(255,255,255,.17);border-radius:var(--t-rad,14px);padding:12px;text-align:left}
+.fitem>.av{width:34px;height:34px;font-size:15px;flex:0 0 auto}
+.fitx{flex:1;min-width:0}
+.fitt{font-size:17px;line-height:1.3;color:var(--t-ink)}
+.fitt .ric{vertical-align:-3px}
+.fitm{font-size:13px;color:var(--t-mute);margin-top:2px}
+.rxrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.rxc{width:auto!important;min-height:36px;padding:0 11px!important;border-radius:999px!important;display:inline-flex!important;align-items:center;gap:5px;font-size:15px!important;text-transform:none!important;letter-spacing:0;background:var(--t-in,#1b1b23)!important;border:1px solid var(--t-edge,#2c2c37)!important;color:var(--t-ink)!important;box-shadow:none!important}
+.rxc[aria-pressed="true"]{background:var(--t-ink,#f4f4f7)!important;color:#0b0b0f!important;border-color:var(--t-ink,#f4f4f7)!important}
+.rxadd{border-style:dashed!important;color:var(--t-mute)!important}
+.rxpick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:8px 0}
+.rxpick button{display:flex!important;flex-direction:column;align-items:center;gap:6px;background:transparent!important;border:0!important;box-shadow:none!important;padding:4px 0!important;font-size:14px!important;text-transform:none!important;letter-spacing:0;color:var(--t-ink)!important;min-height:0}
+.rxpick button>span{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--t-in,#1b1b23);border:1px solid var(--t-edge,#2c2c37)}
+.rxpick button[aria-pressed="true"]>span{background:var(--t-ink,#f4f4f7);color:#0b0b0f;border-color:var(--t-ink)}
+.cmphd{display:flex;align-items:center;gap:8px}
+.ovx{width:44px!important;min-height:44px;padding:0!important;font-size:26px;line-height:1;border-radius:50%!important}
+#fl.frl>li{position:relative}
+#fl.frl>li.nud .frr{padding-bottom:50px!important}
+.nudgeb{position:absolute;left:68px;bottom:10px;width:auto!important;min-height:36px;padding:0 12px!important;border-radius:999px!important;display:inline-flex!important;align-items:center;gap:6px;font-size:15px!important;text-transform:none!important;letter-spacing:0;background:transparent!important;border:1px solid var(--t-acc,#e11d48)!important;color:var(--t-acc2,#ff6b88)!important;box-shadow:none!important}
+.fnud{display:flex!important;align-items:center;justify-content:center;gap:8px}
+.fnudn{flex:1 1 100%;margin:0!important}
+#nudgeBar{display:flex;align-items:center;gap:10px;background:var(--t-ink,#f4f4f7);color:#0b0b0f;border-radius:16px;padding:10px 10px 10px 12px;box-shadow:0 14px 30px rgba(0,0,0,.55);margin-bottom:6px}
+#nudgeBar .av{width:36px;height:36px;font-size:15px;flex:0 0 auto}
+.nbt{flex:1;min-width:0;display:flex;flex-direction:column}
+.nbt b{font-size:17px}
+.nbt span{font-size:14px;color:#3a3a46;overflow-wrap:anywhere}
+#nudgeBar .go{width:auto!important;min-height:40px;padding:0 14px}
+.nbx2{width:36px!important;min-height:36px;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:#3a3a46!important;font-size:22px}
+.rxh{display:flex!important;align-items:center;gap:10px;width:100%;margin-top:10px;padding:10px 12px!important;border-radius:14px!important;background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;color:var(--t-ink)!important;text-transform:none!important;letter-spacing:0;font-weight:500;font-size:15px!important;box-shadow:none!important;text-align:left}
+.rxav{display:flex}.rxav .av{width:26px;height:26px;font-size:12px;margin-left:-6px;border:2px solid var(--t-card,#121217)}.rxav .av:first-child{margin-left:0}
+.rxt{flex:1}.rxi{display:flex;gap:4px}
+
+#nmIn,#psBio,#psNm,#psInv{width:100%!important;max-width:none!important;box-sizing:border-box}
+
+/* ===== Start now + Log past ===== */
+#homeView .card.hero .hact{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:stretch;flex-direction:row}
+#homeView .card.hero .hact #runBox{order:0;width:auto;display:block}
+#homeView .card.hero .hact #add{order:1}
+#homeView .card.hero .hact.running{grid-template-columns:minmax(0,1fr)}
+#homeView .card.hero .hact.running #add{display:none!important}
+#homeView .card.hero #runGo,#homeView .card.hero #add{width:100%!important;min-height:76px!important;height:100%;margin:0!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:18px!important;text-decoration:none!important;opacity:1!important;padding:8px 6px!important;letter-spacing:0!important}
+#homeView .card.hero #runGo{background:var(--t-acc,#e11d48)!important;color:#fff!important;border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 28px -10px rgba(225,29,72,.7)!important}
+#homeView .card.hero #add{background:transparent!important;color:var(--t-ink,#f4f4f7)!important;border:2px solid var(--t-ink,#f4f4f7)!important;box-shadow:none!important}
+#homeView .card.hero #add::after{display:none}
+#homeView .card.hero #runGo::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;box-shadow:0 0 calc(12px + 52px * var(--gl,0)) calc(1px + 9px * var(--gl,0)) rgba(255,255,255,calc(.07 + .42 * var(--gl,0)));animation:breath calc(4.4s - 2.6s * var(--gl,0)) ease-in-out infinite}
+#homeView .card.hero #runGo{position:relative;isolation:isolate}
+.hb1{display:flex;align-items:center;justify-content:center;gap:8px;font:400 28px/1 var(--t-fd,inherit);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.hb1 svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round}
+.hb2{font-size:14px;font-weight:600;opacity:.85;text-transform:none;letter-spacing:0}
+.livedot{width:11px;height:11px;border-radius:50%;background:#fff;display:inline-block;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:livep 1.6s ease-out infinite;flex:0 0 auto}
+@keyframes livep{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+html.nofx .livedot{animation:none}
+#homeView .card.hero #runOn{width:100%;background:var(--t-card,#121217);border:2px solid var(--t-acc,#e11d48);border-radius:18px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px 12px;text-align:left}
+#homeView .card.hero #runOn[hidden]{display:none}
+#homeView .card.hero #runOn .runl{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--t-acc2,#ff6b88)}
+#homeView .card.hero #runOn .runl .livedot{background:var(--t-acc,#e11d48)}
+#homeView .card.hero #runOn .runt{font:400 40px/1 var(--t-fd,inherit);color:var(--t-ink);text-align:right;font-variant-numeric:tabular-nums}
+#homeView .card.hero #runOn .runb{grid-column:1/-1;display:grid;grid-template-columns:2fr 1fr;gap:8px}
+#homeView .card.hero #runOn .runb button{min-height:52px;width:100%}
+.runhint{text-align:center;margin:10px 0 0!important}
+@media (max-width:360px){.hb1{font-size:23px}.hb2{font-size:13px}}
+#homeView .card.hero #runGo[hidden],#homeView .card.hero #add[hidden]{display:none!important}
+.hb1{font-size:clamp(20px,6.4vw,28px)!important;white-space:normal!important;text-align:center;line-height:1!important}
+#homeView .card.hero .hact.running #runBox{grid-column:1/-1}
+#homeView .card.hero #runOn .runl::before{display:none!important}
+#homeView .card.hero #runOn .runb button{padding:0 8px!important;min-width:0;font-size:17px}
+.fbiob{position:relative;margin:0 0 14px;padding:16px 18px 16px 48px;background:var(--t-card,#121217);border:1px solid var(--t-edge,#2c2c37);border-top-color:rgba(255,255,255,.17);border-radius:var(--t-rad,16px);font-size:19px;line-height:1.4;color:var(--t-ink);overflow-wrap:anywhere}
+.fbiob::before{content:"\201C";position:absolute;left:14px;top:4px;font:400 54px/1 var(--t-fd,Georgia,serif);color:var(--t-acc2,#ff6b88)}
+.frr .frn small.frbio{font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 </style>
 </head>
 <body>
@@ -1353,6 +1455,7 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 <div id="homeView">
 <div class="stack home">
 <section class="card" id="guestBar" hidden><h2>Guest mode</h2><p class="sub" style="margin:0 0 10px">Saved on this device only. Create a free account to keep your data, get +100 LDs and unlock friends, duels, crews and rewards.</p><div class="row"><button type="button" class="go" id="gbUp">Create account</button><button type="button" id="gbIn">Log in</button></div></section>
+<div id="nudgeBar" hidden></div>
 <section class="card hero">
 <div class="hrow"><div class="htxt">
 <div style="font-size:18px">Time since last load</div>
@@ -1365,7 +1468,9 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 </svg><div class="tpc" id="tPct">100%</div><div class="tsub" id="tSub">Full</div></div>
 </div>
 <p class="sub" id="hLast"></p>
-<div class="hact"><button class="logb" id="add" type="button" hidden aria-label="Log a session"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>Log a session</button><div id="runBox"><button type="button" class="go" id="runGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Timer</button><div id="runOn" hidden><div class="runl">Timer running</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div></div>
+<button type="button" class="rxh" id="rxHome" hidden></button>
+<div class="hact"><button class="logb" id="add" type="button" hidden aria-label="Log a past session"><span class="hb1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>Log past</span><span class="hb2">already happened</span></button><div id="runBox"><button type="button" class="go" id="runGo" aria-label="Start now, counts live"><span class="hb1"><i class="livedot" aria-hidden="true"></i>Start now</span><span class="hb2">counts live</span></button><div id="runOn" hidden><div class="runl"><i class="livedot" aria-hidden="true"></i>Live</div><div class="runt" id="runT">0:00</div><div class="runb"><button type="button" class="go" id="runStop">Stop and save</button><button type="button" id="runX">Cancel</button></div></div></div></div>
+<p class="note runhint" id="runHint" hidden>Start now counts the time for you. Tap Stop when you are done.</p>
 <div id="hStreak"></div>
 </section>
 
@@ -1423,6 +1528,7 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 <form id="addForm" class="fadd" hidden><label for="fq" style="margin-top:0">Friend's username</label><div style="display:flex;gap:10px"><input type="text" id="fq" maxlength="21" placeholder="username" autocomplete="off" autocapitalize="none" spellcheck="false" style="flex:1;width:auto;min-width:0"><button type="submit" class="go">Add</button></div></form>
 <p class="note" id="fMsg" role="status"></p>
 <section class="card b" id="rqCard" hidden></section>
+<div id="feedWrap" hidden><div class="fey"><span>Activity</span><button type="button" id="feedAll">See all</button></div><div id="feedTop" class="feedl"></div></div>
 <div id="frCard">
 <div class="fdrops" id="fDrops" hidden></div><p id="fDropN" hidden></p><p id="frSort" hidden></p>
 <ul id="fl" class="frl"></ul>
@@ -1448,6 +1554,14 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 
 <div id="profileView" hidden>
 <div class="sgrid" id="pf"></div>
+<div class="stack home" style="margin-top:10px"><section class="card" id="socCard"><h2>Your social</h2>
+<label for="psBio" style="margin-top:0">Bio</label><input type="text" id="psBio" maxlength="80" placeholder="A line about you" autocomplete="off">
+<p class="note">Friends see it on your profile.</p>
+<label for="psNm">Nudge message</label><input type="text" id="psNm" maxlength="80" placeholder="thinks your tank is full" autocomplete="off">
+<p class="note">Friends see: <b id="psNmP"></b></p>
+<label for="psInv">Invite message</label><input type="text" id="psInv" maxlength="100" placeholder="Add me on Creamer" autocomplete="off">
+<p class="note">Sent with Invite: <b id="psInvP"></b></p>
+</section></div>
 </div>
 
 <div id="settingsView" class="sov" hidden>
@@ -1634,7 +1748,7 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 <div class="wtxt"><p class="wk">Friends</p><h3 class="wt2">Compare with friends</h3><p class="wp">Add friends by username and see their time since last load and stats, if they share them. Challenge them to duels, join a crew and climb the leagues.</p><ul class="wul"><li>Add by username</li><li>Their stats next to yours</li><li>Duels for LDs, crews and leagues</li><li>Friends see your stats, and you can hide them any time in Settings</li></ul></div>
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Friends</div><div class="wfr"><i>M</i><span>@mike</span><b>2h 10m</b></div><div class="wfr"><i>D</i><span>@dan</span><b>1d 4h</b></div><div class="wfr"><i>A</i><span>@alex</span><b class="mu">private</b></div></div>
 <div class="wmc"><div class="wlab">Duel</div><div class="wrow"><span>You vs @mike</span><b>+50</b></div><div class="wbtn alt">Challenge</div></div></div></div></div></section>
-<section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs, badges and a shop</h4><p>Earn LDs on every session. 80 badges, slime colors, effects and levels.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Daily challenges</h4><p>A new challenge each day and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels, crews, leagues</h4><p>Go head to head, team up with a crew, or climb a league.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="60" r="32" fill="#f4f4f6"/><circle cx="76" cy="60" r="32" fill="#e11d48" opacity=".9"/></svg></div><h4>Two looks</h4><p>After dark or Workshop. Switch any time in Settings.</p></div></div></div></section>
+<section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs, badges and a shop</h4><p>Earn LDs on every session. 80 badges, slime colors and effects.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Daily challenges</h4><p>A new challenge each day and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels, crews, leagues</h4><p>Go head to head, team up with a crew, or climb a league.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="60" r="32" fill="#f4f4f6"/><circle cx="76" cy="60" r="32" fill="#e11d48" opacity=".9"/></svg></div><h4>Two looks</h4><p>After dark or Workshop. Switch any time in Settings.</p></div></div></div></section>
 <section class="wsec hide-in wsoft"><div class="wc"><p class="wk">How it works</p><h3 class="wt2">Up and running in a minute</h3><ol class="wsteps"><li><b>1</b><div><h4>Create an account</h4><p>A username and an email. Or try it as a guest first.</p></div></li><li><b>2</b><div><h4>Log a session</h4><p>Tap Log a session whenever you want. Start, end, rating, released.</p></div></li><li><b>3</b><div><h4>Watch it add up</h4><p>Stats, streaks, rewards and your friends fill in on their own.</p></div></li></ol></div></section>
 <section class="wsec hide-in"><div class="wc"><p class="wk">Privacy</p><h3 class="wt2">Only numbers. Always yours.</h3><div class="wprv"><div><h4>Numbers and timestamps only</h4><p>No photos, no notes, no location.</p></div><div><h4>Only your friends</h4><p>Friends you accept see your stats. Turn sharing off any time in Settings.</p></div><div><h4>Your data, your call</h4><p>Add a PIN lock, or delete your account any time.</p></div><div><h4>Adults only</h4><p>Creamer is for people 18 and older.</p></div></div></div></section>
 <section class="wsec hide-in wsoft"><div class="wc wnarrow"><p class="wk">Questions</p><h3 class="wt2">Good to know</h3><details><summary>Is it free?</summary><p>Yes. There is nothing to pay.</p></details><details><summary>Do I need an account?</summary><p>No. You can try it as a guest. Guest sessions stay on your device, and they carry over if you create an account later.</p></details><details><summary>What do you store?</summary><p>Your email, username, an optional short bio, and for each session the times, rating, whether it was released and any tags. No photos, contacts or location. Details are in the <a href="privacy.html">privacy policy</a>.</p></details><details><summary>Who can see my sessions?</summary><p>Only you, unless you choose to share with friends in Settings.</p></details><details><summary>Can I delete my account?</summary><p>Yes, from Settings. It removes your account and your sessions.</p></details><details><summary>Does it work on a computer?</summary><p>Yes. It works in any browser on a phone or a computer, and you can add it to your home screen.</p></details></div></section>
@@ -1693,6 +1807,9 @@ html:not(.nofx) .wel:not([hidden])>.welBox,.wel:not([hidden])>*{animation:softIn
 <p class="note" id="duNote">The winner takes the other side's stake. A draw returns it. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
 </section>
 </div></div></div>
+<div class="ov sov2" id="feedOv" hidden><div class="card" role="dialog" aria-modal="true" aria-label="Activity"><div class="cmphd"><h2 style="margin:0;flex:1">Activity</h2><button type="button" class="ovx" data-close="feedOv" aria-label="Close">&#215;</button></div><div id="feedFull" class="feedl"></div></div></div>
+<div class="ov sov2" id="rxOv" hidden><div class="card" role="dialog" aria-modal="true" aria-label="Pick a reaction"><div class="cmphd"><h2 style="margin:0;flex:1">React</h2><button type="button" class="ovx" data-close="rxOv" aria-label="Close">&#215;</button></div><div class="rxpick" id="rxPick"></div><p class="note" style="text-align:center">One reaction each. Tap yours again to remove it.</p></div></div>
+<div class="ov sov2" id="nmOv" hidden><div class="card" role="dialog" aria-modal="true" aria-labelledby="nmT"><h2 id="nmT" style="margin:0 0 6px">Your nudge message</h2><p class="sub" style="margin:0 0 10px">Write it once. Every nudge you send uses it. You can change it in Profile.</p><label for="nmIn" style="margin-top:0">Message</label><input type="text" id="nmIn" maxlength="80" placeholder="thinks your tank is full" autocomplete="off"><p class="note">Your friend sees: <b id="nmPrev"></b></p><div class="row"><button type="button" data-close="nmOv">Cancel</button><button type="button" class="go" id="nmGo">Save and nudge</button></div></div></div>
 <div class="ov" id="ov" hidden>
 <div class="card" role="dialog" aria-modal="true" aria-labelledby="mt">
 <h2 id="mt" style="font-size:26px">New session</h2>
@@ -1818,12 +1935,13 @@ function friendDetail(u) {
   var lvF = tankOf(es);
   var top = '<div class="ftk">' + miniTank(lvF, true) + '<span>' + Math.floor(lvF * 100) + '%</span></div><div class="fbig">' + (ll ? '<b data-since="' + ll.t + '">' + sinceLabel(ll.t, false) + '</b>' : '<b class="fz">No loads yet</b>') + '</div>' +
     (le ? '<p class="sub fls">Last session ' + spanTxt(le, false) + ' · ' + fmtMin(le.dur) + ' · ' + le.rate + '/10 · ' + (le.rel ? 'load' : 'not released') + '</p>' : '') +
-    (u.bio ? '<p class="fbio">' + esc(u.bio) + '</p>' : '');
+    '';
   var st = curStreak(es);
   var tiles = '<div class="tiles">' + tile(es.length, 'sessions') + tile(rel.length, 'loads') + tile(es.length ? (rs / es.length).toFixed(1) : '–', 'avg rating') + tile(st + (st === 1 ? ' day' : ' days'), 'streak') + '</div>';
   var hm = '', tmp = document.createElement('div'); tmp.innerHTML = statsHtml(es, false);
   Array.prototype.forEach.call(tmp.children, function (c) { var h = c.querySelector('h2'); if (h && h.textContent === 'Last 35 days') hm = c.outerHTML; });
-  var act = '<div class="span2 fact"><button type="button" class="go" id="fDuel">Challenge to a duel</button><button type="button" id="fAll" aria-expanded="' + fAllOn + '">' + (fAllOn ? 'Hide all stats' : 'All stats') + '</button></div>';
+  var nd = canNudge(openF) ? '<button type="button" class="go fnud" data-nudge="' + esc(openF) + '">' + rIc('drop', 20) + 'Nudge ' + esc(fn(openF)) + '</button>' : (S.nudged && S.nudged[openF] === ymd(new Date()) ? '<p class="note fnudn">Nudged today. You can nudge again tomorrow.</p>' : '');
+  var act = '<div class="span2 fact">' + nd + '<button type="button" class="go" id="fDuel">Challenge to a duel</button><button type="button" id="fAll" aria-expanded="' + fAllOn + '">' + (fAllOn ? 'Hide all stats' : 'All stats') + '</button></div>';
   var all = fAllOn ? tmp.innerHTML.replace('class="card span2 hero"', 'class="card span2"') : '';
   return card(' span2 hero', 'Since last load', top + tiles) + hm + act + all;
 }
@@ -1837,7 +1955,8 @@ function renderFriendView() {
     else if (u.priv) body = card('', 'Private profile', '<p class="empty">' + esc(fn(openF)) + ' keeps their stats private.</p>');
     else body = friendDetail(u);
     $('fName').innerHTML = fnH(openF); if (document.activeElement !== $('fNick')) $('fNick').value = nickOf(openF); $('fAv').innerHTML = avatar(openF, false);
-    $('fBody').innerHTML = '<div class="fmore"><button type="button" id="fRemove">Remove friend</button></div><div class="sgrid">' + body + '</div>';
+    var ub = u && !u.priv ? u.bio : (u && u.bio);
+    $('fBody').innerHTML = (ub ? '<blockquote class="fbiob">' + esc(ub) + '</blockquote>' : '') + '<div class="fmore"><button type="button" id="fMute">' + (S.muteN && S.muteN[openF] ? 'Unmute their nudges' : 'Mute their nudges') + '</button><button type="button" id="fRemove">Remove friend</button></div><div class="sgrid">' + body + '</div>';
     $('fDetail').classList.toggle('more', fMoreOn); $('fMore').setAttribute('aria-expanded', String(fMoreOn));
   }
 }
@@ -1867,7 +1986,7 @@ function miniTank(lv, big) {
     '<rect x="4" y="4" width="32" height="' + ih + '" rx="14" class="mto"/></svg>';
 }
 function friendRow(f) {
-  var nm = '<span class="frn"><b>' + esc(fn(f.n)) + '</b>' + (nickOf(f.n) ? '<small>@' + esc(f.n) + '</small>' : '') + '</span>';
+  var nm = '<span class="frn"><b>' + esc(fn(f.n)) + '</b>' + (nickOf(f.n) ? '<small>@' + esc(f.n) + '</small>' : '') + (f.u && f.u.bio ? '<small class="frbio">' + esc(f.u.bio) + '</small>' : '') + '</span>';
   var right;
   if (!f.u) right = '<span class="frq">unavailable</span>';
   else if (f.u.priv) right = '<span class="frq">private</span>';
@@ -1891,7 +2010,7 @@ function avatar(n, sm) {
   return '<i class="av' + (sm ? ' sm' : '') + '" style="background:hsl(' + (320 + h % 40) + ',58%,52%)">' + esc((nickOf(n) || n).charAt(0).toUpperCase()) + '</i>';
 }
 function renderFriendLists(force) {
-  var list = friendSort(), key = list.map(function (f) { var le = f.u && !f.u.priv ? lastOf(f.u.entries || []) : null; return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : '') + (le ? le.id + '' + le.t : '') + ':' + (f.u && !f.u.priv ? Math.floor(tankOf(f.u.entries) * 20) : ''); }).join(',') + '|' + Math.floor(tankOf(E) * 20);
+  var list = friendSort(), key = list.map(function (f) { var le = f.u && !f.u.priv ? lastOf(f.u.entries || []) : null; return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : '') + (le ? le.id + '' + le.t : '') + ':' + (f.u && !f.u.priv ? Math.floor(tankOf(f.u.entries) * 20) : '') + (canNudge(f.n) ? 'N' : ''); }).join(',') + '|' + Math.floor(tankOf(E) * 20);
   if (!force && key === fKey) return;
   fKey = key;
   $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
@@ -1899,7 +2018,7 @@ function renderFriendLists(force) {
   var ml = lastOf(E.filter(function (x) { return x.rel; }));
   var me = '<li><div class="frr frme">' + avatar(P.name || 'me') + '<span class="frn"><b>You</b></span>' + '<span class="frt">' + (ml ? '<b data-short data-since="' + ml.t + '">' + shortSince(sinceLabel(ml.t, false)) + '</b>' : '<span class="frq">no loads yet</span>') + miniTank(tankOf(E)) + '</span>' + '</div></li>';
   $('fl').innerHTML = list.length ? me + list.map(function (f) {
-    return '<li><button class="frr g' + gapLvl(f.gap) + '" type="button" data-open="' + esc(f.n) + '">' + friendRow(f) + '</button></li>';
+    var cn = canNudge(f.n); return '<li' + (cn ? ' class="nud"' : '') + '><button class="frr g' + gapLvl(f.gap) + '" type="button" data-open="' + esc(f.n) + '">' + friendRow(f) + '</button>' + (cn ? '<button type="button" class="nudgeb" data-nudge="' + esc(f.n) + '">' + rIc('drop', 15) + 'Nudge</button>' : '') + '</li>';
   }).join('') : '';
   $('hf').innerHTML = list.length ? list.slice(0, 5).map(function (f) {
     return '<li><span class="nm">' + avatar(f.n, true) + '<b>' + fnH(f.n) + '</b></span>' + agoCell(f) + '</li>';
@@ -1996,6 +2115,7 @@ $('tagBox').addEventListener('click', function (e) {
 });
 function closeM() { var o = $('ov'); clearTimeout(o._t); if (FXON() && !o.hidden) { o.classList.add('out'); o._t = setTimeout(function () { o.hidden = true; o.classList.remove('out'); }, 230); } else o.hidden = true; fromRun = false; $('add').focus({preventScroll: true}); }
 
+$('add').addEventListener('click', function () { if (!S.runHint) { S.runHint = 1; saveS(); $('runHint').hidden = true; } });
 $('add').addEventListener('click', openM);
 $('cancel').addEventListener('click', closeM);
 var ovDown = false;
@@ -2018,6 +2138,7 @@ $('save').addEventListener('click', function () {
   var s = span(); showDur(); if (!s || s.err) return;
   var b0 = totals(), e0 = earnedSet();
   E.push({id: Date.now(), t: s.to.getTime(), from: hm(s.fr), to: hm(s.to), dur: s.dur, rate: +$('rt').value, rel: relV, tags: selTags.filter(function (t) { return (S.tags || []).indexOf(t) >= 0; })});
+  if (relV) demoReacts(E[E.length - 1].t);
   var fxRel = relV, fxCream = S.fx && FXON() && (!relV || eqOf('pour') === 'po_sheet');
   if (fxCream && relV) TKHOLD = Date.now() + 3000;
   saveE(); var evg = evAward(E[E.length - 1]); if (fromRun) { runSet(0); fromRun = false; } render(); closeM();
@@ -2025,7 +2146,6 @@ $('save').addEventListener('click', function () {
   msg.push(b1.lp > b0.lp ? '+' + (b1.lp - b0.lp) + ' LDs' : 'Daily LD limit reached');
   if (evg) msg.push(evg);
   if (!notifOn()) {
-    if (b1.L > b0.L) msg.push('Level ' + b1.L + ': ' + lvlName(b1.L));
     if (nb.length) msg.push('Badge: ' + BMAP[nb[0]].n + (nb.length > 1 ? ' +' + (nb.length - 1) : ''));
   }
   toast(msg.join(' · ')); if (S.fx) { burst(G.eq.fx); if (!fxCream || !saveFx(fxRel)) { TKHOLD = 0; tankShow(); if (fxRel) splash('save'); } } else { TKHOLD = 0; tankShow(); }
@@ -2189,6 +2309,7 @@ $('fl').addEventListener('click', function (e) {
 $('fBack').addEventListener('click', function () { openF = ''; fMoreOn = false; fAllOn = false; renderFriendView(); });
 $('fMore').addEventListener('click', function () { fMoreOn = !fMoreOn; renderFriendView(); });
 $('fBody').addEventListener('click', function (e) {
+  if (e.target.id === 'fMute') { S.muteN = S.muteN || {}; if (S.muteN[openF]) delete S.muteN[openF]; else S.muteN[openF] = 1; saveS(); renderFriendView(); toast(S.muteN[openF] ? 'Nudges from them are muted.' : 'Nudges from them are back on.'); return; }
   if (e.target.id === 'fAll') { fAllOn = !fAllOn; renderFriendView(); return; }
   if (e.target.id === 'fDuel') { cmpOpen('duCard', openF); return; }
   if (e.target.id !== 'fRemove') return;
@@ -2248,8 +2369,6 @@ function checkNotifs() {
   if (nb.length && nb.length <= 2) nb.forEach(function (b) { notify({id: 'bd:' + b.id, title: 'New badge: ' + b.n, text: b.d.replace(/\.?$/, '.') + ' Tap to see it.', go: function () { goBadge(b.id); }}); });
   else if (nb.length) notify({title: nb.length + ' new badges', text: nb.slice(0, 2).map(function (b) { return b.n; }).join(', ') + ' and more.', go: function () { goTab('rewards'); }});
   // level
-  if (T.L > n.lv) { var LL = T.L; FXQ.unshift(function () { levelPour(LL); }); setTimeout(fxPump, 60); }
-  if (T.L > n.lv) notify({id: 'lv', title: 'Level ' + T.L, text: lvlName(T.L) + '. Nice climb.', go: function () { goTab('profile'); }});
   n.lv = T.L;
   // streak
   if (hit > n.st) notify({id: 'st', title: hit + '-day streak', text: 'You logged ' + hit + ' days in a row.', go: function () { goTab('home'); }});
@@ -2741,7 +2860,14 @@ function statsHtml(E, mine) {
   var etaD = nextM && pace > 0 ? Math.ceil((nextM - n) / pace) : 0, etaT = new Date(today); etaT.setDate(etaT.getDate() + etaD);
   more.push(card(' b', 'Forecast', kv('Pace', pace.toFixed(2) + ' per day') + kv('Next milestone', nextM ? nextM + (etaD ? ', about ' + fmtDate(etaT.getTime()) : '') : '–') + kv('Projected this month', Math.round(thisM + pace * leftM)) + kv('Projected this year', Math.round(thisY + pace * leftY)) + '<p class="sub">Estimates at your last ' + span + '-day pace. They change as you do.</p>'));
   more.forEach(function (c) { out.push(c); });
-  return out.join('');
+  var byT = {}; out.forEach(function (h) { var m = h.match(/<h2[^>]*>([^<(]*)/); if (m) byT[m[1].trim()] = h; });
+  function inner(h) { return h ? h.replace(/^<section[^>]*>\s*<h2>[\s\S]*?<\/h2>/, '').replace(/<\/section>\s*$/, '') : ''; }
+  var keep = [byT['Overview'], byT['Last 35 days'], byT['This month']];
+  if (byT['Time of day']) keep.push(card(' span2', 'When you log', inner(byT['Time of day']) + '<div class="sec">Weekdays</div>' + inner(byT['Weekdays'])));
+  keep.push(card(' b', 'Records', kv('Longest session', fmtDur(lg.dur) + ' (' + fmtDate(lg.t) + ')') + kv('Best rating', hi.rate + ' (' + fmtDate(hi.t) + ')') + kv('Longest streak', longest + (longest === 1 ? ' day' : ' days')) + kv('Longest gap', n > 1 ? fmtGap(maxGap) : '–') + kv('Most in one day', busiest.n + ' (' + fmtDate(busiest.t) + ')')));
+  keep.push(byT['Last 12 months']);
+  if (mine && (S.tags || []).length && byT['Tag insights']) keep.push(byT['Tag insights']);
+  return keep.filter(Boolean).join('');
 }
 function renderStats() { $('sg').innerHTML = statsHtml(E, true); }
 /* ---------- game: LDs, levels, badges, challenges, shop ---------- */
@@ -2821,7 +2947,7 @@ function ctxOf(arr) {
   var evl = G.evlog || {}, evs = {}; Object.keys(evl).forEach(function (k) { evs[evl[k].id] = 1; }); c.evd = Object.keys(evl).length; c.evk = Object.keys(evs).length; c.evGold = !!evs.gold; c.evLucky = !!evs.lucky7;
   c.chc = Object.keys(G.claimed).filter(function (k) { return k.indexOf('c:') === 0; }).length;
   c.L = lvlOf(loadPoints(arr) + G.bonus);
-  var gs = G.st || {}; c.fu = gs.fu || 0; c.dw = gs.dw || 0; c.pr = gs.pr || 0; c.wr = gs.wr || 0; c.tg = (S.tags || []).length; c.tgu = Object.keys(tu).length;
+  var gs = G.st || {}; c.nud = gs.nud || 0; c.fu = gs.fu || 0; c.dw = gs.dw || 0; c.pr = gs.pr || 0; c.wr = gs.wr || 0; c.tg = (S.tags || []).length; c.tgu = Object.keys(tu).length;
   return c;
 }
 function rarOf(r) { return r <= 20 ? 'Common' : r <= 45 ? 'Uncommon' : r <= 75 ? 'Rare' : r <= 120 ? 'Epic' : 'Legendary'; }
@@ -2882,7 +3008,7 @@ var BADGES = [
   ['g1', 'First Purchase', 'Buy something in the shop', 20, function (c) { return c.owned >= 1 || c.spent > 0; }],
   ['g3', 'Collector', 'Own 5 shop items', 60, function (c) { return c.owned >= 5; }],
   ['g4', 'Big Spender', 'Spend 500 LDs', 100, function (c) { return c.spent >= 500; }],
-  ['g5', 'Level 5', 'Reach level 5', 50, function (c) { return c.L >= 5; }],
+  ['g5', 'Poke', 'Send your first nudge', 20, function (c) { return c.nud >= 1; }],
   ['g10', 'Level 10', 'Reach level 10', 200, function (c) { return c.L >= 10; }],
   ['g11', 'Challenger', 'Claim 10 challenges', 60, function (c) { return c.chc >= 10; }],
   ['z1', 'Ice Cold', 'Use a streak freeze', 30, function (c) { return c.fu >= 1; }],
@@ -3147,35 +3273,38 @@ function chList(data, sc, title, reset) {
   }).join('');
   return card(sc === 'd' ? '' : ' b', title, '<p class="sub" style="margin:-4px 0 6px">Resets in ' + reset + '</p>' + rows);
 }
-var rwSub = 'rw', DROPSVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5.5 10 5.5 14.5a6.5 6.5 0 0 0 13 0C18.5 10 12 2.5 12 2.5Z"/></svg>';
+var rwAllB = false, rwSub = 'rw', DROPSVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C12 2.5 5.5 10 5.5 14.5a6.5 6.5 0 0 0 13 0C18.5 10 12 2.5 12 2.5Z"/></svg>';
 function renderRewards() {
   var T = totals(), now = Date.now(), cur = xpFor(T.L), nxt = xpFor(T.L + 1), es = earnedSet(), cl = claimables(), data = chData();
   var t = SMAP[G.eq.title], ttl = t && t.cost ? t.name : '', bo = G.boosts.filter(function (b) { return now >= b.from && now < b.to; })[0];
-  var top = '<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div style="font-size:18px">Level ' + T.L + '</div><div class="bigt">' + lvlName(T.L) + '</div>' + (ttl ? '<p class="sub">' + ttl + '</p>' : '') + '</div><div style="text-align:right"><div style="font-size:18px">LDs</div><div class="bigt">' + T.bal + '</div></div></div>' +
-    '<div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div><p class="sub">' + (nxt - T.xp) + ' more LDs earned to reach level ' + (T.L + 1) + '.</p>' +
-    '<p class="sub lx">LDs are drops you earn for sessions, streaks, challenges and badges. Spend them in the Shop. Spending never lowers your level.</p>' +
+  var dk0 = ymd(new Date()); if (!G.dx || G.dx.d !== dk0) { G.dx = {d: dk0, xp: T.xp}; saveG(); }
+  var today = Math.max(0, T.xp - G.dx.xp), clSum = cl.reduce(function (s0, x) { return s0 + x.r; }, 0);
+  var top = '<div class="rwbal">' + DROPSVG + '<b>' + T.bal + '</b><span>LDs</span></div>' +
+    '<p class="rwtoday">' + (today ? '+' + today + ' earned today' : 'Nothing earned yet today') + (ttl ? ' · ' + esc(ttl) : '') + '</p>' +
+    '<ul class="rwhow"><li><b>+10</b><span>for each session, up to 3 a day</span></li><li><b>+5 to +20</b><span>for your first session of the day. Longer streak, more LDs</span></li><li><b>Extra</b><span>for challenges and badges. Claim them below</span></li></ul>' +
     (bo ? '<p class="sub"><b>Double LDs active</b>, ends in ' + fmtGap(bo.to - now) + '.</p>' : '') +
-    (cl.length ? '<div class="row" style="max-width:300px"><button type="button" class="go" data-claim="all">Claim all (+' + cl.reduce(function (s, x) { return s + x.r; }, 0) + ')</button></div>' : '');
-  var out = [card(' span2 hero', 'Your level', top), chList(data, 'w', 'Weekly challenges', fmtGap(winOf('w').b - now))];
+    (cl.length ? '<div class="row" style="max-width:320px"><button type="button" class="go" data-claim="all">Claim ' + cl.length + (cl.length === 1 ? ' reward' : ' rewards') + ' (+' + clSum + ')</button></div>' : '');
+  var out = [card(' span2 hero', 'Your LDs', top), chList(data, 'w', 'Earn more', fmtGap(winOf('w').b - now)).replace('Resets in', 'Weekly challenges, reset in')];
   var got = BADGES.filter(function (b) { return es[b.id]; }).length;
   var nextB = BADGES.filter(function (b) { return !es[b.id] && !b.s; }).sort(function (a, b) { return a.r - b.r; }).slice(0, 3);
-  if (nextB.length) out.push(card('', 'Next badges to get', '<div class="nbx">' + nextB.map(function (b) { return '<div><b>' + b.n + '</b><span>' + b.d + '</span><i>+' + b.r + '</i></div>'; }).join('') + '</div>'));
-  out.push(card(' span2 soft', 'All badges (' + got + ' of ' + BADGES.length + ')', '<div class="badges">' + BADGES.map(function (b) {
+  var grid = rwAllB ? '<div class="badges">' + BADGES.map(function (b) {
     var on = es[b.id], c = G.claimed['b:' + b.id];
     var nm = on || !b.s ? b.n : '???', ds = on || !b.s ? b.d : 'Secret badge. Keep exploring.';
     return '<div class="bd' + (on ? ' on' : '') + '" data-b="' + b.id + '"><b>' + nm + '</b><span>' + ds + '</span><span class="rar ' + RC[b.rar] + '">' + b.rar + '</span>' + (on ? (c ? '<span><br>+' + b.r + ' claimed</span>' : '<br><button type="button" class="x" data-claim="b:' + b.id + '">Claim +' + b.r + '</button>') : '<span><br>Reward +' + b.r + '</span>') + '</div>';
-  }).join('') + '</div>'));
-  out.push(card(' span2', 'How to earn LDs', '<p class="sub">Each session earns 10 LDs, for the first 3 sessions a day. The first session of a day adds 5, plus 2 per streak day, up to 20. Challenges and badges add their own reward.</p>'));
+  }).join('') + '</div>' : '';
+  out.push(card(' span2', 'Badges', '<p class="rwbc"><b>' + got + '</b> of ' + BADGES.length + ' collected</p>' + (nextB.length ? '<div class="sec">Easiest to get next</div><div class="nbx">' + nextB.map(function (b) { return '<div><b>' + b.n + '</b><span>' + b.d + '</span><i>+' + b.r + '</i></div>'; }).join('') + '</div>' : '') + '<div class="row" style="max-width:320px;margin-top:12px"><button type="button" id="rwAllB">' + (rwAllB ? 'Hide all badges' : 'See all ' + BADGES.length + ' badges') + '</button></div>' + grid));
+  out.push('<div class="span2 rwshop"><button type="button" class="go" data-sub="shop">' + DROPSVG + 'Spend LDs in the Shop</button><p class="sub">Slime colours, drip styles, splashes, sounds and boosts.</p></div>');
   var heads = {slime: 'Slime colour', drip: 'Drip style', pour: 'Logging splash', snd: 'Sound pack', theme: 'Themes', splash: 'Splash colors', title: 'Titles', fx: 'Save effects', use: 'Boosts and capsules'}, shop = '';
   ['slime', 'drip', 'pour', 'snd', 'title', 'fx', 'use'].forEach(function (k) {
     shop += '<div class="sec">' + heads[k] + '</div><div class="shop">' + SHOP.filter(function (i) { return i.kind === k; }).map(function (i) { return itemHtml(i, T); }).join('') + '</div>';
   });
   var shopCard = card(' span2 b', 'Shop', '<div class="balbig">' + DROPSVG + '<span>' + T.bal + '</span></div><p class="sub" style="margin:0 0 4px">Your LDs. Spend them on the items below.</p>' + shop);
-  var seg = '<div class="span2"><div class="seg" id="rwSeg"><button type="button" data-sub="rw" aria-pressed="' + (rwSub !== 'shop') + '">Rewards</button><button type="button" data-sub="shop" aria-pressed="' + (rwSub === 'shop') + '">Shop</button></div></div>';
+  var seg = rwSub === 'shop' ? '<div class="span2" id="rwSeg"><button type="button" data-sub="rw" class="rwback">Back to rewards</button></div>' : '<span id="rwSeg" hidden></span>';
   balSet(T.bal);
   $('rw').innerHTML = seg + (rwSub === 'shop' ? shopCard : out.join(''));
 }
 $('rw').addEventListener('click', function (e) {
+  if (e.target.id === 'rwAllB') { rwAllB = !rwAllB; renderRewards(); return; }
   if (dailyClick(e)) return;
   var t = e.target.closest ? e.target.closest('button') : null; if (!t) return;
   var k;
@@ -3666,9 +3795,9 @@ function renderProfile() {
   var got = BADGES.filter(function (b) { return es[b.id]; }), top = got.slice().sort(function (a, b) { return b.r - a.r; }).slice(0, 4);
   var joined = new Date(CLOUD ? CUSER.created_at : ACC[uid].created).toLocaleDateString(undefined, {month: 'long', year: 'numeric'});
   var head = '<div style="display:flex;gap:16px;align-items:center"><div class="av" style="background:' + sp.plus + '">' + esc(P.name.charAt(0).toUpperCase()) + '</div><div style="min-width:0"><div class="bigt" style="font-size:30px;overflow-wrap:anywhere">@' + P.name + '</div>' + (ttl ? '<p class="sub" style="margin:2px 0 0">' + ttl + '</p>' : '') + '<p class="sub" style="margin:2px 0 0">Joined ' + joined + ' · ' + (P.pub ? 'public' : 'private') + '</p></div></div>' +
-    (P.bio ? '<p style="margin:14px 0 0">' + esc(P.bio) + '</p>' : '<p class="sub">No bio yet. Add one in Settings.</p>') + '<div class="row" style="max-width:260px"><button type="button" id="pfSet">Settings</button></div>';
+    (P.bio ? '<p style="margin:14px 0 0">' + esc(P.bio) + '</p>' : '<p class="sub">No bio yet. Add one below.</p>') + '<div class="row" style="max-width:260px"><button type="button" id="pfSet">Settings</button></div>';
   var nxt = xpFor(T.L + 1), cur = xpFor(T.L);
-  $('pf').innerHTML = card(' span2 hero', 'Profile', head + '<div class="plv"><span>Level ' + T.L + ' · ' + lvlName(T.L) + '</span><span>' + T.bal + ' LDs</span></div><div class="bar"><i style="width:' + Math.round((T.xp - cur) / (nxt - cur) * 100) + '%"></i></div>') +
+  $('pf').innerHTML = card(' span2 hero', 'Profile', head + '<div class="plv"><span>LDs</span><span>' + T.bal + '</span></div>') +
     
     card('', 'Numbers', '<div class="tiles">' + tile(E.length, 'sessions') + tile(E.filter(function (x) { return x.rel; }).length, 'loads') + tile(curStreak(E), 'day streak') + tile(c.streak, 'best streak') + tile(avgOf(c.sum, c.n), 'avg rating') + tile(got.length + '/' + BADGES.length, 'badges') + '</div>') +
     card(' span2 b', 'Top badges', top.length ? '<div class="badges">' + top.map(function (b) { return '<div class="bd on"><b>' + b.n + '</b><span>' + b.d + '</span></div>'; }).join('') + '</div>' : '<p class="empty">No badges yet.</p>');
@@ -3974,11 +4103,11 @@ function runSet(t) { try { if (t) localStorage.setItem(ukey('run'), String(t)); 
 function runFmt(ms) { var s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s / 60) % 60, x = s % 60; return (h ? h + ':' + pad(m) : m) + ':' + pad(x); }
 function runShow() {
   var t = uid ? runGet() : 0;
-  $('runGo').hidden = !!t; $('runOn').hidden = !t;
+  $('runGo').hidden = !!t; $('runOn').hidden = !t; var ha = $('runBox').parentNode; ha.classList.toggle('running', !!t); $('runHint').hidden = !!S.runHint || !!t;
   clearInterval(runIv); runIv = 0;
   if (t) { var up = function () { $('runT').textContent = runFmt(Date.now() - t); }; up(); runIv = setInterval(up, 1000); }
 }
-$('runGo').addEventListener('click', function () { runSet(Date.now()); toast('Timer started'); });
+$('runGo').addEventListener('click', function () { S.runHint = 1; saveS(); runSet(Date.now()); toast('Started. It counts live.'); });
 $('runX').addEventListener('click', function () { runSet(0); toast('Timer cancelled'); });
 $('runStop').addEventListener('click', function () {
   var t = runGet(); if (!t) return;
@@ -4335,7 +4464,7 @@ $('crewCard').addEventListener('change', function (e) {
 $('crewHome').addEventListener('click', function () { cmpOpen('crewCard'); });
 
 /* ===== folds: secondary cards collapse to one row ===== */
-var FOLD = {}, KEEP = {'Overview': 1, 'No stats yet': 1, 'Last 35 days': 1, 'Weekly challenges': 1, 'Next badges to get': 1, 'Shop': 1, 'Numbers': 1, 'Top badges': 1, 'Profile': 1, 'Your level': 1};
+var FOLD = {}, KEEP = {'This month': 1, 'When you log': 1, 'Records': 1, 'Last 12 months': 1, 'Tag insights': 1, 'Your social': 1, 'Earn more': 1, 'Badges': 1, 'Overview': 1, 'No stats yet': 1, 'Last 35 days': 1, 'Weekly challenges': 1, 'Next badges to get': 1, 'Shop': 1, 'Numbers': 1, 'Top badges': 1, 'Profile': 1, 'Your level': 1};
 var FSUM = {'All badges': 'Every badge, what it takes and its reward.', 'How to earn LDs': 'Where LDs come from.', 'More numbers': 'Average gap, total time, released share, average length.', 'Last session': 'Details of your most recent session.', 'Records': 'Your highs and lows.', 'Streaks and gaps': 'Current and longest streaks, gaps between sessions.', 'This month': 'Compared with last month.', 'Time of day': 'When your sessions happen.', 'Weekdays': 'Your busiest days.', 'Rating spread': 'How you rate your sessions.', 'Sweet spot': 'Which length rates best.', 'Released or not': 'Released share and ratings.', 'Calendar': 'Counts by day, week, month and year.', 'Podium': 'Top 3 days, ratings and lengths.', 'Last 12 months': 'Sessions per month.'};
 function foldAll() {
   ['statsView', 'friendsView', 'rewardsView', 'profileView'].forEach(function (v) {
@@ -4599,7 +4728,7 @@ function dropLoop(now) {
 function fAddToggle(on) { var f = $('addForm'); f.hidden = on === undefined ? !f.hidden : !on; $('fAddBtn').setAttribute('aria-expanded', String(!f.hidden)); if (!f.hidden) setTimeout(function () { $('fq').focus(); }, 30); }
 $('fAddBtn').addEventListener('click', function () { fAddToggle(); });
 function fInvite() {
-  var me = P.name ? '@' + P.name : 'me', txt = 'Add me on Creamer: ' + me, url = 'https://creamer.ink';
+  var me = P.name ? '@' + P.name : 'me', txt = (S.inviteMsg || 'Add me on Creamer') + ': ' + me, url = 'https://creamer.ink';
   if (navigator.share) { navigator.share({title: 'Creamer', text: txt, url: url}).catch(function () {}); return; }
   var full = txt + '\n' + url;
   try { navigator.clipboard.writeText(full).then(function () { toast('Invite copied. Paste it in any chat.'); }, function () { toast(full); }); } catch (e) { toast(full); }
@@ -4654,6 +4783,145 @@ function renderCompete() {
 }
 (function () { var rc = renderCrew; renderCrew = function () { var r = rc.apply(this, arguments); try { renderCompete(); } catch (e) {} return r; }; })();
 (function () { var rd = renderDuels; renderDuels = function () { var r = rd.apply(this, arguments); if (!$('cmpOv').hidden) chipAll(); return r; }; })();
+
+/* ===== social: feed, reactions, nudges ===== */
+var SOCR = [], SOCAT = 0, SOCBUSY = 0, SOCOK = true, RXT = null, NMTO = '';
+var RNAME = {drop: 'Splash', fire: 'Fire', crown: 'Respect', moon: 'Rest up'}, RORD = ['drop', 'fire', 'crown', 'moon'];
+var RIC = {drop: '<path d="M12 3C12 3 6 10 6 14.5a6 6 0 0 0 12 0C18 10 12 3 12 3Z"/>', fire: '<path d="M12 3c.5 3.5 5 5.5 5 10.5a5 5 0 0 1-10 0c0-2.6 1.6-4 2.4-6 .9 1.2 1.6 2.4 1.8 3.8C12.4 9 12.6 6 12 3Z"/>', crown: '<path d="M4 8l4 4 4-6 4 6 4-4-1.6 10H5.6Z"/>', moon: '<path d="M19 14.5A7.5 7.5 0 1 1 9.5 5a6 6 0 0 0 9.5 9.5Z"/>'};
+function rIc(k, sz) { return '<svg class="ric" width="' + (sz || 18) + '" height="' + (sz || 18) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">' + (RIC[k] || RIC.drop) + '</svg>'; }
+function socDK() { return ymd(new Date()); }
+function socDemoRd() { try { return JSON.parse(localStorage.getItem('creamer:social') || '[]'); } catch (e) { return []; } }
+function socDemoWr(a) { try { localStorage.setItem('creamer:social', JSON.stringify(a.slice(-800))); } catch (e) {} }
+function idName(id) { if (id === uid) return P.name; for (var k in FR) if (FR[k] && FR[k].id === id) return k; return null; }
+function canNudge(n) {
+  if (!n || F.indexOf(n) < 0) return false; var u = api.find(n); if (!u || u.priv) return false;
+  if (CLOUD && !(FR[n] && FR[n].id)) return false;
+  return tankOf(u.entries) >= 1 && !(S.nudged && S.nudged[n] === socDK());
+}
+async function socLoad() {
+  if (!uid || SOCBUSY) return; SOCBUSY = 1; SOCAT = Date.now();
+  try {
+    if (CLOUD) {
+      var r = await sb.from('social').select('from_id,to_id,kind,target,emoji,msg,from_name,created_at').gte('created_at', new Date(Date.now() - 8 * 86400000).toISOString()).order('created_at', {ascending: false}).limit(500);
+      if (r.error) SOCOK = false;
+      else { SOCOK = true; SOCR = (r.data || []).map(function (x) { return {from: x.from_name, to: idName(x.to_id), kind: x.kind, target: x.target == null ? null : +x.target, emoji: x.emoji, msg: x.msg || '', at: Date.parse(x.created_at)}; }).filter(function (x) { return x.to; }); }
+    } else {
+      var all = socDemoRd(), lim = Date.now() - 8 * 86400000;
+      var sf = F.filter(function (n) { return SEED[n]; })[0];
+      if (sf && tankOf(E) >= 1 && E.length && !all.some(function (x) { return x.kind === 'nudge' && x.to === P.name && x.from === sf && ymd(new Date(x.at)) === socDK(); })) { all.push({from: sf, to: P.name, kind: 'nudge', msg: '', at: Date.now()}); socDemoWr(all); }
+      SOCR = all.filter(function (x) { return x.at > lim; }).sort(function (a, b) { return b.at - a.at; });
+    }
+  } catch (e) { SOCOK = false; }
+  SOCBUSY = 0; renderSocial();
+}
+function reactsFor(owner, target) { return SOCR.filter(function (r) { return r.kind === 'react' && r.to === owner && r.target === target; }); }
+function myReact(owner, target) { var m = reactsFor(owner, target).filter(function (r) { return r.from === P.name; })[0]; return m ? m.emoji : null; }
+function sendReact(owner, target, emoji) {
+  var cur = myReact(owner, target), nw = cur === emoji ? null : emoji;
+  SOCR = SOCR.filter(function (r) { return !(r.kind === 'react' && r.from === P.name && r.to === owner && r.target === target); });
+  if (nw) SOCR.unshift({from: P.name, to: owner, kind: 'react', target: target, emoji: nw, at: Date.now()});
+  if (CLOUD) { var fo = FR[owner]; if (fo && fo.id) sb.rpc('social_react', {p_to: fo.id, p_target: target, p_emoji: nw}).then(function (r) { if (r.error) toast('Could not save the reaction. Is social.sql installed?'); }); }
+  else { var all = socDemoRd().filter(function (r) { return !(r.kind === 'react' && r.from === P.name && r.to === owner && r.target === target); }); if (nw) all.push({from: P.name, to: owner, kind: 'react', target: target, emoji: nw, at: Date.now()}); socDemoWr(all); }
+  buzz([10]); renderSocial();
+}
+function nudgeText(from, msg) { return msg ? '@' + from + ': ' + msg : '@' + from + ' thinks your tank is full'; }
+function nudgeGo(n) {
+  if (!canNudge(n)) { toast(S.nudged && S.nudged[n] === socDK() ? 'You already nudged ' + fn(n) + ' today.' : 'You can nudge once their tank is full.'); return; }
+  if (!S.nmSet) { NMTO = n; $('nmIn').value = S.nudgeMsg || ''; nmPrev(); ovOpen('nmOv'); setTimeout(function () { $('nmIn').focus(); }, 60); return; }
+  S.nudged = S.nudged || {}; S.nudged[n] = socDK(); saveS();
+  G.st = G.st || {}; G.st.nud = (G.st.nud || 0) + 1; saveG();
+  if (CLOUD) { var fo = FR[n]; sb.rpc('social_nudge', {p_to: fo.id, p_msg: S.nudgeMsg || ''}).then(function (r) { if (r.error) toast('Could not send the nudge. Is social.sql installed?'); else if (r.data === 'too_soon') toast('You already nudged ' + fn(n) + ' today.'); }); }
+  else { var all = socDemoRd(); all.push({from: P.name, to: n, kind: 'nudge', msg: S.nudgeMsg || '', at: Date.now()}); socDemoWr(all); }
+  toast('Nudge sent to ' + fn(n) + '.'); buzz([20, 40, 30]); render();
+}
+function nmPrev() { $('nmPrev').textContent = nudgeText(P.name, $('nmIn').value.trim()); }
+$('nmIn').addEventListener('input', nmPrev);
+$('nmGo').addEventListener('click', function () { S.nudgeMsg = $('nmIn').value.trim().slice(0, 80); S.nmSet = true; saveS(); ovClose('nmOv'); var n = NMTO; NMTO = ''; if (n) nudgeGo(n); });
+function ovOpen(id) { var o = $(id); clearTimeout(o._t); o.classList.remove('out'); o.hidden = false; }
+function ovClose(id) { var o = $(id); if (o.hidden) return; if (FXON()) { o.classList.add('out'); clearTimeout(o._t); o._t = setTimeout(function () { o.hidden = true; o.classList.remove('out'); }, 200); } else o.hidden = true; }
+['feedOv', 'rxOv', 'nmOv'].forEach(function (id) { $(id).addEventListener('click', function (e) { if (e.target === $(id)) ovClose(id); }); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ['feedOv', 'rxOv', 'nmOv'].forEach(ovClose); });
+function feedItems() {
+  var it = [], now = Date.now(), wk = now - 7 * 86400000;
+  F.forEach(function (n) {
+    var u = api.find(n); if (!u || u.priv) return; var es = u.entries || [];
+    es.forEach(function (x) { if (x.rel && x.t > wk && x.t <= now) it.push({k: 'load', who: n, t: x.t, rate: x.rate}); });
+    var st = curStreak(es), l = lastOf(es); if (l && MILES.indexOf(st) >= 0 && now - l.t < 2 * 86400000) it.push({k: 'streak', who: n, t: l.t + 1, n: st});
+  });
+  SOCR.forEach(function (r) { if (r.kind === 'react' && r.to === P.name && r.from !== P.name && r.at > wk) it.push({k: 'got', who: r.from, t: r.at, emoji: r.emoji}); });
+  return it.sort(function (a, b) { return b.t - a.t; });
+}
+function reactRow(owner, target) {
+  var rs = reactsFor(owner, target), cnt = {}, mine = myReact(owner, target), key = esc(owner) + '|' + target;
+  rs.forEach(function (r) { cnt[r.emoji] = (cnt[r.emoji] || 0) + 1; });
+  var h = RORD.filter(function (k) { return cnt[k]; }).map(function (k) { return '<button type="button" class="rxc" data-rx="' + key + '|' + k + '" aria-pressed="' + (mine === k) + '" aria-label="' + RNAME[k] + ', ' + cnt[k] + '">' + rIc(k, 16) + '<span>' + cnt[k] + '</span></button>'; }).join('');
+  return '<div class="rxrow">' + h + '<button type="button" class="rxc rxadd" data-rxp="' + key + '" aria-label="React">' + (h ? '+' : rIc('drop', 16) + '<span>React</span>') + '</button></div>';
+}
+function feedHtml(x) {
+  var who = '<b>' + esc(fn(x.who)) + '</b>', txt, row = '';
+  if (x.k === 'load') { txt = who + ' logged a load · ' + x.rate + '/10'; row = reactRow(x.who, x.t); }
+  else if (x.k === 'streak') { txt = who + ' hit a ' + x.n + '-day streak'; row = reactRow(x.who, x.t); }
+  else txt = who + ' reacted ' + rIc(x.emoji, 16) + ' to your load';
+  return '<div class="fitem">' + avatar(x.who, true) + '<div class="fitx"><div class="fitt">' + txt + '</div><div class="fitm">' + sinceLabel(x.t, true) + '</div>' + row + '</div></div>';
+}
+function renderSocial() {
+  if (!uid) return;
+  var it = feedItems(), w = $('feedWrap');
+  w.hidden = !F.length || !it.length;
+  $('feedTop').innerHTML = it.slice(0, 2).map(feedHtml).join('');
+  $('feedAll').hidden = it.length <= 2;
+  if (!$('feedOv').hidden) $('feedFull').innerHTML = it.slice(0, 40).map(feedHtml).join('') || '<p class="empty">Nothing yet this week.</p>';
+  if (!$('rxOv').hidden && RXT) rxPickRender();
+  var seen = S.nSeen || 0, mute = S.muteN || {};
+  var nd = SOCR.filter(function (r) { return r.kind === 'nudge' && r.to === P.name && r.from !== P.name && r.at > seen && !mute[r.from]; })[0], nb = $('nudgeBar');
+  if (nd) { nb.hidden = false; nb.innerHTML = avatar(nd.from, true) + '<div class="nbt"><b>' + esc(fn(nd.from)) + ' nudged you</b><span>' + esc(nd.msg ? nd.msg : 'Your tank is full. Time to log?') + '</span></div><button type="button" class="go" data-nlog="' + nd.at + '">Log</button><button type="button" class="nbx2" data-nx="' + nd.at + '" aria-label="Dismiss">&#215;</button>';
+    if (!nb._at || nb._at !== nd.at) { nb._at = nd.at; buzz([20, 40, 20]); } }
+  else nb.hidden = true;
+  var ll = lastOf(E.filter(function (x) { return x.rel; })), rh = $('rxHome');
+  var rs = ll ? reactsFor(P.name, ll.t).filter(function (r) { return r.from !== P.name; }) : [];
+  if (rs.length) { rh.hidden = false; var ks = []; rs.forEach(function (r) { if (ks.indexOf(r.emoji) < 0) ks.push(r.emoji); });
+    rh.innerHTML = '<span class="rxav">' + rs.slice(0, 3).map(function (r) { return avatar(r.from, true); }).join('') + '</span><span class="rxt"><b>' + rs.length + (rs.length === 1 ? ' reaction' : ' reactions') + '</b> on your last load</span><span class="rxi">' + ks.map(function (k) { return rIc(k, 18); }).join('') + '</span>'; }
+  else rh.hidden = true;
+}
+function rxPickRender() {
+  var p = RXT.split('|'), owner = p[0], t = +p[1], mine = myReact(owner, t);
+  $('rxPick').innerHTML = RORD.map(function (k) { return '<button type="button" data-rxe="' + k + '" aria-pressed="' + (mine === k) + '"><span>' + rIc(k, 28) + '</span>' + RNAME[k] + '</button>'; }).join('');
+}
+document.addEventListener('click', function (e) {
+  if (!e.target.closest) return;
+  var b;
+  if ((b = e.target.closest('[data-rx]'))) { var q = b.getAttribute('data-rx').split('|'); sendReact(q[0], +q[1], q[2]); return; }
+  if ((b = e.target.closest('[data-rxp]'))) { RXT = b.getAttribute('data-rxp'); rxPickRender(); ovOpen('rxOv'); return; }
+  if ((b = e.target.closest('[data-rxe]'))) { var q2 = RXT.split('|'); sendReact(q2[0], +q2[1], b.getAttribute('data-rxe')); ovClose('rxOv'); return; }
+  if ((b = e.target.closest('[data-nudge]'))) { e.stopPropagation(); nudgeGo(b.getAttribute('data-nudge')); return; }
+  if ((b = e.target.closest('[data-close]'))) { ovClose(b.getAttribute('data-close')); return; }
+  if ((b = e.target.closest('[data-nx]'))) { S.nSeen = +b.getAttribute('data-nx'); saveS(); renderSocial(); return; }
+  if ((b = e.target.closest('[data-nlog]'))) { S.nSeen = +b.getAttribute('data-nlog'); saveS(); renderSocial(); $('add').click(); return; }
+  if (e.target.closest('#feedAll')) { ovOpen('feedOv'); renderSocial(); return; }
+  if (e.target.closest('#rxHome')) { goTab('friends'); ovOpen('feedOv'); renderSocial(); return; }
+});
+setInterval(function () { if (uid && !document.hidden) socLoad(); }, 60000);
+document.addEventListener('visibilitychange', function () { if (!document.hidden && uid && Date.now() - SOCAT > 20000) socLoad(); });
+(function () { var rc = renderCompete; renderCompete = function () { var r = rc.apply(this, arguments); if (uid && !SOCBUSY && Date.now() - SOCAT > 60000) socLoad(); else renderSocial(); return r; }; })();
+/* demo: sample friends react to your loads */
+function demoReacts(t) {
+  if (CLOUD) return; var sf = F.filter(function (n) { return SEED[n]; }); if (!sf.length) return;
+  sf.slice(0, 3).forEach(function (n, i) { setTimeout(function () { var all = socDemoRd(); all.push({from: n, to: P.name, kind: 'react', target: t, emoji: RORD[(i + Math.floor(t / 1000)) % 4], at: Date.now()}); socDemoWr(all); socLoad(); }, 3500 + i * 2500); });
+}
+/* profile: your social */
+function socCardFill() {
+  if (document.activeElement !== $('psBio')) $('psBio').value = P.bio || '';
+  if (document.activeElement !== $('psNm')) $('psNm').value = S.nudgeMsg || '';
+  if (document.activeElement !== $('psInv')) $('psInv').value = S.inviteMsg || '';
+  $('psNmP').textContent = nudgeText(P.name || 'you', $('psNm').value.trim());
+  $('psInvP').textContent = ($('psInv').value.trim() || 'Add me on Creamer') + ': @' + (P.name || 'you') + ' creamer.ink';
+}
+$('psBio').addEventListener('input', function () { P.bio = $('psBio').value.slice(0, 80); if ($('bio')) $('bio').value = P.bio; saveP(); });
+$('psBio').addEventListener('change', function () { renderProfile(); });
+$('psNm').addEventListener('input', function () { S.nudgeMsg = $('psNm').value.trim().slice(0, 80); S.nmSet = true; saveS(); socCardFill(); });
+$('psInv').addEventListener('input', function () { S.inviteMsg = $('psInv').value.trim().slice(0, 100); saveS(); socCardFill(); });
+(function () { var rp = renderProfile; renderProfile = function () { var r = rp.apply(this, arguments); try { socCardFill(); } catch (e) {} return r; }; })();
+
 </script>
 </body>
 </html>
