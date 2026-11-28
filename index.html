@@ -1608,6 +1608,7 @@ html.awlock,html.awlock body{overflow:hidden}
 #pePrev{display:flex;align-items:center;gap:12px;background:#121217;border:1px solid #2c2c37;border-top-color:rgba(255,255,255,.16);border-radius:16px;padding:12px 14px}
 .peav{width:46px;height:46px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font:400 24px "Bebas Neue",sans-serif;color:#fff;background:radial-gradient(circle at 35% 30%,#ff4d73,#9d0f30 70%);box-shadow:0 0 0 2px #b9bdc5}
 .pepn{display:flex;flex-direction:column;min-width:0}.pepn b{font-size:19px;overflow-wrap:anywhere}.pepn b small{font-weight:500;font-size:15px;color:#b9b9c7}.pepn>small{font-size:14px;color:#b9b9c7}
+#peOv select{width:100%;height:48px;border-radius:12px;border:1px solid #2c2c37;background:#1b1b23;color:#f4f4f7;padding:0 12px;font:600 17px "Barlow Condensed",sans-serif;margin:0}
 
 html[data-theme] .nt{background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;border-top-color:rgba(255,255,255,.18)!important;box-shadow:0 12px 34px rgba(0,0,0,.55)!important;color:var(--t-ink,#f4f4f7)}
 html[data-theme] .nt .ntb{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb b{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb span{color:var(--t-mute,#b9b9c7)}
@@ -1644,6 +1645,15 @@ html[data-theme] .nt .ntb{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb b
 .onbfoot{display:flex;flex-direction:column;gap:6px;margin-top:22px}
 #onb #onbNext{height:56px;border-radius:16px;border:0;background:#e11d48;color:#fff;font:700 20px "Barlow Condensed",sans-serif;width:100%;margin:0;box-shadow:0 10px 30px rgba(225,29,72,.35);text-transform:none;letter-spacing:.02em}
 #onb #onbSkip{height:48px;background:none;border:0;color:#b9b9c7;font:700 17px "Barlow Condensed",sans-serif;width:100%;margin:0;box-shadow:none;text-transform:none;letter-spacing:0}
+#onbTank{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px}
+#onb .onbt{height:64px;border-radius:14px;border:1px solid #2c2c37;background:#14141a;color:#f4f4f7;font:400 26px/1 "Bebas Neue",sans-serif;width:auto;margin:0;box-shadow:none;padding:0}
+#onb .onbt.on{background:#2a0f17;border-color:#e11d48;color:#fff}
+#onb input[type=number]{width:100%;box-sizing:border-box;height:56px;border-radius:14px;border:1px solid #2c2c37;background:#14141a;color:#f4f4f7;padding:0 16px;font:600 22px "Barlow Condensed",sans-serif;margin:12px 0 0}
+#onb .onbsel{height:56px;border-radius:14px;border:1px solid #2c2c37;background:#14141a;color:#f4f4f7;padding:0 12px;font:600 19px "Barlow Condensed",sans-serif;flex:none;width:auto;margin:0;color-scheme:dark}
+#onb .onbsw{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:16px 0 0;padding:14px 16px;border-radius:16px;border:1px solid #2c2c37;background:#121217;color:#f4f4f7;text-align:left;box-shadow:none;text-transform:none;letter-spacing:0;height:auto}
+.onbsw span{display:flex;flex-direction:column}.onbsw b{font:700 18px "Barlow Condensed",sans-serif}.onbsw small{font-size:14px;color:#b9b9c7}
+.onbsw i{width:52px;height:30px;border-radius:15px;background:#3a3a46;position:relative;flex:none;transition:background .2s}.onbsw i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.onbsw[aria-checked="true"] i{background:#e11d48}.onbsw[aria-checked="true"] i::after{left:25px}
 #holo{position:fixed;inset:0;z-index:98;background:rgba(4,4,6,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;perspective:900px;padding:20px}
 #holo[hidden]{display:none}
 .hcard{--hx:50%;--hy:50%;--rx:0deg;--ry:0deg;position:relative;width:min(280px,78vw);aspect-ratio:5/7;border-radius:22px;background:linear-gradient(160deg,#1c1c24,#0d0d12);border:1px solid rgba(255,255,255,.25);box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 60px rgba(255,255,255,.12);overflow:hidden;transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;animation:hflip 1s cubic-bezier(.2,1.2,.3,1)}
@@ -2014,6 +2024,7 @@ html.nofx .livedot{animation:none}
 <div class="pef"><label for="peName"><span>Name</span><span id="peCount">0 / 30</span></label><input type="text" id="peName" maxlength="30" autocomplete="nickname" placeholder="Your name"><p>Friends see this above your @. Any language.</p></div>
 <div class="pef"><span class="pel">Username</span><div class="peu">@<b id="peUser"></b></div><p>Change it in Settings, Account.</p></div>
 <div class="pef"><label for="peBio">Bio</label><input type="text" id="peBio" maxlength="80" placeholder="A line about you" autocomplete="off"></div>
+<div class="pef" id="peWordF"><label for="peWord">Your word</label><select id="peWord" class="nolw"><option value="load">Load</option><option value="nut">Nut</option><option value="bust">Bust</option><option value="drop">Drop</option><option value="release">Release</option><option value="finish">Finish</option><option value="own">Your own</option></select><input type="text" id="peWordOwn" maxlength="16" placeholder="Your word" autocomplete="off" hidden style="margin-top:8px"><p class="nolw">Used everywhere in the app instead of "load".</p></div>
 <div class="pef"><span class="pel"><span>Pinned awards</span><span>Pick 3</span></span><div id="pePick"></div></div>
 <div class="pef"><span class="pel">How friends see you</span><div id="pePrev"></div></div>
 </div></div>
@@ -2232,9 +2243,9 @@ html.nofx .livedot{animation:none}
 </section>
 <section class="card">
 <h2>Tank</h2>
-<label for="tankSel" style="margin-top:0">Fills up in</label>
-<select id="tankSel"><option value="3">3 hours</option><option value="6">6 hours</option><option value="12">12 hours</option><option value="24">1 day</option><option value="36">1.5 days</option><option value="48">2 days</option><option value="72">3 days</option><option value="120">5 days</option><option value="168">1 week</option><option value="336">2 weeks</option></select>
-<p class="note">The tank on Home empties when you log a load (a released session) and fills back up over this time.</p>
+<label for="tankSel" style="margin-top:0">Recharge time</label>
+<select id="tankSel"><option value="1">1 hour</option><option value="3">3 hours</option><option value="6">6 hours</option><option value="12">12 hours</option><option value="24">1 day</option><option value="36">1.5 days</option><option value="48">2 days</option><option value="72">3 days</option><option value="120">5 days</option><option value="168">1 week</option><option value="336">2 weeks</option><option value="custom">Custom</option></select><div id="tankC" hidden style="display:none;gap:8px;margin-top:8px"><input type="number" id="tankN" min="1" max="999" inputmode="numeric" aria-label="Amount" style="flex:1"><select id="tankU" aria-label="Unit" style="width:auto"><option value="1">hours</option><option value="24">days</option></select></div>
+<p class="note">The tank on Home shows how full you are. It empties when you log a load (a released session) and fills back up over this time. For some people that is an hour, for others 3 days. Friends see a small version of your tank next to your name.</p>
 </section>
 <section class="card b">
 <h2>Tags</h2>
@@ -2305,14 +2316,15 @@ html.nofx .livedot{animation:none}
 </div>
 <div id="onb" hidden role="dialog" aria-modal="true" aria-label="Set up your profile"><div class="onbin">
 <div class="onbtop"><button type="button" id="onbBack">Back</button><div id="onbDots"></div><span style="width:44px"></span></div>
-<section class="onbc"><p class="onbk">Step 1 of 4</p><h2 class="onbh">What should friends call you?</h2><p class="onbp">Your name shows above your @ on your profile, in friends lists and in the feed. Any name, any language.</p>
+<section class="onbc"><p class="onbk">Step 1 of 5</p><h2 class="onbh">What should friends call you?</h2><p class="onbp">Your name shows above your @ on your profile, in friends lists and in the feed. Any name, any language.</p>
 <label class="onbl" for="onbName">Your name</label><input type="text" id="onbName" maxlength="30" autocomplete="nickname" placeholder="Name or nickname" style="margin-top:6px"><p class="onbnote" id="onbHello"></p></section>
-<section class="onbc"><p class="onbk">Step 2 of 4</p><h2 class="onbh">Pick your word</h2><p class="onbp">What do you call it? The app will use your word everywhere.</p>
+<section class="onbc"><p class="onbk">Step 2 of 5</p><h2 class="onbh">Pick your word</h2><p class="onbp">What do you call it? The app will use your word everywhere.</p>
 <div id="onbWord"></div><label class="onbl" for="onbOwn">Or type your own</label><input type="text" id="onbOwn" maxlength="16" autocomplete="off" placeholder="Your word" style="margin-top:6px"><div id="onbPrev" class="nolw"></div></section>
-<section class="onbc"><p class="onbk">Step 3 of 4</p><h2 class="onbh nolw" id="onbQ3">When was your last load?</h2><p class="onbp">This starts your timer and your tank from the right moment.</p>
+<section class="onbc"><p class="onbk">Step 3 of 5</p><h2 class="onbh nolw" id="onbQT">How fast do you recharge?</h2><p class="onbp nolw" id="onbPT">After a load your tank empties. This is how long it takes to fill back up.</p><div id="onbTank" role="group" aria-label="Recharge time"></div><div class="onbrow" id="onbTC" hidden><input type="number" id="onbTN" min="1" max="999" inputmode="numeric" aria-label="Amount" style="margin-top:12px"><select id="onbTU" aria-label="Unit" class="onbsel"><option value="1">hours</option><option value="24">days</option></select></div><p class="onbnote" id="onbTMsg"></p></section>
+<section class="onbc"><p class="onbk">Step 4 of 5</p><h2 class="onbh nolw" id="onbQ3">When was your last load?</h2><p class="onbp">This starts your timer and your tank from the right moment.</p>
 <label class="onbl" for="onbWhen">Date and time</label><input type="datetime-local" id="onbWhen" style="margin-top:6px">
 <p class="onbl">How was it?</p><div id="onbRate" role="group" aria-label="Rating from 1 to 10"></div><p class="onbnote" id="onbLMsg" role="alert"></p></section>
-<section class="onbc"><p class="onbk">Step 4 of 4</p><h2 class="onbh">Add a friend</h2><p class="onbp">Creamer is better with friends. Add someone by their username, or skip and do it later from Friends.</p>
+<section class="onbc"><p class="onbk">Step 5 of 5</p><h2 class="onbh">Add a friend</h2><p class="onbp">Creamer is better with friends. Add someone by their username, or skip and do it later from Friends.</p><button type="button" id="onbPub" class="onbsw" role="switch" aria-checked="true"><span><b>Friends can see my stats</b><small>Turn it off any time in Settings</small></span><i></i></button>
 <label class="onbl" for="onbFr">Their username</label><div class="onbrow"><input type="text" id="onbFr" maxlength="21" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="username" style="margin-top:6px"><button type="button" id="onbFrGo">Add</button></div><p class="onbnote" id="onbFrMsg" role="status"></p></section>
 <div class="onbfoot"><button type="button" id="onbNext">Continue</button><button type="button" id="onbSkip">Skip</button></div>
 </div></div>
@@ -4735,9 +4747,10 @@ function tankShow() {
   $('tSub').textContent = lv >= 1 ? 'Full' : 'Full in ' + fmtGap(ms - el);
   $('tank').classList.toggle('full', lv >= 1);
   $('tank').setAttribute('aria-label', 'Tank ' + Math.floor(lv * 100) + ' percent full');
-  var sel = $('tankSel'); if (document.activeElement !== sel) sel.value = String(tankHrs());
+  var sel = $('tankSel'), th = tankHrs(), pre = [].some.call(sel.options, function (o) { return o.value === String(th); });
+  if (document.activeElement !== sel && document.activeElement !== $('tankN') && document.activeElement !== $('tankU')) { sel.value = pre ? String(th) : 'custom'; tankCShow(!pre, th); }
 }
-$('tankSel').addEventListener('change', function () { S.tank = +$('tankSel').value; saveS(); tankShow(); });
+$('tankSel').addEventListener('change', function () { if ($('tankSel').value === 'custom') { tankCShow(true); $('tankN').focus(); return; } tankCShow(false); S.tank = +$('tankSel').value; saveS(); tankShow(); });
 
 
 
@@ -5813,7 +5826,7 @@ function lwApply() {
 /* ---------- Setup cards after sign-up ---------- */
 var ONB = null;
 function onbOpen() {
-  ONB = {i: 0, lw: (S.lw || 'load'), rate: 0, done: {}};
+  ONB = {i: 0, lw: (S.lw || 'load'), rate: 0, tank: tankHrs(), pub: P.pub !== false};
   $('onbName').value = cleanName(P.dname);
   var d = new Date(Date.now() - 3600000); d.setSeconds(0, 0);
   $('onbWhen').value = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
@@ -5827,10 +5840,16 @@ function onbClose() {
 function onbShow() {
   var i = ONB.i, f = lwForms(ONB.lw);
   document.querySelectorAll('#onb .onbc').forEach(function (c, k) { c.hidden = k !== i; });
-  $('onbDots').innerHTML = [0, 1, 2, 3].map(function (k) { return '<i' + (k === i ? ' class="on"' : k < i ? ' class="was"' : '') + '></i>'; }).join('');
+  $('onbDots').innerHTML = [0, 1, 2, 3, 4].map(function (k) { return '<i' + (k === i ? ' class="on"' : k < i ? ' class="was"' : '') + '></i>'; }).join('');
   $('onbBack').style.visibility = i ? 'visible' : 'hidden';
-  $('onbNext').textContent = i === 3 ? 'Finish' : i === 2 ? 'Save and continue' : 'Continue';
-  $('onbSkip').textContent = i === 3 ? 'Skip for now' : i === 2 ? "I don't remember" : 'Skip';
+  $('onbNext').textContent = i === 4 ? 'Finish' : i === 3 ? 'Save and continue' : 'Continue';
+  $('onbSkip').textContent = i === 4 ? 'Skip for now' : i === 3 ? "I don't remember" : 'Skip';
+  var TP = [[1, '1 hour'], [12, '12 hours'], [24, '1 day'], [72, '3 days'], [168, '1 week']], isPre = TP.some(function (o) { return o[0] === ONB.tank; }), cus = ONB.tc || !isPre;
+  $('onbTank').innerHTML = TP.map(function (o) { var on = !cus && ONB.tank === o[0]; return '<button type="button" class="onbt' + (on ? ' on' : '') + '" data-t="' + o[0] + '" aria-pressed="' + on + '">' + o[1] + '</button>'; }).join('') + '<button type="button" class="onbt' + (cus ? ' on' : '') + '" data-t="c" aria-pressed="' + cus + '">Custom</button>';
+  $('onbTC').hidden = !cus;
+  if (cus && document.activeElement !== $('onbTN') && document.activeElement !== $('onbTU')) { var d = ONB.tank % 24 === 0; $('onbTU').value = d ? '24' : '1'; $('onbTN').value = d ? ONB.tank / 24 : ONB.tank; }
+  $('onbPT').textContent = 'The tank on your Home screen shows how full you are. Recharge time is how long it takes to fill back up after a ' + f[0] + '. For some people that is an hour, for others 3 days. Pick yours or enter your own. Friends see a small version of your tank next to your name.';
+  $('onbPub').setAttribute('aria-checked', String(ONB.pub));
   $('onbWord').innerHTML = LW_LIST.map(function (w) { return '<button type="button" class="onbw' + (w[0] === f[0] ? ' on' : '') + '" data-w="' + w[0] + '" aria-pressed="' + (w[0] === f[0]) + '">' + w[0].charAt(0).toUpperCase() + w[0].slice(1) + '</button>'; }).join('');
   if (LW_LIST.every(function (w) { return w[0] !== f[0]; })) $('onbOwn').value = f[0];
   $('onbPrev').innerHTML = '<span>Time since last ' + esc(f[0]) + '</span><b>3H 42M</b><small>' + esc(lwCase('Loads', f[1])) + ' this week: 4</small>';
@@ -5874,18 +5893,39 @@ $('onbOwn').addEventListener('input', function () { if (!ONB) return; var v = $(
 $('onbRate').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('[data-r]') : null; if (!b || !ONB) return; ONB.rate = +b.getAttribute('data-r'); $('onbLMsg').textContent = ''; onbShow(); });
 $('onbFrGo').addEventListener('click', onbAddFriend);
 $('onbFr').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); onbAddFriend(); } });
+$('onbTank').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('[data-t]') : null; if (!b || !ONB) return; var v = b.getAttribute('data-t'); if (v === 'c') { ONB.tc = true; onbShow(); setTimeout(function () { $('onbTN').focus(); }, 50); return; } ONB.tc = false; ONB.tank = +v; $('onbTMsg').textContent = ''; onbShow(); });
+function onbTCRead() { var n = parseFloat($('onbTN').value), h = Math.round(n * +$('onbTU').value); if (!(h >= 1 && h <= 8760)) { $('onbTMsg').textContent = 'Enter between 1 hour and 365 days.'; return 0; } $('onbTMsg').textContent = ''; ONB.tank = h; return h; }
+$('onbTN').addEventListener('input', function () { if (ONB) onbTCRead(); });
+$('onbTU').addEventListener('change', function () { if (ONB) onbTCRead(); });
+function tankCShow(on, h) { $('tankC').hidden = !on; $('tankC').style.display = on ? 'flex' : 'none'; if (on && h && document.activeElement !== $('tankN')) { var d = h % 24 === 0; $('tankU').value = d ? '24' : '1'; $('tankN').value = d ? h / 24 : h; } }
+function tankCSave() { var n = parseFloat($('tankN').value), h = Math.round(n * +$('tankU').value); if (h >= 1 && h <= 8760) { S.tank = h; saveS(); tankShow(); } }
+$('tankN').addEventListener('change', tankCSave); $('tankU').addEventListener('change', tankCSave);
+$('onbPub').addEventListener('click', function () { if (!ONB) return; ONB.pub = !ONB.pub; onbShow(); });
 $('onbBack').addEventListener('click', function () { if (ONB && ONB.i) { ONB.i--; onbShow(); } });
-$('onbSkip').addEventListener('click', function () { if (!ONB) return; if (ONB.i >= 3) { onbClose(); return; } ONB.i++; onbShow(); });
+$('onbSkip').addEventListener('click', function () { if (!ONB) return; if (ONB.i >= 4) { onbPubSave(); onbClose(); return; } ONB.i++; onbShow(); });
+function onbPubSave() { if (ONB && P.pub !== ONB.pub) { P.pub = ONB.pub; saveP(); } }
 $('onbNext').addEventListener('click', function () {
   if (!ONB) return;
   if (ONB.i === 0) { P.dname = cleanName($('onbName').value); S.dname = P.dname; S.pfT = Date.now(); try { localStorage.setItem('creamer:pf:' + uid, JSON.stringify({t: S.pfT, dname: P.dname, pin: P.pin || [], bio: P.bio || ''})); } catch (e) {} saveP(); saveS(); }
   if (ONB.i === 1) { S.lw = lwForms(ONB.lw)[0]; saveS(); lwApply(); }
-  if (ONB.i === 2 && !onbSaveLast()) return;
-  if (ONB.i === 3) { if (clean($('onbFr').value)) onbAddFriend(); onbClose(); return; }
+  if (ONB.i === 2) { if (ONB.tc && !onbTCRead()) return; S.tank = ONB.tank; saveS(); }
+  if (ONB.i === 3 && !onbSaveLast()) return;
+  if (ONB.i === 4) { onbPubSave(); if (clean($('onbFr').value)) onbAddFriend(); onbClose(); return; }
   ONB.i++; onbShow();
 });
 maybeWelcome = function () { if (uid && !G.onb && !G.wel && !E.length) onbOpen(); };
 setTimeout(function () { try { lwApply(); } catch (e) {} }, 0);
+
+/* word choice in Edit profile */
+(function () {
+  var f = $('peWordF'); if (!f) return;
+  var po = peOpen; peOpen = function () { po.apply(this, arguments); var w = lwForms()[0], known = LW_LIST.some(function (x) { return x[0] === w; }); $('peWord').value = known ? w : 'own'; $('peWordOwn').hidden = known; $('peWordOwn').value = known ? '' : w; };
+  $('peWord').addEventListener('change', function () { var own = $('peWord').value === 'own'; $('peWordOwn').hidden = !own; if (own) $('peWordOwn').focus(); });
+  $('peSave').addEventListener('click', function () {
+    var v = $('peWord').value, w = lwForms(v === 'own' ? ($('peWordOwn').value || 'load') : v)[0];
+    if (w !== lwForms()[0]) { S.lw = w; saveS(); setTimeout(function () { flushProf().then(function () { location.reload(); }); }, 400); }
+  }, true);
+})();
 </script>
 </body>
 </html>
