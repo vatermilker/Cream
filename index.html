@@ -1418,6 +1418,61 @@ html.nofx .livedot{animation:none}
 #homeView .card.hero .hact #runBox #runGo{width:100%!important;margin:0!important;flex:1 1 auto}
 #homeView .card.hero .hact #runBox{display:flex!important;width:100%!important;min-width:0}
 #homeView .card.hero .hb2{text-transform:none!important;letter-spacing:0!important;font-family:var(--t-fb,inherit)!important}
+
+/* ===== premium stats ===== */
+.spst{display:flex;flex-direction:column;gap:10px;min-width:0;margin:0 -16px}
+.spsl{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.spsl::-webkit-scrollbar{display:none}
+.spc{flex:0 0 min(300px,80vw);height:340px;box-sizing:border-box;scroll-snap-align:start;border-radius:24px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,#ffffff,#d9d7df);color:#0b0b0f;position:relative;overflow:hidden;box-shadow:0 24px 50px -20px rgba(0,0,0,.9);text-align:left}
+.spc:nth-child(2n){background:linear-gradient(160deg,#f7f5f0,#cfcdd6)}
+.spw{position:absolute;right:-34px;top:-24px;width:200px;height:200px;opacity:.1;color:#0b0b0f}
+.spk2{position:relative;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#55555f}
+.spc b{display:block;position:relative;font:400 clamp(48px,15vw,64px)/.95 var(--t-fd,inherit);color:#0b0b0f;overflow-wrap:anywhere}
+.spc p{position:relative;margin:8px 0 0;font-size:16px;line-height:1.35;color:#2c2c37;font-weight:600}
+.spdots{display:flex;gap:6px;justify-content:center}
+.spdots i{width:6px;height:6px;border-radius:3px;background:var(--t-edge,#3a3a46);transition:width .25s}
+.spdots i.on{width:22px;background:var(--t-ink,#f4f4f7)}
+.splab{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--t-mute)}
+.spring{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:6px}
+.sprw{position:relative;width:min(230px,62vw);aspect-ratio:1}
+.sprw svg{width:100%;height:100%;filter:drop-shadow(0 0 24px rgba(255,255,255,.15))}
+.sprc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sprc b{font:400 clamp(64px,22vw,86px)/.9 var(--t-fd,inherit);color:var(--t-ink)}
+.sprc span{font-size:15px;color:var(--t-mute)}
+.sprc em{font-style:normal;font-size:14px;font-weight:700;color:var(--t-ink);margin-top:4px}
+.sptiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.spt{background:var(--t-card,#121217);border:1px solid var(--t-edge,#2c2c37);border-top-color:rgba(255,255,255,.17);border-radius:var(--t-rad,16px);padding:12px 14px 10px;display:flex;flex-direction:column;box-shadow:0 22px 44px -26px rgba(0,0,0,.95)}
+.spt b{font:400 36px/1 var(--t-fd,inherit);color:var(--t-ink)}
+.spt span{font-size:14px;color:var(--t-mute)}
+.spt em{font-style:normal;font-size:13px;color:var(--t-mute);margin-top:auto;padding-top:6px}
+.spk{width:100%;height:22px;margin-top:6px}
+.spk polyline{fill:none;stroke:var(--t-ink,#f4f4f7);stroke-width:2;opacity:.6;vector-effect:non-scaling-stroke}
+.spcal svg{width:100%;height:auto;display:block}
+.spclk{display:flex;flex-direction:column;align-items:center;text-align:center}
+.spclk>h2{align-self:flex-start}
+.spclk svg{width:min(240px,70vw);height:auto;filter:drop-shadow(0 0 18px rgba(255,255,255,.12))}
+.spck{font-family:var(--t-fd,inherit);font-size:26px;fill:var(--t-ink,#f4f4f7)}
+.spct{font-size:18px;color:var(--t-ink);margin-top:6px}
+.spclk .sub{margin:2px 0 0!important}
+.sprec{display:flex;flex-direction:column;gap:8px}
+.sppg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.spp{border-radius:16px;padding:1px;background:linear-gradient(160deg,#f4f4f7,#5c5c6a 40%,#2c2c37 60%,#b9b9c7)}
+.spp>div{background:linear-gradient(170deg,#1a1a22,#0d0d12);border-radius:15px;padding:12px 14px;height:100%;box-sizing:border-box;display:flex;flex-direction:column}
+.spp b{font:400 30px/1 var(--t-fd,inherit);color:var(--t-ink)}
+.spp span{font-size:14px;font-weight:700;color:var(--t-ink);margin-top:4px}
+.spp em{font-style:normal;font-size:12px;color:var(--t-mute)}
+.spmb{display:flex;gap:5px;align-items:flex-end;height:146px;margin-top:6px}
+.spmb>div{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.spmb i{display:block;width:100%;border-radius:8px 8px 3px 3px;background:var(--t-in,#1b1b23)}
+.spmb i.on{background:linear-gradient(180deg,#ffffff,#cfcdd6);box-shadow:0 0 18px rgba(255,255,255,.25)}
+.spmb span{font-size:11px;color:var(--t-mute)}
+#sg{row-gap:14px}
+@media (min-width:1000px){.spst{margin:0}.spc{flex-basis:300px}}
+#sg>*{order:0!important}
+.spw{opacity:.13!important}
+.spc b{overflow-wrap:normal!important;word-break:normal;font-size:clamp(40px,13vw,58px)!important}
+.spcal svg{max-width:440px;margin:0 auto}
+@media (min-width:1000px){#sg>.spcal,#sg>.spclk{grid-column:auto!important}#sg>.spcal{align-self:stretch}.spc{height:320px}}
 </style>
 </head>
 <body>
@@ -1681,7 +1736,7 @@ html.nofx .livedot{animation:none}
 <details><summary>What is Creamer?</summary><p>A private tracker. You log sessions with a rating, a from and to time, a yes or no and optional tags. The app turns them into stats, streaks, challenges and rewards. It stores numbers and times only.</p></details>
 <details><summary>How do I add a session?</summary><p>Tap Log a session on the Home screen. Set the rating and times, pick tags, then save. Defaults come from Settings.</p></details>
 <details><summary>How do I remove a session?</summary><p>On Home tap Show more, or open All sessions. Tap Remove on the session, then tap again to confirm.</p></details>
-<details><summary>What is a crew?</summary><p>A crew is you and up to 7 friends sharing one tank. Every session anyone in the crew logs this week fills it. Fill it to the goal before Monday and everyone gets 100 LDs. Crew members see how many sessions each member logged this week, even if their stats are private. You can be in one crew at a time.</p></details>
+<details><summary>What is a crew?</summary><p>A crew is you and up to 7 friends sharing one tank. Every session anyone in the crew logs this week fills it. Fill it to the goal before Monday and everyone moves closer to the Crew Goals and Dream Team badges. Crew members see how many sessions each member logged this week, even if their stats are private. You can be in one crew at a time.</p></details>
 <details><summary>What are surprise events?</summary><p>Events pop up at random times and last from one hour to a whole day. When one is live it shows on Home with its rule and a countdown. Log a session that fits the rule while it is live and you get the bonus. Everyone gets the same events at the same time.</p></details>
 <details><summary>What are LoadDrops?</summary><p>LoadDrops (LDs for short) are the currency. You earn them from sessions, streaks, challenges and badges. Your balance is the white drop at the top. Spend LDs in the Shop: open Rewards, then Shop.</p></details>
 <details><summary>What are XP and levels?</summary><p>XP counts every drop you have ever earned, spent or not. Levels use XP, so spending LDs never lowers your level.</p></details>
@@ -1802,12 +1857,11 @@ html.nofx .livedot{animation:none}
 <select id="duS"><option value="n">Most sessions</option><option value="m">Most total minutes</option><option value="a">Highest average rating (3+ sessions)</option><option value="d">Most active days</option></select>
 <label for="duD">Length</label>
 <select id="duD"><option value="3">3 days</option><option value="7">7 days</option></select>
-<label for="duK">Stake</label>
-<select id="duK"><option value="0">No stake</option><option value="20">20 LDs</option><option value="50">50 LDs</option><option value="100">100 LDs</option></select>
+<div hidden><label for="duK">Stake</label><select id="duK"><option value="0">No stake</option></select></div>
 <div class="row"><button type="button" class="go" id="duGo">Start duel</button></div>
 <p class="note" id="duMsg" role="status" style="min-height:1.4em"></p>
 <div id="duHist"></div>
-<p class="note" id="duNote">The winner takes the other side's stake. A draw returns it. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
+<p class="note" id="duNote">Win duels to earn the Duelist and Gladiator badges. No LDs needed. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
 </section>
 </div></div></div>
 <div class="ov sov2" id="feedOv" hidden><div class="card" role="dialog" aria-modal="true" aria-label="Activity"><div class="cmphd"><h2 style="margin:0;flex:1">Activity</h2><button type="button" class="ovx" data-close="feedOv" aria-label="Close">&#215;</button></div><div id="feedFull" class="feedl"></div></div></div>
@@ -2415,7 +2469,7 @@ function checkNotifs() {
     (G.du || []).forEach(function (d) {
       var sv = d.done ? 'done' : d.pend === 'in' ? 'pin' : d.pend === 'out' ? 'pout' : 'act', prev = n.du[d.cid];
       dn[d.cid] = sv + '|' + d.f;
-      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: fn(d.f) + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (d.k ? ', ' + d.k + ' LDs at stake.' : '.'), go: function () { goTab('friends'); }}); }
+      if (prev === undefined) { if (sv === 'pin') notify({id: 'du:' + d.cid, title: fn(d.f) + ' challenged you to a duel', text: DS[d.st][0] + ', ' + d.days + ' days' + (false ? ', ' + d.k + ' LDs at stake.' : '.'), go: function () { goTab('friends'); }}); }
       else if (prev.split('|')[0] === 'pout' && sv === 'act') notify({id: 'da:' + d.cid, title: fn(d.f) + ' accepted your duel', text: 'It runs for ' + d.days + ' days.', go: function () { goTab('friends'); }});
     });
     Object.keys(n.du).forEach(function (k) { if (!dn[k] && n.du[k].split('|')[0] === 'pout' && !MINEC[k]) notify({id: 'dx:' + k, title: fn(n.du[k].split('|')[1]) + ' declined your duel', text: 'Your stake is back.', go: function () { goTab('friends'); }}); });
@@ -2634,7 +2688,7 @@ async function cloudSubmit() {
   go.disabled = false;
 }
 function cloudInit() {
-  $('aNote').hidden = true; $('fNote').hidden = true; $('duNote').textContent = "The winner takes the other side's stake. A draw returns it. Both of you need \"My friends\" stats (Settings, Privacy). The challenged friend has to accept.";
+  $('aNote').hidden = true; $('fNote').hidden = true; $('duNote').textContent = "Win duels to earn the Duelist and Gladiator badges. No LDs needed. Both of you need \"My friends\" stats (Settings, Privacy). The challenged friend has to accept.";
   recovering = /type=recovery/.test(location.hash + location.search);
   sb.auth.onAuthStateChange(function (ev, session) {
     if (ev === 'PASSWORD_RECOVERY') setTimeout(showReset, 0);
@@ -2864,14 +2918,72 @@ function statsHtml(E, mine) {
   more.push(card(' b', 'Forecast', kv('Pace', pace.toFixed(2) + ' per day') + kv('Next milestone', nextM ? nextM + (etaD ? ', about ' + fmtDate(etaT.getTime()) : '') : '–') + kv('Projected this month', Math.round(thisM + pace * leftM)) + kv('Projected this year', Math.round(thisY + pace * leftY)) + '<p class="sub">Estimates at your last ' + span + '-day pace. They change as you do.</p>'));
   more.forEach(function (c) { out.push(c); });
   var byT = {}; out.forEach(function (h) { var m = h.match(/<h2[^>]*>([^<(]*)/); if (m) byT[m[1].trim()] = h; });
-  function inner(h) { return h ? h.replace(/^<section[^>]*>\s*<h2>[\s\S]*?<\/h2>/, '').replace(/<\/section>\s*$/, '') : ''; }
-  var keep = [byT['Overview'], byT['Last 35 days'], byT['This month']];
-  if (byT['Time of day']) keep.push(card(' span2', 'When you log', inner(byT['Time of day']) + '<div class="sec">Weekdays</div>' + inner(byT['Weekdays'])));
-  keep.push(card(' b', 'Records', kv('Longest session', fmtDur(lg.dur) + ' (' + fmtDate(lg.t) + ')') + kv('Best rating', hi.rate + ' (' + fmtDate(hi.t) + ')') + kv('Longest streak', longest + (longest === 1 ? ' day' : ' days')) + kv('Longest gap', n > 1 ? fmtGap(maxGap) : '–') + kv('Most in one day', busiest.n + ' (' + fmtDate(busiest.t) + ')')));
-  keep.push(byT['Last 12 months']);
-  if (mine && (S.tags || []).length && byT['Tag insights']) keep.push(byT['Tag insights']);
-  return keep.filter(Boolean).join('');
+  return statsPremium({s: s, n: n, rel: rel, rsum: rsum, cur: cur, longest: longest, maxGap: maxGap, avgGap: avgGap, gaps: gaps, hi: hi, lg: lg, busiest: busiest, days: days, mx: mx, today: today,
+    hrs: hrs, wd: wd, peakW: peakW, peakH: peakH, per: per, topP: topP, titles: titles, WN: WN, thisM: thisM, lastM: lastM, mv: mv, ml: ml, mt: mt, mine: mine, tagCard: byT['Tag insights']});
 }
+var SPICO = {moon: '<path d="M19 14.5A7.5 7.5 0 1 1 9.5 5a6 6 0 0 0 9.5 9.5Z"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>', fire: '<path d="M12 3c.5 3.5 5 5.5 5 10.5a5 5 0 0 1-10 0c0-2.6 1.6-4 2.4-6 .9 1.2 1.6 2.4 1.8 3.8C12.4 9 12.6 6 12 3Z"/>', cal: '<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/>', star: '<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7Z"/>'};
+function spIc(k, cls) { return '<svg class="' + cls + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + SPICO[k] + '</svg>'; }
+function spark(vals) {
+  if (vals.length < 2) return '';
+  var mx = Math.max.apply(null, vals), mn = Math.min.apply(null, vals), rg = mx - mn || 1;
+  return '<svg class="spk" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><polyline points="' + vals.map(function (v, i) { return (i / (vals.length - 1) * 100).toFixed(1) + ',' + (21 - (v - mn) / rg * 18).toFixed(1); }).join(' ') + '"/></svg>';
+}
+function statsPremium(o) {
+  var h = '', now = Date.now(), WEEK = 7 * 86400000, i;
+  var pct = Math.round(o.per[o.topP] / o.n * 100), MN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var avgR = o.rsum / o.n;
+  /* story cards */
+  var sc = [
+    {k: o.topP === 'Night' || o.topP === 'Evening' ? 'moon' : 'sun', kick: 'Your type', big: o.titles[o.topP], sub: pct + '% of your sessions start in the ' + o.topP.toLowerCase() + '. Peak hour ' + pad(o.peakH) + ':00.'},
+    o.cur ? {k: 'fire', kick: 'On fire', big: o.cur + (o.cur === 1 ? ' day' : ' days'), sub: o.cur >= o.longest ? 'Your current streak, and your longest ever. Keep it going today.' : 'Your current streak. Your record is ' + o.longest + ' days.'}
+          : {k: 'fire', kick: 'Best streak', big: o.longest + (o.longest === 1 ? ' day' : ' days'), sub: 'Your longest run so far. Log today to start a new one.'},
+    {k: 'cal', kick: 'Busiest day', big: o.WN[o.peakW], sub: o.wd[o.peakW] + ' of your ' + o.n + ' sessions happened on a ' + o.WN[o.peakW] + '.'},
+    {k: 'star', kick: 'Average rating', big: avgR.toFixed(1) + ' / 10', sub: 'Your best was a ' + o.hi.rate + ' on ' + fmtDate(o.hi.t) + '.'}
+  ];
+  h += '<div class="span2 spst" aria-label="Highlights"><div class="spsl" id="spSl">' + sc.map(function (c) { return '<article class="spc">' + spIc(c.k, 'spw') + '<span class="spk2">' + c.kick + '</span><div><b>' + c.big + '</b><p>' + c.sub + '</p></div></article>'; }).join('') + '</div><div class="spdots" aria-hidden="true">' + sc.map(function (c, k) { return '<i' + (k ? '' : ' class="on"') + '></i>'; }).join('') + '</div></div>';
+  /* ring: this month vs last */
+  var dn = new Date(now), lmName = MN[(dn.getMonth() + 11) % 12], diff = o.thisM - o.lastM, fr = Math.min(1, o.thisM / Math.max(1, o.lastM, o.thisM)), R = 92, C = 2 * Math.PI * R, ang = 2 * Math.PI * fr - Math.PI / 2;
+  h += '<div class="span2 spring"><span class="splab">This month</span><div class="sprw"><svg viewBox="0 0 230 230" role="img" aria-label="' + o.thisM + ' sessions this month"><defs><linearGradient id="spRg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfcdd6"/></linearGradient></defs><circle cx="115" cy="115" r="' + R + '" fill="none" stroke="var(--t-in,#1b1b23)" stroke-width="18"/>' +
+    (fr > 0 ? '<circle cx="115" cy="115" r="' + R + '" fill="none" stroke="url(#spRg)" stroke-width="18" stroke-linecap="round" stroke-dasharray="' + (C * fr).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 115 115)"/><circle cx="' + (115 + R * Math.cos(ang)).toFixed(1) + '" cy="' + (115 + R * Math.sin(ang)).toFixed(1) + '" r="5" fill="#0b0b0f"/>' : '') +
+    '</svg><div class="sprc"><b>' + o.thisM + '</b><span>' + (o.thisM === 1 ? 'session' : 'sessions') + '</span><em>' + (diff === 0 ? 'Same as ' + lmName : (diff > 0 ? '+' : '') + diff + ' vs ' + lmName) + '</em></div></div></div>';
+  /* tiles with sparklines */
+  var wk = [], wr = [];
+  for (i = 7; i >= 0; i--) { var a0 = now - (i + 1) * WEEK, b0 = now - i * WEEK, w = o.s.filter(function (x) { return x.t > a0 && x.t <= b0; }); wk.push(w.filter(function (x) { return x.rel; }).length); wr.push(w.length ? w.reduce(function (q, x) { return q + x.rate; }, 0) / w.length : (wr.length ? wr[wr.length - 1] : avgR)); }
+  var gw = o.gaps.slice(-8).map(function (g) { return g / 3600000; });
+  h += '<div class="span2 sptiles">' +
+    '<div class="spt"><b>' + o.rel + '</b><span>loads</span>' + spark(wk) + '</div>' +
+    '<div class="spt"><b>' + avgR.toFixed(1) + '</b><span>avg rating</span>' + spark(wr) + '</div>' +
+    '<div class="spt"><b>' + o.cur + '</b><span>day streak</span><em>best ' + o.longest + '</em></div>' +
+    '<div class="spt"><b>' + (o.gaps.length ? fmtGap(o.avgGap) : '–') + '</b><span>avg gap</span>' + spark(gw) + '</div></div>';
+  /* droplet calendar */
+  var dr = '';
+  for (var j = 34; j >= 0; j--) {
+    var dt = new Date(o.today); dt.setDate(dt.getDate() - j);
+    var c = (o.days[dt.getTime()] || {n: 0}).n, k = 34 - j, cx = 26 + (k % 7) * 48, cy = 26 + Math.floor(k / 7) * 44;
+    if (!c) dr += '<circle cx="' + cx + '" cy="' + cy + '" r="4" fill="var(--t-edge,#2c2c37)"/>';
+    else { var sz = 6 + 10 * Math.min(1, c / o.mx); dr += '<path d="M' + cx + ' ' + (cy - sz * 1.4).toFixed(1) + 'C' + cx + ' ' + (cy - sz * 1.4).toFixed(1) + ' ' + (cx - sz).toFixed(1) + ' ' + (cy - sz * .2).toFixed(1) + ' ' + (cx - sz).toFixed(1) + ' ' + (cy + sz * .35).toFixed(1) + 'A' + sz.toFixed(1) + ' ' + sz.toFixed(1) + ' 0 0 0 ' + (cx + sz).toFixed(1) + ' ' + (cy + sz * .35).toFixed(1) + 'C' + (cx + sz).toFixed(1) + ' ' + (cy - sz * .2).toFixed(1) + ' ' + cx + ' ' + (cy - sz * 1.4).toFixed(1) + ' ' + cx + ' ' + (cy - sz * 1.4).toFixed(1) + 'Z" fill="#f4f4f6" opacity="' + (0.45 + 0.55 * Math.min(1, c / o.mx)).toFixed(2) + '"><title>' + fmtDate(dt.getTime()) + ': ' + c + '</title></path>'; }
+    if (j === 0) dr += '<circle cx="' + cx + '" cy="' + cy + '" r="18" fill="none" stroke="var(--t-acc2,#ff6b88)" stroke-width="2"/>';
+  }
+  h += card(' span2 spcal', 'Last 35 days', '<svg viewBox="0 0 340 226" role="img" aria-label="Sessions per day over the last 35 days">' + dr + '</svg><p class="sub">Bigger drop, more sessions. The ring is today.</p>');
+  /* radial clock */
+  var hm2 = Math.max.apply(null, o.hrs) || 1, bars = '';
+  o.hrs.forEach(function (v, hh) { var a1 = 2 * Math.PI * hh / 24 - Math.PI / 2, r0 = 46, r1 = r0 + 8 + v / hm2 * 58; bars += '<line x1="' + (120 + r0 * Math.cos(a1)).toFixed(1) + '" y1="' + (120 + r0 * Math.sin(a1)).toFixed(1) + '" x2="' + (120 + r1 * Math.cos(a1)).toFixed(1) + '" y2="' + (120 + r1 * Math.sin(a1)).toFixed(1) + '" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round" opacity="' + (v ? 0.35 + 0.65 * v / hm2 : 0.12).toFixed(2) + '"/>'; });
+  var lbl = function (t, x, y, an) { return '<text x="' + x + '" y="' + y + '" text-anchor="' + an + '" font-size="11" fill="var(--t-mute,#b9b9c7)">' + t + '</text>'; };
+  h += card(' span2 spclk', 'When you log', '<svg viewBox="0 0 240 240" role="img" aria-label="Sessions by hour, peak at ' + pad(o.peakH) + ':00"><circle cx="120" cy="120" r="38" fill="var(--t-in,#1b1b23)"/>' + bars + '<text x="120" y="118" text-anchor="middle" class="spck">' + pad(o.peakH) + ':00</text><text x="120" y="136" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1" fill="var(--t-mute,#b9b9c7)">PEAK HOUR</text>' + lbl('00', 120, 10, 'middle') + lbl('06', 236, 124, 'end') + lbl('12', 120, 239, 'middle') + lbl('18', 4, 124, 'start') + '</svg><b class="spct">' + o.titles[o.topP] + '</b><p class="sub">' + pct + '% of sessions start in the ' + o.topP.toLowerCase() + ' · busiest on ' + o.WN[o.peakW] + '</p>');
+  /* records as metal plaques */
+  var pl = function (v, l, d) { return '<div class="spp"><div><b>' + v + '</b><span>' + l + '</span><em>' + d + '</em></div></div>'; };
+  h += '<div class="span2 sprec"><span class="splab">Records</span><div class="sppg">' + pl(fmtDur(o.lg.dur), 'Longest session', fmtDate(o.lg.t)) + pl(o.hi.rate + '/10', 'Best rating', fmtDate(o.hi.t)) + pl(o.longest + (o.longest === 1 ? ' day' : ' days'), 'Longest streak', o.cur >= o.longest && o.cur ? 'Right now' : 'Personal best') + pl(o.n > 1 ? fmtGap(o.maxGap) : '–', 'Longest gap', o.busiest.n + ' max in one day') + '</div></div>';
+  /* last 12 months */
+  var mmx = Math.max.apply(null, o.mv) || 1;
+  h += card(' span2 spmon', 'Last 12 months', '<div class="spmb">' + o.mv.map(function (v, k) { return '<div><i style="height:' + Math.max(6, v / mmx * 120).toFixed(0) + 'px"' + (v ? ' class="on"' : '') + ' title="' + esc(o.mt[k]) + ': ' + v + '"></i><span>' + o.ml[k] + '</span></div>'; }).join('') + '</div>');
+  if (o.mine && (S.tags || []).length && o.tagCard) h += o.tagCard;
+  return h;
+}
+document.addEventListener('scroll', function (e) {
+  var sl = e.target; if (!sl || !sl.classList || !sl.classList.contains('spsl')) return;
+  var k = Math.round(sl.scrollLeft / (sl.firstElementChild ? sl.firstElementChild.offsetWidth + 12 : 1)), ds = sl.parentNode.querySelectorAll('.spdots i');
+  for (var q = 0; q < ds.length; q++) ds[q].classList.toggle('on', q === k);
+}, true);
 function renderStats() { $('sg').innerHTML = statsHtml(E, true); }
 /* ---------- game: LDs, levels, badges, challenges, shop ---------- */
 function saveG() { if (CLOUD) queueProf(); else wr('game', G); }
@@ -2900,7 +3012,7 @@ var LN = ['Droplet', 'Dribble', 'Drizzle', 'Puddle', 'Splash', 'Stream', 'Creek'
 function lvlOf(xp) { return Math.floor((1 + Math.sqrt(1 + 4 * xp / 25)) / 2); }
 function xpFor(L) { return 25 * L * (L - 1); }
 function lvlName(L) { return LN[Math.min(L, LN.length) - 1]; }
-function locked() { return (G.du || []).reduce(function (a, d) { return a + (d.done || d.pend === 'in' ? 0 : d.k); }, 0); }
+function locked() { return 0; }
 function totals() { var lp = loadPoints(E), xp = lp + G.bonus; return {lp: lp, xp: xp, bal: Math.max(0, xp - G.spent - (G.lost || 0) - locked()), L: lvlOf(xp)}; }
 
 function ctxOf(arr) {
@@ -3554,8 +3666,8 @@ function duelSettle() {
     if (d.done || d.pend || d.b > now) return;
     var u = api.find(d.f), avail = !!(u && !u.priv), mine = dval(d.st, E, d.a, d.b), th = avail ? dval(d.st, u.entries, d.a, d.b) : 0;
     d.done = true; d.my = mine; d.th = th; d.res = CLOUD && !avail ? 'd' : mine > th ? 'w' : mine < th ? 'l' : 'd';
-    msg = d.res === 'w' ? 'You won the duel against @' + d.f + (d.k ? ' (+' + d.k + ' LDs)' : '') : d.res === 'l' ? 'You lost the duel against @' + d.f + (d.k ? ' (-' + d.k + ' LDs)' : '') : 'The duel against @' + d.f + ' ended in a draw';
-    if (d.res === 'w') { G.bonus += d.k; G.st = Object.assign({}, G.st, {dw: ((G.st || {}).dw || 0) + 1}); } else if (d.res === 'l') G.lost = (G.lost || 0) + d.k;
+    msg = d.res === 'w' ? 'You won the duel against @' + d.f + '' : d.res === 'l' ? 'You lost the duel against @' + d.f + '' : 'The duel against @' + d.f + ' ended in a draw';
+    if (d.res === 'w') { G.st = Object.assign({}, G.st, {dw: ((G.st || {}).dw || 0) + 1}); }
     if (CLOUD) { G.dset = Object.assign({}, G.dset); G.dset[d.cid] = {f: d.f, st: d.st, k: d.k, my: mine, th: th, res: d.res}; }
   });
   if (msg) { saveG(); if (notifOn()) notify({title: msg, text: 'Tap to see the result.', go: function () { goTab('friends'); }}); else toast(msg); }
@@ -3563,11 +3675,10 @@ function duelSettle() {
 function renderDuels() {
   var sel = $('duF'), pubF = F.filter(function (f) { var u = api.find(f); return u && !u.priv; }), key = pubF.map(function (f) { return f + nickOf(f); }).join(',');
   if (sel.getAttribute('data-k') !== key) { var cur = sel.value; sel.innerHTML = pubF.length ? pubF.map(function (f) { return '<option value="' + esc(f) + '">' + esc(fn(f)) + '</option>'; }).join('') : '<option value="">No friends with public stats</option>'; sel.setAttribute('data-k', key); if (pubF.indexOf(cur) >= 0) sel.value = cur; }
-  var bal = totals().bal; Array.prototype.forEach.call($('duK').options, function (o) { o.disabled = +o.value > bal; });
-  if (+$('duK').value > bal) $('duK').value = '0';
+  $('duK').value = '0';
   var du = G.du || [], act = du.filter(function (d) { return !d.done; }), now = Date.now();
   $('duList').innerHTML = act.length ? act.map(function (d) {
-    var who = esc(fn(d.f)), stake = d.k ? d.k + ' LDs' : 'no stake';
+    var who = esc(fn(d.f)), stake = '';
     if (d.pend === 'out') return '<div class="ch"><div class="top"><b>You vs ' + who + '</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days. Waiting for them to accept.</p><div class="row" style="margin-top:8px"><button type="button" class="x" data-dc="' + d.cid + '">Cancel</button></div></div>';
     if (d.pend === 'in') return '<div class="ch"><div class="top"><b>' + who + ' challenges you</b><span class="empty">' + stake + '</span></div><p class="sub" style="margin:0">' + DS[d.st][0] + ', ' + d.days + ' days.</p><div class="row" style="margin-top:8px"><button type="button" class="go x" data-da="' + d.cid + '">Accept</button><button type="button" class="x" data-dd="' + d.cid + '">Decline</button></div></div>';
     var u = api.find(d.f), me = dval(d.st, E, d.a, d.b), th = u && !u.priv ? dval(d.st, u.entries, d.a, d.b) : 0;
@@ -3581,7 +3692,6 @@ $('duList').addEventListener('click', function (e) {
   var da = b.getAttribute('data-da'), dd = b.getAttribute('data-dd'), dc = b.getAttribute('data-dc'), done = function () { return refreshSocial().then(render); };
   if (da) {
     var d = (G.du || []).filter(function (x) { return String(x.cid) === da; })[0];
-    if (d && d.k > totals().bal) { $('duMsg').textContent = 'Not enough LDs for this stake.'; return; }
     sb.rpc('respond_duel', {duel_id: +da, accept: true}).then(done);
   } else if (dd) sb.rpc('respond_duel', {duel_id: +dd, accept: false}).then(done);
   else if (dc) { MINEC[dc] = 1; sb.rpc('cancel_duel', {duel_id: +dc}).then(done); }
@@ -3591,7 +3701,6 @@ $('duGo').addEventListener('click', function () {
   if (!f) { m.textContent = 'Pick a friend with public stats first.'; return; }
   if (du.filter(function (d) { return !d.done; }).length >= 3) { m.textContent = 'You can run 3 duels at a time.'; return; }
   if (du.some(function (d) { return !d.done && d.f === f; })) { m.textContent = 'You already have a duel with @' + f + '.'; return; }
-  if (k > totals().bal) { m.textContent = 'Not enough LDs for this stake.'; return; }
   if (CLOUD) {
     sb.rpc('create_duel', {opp_name: f, p_stat: st, p_days: days, p_stake: k}).then(function (r) {
       var t = {ok: 'Challenge sent. They need to accept.', not_friend: 'You are not friends with @' + f + '.', not_public: 'Both of you need "My friends" stats (Settings, Privacy).', exists: 'You already have a duel with @' + f + '.', limit: 'You can run 3 duels at a time.', auth: 'Log in again.'};
@@ -3896,7 +4005,7 @@ else {
   if (CLOUDFAIL) { $('aNote').textContent = 'Could not load the sign-in service, so this page runs in demo mode. Your data stays in this browser. Reload to try again.'; }
   loadAcc();
   var sess = ''; try { sess = localStorage.getItem('creamer:session') || ''; } catch (e) {}
-  if (sess && ACC[sess]) loadUser(sess); else showAuth(hadAcct() ? 'in' : 'up');
+  if (sess && ACC[sess]) setTimeout(function () { loadUser(sess); }, 0); else showAuth(hadAcct() ? 'in' : 'up');
 }
 gate.hidden = ok; lock(); if (!ok) $('yes').focus();
 
@@ -4381,9 +4490,9 @@ function crewCheck() {
   var w = crewWeek(), key = 'w' + w.a, tot = crewTotal();
   G.crwk = G.crwk || {};
   if (tot >= CREW.goal && !G.crwk[key]) {
-    G.crwk[key] = 1; G.crw = (G.crw || 0) + 1; G.bonus += 100; saveG();
-    notify({id: 'crew:' + key, title: 'Crew tank is full!', text: CREW.name + ' hit ' + CREW.goal + ' sessions this week. +100 LDs for you.', go: function () { goTab('friends'); }});
-    toast('Crew tank full: +100 LDs'); splash('save'); wet('big'); buzz([30, 40, 30, 40, 80]);
+    G.crwk[key] = 1; G.crw = (G.crw || 0) + 1; saveG();
+    notify({id: 'crew:' + key, title: 'Crew tank is full!', text: CREW.name + ' hit ' + CREW.goal + ' sessions this week. That counts toward your crew badges.', go: function () { goTab('friends'); }});
+    toast('Crew tank full!'); splash('save'); wet('big'); buzz([30, 40, 30, 40, 80]);
     return true;
   }
 }
@@ -4411,13 +4520,13 @@ function renderCrew() {
     return '<div class="cinv"><div><b>' + esc(x.name) + '</b><span>' + (x.from ? esc(fn(x.from)) + ' invited you' : 'You are invited') + ', ' + x.cnt + (x.cnt === 1 ? ' member' : ' members') + '</span></div><div class="row"><button type="button" class="go x" data-cra="' + x.id + '">Join</button><button type="button" class="x" data-crd="' + x.id + '">Decline</button></div></div>';
   }).join('');
   if (!CREW.members) {
-    h += '<p class="sub">Team up with up to 7 friends. Every session anyone logs fills one shared tank. Fill it before Monday and everyone gets 100 LDs.</p>' +
+    h += '<p class="sub">Team up with up to 7 friends. Every session anyone logs fills one shared tank. Fill it before Monday to earn the Crew Goals badge.</p>' +
       '<div class="cform"><input type="text" id="crName" maxlength="30" placeholder="Crew name" aria-label="Crew name"><select id="crGoal" aria-label="Weekly goal"><option value="10">Goal: 10 sessions a week</option><option value="15" selected>Goal: 15 sessions a week</option><option value="20">Goal: 20 sessions a week</option><option value="30">Goal: 30 sessions a week</option><option value="50">Goal: 50 sessions a week</option></select><button type="button" class="go" id="crMake">Start a crew</button></div>';
     hm0.hidden = true;
   } else {
     var tot = crewTotal(), ms = CREW.members, full = tot >= CREW.goal;
     h = '<div class="crt"><h2>' + esc(CREW.name) + '</h2><span class="eyb">Crew tank</span></div>' + crewSvg(true) +
-      '<p class="cst">' + (full ? '<b>Full!</b> Everyone gets 100 LDs this week.' : '<b>' + (CREW.goal - tot) + ' more</b> to fill it. Empties in ' + left + '.') + '</p><ul class="cml">' +
+      '<p class="cst">' + (full ? '<b>Full!</b> Crew badge progress for everyone.' : '<b>' + (CREW.goal - tot) + ' more</b> to fill it. Empties in ' + left + '.') + '</p><ul class="cml">' +
       ms.map(function (m, i) {
         var c = m.me ? myWeekCount() : m.c, idx = crewMembersIn().indexOf(m);
         return '<li><span class="nm"><i class="csw" style="background:' + (m.st === 'in' ? CREWC[idx % CREWC.length] : 'transparent') + '"></i>' + avatar(m.n, true) + '<b>' + (m.me ? 'You' : fnH(m.n)) + '</b></span>' + (m.st === 'in' ? '<b class="cc">' + c + '</b>' : '<span class="empty">invited</span>') + '</li>';
@@ -4427,7 +4536,7 @@ function renderCrew() {
     if (CREW.mine) h += '<div class="sec">Weekly goal</div><select id="crGoalSet" aria-label="Weekly goal">' + [10, 15, 20, 30, 50, 80].concat([CREW.goal]).filter(function (v, i, a) { return a.indexOf(v) === i; }).sort(function (a, b) { return a - b; }).map(function (v) { return '<option value="' + v + '"' + (v === CREW.goal ? ' selected' : '') + '>' + v + ' sessions a week</option>'; }).join('') + '</select>';
     h += '<div class="row" style="margin-top:14px"><button type="button" class="x" id="crLeave">Leave crew</button></div>';
     hm0.hidden = false;
-    hm0.innerHTML = '<div class="chm"><div class="chm-t"><span class="eyb">Crew tank</span><b>' + esc(CREW.name) + '</b><span>' + (full ? 'Full! +100 LDs each' : tot + ' of ' + CREW.goal + ' this week') + '</span></div>' + crewSvg(false) + '</div>';
+    hm0.innerHTML = '<div class="chm"><div class="chm-t"><span class="eyb">Crew tank</span><b>' + esc(CREW.name) + '</b><span>' + (full ? 'Full! Badge progress for all' : tot + ' of ' + CREW.goal + ' this week') + '</span></div>' + crewSvg(false) + '</div>';
   }
   if (crewMsg) h += '<p class="note" role="status">' + esc(crewMsg) + '</p>';
   el.innerHTML = h;
@@ -4766,7 +4875,7 @@ function chipify(id) {
   if (box._k === key) return; box._k = key;
   box.innerHTML = Array.prototype.map.call(sel.options, function (o) { return '<button type="button" data-v="' + esc(o.value) + '" aria-pressed="' + (o.value === sel.value) + '"' + (o.disabled || !o.value ? ' disabled' : '') + '>' + esc(o.text) + '</button>'; }).join('');
 }
-function chipAll() { ['duF', 'duS', 'duD', 'duK', 'crGoal', 'crInv', 'crGoalSet'].forEach(chipify); }
+function chipAll() { ['duF', 'duS', 'duD', 'crGoal', 'crInv', 'crGoalSet'].forEach(chipify); }
 function renderCompete() {
   if (!uid || !G) return;
   var du = G.du || [], act = du.filter(function (d) { return !d.done; }), inc = act.filter(function (d) { return d.pend === 'in'; })[0], run = act.filter(function (d) { return !d.pend; })[0], now = Date.now(), t, st;
@@ -4776,7 +4885,7 @@ function renderCompete() {
   else { t = 'Duel a friend'; st = '1 vs 1 for 3 or 7 days'; }
   $('ctDu').innerHTML = t; $('ctDuS').textContent = st;
   var cb = $('ctCrB');
-  if (CREW && CREW.ok && CREW.members) { var tot = crewTotal(), pc = Math.min(100, Math.round(tot / CREW.goal * 100)); $('ctCr').textContent = CREW.name; $('ctCrS').textContent = tot >= CREW.goal ? 'Full! +100 LDs each' : tot + ' of ' + CREW.goal + ' this week'; cb.hidden = false; cb.firstChild.style.width = pc + '%'; }
+  if (CREW && CREW.ok && CREW.members) { var tot = crewTotal(), pc = Math.min(100, Math.round(tot / CREW.goal * 100)); $('ctCr').textContent = CREW.name; $('ctCrS').textContent = tot >= CREW.goal ? 'Full! Badge progress for all' : tot + ' of ' + CREW.goal + ' this week'; cb.hidden = false; cb.firstChild.style.width = pc + '%'; }
   else if (CREW && CREW.inv && CREW.inv.length) { $('ctCr').textContent = 'Crew invite'; $('ctCrS').textContent = 'Tap to join ' + CREW.inv[0].name; cb.hidden = true; }
   else { $('ctCr').textContent = 'Start a crew'; $('ctCrS').textContent = 'Fill one tank together each week'; cb.hidden = true; }
   if (G.lg) { var w = winOf('w'), rows = leagueRows(w.a, w.b), mi = rows.map(function (r) { return r.me; }).indexOf(true);
@@ -4802,12 +4911,12 @@ function canNudge(n) {
   return tankOf(u.entries) >= 1 && !(S.nudged && S.nudged[n] === socDK());
 }
 async function socLoad() {
-  if (!uid || SOCBUSY) return; SOCBUSY = 1; SOCAT = Date.now();
+  if (!uid || SOCBUSY) return; if (CLOUD && F.length && !Object.keys(FR).length) return; SOCBUSY = 1; SOCAT = Date.now();
   try {
     if (CLOUD) {
       var r = await sb.from('social').select('from_id,to_id,kind,target,emoji,msg,from_name,created_at').gte('created_at', new Date(Date.now() - 8 * 86400000).toISOString()).order('created_at', {ascending: false}).limit(500);
       if (r.error) SOCOK = false;
-      else { SOCOK = true; SOCR = (r.data || []).map(function (x) { return {from: x.from_name, to: idName(x.to_id), kind: x.kind, target: x.target == null ? null : +x.target, emoji: x.emoji, msg: x.msg || '', at: Date.parse(x.created_at)}; }).filter(function (x) { return x.to; }); }
+      else { SOCOK = true; SOCR = (r.data || []).map(function (x) { return {from: x.from_name, to: idName(x.to_id), toid: x.to_id, kind: x.kind, target: x.target == null ? null : +x.target, emoji: x.emoji, msg: x.msg || '', at: Date.parse(x.created_at)}; }); }
     } else {
       var all = socDemoRd(), lim = Date.now() - 8 * 86400000;
       var sf = F.filter(function (n) { return SEED[n]; })[0];
@@ -4817,7 +4926,8 @@ async function socLoad() {
   } catch (e) { SOCOK = false; }
   SOCBUSY = 0; renderSocial();
 }
-function reactsFor(owner, target) { return SOCR.filter(function (r) { return r.kind === 'react' && r.to === owner && r.target === target; }); }
+function socFix() { SOCR.forEach(function (r) { if (!r.to && r.toid) r.to = idName(r.toid); }); }
+function reactsFor(owner, target) { socFix(); return SOCR.filter(function (r) { return r.kind === 'react' && r.to === owner && r.target === target; }); }
 function myReact(owner, target) { var m = reactsFor(owner, target).filter(function (r) { return r.from === P.name; })[0]; return m ? m.emoji : null; }
 function sendReact(owner, target, emoji) {
   var cur = myReact(owner, target), nw = cur === emoji ? null : emoji;
@@ -4868,7 +4978,7 @@ function feedHtml(x) {
   return '<div class="fitem">' + avatar(x.who, true) + '<div class="fitx"><div class="fitt">' + txt + '</div><div class="fitm">' + sinceLabel(x.t, true) + '</div>' + row + '</div></div>';
 }
 function renderSocial() {
-  if (!uid) return;
+  if (!uid) return; socFix();
   var it = feedItems(), w = $('feedWrap');
   w.hidden = !F.length || !it.length;
   $('feedTop').innerHTML = it.slice(0, 2).map(feedHtml).join('');
