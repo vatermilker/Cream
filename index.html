@@ -1612,6 +1612,38 @@ html.awlock,html.awlock body{overflow:hidden}
 html[data-theme] .nt{background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;border-top-color:rgba(255,255,255,.18)!important;box-shadow:0 12px 34px rgba(0,0,0,.55)!important;color:var(--t-ink,#f4f4f7)}
 html[data-theme] .nt .ntb{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb b{color:var(--t-ink,#f4f4f7)}html[data-theme] .nt .ntb span{color:var(--t-mute,#b9b9c7)}
 
+.wawg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;align-items:end}.wawg .awi{width:100%;aspect-ratio:1}.wawg .awi:nth-child(2){transform:scale(1.15);transform-origin:50% 100%}
+.wawn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center;font-size:12px;font-weight:700;color:#d6d6e0}
+.wph .wbtn.alt{background:transparent;border:1px solid #3a3a46;color:#f4f4f7}
+#onb{position:fixed;inset:0;z-index:97;background:radial-gradient(80% 45% at 50% 0%,rgba(225,29,72,.32),rgba(8,8,11,0) 70%),#08080b;color:#f4f4f7;overflow-y:auto;font-family:"Barlow Condensed",system-ui,sans-serif;animation:softIn .3s ease both}
+#onb[hidden]{display:none}
+.onbin{max-width:460px;margin:0 auto;min-height:100%;box-sizing:border-box;padding:max(18px,env(safe-area-inset-top)) 20px max(22px,env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.onbtop{display:flex;align-items:center;justify-content:space-between;height:44px}
+#onbDots{display:flex;gap:6px}#onbDots i{width:8px;height:8px;border-radius:4px;background:#2c2c37;transition:width .25s}#onbDots i.was{background:#7a1a30}#onbDots i.on{width:26px;background:#e11d48}
+#onb .onbtop button{background:none!important;border:0!important;box-shadow:none!important;color:#b9b9c7!important;font:700 17px "Barlow Condensed",sans-serif;height:44px;width:auto;padding:0 2px;margin:0;text-transform:none;letter-spacing:0}
+.onbc{flex:1;display:flex;flex-direction:column;padding-top:18px}
+.onbc[hidden]{display:none}
+.onbk{font:800 13px "Barlow Condensed",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#ff6b88;margin:0 0 8px}
+.onbh{font:400 clamp(40px,12vw,56px)/1 "Bebas Neue",sans-serif;margin:0;letter-spacing:.01em}
+.onbp{font-size:17px;line-height:1.4;color:#d6d6e0;margin:10px 0 0}
+#onb input[type=text],#onb input[type=datetime-local]{width:100%;box-sizing:border-box;height:56px;border-radius:14px;border:1px solid #2c2c37;background:#14141a;color:#f4f4f7;padding:0 16px;font:600 22px "Barlow Condensed",sans-serif;margin:18px 0 0}
+#onb input:focus{outline:none;border-color:#e11d48;box-shadow:0 0 0 3px rgba(225,29,72,.25)}
+#onb #onbWhen{font-size:19px;color-scheme:dark}
+.onbnote{font-size:15px;color:#b9b9c7;margin:10px 0 0;min-height:1.4em}
+#onbWord{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px}
+#onb .onbw{height:52px;border-radius:14px;border:1px solid #2c2c37;background:#14141a;color:#f4f4f7;font:700 19px "Barlow Condensed",sans-serif;width:auto;margin:0;box-shadow:none;text-transform:none;letter-spacing:0}
+#onb .onbw.on{background:#2a0f17;border-color:#e11d48;color:#fff}
+#onbPrev{margin-top:16px;border-radius:18px;background:#121217;border:1px solid #2c2c37;border-top-color:rgba(255,255,255,.16);padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+#onbPrev span{font:800 12px "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#ff6b88}#onbPrev b{font:400 44px/1 "Bebas Neue",sans-serif}#onbPrev small{font-size:14px;color:#b9b9c7}
+#onbRate{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:10px}
+#onb #onbRate button{height:48px;border-radius:12px;border:1px solid #2c2c37;background:#14141a;color:#f4f4f7;font:400 24px "Bebas Neue",sans-serif;width:auto;margin:0;box-shadow:none;padding:0}
+#onb #onbRate button.on{background:#e11d48;border-color:#e11d48;color:#fff}
+.onbl{font:800 13px "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#b9b9c7;margin:18px 0 0}
+.onbrow{display:flex;gap:8px;align-items:flex-end}.onbrow input{flex:1}
+#onb #onbFrGo{height:56px;padding:0 18px;border-radius:14px;border:0;background:#f4f4f7;color:#08080b;font:700 18px "Barlow Condensed",sans-serif;width:auto;margin:0;box-shadow:none;text-transform:none;letter-spacing:0;flex:none}
+.onbfoot{display:flex;flex-direction:column;gap:6px;margin-top:22px}
+#onb #onbNext{height:56px;border-radius:16px;border:0;background:#e11d48;color:#fff;font:700 20px "Barlow Condensed",sans-serif;width:100%;margin:0;box-shadow:0 10px 30px rgba(225,29,72,.35);text-transform:none;letter-spacing:.02em}
+#onb #onbSkip{height:48px;background:none;border:0;color:#b9b9c7;font:700 17px "Barlow Condensed",sans-serif;width:100%;margin:0;box-shadow:none;text-transform:none;letter-spacing:0}
 #holo{position:fixed;inset:0;z-index:98;background:rgba(4,4,6,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;perspective:900px;padding:20px}
 #holo[hidden]{display:none}
 .hcard{--hx:50%;--hy:50%;--rx:0deg;--ry:0deg;position:relative;width:min(280px,78vw);aspect-ratio:5/7;border-radius:22px;background:linear-gradient(160deg,#1c1c24,#0d0d12);border:1px solid rgba(255,255,255,.25);box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 60px rgba(255,255,255,.12);overflow:hidden;transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;animation:hflip 1s cubic-bezier(.2,1.2,.3,1)}
@@ -2271,6 +2303,19 @@ html.nofx .livedot{animation:none}
 <ul class="gjl"><li>+100 LDs welcome bonus</li><li>Your guest sessions carry over</li><li>Saved to your account, on any device</li><li>Friends, duels and crews</li><li>Shop, challenges, badges and leagues</li></ul></div>
 <div class="welNav"><button type="button" id="gjNo">Keep trying</button><button type="button" id="gjYes" class="go">Create account</button></div></div>
 </div>
+<div id="onb" hidden role="dialog" aria-modal="true" aria-label="Set up your profile"><div class="onbin">
+<div class="onbtop"><button type="button" id="onbBack">Back</button><div id="onbDots"></div><span style="width:44px"></span></div>
+<section class="onbc"><p class="onbk">Step 1 of 4</p><h2 class="onbh">What should friends call you?</h2><p class="onbp">Your name shows above your @ on your profile, in friends lists and in the feed. Any name, any language.</p>
+<label class="onbl" for="onbName">Your name</label><input type="text" id="onbName" maxlength="30" autocomplete="nickname" placeholder="Name or nickname" style="margin-top:6px"><p class="onbnote" id="onbHello"></p></section>
+<section class="onbc"><p class="onbk">Step 2 of 4</p><h2 class="onbh">Pick your word</h2><p class="onbp">What do you call it? The app will use your word everywhere.</p>
+<div id="onbWord"></div><label class="onbl" for="onbOwn">Or type your own</label><input type="text" id="onbOwn" maxlength="16" autocomplete="off" placeholder="Your word" style="margin-top:6px"><div id="onbPrev" class="nolw"></div></section>
+<section class="onbc"><p class="onbk">Step 3 of 4</p><h2 class="onbh nolw" id="onbQ3">When was your last load?</h2><p class="onbp">This starts your timer and your tank from the right moment.</p>
+<label class="onbl" for="onbWhen">Date and time</label><input type="datetime-local" id="onbWhen" style="margin-top:6px">
+<p class="onbl">How was it?</p><div id="onbRate" role="group" aria-label="Rating from 1 to 10"></div><p class="onbnote" id="onbLMsg" role="alert"></p></section>
+<section class="onbc"><p class="onbk">Step 4 of 4</p><h2 class="onbh">Add a friend</h2><p class="onbp">Creamer is better with friends. Add someone by their username, or skip and do it later from Friends.</p>
+<label class="onbl" for="onbFr">Their username</label><div class="onbrow"><input type="text" id="onbFr" maxlength="21" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="username" style="margin-top:6px"><button type="button" id="onbFrGo">Add</button></div><p class="onbnote" id="onbFrMsg" role="status"></p></section>
+<div class="onbfoot"><button type="button" id="onbNext">Continue</button><button type="button" id="onbSkip">Skip</button></div>
+</div></div>
 <div class="wel" id="wel" hidden role="dialog" aria-modal="true" aria-label="Welcome">
 <div class="card welBox"><div class="welDots" id="welDots"></div><div id="welBody"></div>
 <div class="welNav"><button type="button" id="welSkip">Skip</button><button type="button" id="welNext" class="go">Next</button></div></div>
@@ -2295,28 +2340,31 @@ html.nofx .livedot{animation:none}
 <section class="whero hide-in"><div class="wc wsplit">
 <div class="wtxt"><p class="wk">A private tracker for adults</p>
 <h2 class="wh">Every session. Every number. Yours.</h2>
-<p class="wsub">Log a session in seconds. Creamer turns it into stats and streaks, and lets you compare with friends. Free, private and 18+ only.</p>
+<p class="wsub">Start a live timer or log a past session in seconds. Creamer turns it into stats and streaks, gives you real 3D awards to collect, and lets you compete with friends. Free, private and 18+ only.</p>
 <div class="wcta2"><button type="button" class="go" data-go="up">Create free account</button><button type="button" data-go="guest">Try it first, no account needed</button></div>
 <p class="wfine">+100 LDs on sign-up. Nothing to pay.</p></div>
-<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Time since last load</div><div class="wrow2"><div class="wbig">3H 42M</div><svg viewBox="0 0 120 120" width="54" height="54" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="#a9a9b8" stroke-width="4" opacity=".6"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/></svg></div><div class="wbtn">+ LOG A SESSION</div><div class="wchips"><span>Streak 5 days</span><span>Freezes 2 of 3</span></div></div>
-<div class="wmc"><div class="wlab">Today</div><div class="wrow"><span>A session of 15+ min</span><b>+25</b></div><div class="wrow"><span>Log 3 sessions</span><b>+40</b></div></div></div></div>
+<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Time since last load</div><div class="wrow2"><div class="wbig">3H 42M</div><svg viewBox="0 0 120 120" width="54" height="54" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="#a9a9b8" stroke-width="4" opacity=".6"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/></svg></div><div class="wbtn">START NOW</div><div class="wbtn alt">LOG PAST</div><div class="wchips"><span>Streak 5 days</span><span>Freezes 2 of 3</span></div></div>
+<div class="wmc"><div class="wlab">Friends</div><div class="wfr"><i>M</i><span>Mike loaded 12 min ago</span><b>+2 reactions</b></div><div class="wfr"><i>D</i><span>Dan nudged you</span><b class="mu">now</b></div></div></div></div>
 </div></section>
 <section class="wband hide-in"><div class="wc"><span>Free</span><span>18+ only</span><span>Only friends see your stats</span><span>Phone and computer</span></div></section>
 <section class="wsec hide-in"><div class="wc wsplit">
-<div class="wtxt"><p class="wk">Log</p><h3 class="wt2">Log a session in seconds</h3><p class="wp">Pick the start and end, add a rating, and say whether it was released. A session can run over several days. Use the built-in timer if you want it counted live.</p><ul class="wul"><li>Date and time for start and end</li><li>Rating from 1 to 10</li><li>Released yes makes it a load and restarts your timer</li><li>Errors shown if a time is wrong</li></ul></div>
+<div class="wtxt"><p class="wk">Log</p><h3 class="wt2">Live or after the fact</h3><p class="wp">Tap Start now and the timer counts while it runs. Already happened? Log it with a start and an end. Rate it from 1 to 10 and say whether it was released.</p><ul class="wul"><li>Live timer, or a past session with dates and times</li><li>Rating from 1 to 10, always picked by you</li><li>Released yes makes it a load and empties your tank</li><li>Tags, if you want them</li></ul></div>
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wt">New session</div><div class="wlab">Started</div><div class="wf2"><i>24 Nov 2026</i><i>22:10</i></div><div class="wlab">Ended</div><div class="wf2"><i>24 Nov 2026</i><i>22:25</i></div><div class="wnote">Duration: 15 min</div><div class="wlab">Rating <b>7</b></div><div class="wbar"><u style="width:70%"></u></div><div class="wlab">Released?</div><div class="wseg"><i class="on">Yes</i><i>No</i></div><div class="wbtn">Save</div></div></div></div></div></section>
 <section class="wsec hide-in"><div class="wc wsplit rev">
-<div class="wtxt"><p class="wk">Stats</p><h3 class="wt2">See where you stand</h3><p class="wp">Time since your last load, average gaps, ratings and streaks, with charts by day, week and month. Streak freezes cover the days you miss.</p><ul class="wul"><li>Time since last, live</li><li>Average rating and gap</li><li>Streaks and best streak</li><li>Daily, weekly and monthly charts</li></ul></div>
+<div class="wtxt"><p class="wk">Stats</p><h3 class="wt2">Your week, told in numbers</h3><p class="wp">Swipe through story cards for your week and month, see every load on a calendar, find the hours you log most and keep your records in one place.</p><ul class="wul"><li>Story cards for the week and month</li><li>Calendar of sessions and loads</li><li>Time of day and weekday patterns</li><li>Records, streaks and 12-month bars</li></ul></div>
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Sessions, last 7 days</div><div class="wchart"><u style="height:35%"></u><u style="height:55%"></u><u style="height:30%"></u><u style="height:70%"></u><u style="height:45%"></u><u style="height:90%" class=hi></u><u style="height:60%"></u></div><div class="wdays"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
 <div class="wmc wgrid3"><div><b>6.4</b><span>avg rating</span></div><div><b>12</b><span>best streak</span></div><div><b>9h</b><span>avg gap</span></div></div></div></div></div></section>
+<section class="wsec hide-in wsoft"><div class="wc wsplit">
+<div class="wtxt"><p class="wk">Awards</p><h3 class="wt2">Real 3D awards</h3><p class="wp">Chrome, enamel and white slime. Earn them for streaks, milestones and duels, then spin and flip them in your trophy case. Limited editions only exist on their dates.</p><ul class="wul"><li>Drag to spin, tap to flip</li><li>Every duel win gives an award with your opponent's name</li><li>Every full crew tank gives one with the crew's name</li><li>Pin your best three on your profile</li></ul></div>
+<div class="wmock"><div class="wph wawd"><div class="wmc"><div class="wlab">Trophy case</div><div class="wawg"><span class="awi" data-k="first||"></span><span class="awi" data-k="pduel|Mike|"></span><span class="awi" data-k="og||"></span></div><div class="wawn"><span>First Drop</span><span>Beat Mike</span><span>Founder</span></div></div></div></div></div></section>
 <section class="wsec hide-in"><div class="wc wsplit">
-<div class="wtxt"><p class="wk">Friends</p><h3 class="wt2">Compare with friends</h3><p class="wp">Add friends by username and see their time since last load and stats, if they share them. Challenge them to duels, join a crew and climb the leagues.</p><ul class="wul"><li>Add by username</li><li>Their stats next to yours</li><li>Duels for LDs, crews and leagues</li><li>Friends see your stats, and you can hide them any time in Settings</li></ul></div>
-<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Friends</div><div class="wfr"><i>M</i><span>@mike</span><b>2h 10m</b></div><div class="wfr"><i>D</i><span>@dan</span><b>1d 4h</b></div><div class="wfr"><i>A</i><span>@alex</span><b class="mu">private</b></div></div>
-<div class="wmc"><div class="wlab">Duel</div><div class="wrow"><span>You vs @mike</span><b>+50</b></div><div class="wbtn alt">Challenge</div></div></div></div></div></section>
-<section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs, badges and a shop</h4><p>Earn LDs on every session. 80 badges, slime colors and effects.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Daily challenges</h4><p>A new challenge each day and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels, crews, leagues</h4><p>Go head to head, team up with a crew, or climb a league.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="60" r="32" fill="#f4f4f6"/><circle cx="76" cy="60" r="32" fill="#e11d48" opacity=".9"/></svg></div><h4>Two looks</h4><p>After dark or Workshop. Switch any time in Settings.</p></div></div></div></section>
-<section class="wsec hide-in wsoft"><div class="wc"><p class="wk">How it works</p><h3 class="wt2">Up and running in a minute</h3><ol class="wsteps"><li><b>1</b><div><h4>Create an account</h4><p>A username and an email. Or try it as a guest first.</p></div></li><li><b>2</b><div><h4>Log a session</h4><p>Tap Log a session whenever you want. Start, end, rating, released.</p></div></li><li><b>3</b><div><h4>Watch it add up</h4><p>Stats, streaks, rewards and your friends fill in on their own.</p></div></li></ol></div></section>
-<section class="wsec hide-in"><div class="wc"><p class="wk">Privacy</p><h3 class="wt2">Only numbers. Always yours.</h3><div class="wprv"><div><h4>Numbers and timestamps only</h4><p>No photos, no notes, no location.</p></div><div><h4>Only your friends</h4><p>Friends you accept see your stats. Turn sharing off any time in Settings.</p></div><div><h4>Your data, your call</h4><p>Add a PIN lock, or delete your account any time.</p></div><div><h4>Adults only</h4><p>Creamer is for people 18 and older.</p></div></div></div></section>
-<section class="wsec hide-in wsoft"><div class="wc wnarrow"><p class="wk">Questions</p><h3 class="wt2">Good to know</h3><details><summary>Is it free?</summary><p>Yes. There is nothing to pay.</p></details><details><summary>Do I need an account?</summary><p>No. You can try it as a guest. Guest sessions stay on your device, and they carry over if you create an account later.</p></details><details><summary>What do you store?</summary><p>Your email, username, an optional short bio, and for each session the times, rating, whether it was released and any tags. No photos, contacts or location. Details are in the <a href="privacy.html">privacy policy</a>.</p></details><details><summary>Who can see my sessions?</summary><p>Only you, unless you choose to share with friends in Settings.</p></details><details><summary>Can I delete my account?</summary><p>Yes, from Settings. It removes your account and your sessions.</p></details><details><summary>Does it work on a computer?</summary><p>Yes. It works in any browser on a phone or a computer, and you can add it to your home screen.</p></details></div></section>
+<div class="wtxt"><p class="wk">Friends</p><h3 class="wt2">Better with friends</h3><p class="wp">Add friends by username and see their tanks and stats, if they share them. React to their loads, nudge them with your own message, challenge them to a duel or fill a crew tank together.</p><ul class="wul"><li>Activity feed with reactions</li><li>Nudges with your own message</li><li>Duels and crew tanks, no LDs needed</li><li>Your name and showcase on your profile</li><li>Hide your stats any time in Settings</li></ul></div>
+<div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Friends</div><div class="wfr"><i>M</i><span>Mike <small style="opacity:.6">@mike</small></span><b>2h 10m</b></div><div class="wfr"><i>D</i><span>Dan <small style="opacity:.6">@dan</small></span><b>1d 4h</b></div><div class="wfr"><i>A</i><span>@alex</span><b class="mu">private</b></div></div>
+<div class="wmc"><div class="wlab">Duel</div><div class="wrow"><span>You vs Mike, most sessions</span><b>5 to 3</b></div><div class="wbtn alt">Challenge to a duel</div></div></div></div></div></section>
+<section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/><circle cx="12" cy="13" r="3" fill="#e11d48" stroke="none" opacity=".9"/></svg></div><h4>Live timer</h4><p>Start it when you begin. It keeps counting even if you close the app.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="7"/><circle cx="12" cy="10" r="4" fill="#e11d48" stroke="none"/><path d="M7 4.5c1-1.5 9-1.5 10 0" stroke="#f4f4f6" stroke-width="2.4"/><path d="M10 6v2M14 6v3" stroke="#f4f4f6" stroke-width="1.6"/><path d="M9 17l-1 5 4-2 4 2-1-5"/></svg></div><h4>3D trophy case</h4><p>Real 3D awards to spin and flip, plus limited editions on special dates.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4Z"/><path d="M12 7.5c0 0-2.6 3-2.6 4.6a2.6 2.6 0 0 0 5.2 0c0-1.6-2.6-4.6-2.6-4.6Z" fill="#f4f4f6" stroke="none"/></svg></div><h4>Reactions and nudges</h4><p>React to a friend's load or nudge them with your own message.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels and crews</h4><p>Go head to head or fill a shared crew tank. Winners get an award with a name on it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/><path d="M3 3h18" stroke="#f4f4f6" stroke-width="2.4"/></svg></div><h4>Your profile</h4><p>Your name, a short bio and your three best awards for friends to see.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs and a shop</h4><p>Earn LDs on every session and spend them on slime colours, drips and effects.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Weekly challenges</h4><p>New challenges every week and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div></div></div></section>
+<section class="wsec hide-in wsoft"><div class="wc"><p class="wk">How it works</p><h3 class="wt2">Up and running in a minute</h3><ol class="wsteps"><li><b>1</b><div><h4>Create an account</h4><p>A username and an email. Or try it as a guest first.</p></div></li><li><b>2</b><div><h4>Log a session</h4><p>Start the live timer, or log one that already happened. Rating, released, done.</p></div></li><li><b>3</b><div><h4>Watch it add up</h4><p>Stats, streaks, awards and your friends fill in on their own.</p></div></li></ol></div></section>
+<section class="wsec hide-in"><div class="wc"><p class="wk">Privacy</p><h3 class="wt2">Only numbers. Always yours.</h3><div class="wprv"><div><h4>Numbers and timestamps only</h4><p>No photos, no notes, no location. Your profile name is optional.</p></div><div><h4>Only your friends</h4><p>Friends you accept see your stats. Turn sharing off any time in Settings.</p></div><div><h4>Your data, your call</h4><p>Add a PIN lock, or delete your account any time.</p></div><div><h4>Adults only</h4><p>Creamer is for people 18 and older.</p></div></div></div></section>
+<section class="wsec hide-in wsoft"><div class="wc wnarrow"><p class="wk">Questions</p><h3 class="wt2">Good to know</h3><details><summary>Is it free?</summary><p>Yes. There is nothing to pay.</p></details><details><summary>Do I need an account?</summary><p>No. You can try it as a guest. Guest sessions stay on your device, and they carry over if you create an account later.</p></details><details><summary>What do you store?</summary><p>Your email, username, an optional name and short bio, the awards you pin, and for each session the times, rating, whether it was released and any tags. No photos, contacts or location. Details are in the <a href="privacy.html">privacy policy</a>.</p></details><details><summary>Who can see my sessions?</summary><p>Friends you accept can see your stats. Turn sharing off any time in Settings, and they only see your name, bio and pinned awards.</p></details><details><summary>What are awards?</summary><p>3D trophies you earn for streaks, milestones, duel wins and full crew tanks. Open one to spin it and see when and how you got it. Some are limited editions that can only be earned on certain dates.</p></details><details><summary>Do I need my real name?</summary><p>No. Your username is how friends add you. The name on your profile is optional and can be anything.</p></details><details><summary>Can I delete my account?</summary><p>Yes, from Settings. It removes your account and your sessions.</p></details><details><summary>Does it work on a computer?</summary><p>Yes. It works in any browser on a phone or a computer, and you can add it to your home screen.</p></details></div></section>
 <section class="wsec wfinal"><div class="wc wnarrow"><h3 class="wt2 hide-in" style="text-align:center">Create your account</h3><p class="wp hide-in" style="text-align:center">Free. Takes under a minute. +100 LDs on sign-up.</p>
 <div class="card gc" id="authCard">
 <div class="seg" id="authTabs"><button type="button" data-m="in" aria-pressed="true">Log in</button><button type="button" data-m="up" aria-pressed="false">Create account</button></div>
@@ -2325,7 +2373,7 @@ html.nofx .livedot{animation:none}
 <label for="aUser" class="fl">Username</label>
 <input type="text" id="aUser" maxlength="20" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Letters, numbers, underscore" style="width:100%" aria-describedby="aUMsg">
 <p class="note" id="aUMsg" role="status" style="min-height:1.4em;margin:6px 0 0"></p>
-<p class="note hint" id="uHint">3 to 20 characters. Friends see this name, so do not use your real one.</p>
+<p class="note hint" id="uHint">3 to 20 characters. Friends add you by this. You can add a display name later in your profile.</p>
 </div>
 <div id="fEmail">
 <label for="aEmail" class="fl">Email</label>
@@ -5726,6 +5774,118 @@ $('peSave').addEventListener('click', function () {
   saveP(); saveS(); peClose(); render(); toast('Profile saved');
 });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('peOv').hidden) peClose(); });
+
+(function () { ['first||', 'pduel|Mike|', 'og||'].forEach(function (k) { var p = k.split('|'); AWK[k] = {des: p[0], name: p[1] || undefined, sub: p[2] || undefined}; }); setTimeout(awThumbs, 400); })();
+
+/* ---------- Word for "load" ---------- */
+var LW_LIST = [['load', 'loads', 'loaded'], ['nut', 'nuts', 'nutted'], ['bust', 'busts', 'busted'], ['drop', 'drops', 'dropped'], ['release', 'releases', 'released'], ['finish', 'finishes', 'finished']];
+function lwForms(w) {
+  w = String(w == null ? (S && S.lw) || 'load' : w).toLowerCase().replace(/[^a-zÀ-ɏЀ-ӿ' -]/g, '').trim().slice(0, 16) || 'load';
+  for (var i = 0; i < LW_LIST.length; i++) if (LW_LIST[i][0] === w) return LW_LIST[i];
+  var pl = /(s|x|z|ch|sh)$/.test(w) ? w + 'es' : /[^aeiou]y$/.test(w) ? w.slice(0, -1) + 'ies' : w + 's';
+  var past = /e$/.test(w) ? w + 'd' : /[^aeiou]y$/.test(w) ? w.slice(0, -1) + 'ied' : w + 'ed';
+  return [w, pl, past];
+}
+var LWOBS = null, LWRE = /\b(load|loads|loaded)\b/gi;
+function lwCase(src, rep) { return src === src.toUpperCase() ? rep.toUpperCase() : src.charAt(0) === src.charAt(0).toUpperCase() ? rep.charAt(0).toUpperCase() + rep.slice(1) : rep; }
+function lwNode(t) {
+  var v = t.nodeValue; if (!v || !/load/i.test(v)) return;
+  var p = t.parentNode; if (!p || (p.closest && p.closest('#auth,script,style,textarea,.nolw'))) return;
+  var f = lwForms(), nv = v.replace(LWRE, function (m) { var k = m.toLowerCase(); return lwCase(m, k === 'load' ? f[0] : k === 'loads' ? f[1] : f[2]); });
+  if (nv !== v) t.nodeValue = nv;
+}
+function lwWalk(root) {
+  if (!root) return;
+  if (root.nodeType === 3) { lwNode(root); return; }
+  if (root.nodeType !== 1) return;
+  var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), n; while ((n = w.nextNode())) lwNode(n);
+}
+function lwApply() {
+  if (lwForms()[0] === 'load') { if (LWOBS) { LWOBS.disconnect(); LWOBS = null; } return; }
+  if (!LWOBS) {
+    lwWalk(document.body);
+    LWOBS = new MutationObserver(function (ms) { ms.forEach(function (m) { if (m.type === 'characterData') lwNode(m.target); else m.addedNodes.forEach(lwWalk); }); });
+    LWOBS.observe(document.body, {childList: true, subtree: true, characterData: true});
+  }
+}
+(function () { var r0 = render; render = function () { var x = r0.apply(this, arguments); try { lwApply(); } catch (e) {} return x; }; })();
+
+/* ---------- Setup cards after sign-up ---------- */
+var ONB = null;
+function onbOpen() {
+  ONB = {i: 0, lw: (S.lw || 'load'), rate: 0, done: {}};
+  $('onbName').value = cleanName(P.dname);
+  var d = new Date(Date.now() - 3600000); d.setSeconds(0, 0);
+  $('onbWhen').value = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  $('onbFr').value = ''; $('onbFrMsg').textContent = '';
+  $('onb').hidden = false; document.documentElement.classList.add('awlock'); onbShow();
+}
+function onbClose() {
+  $('onb').hidden = true; document.documentElement.classList.remove('awlock');
+  G.onb = 1; G.wel = 1; saveG(); ONB = null; render();
+}
+function onbShow() {
+  var i = ONB.i, f = lwForms(ONB.lw);
+  document.querySelectorAll('#onb .onbc').forEach(function (c, k) { c.hidden = k !== i; });
+  $('onbDots').innerHTML = [0, 1, 2, 3].map(function (k) { return '<i' + (k === i ? ' class="on"' : k < i ? ' class="was"' : '') + '></i>'; }).join('');
+  $('onbBack').style.visibility = i ? 'visible' : 'hidden';
+  $('onbNext').textContent = i === 3 ? 'Finish' : i === 2 ? 'Save and continue' : 'Continue';
+  $('onbSkip').textContent = i === 3 ? 'Skip for now' : i === 2 ? "I don't remember" : 'Skip';
+  $('onbWord').innerHTML = LW_LIST.map(function (w) { return '<button type="button" class="onbw' + (w[0] === f[0] ? ' on' : '') + '" data-w="' + w[0] + '" aria-pressed="' + (w[0] === f[0]) + '">' + w[0].charAt(0).toUpperCase() + w[0].slice(1) + '</button>'; }).join('');
+  if (LW_LIST.every(function (w) { return w[0] !== f[0]; })) $('onbOwn').value = f[0];
+  $('onbPrev').innerHTML = '<span>Time since last ' + esc(f[0]) + '</span><b>3H 42M</b><small>' + esc(lwCase('Loads', f[1])) + ' this week: 4</small>';
+  $('onbQ3').textContent = 'When was your last ' + f[0] + '?';
+  $('onbRate').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (n) { return '<button type="button" data-r="' + n + '" aria-pressed="' + (ONB.rate === n) + '"' + (ONB.rate === n ? ' class="on"' : '') + '>' + n + '</button>'; }).join('');
+  var dn = cleanName($('onbName').value);
+  $('onbHello').textContent = dn ? 'Nice to meet you, ' + dn + '.' : 'Friends will see your @' + (P.name || '') + ' until you add one.';
+  if (i === 0) setTimeout(function () { try { $('onbName').focus({preventScroll: true}); } catch (e) {} }, 200);
+}
+function onbSaveLast() {
+  var v = $('onbWhen').value, t = v ? new Date(v).getTime() : NaN;
+  if (!ONB.rate) { $('onbLMsg').textContent = 'Pick a rating from 1 to 10.'; return false; }
+  if (!isFinite(t) || t > Date.now() + 60000) { $('onbLMsg').textContent = 'Pick a time in the past.'; return false; }
+  var dur = Math.max(1, Math.min(240, +S.dLen || 10)), st = new Date(t - dur * 60000), en = new Date(t);
+  var hm2 = function (d) { return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); };
+  E.push({id: Date.now(), t: t, from: hm2(st), to: hm2(en), dur: dur, rate: ONB.rate, rel: true, tags: []}); saveE();
+  return true;
+}
+function onbAddFriend() {
+  var n = clean($('onbFr').value), msg = $('onbFrMsg');
+  if (!P.name) { msg.textContent = 'Create an account to add friends.'; return; }
+  if (!n) { msg.textContent = 'Type their username first.'; return; }
+  if (n === P.name) { msg.textContent = "That's you."; return; }
+  if (F.indexOf(n) >= 0) { msg.textContent = '@' + n + ' is already your friend.'; return; }
+  if (CLOUD) {
+    msg.textContent = 'Sending…';
+    sb.rpc('send_friend_request', {name: n}).then(function (r) {
+      if (r.error) { msg.textContent = 'Something went wrong. Try again.'; return; }
+      var m = {not_found: 'No user @' + n + '. Check the spelling.', self: "That's you.", exists: '@' + n + ' is already your friend.', pending: 'Request already sent to @' + n + '.', sent: 'Request sent to @' + n + '. Add another or tap Finish.', accepted: 'You are now friends with @' + n + '.'};
+      msg.textContent = m[r.data] || 'Done.'; if (r.data === 'sent' || r.data === 'accepted') $('onbFr').value = '';
+      refreshSocial();
+    });
+    return;
+  }
+  if (!api.find(n, true)) { msg.textContent = 'No user @' + n + '. Check the spelling.'; return; }
+  F.push(n); saveF(); $('onbFr').value = ''; msg.textContent = 'Added @' + n + '. Add another or tap Finish.';
+}
+$('onbName').addEventListener('input', function () { if (ONB) $('onbHello').textContent = cleanName($('onbName').value) ? 'Nice to meet you, ' + cleanName($('onbName').value) + '.' : 'Friends will see your @' + (P.name || '') + ' until you add one.'; });
+$('onbWord').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('[data-w]') : null; if (!b || !ONB) return; ONB.lw = b.getAttribute('data-w'); $('onbOwn').value = ''; onbShow(); });
+$('onbOwn').addEventListener('input', function () { if (!ONB) return; var v = $('onbOwn').value.trim(); ONB.lw = v || 'load'; var cur = $('onbOwn').value; onbShow(); $('onbOwn').value = cur; });
+$('onbRate').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('[data-r]') : null; if (!b || !ONB) return; ONB.rate = +b.getAttribute('data-r'); $('onbLMsg').textContent = ''; onbShow(); });
+$('onbFrGo').addEventListener('click', onbAddFriend);
+$('onbFr').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); onbAddFriend(); } });
+$('onbBack').addEventListener('click', function () { if (ONB && ONB.i) { ONB.i--; onbShow(); } });
+$('onbSkip').addEventListener('click', function () { if (!ONB) return; if (ONB.i >= 3) { onbClose(); return; } ONB.i++; onbShow(); });
+$('onbNext').addEventListener('click', function () {
+  if (!ONB) return;
+  if (ONB.i === 0) { P.dname = cleanName($('onbName').value); S.dname = P.dname; S.pfT = Date.now(); try { localStorage.setItem('creamer:pf:' + uid, JSON.stringify({t: S.pfT, dname: P.dname, pin: P.pin || [], bio: P.bio || ''})); } catch (e) {} saveP(); saveS(); }
+  if (ONB.i === 1) { S.lw = lwForms(ONB.lw)[0]; saveS(); lwApply(); }
+  if (ONB.i === 2 && !onbSaveLast()) return;
+  if (ONB.i === 3) { if (clean($('onbFr').value)) onbAddFriend(); onbClose(); return; }
+  ONB.i++; onbShow();
+});
+maybeWelcome = function () { if (uid && !G.onb && !G.wel && !E.length) onbOpen(); };
+setTimeout(function () { try { lwApply(); } catch (e) {} }, 0);
 </script>
 </body>
 </html>
