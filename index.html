@@ -1276,6 +1276,19 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 .hbadge svg{width:46px;height:46px}
 .hrar{background:transparent!important;border:1px solid rgba(255,255,255,.35)}
 .hin h3{font-family:var(--t-fd,inherit);font-size:36px!important;letter-spacing:.02em;font-weight:400}
+
+/* ===== friend tanks ===== */
+.mtank{width:24px;height:40px;flex:0 0 auto;display:block}
+.mtank .mtg{fill:var(--t-in,#1b1b23)}
+.mtank .mtl{fill:#f4f4f6}
+.mtank .mto{fill:none;stroke:var(--t-ink,#f4f4f7);stroke-width:3}
+.frr .frt{gap:10px}
+.frme .mtank{opacity:.75}
+.ftk{float:right;display:flex;flex-direction:column;align-items:center;gap:4px;margin:-4px 0 6px 12px}
+.mtank.big{width:64px;height:106px;filter:drop-shadow(0 0 16px rgba(255,255,255,.14))}
+.mtank.big .mto{stroke-width:2.5}
+.ftk span{font:400 22px/1 var(--t-fd,inherit);color:var(--t-ink)}
+@media (max-width:360px){.frr .frt b{font-size:22px}.mtank{width:20px;height:34px}}
 </style>
 </head>
 <body>
@@ -1765,7 +1778,7 @@ function lastOf(arr) { var m = null; arr.forEach(function (x) { if (!m || x.t > 
 function tick() {
   checkNotifs(); if (uid) { renderFriendLists(false); tankShow(); evTick(); if (CLOUD && Date.now() - crewAt > 120000) crewLoad().then(renderCrew); }
   var els = document.querySelectorAll('[data-since]');
-  for (var i = 0; i < els.length; i++) { var tx = sinceLabel(+els[i].getAttribute('data-since'), els[i].hasAttribute('data-ago')); if (els[i].id === 'hSince') odoSet(els[i], tx); else els[i].textContent = tx; }
+  for (var i = 0; i < els.length; i++) { var tx = sinceLabel(+els[i].getAttribute('data-since'), els[i].hasAttribute('data-ago')); if (els[i].hasAttribute('data-short')) tx = shortSince(tx); if (els[i].id === 'hSince') odoSet(els[i], tx); else els[i].textContent = tx; }
 }
 function sinceCell(u) {
   if (!u) return '<span class="empty">unavailable</span>';
@@ -1777,7 +1790,8 @@ var fMoreOn = false, fAllOn = false;
 function friendDetail(u) {
   var es = u.entries || [], rel = es.filter(function (x) { return x.rel; }), ll = lastOf(rel), le = lastOf(es), rs = 0;
   es.forEach(function (x) { rs += x.rate; });
-  var top = '<div class="fbig">' + (ll ? '<b data-since="' + ll.t + '">' + sinceLabel(ll.t, false) + '</b>' : '<b class="fz">No loads yet</b>') + '</div>' +
+  var lvF = tankOf(es);
+  var top = '<div class="ftk">' + miniTank(lvF, true) + '<span>' + Math.floor(lvF * 100) + '%</span></div><div class="fbig">' + (ll ? '<b data-since="' + ll.t + '">' + sinceLabel(ll.t, false) + '</b>' : '<b class="fz">No loads yet</b>') + '</div>' +
     (le ? '<p class="sub fls">Last session ' + spanTxt(le, false) + ' · ' + fmtMin(le.dur) + ' · ' + le.rate + '/10 · ' + (le.rel ? 'load' : 'not released') + '</p>' : '') +
     (u.bio ? '<p class="fbio">' + esc(u.bio) + '</p>' : '');
   var st = curStreak(es);
@@ -1817,13 +1831,23 @@ function agoCell(f) {
   var l = lastOf((f.u.entries || []).filter(function (x) { return x.rel; }));
   return l ? '<b class="ago l' + gapLvl(f.gap) + '" data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="ago l2">no loads yet</span>';
 }
+var MTN = 0;
+function shortSince(t) { return t.split(' ').slice(0, 2).join(' '); }
+function tankOf(es) { var l = lastOf((es || []).filter(function (x) { return x.rel; })), ms = tankHrs() * 3600000, el = l ? Date.now() - l.t : ms; return Math.max(0, Math.min(1, el / ms)); }
+function miniTank(lv, big) {
+  var id = 'mt' + (++MTN), W = 40, H = 66, ih = 58, y = 4 + ih * (1 - lv);
+  return '<svg class="mtank' + (big ? ' big' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Tank ' + Math.floor(lv * 100) + '% full"><defs><clipPath id="' + id + '"><rect x="4" y="4" width="32" height="' + ih + '" rx="14"/></clipPath></defs>' +
+    '<rect x="4" y="4" width="32" height="' + ih + '" rx="14" class="mtg"/>' +
+    (lv > 0 ? '<g clip-path="url(#' + id + ')"><path class="mtl" d="M0 ' + (y + 1.5).toFixed(1) + ' Q10 ' + (y - 1.5).toFixed(1) + ' 20 ' + (y + 1.5).toFixed(1) + ' T40 ' + (y + 1.5).toFixed(1) + ' V70 H0Z"/></g>' : '') +
+    '<rect x="4" y="4" width="32" height="' + ih + '" rx="14" class="mto"/></svg>';
+}
 function friendRow(f) {
   var nm = '<span class="frn"><b>' + esc(fn(f.n)) + '</b>' + (nickOf(f.n) ? '<small>@' + esc(f.n) + '</small>' : '') + '</span>';
   var right;
   if (!f.u) right = '<span class="frq">unavailable</span>';
   else if (f.u.priv) right = '<span class="frq">private</span>';
-  else { var l = lastOf((f.u.entries || []).filter(function (x) { return x.rel; })); right = l ? '<b data-since="' + l.t + '">' + sinceLabel(l.t, false) + '</b>' : '<span class="frq">no loads yet</span>'; }
-  return avatar(f.n) + nm + '<span class="frt">' + (gapLvl(f.gap) === '2' ? '<i class="frdot" aria-label="3 days or more"></i>' : '') + right + '</span>';
+  else { var l = lastOf((f.u.entries || []).filter(function (x) { return x.rel; })); right = l ? '<b data-short data-since="' + l.t + '">' + shortSince(sinceLabel(l.t, false)) + '</b>' : '<span class="frq">no loads yet</span>'; }
+  return avatar(f.n) + nm + '<span class="frt">' + (gapLvl(f.gap) === '2' ? '<i class="frdot" aria-label="3 days or more"></i>' : '') + right + (f.u && !f.u.priv ? miniTank(tankOf(f.u.entries)) : '') + '</span>';
 }
 function friendCard(f) {
   var top = '<span class="frh">' + avatar(f.n) + '<span class="frn"><b>' + fnH(f.n) + '</b></span><i class="frgo" aria-hidden="true">&#8250;</i></span>';
@@ -1842,13 +1866,13 @@ function avatar(n, sm) {
   return '<i class="av' + (sm ? ' sm' : '') + '" style="background:hsl(' + (320 + h % 40) + ',58%,52%)">' + esc((nickOf(n) || n).charAt(0).toUpperCase()) + '</i>';
 }
 function renderFriendLists(force) {
-  var list = friendSort(), key = list.map(function (f) { var le = f.u && !f.u.priv ? lastOf(f.u.entries || []) : null; return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : '') + (le ? le.id + '' + le.t : ''); }).join(',');
+  var list = friendSort(), key = list.map(function (f) { var le = f.u && !f.u.priv ? lastOf(f.u.entries || []) : null; return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : '') + (le ? le.id + '' + le.t : '') + ':' + (f.u && !f.u.priv ? Math.floor(tankOf(f.u.entries) * 20) : ''); }).join(',') + '|' + Math.floor(tankOf(E) * 20);
   if (!force && key === fKey) return;
   fKey = key;
   $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
   $('fEmpty').hidden = !!list.length; $('frCard').hidden = !list.length; $('cmpWrap').hidden = !list.length;
   var ml = lastOf(E.filter(function (x) { return x.rel; }));
-  var me = '<li><div class="frr frme">' + avatar(P.name || 'me') + '<span class="frn"><b>You</b></span>' + (ml ? '<span class="frt"><b data-since="' + ml.t + '">' + sinceLabel(ml.t, false) + '</b></span>' : '<span class="frt"><span class="frq">no loads yet</span></span>') + '</div></li>';
+  var me = '<li><div class="frr frme">' + avatar(P.name || 'me') + '<span class="frn"><b>You</b></span>' + '<span class="frt">' + (ml ? '<b data-short data-since="' + ml.t + '">' + shortSince(sinceLabel(ml.t, false)) + '</b>' : '<span class="frq">no loads yet</span>') + miniTank(tankOf(E)) + '</span>' + '</div></li>';
   $('fl').innerHTML = list.length ? me + list.map(function (f) {
     return '<li><button class="frr g' + gapLvl(f.gap) + '" type="button" data-open="' + esc(f.n) + '">' + friendRow(f) + '</button></li>';
   }).join('') : '';
