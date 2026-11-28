@@ -1242,6 +1242,40 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 .fact button{flex:1 1 160px;min-height:52px}
 #rwComp{margin-top:14px}
 #rwComp[hidden]{display:none}
+
+/* ===== compete tiles ===== */
+#cmpWrap[hidden]{display:none}
+#cmpWrap .eyebrow{margin:10px 0 8px}
+.cmpt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ctile{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start;gap:4px;min-height:112px;padding:14px!important;text-align:left;border-radius:var(--t-rad,16px)!important;background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;border-top-color:rgba(255,255,255,.17)!important;color:var(--t-ink);text-transform:none!important;letter-spacing:0;font-family:var(--t-fb,inherit);font-weight:500;box-shadow:none;width:100%;position:relative}
+.ctile.ctw{grid-column:span 2;min-height:0}
+.ctile .ck{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--t-mute)}
+.ctile b{font-size:20px;line-height:1.15;font-weight:700;overflow-wrap:anywhere}
+.ctile>span:not(.ck){font-size:14px;line-height:1.3;color:var(--t-mute);white-space:normal;padding-right:6px}
+.ctile b,.ctile .ck{white-space:normal;padding-right:18px}
+.ctile::after{content:"\203A";position:absolute;right:12px;top:10px;font-size:24px;color:var(--t-mute)}
+.ctbar{display:block;width:100%;height:6px;border-radius:6px;background:var(--t-in,#1b1b23);margin-top:auto;overflow:hidden}
+.ctbar[hidden]{display:none}
+.ctbar u{display:block;height:100%;background:var(--t-ink,#fff);border-radius:6px}
+.cmpov .card{position:relative}
+.cmphd{display:flex;justify-content:flex-end;margin:-6px -6px 0}
+#cmpX{width:44px;min-height:44px;padding:0;font-size:26px;line-height:1;border-radius:50%}
+#cmpBody>section.card{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0}
+#cmpBody>section.card[hidden]{display:none}
+.vh{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;overflow:hidden}
+.chips2{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px}
+.chips2 button{width:auto!important;min-height:44px;padding:0 14px;border-radius:999px!important;font-size:15px;text-transform:none!important;letter-spacing:0;background:var(--t-in,#1b1b23)!important;border:1px solid var(--t-edge,#2c2c37)!important;color:var(--t-ink)!important;box-shadow:none!important}
+.chips2 button[aria-pressed="true"]{background:var(--t-ink,#f4f4f7)!important;color:#0b0b0f!important;border-color:var(--t-ink,#f4f4f7)!important}
+.chips2 button:disabled{opacity:.4}
+
+/* ===== badge card, calmer ===== */
+.hcard{background:linear-gradient(165deg,#1c1c24 0%,#101016 60%,#0b0b0f 100%)!important;border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 30px 80px rgba(0,0,0,.8),0 0 50px rgba(255,255,255,.08)!important;transform-style:flat!important;isolation:isolate;-webkit-mask-image:-webkit-radial-gradient(white,black);border-radius:24px!important}
+.hfoil{border-radius:inherit;mix-blend-mode:normal!important;opacity:.16!important;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.0) 30%,rgba(255,214,230,.9) 42%,rgba(214,236,255,.9) 50%,rgba(255,255,255,.9) 56%,transparent 70%) 0 0/250% 250%!important;background-position:var(--hx) var(--hy)!important;animation:none!important}
+.hglare{border-radius:inherit;mix-blend-mode:normal!important;background:radial-gradient(circle at var(--hx) var(--hy),rgba(255,255,255,.18),rgba(255,255,255,0) 50%)!important}
+.hbadge{width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#ffffff,#e9e8ee 55%,#bdbcc7 100%);box-shadow:inset -6px -8px 16px rgba(0,0,0,.2),0 12px 30px rgba(0,0,0,.6);color:#0b0b0f}
+.hbadge svg{width:46px;height:46px}
+.hrar{background:transparent!important;border:1px solid rgba(255,255,255,.35)}
+.hin h3{font-family:var(--t-fd,inherit);font-size:36px!important;letter-spacing:.02em;font-weight:400}
 </style>
 </head>
 <body>
@@ -1255,7 +1289,7 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 <div id="splash" aria-hidden="true"><div class="sbody"></div><svg viewBox="0 0 400 200" preserveAspectRatio="none"><path d="M0 0H400V34C388 34 384 56 382 96C380 140 366 140 364 96C362 52 356 32 340 32C324 32 320 62 318 110C316 170 300 170 298 110C296 54 290 34 272 34C256 34 252 40 250 60C248 84 238 84 236 60C234 38 226 32 212 32C196 32 192 74 190 130C188 196 170 196 168 130C166 70 160 32 142 32C126 32 122 44 120 74C118 106 106 106 104 74C102 44 94 32 78 32C62 32 58 60 56 100C54 150 40 150 38 100C36 50 28 34 14 34C8 34 4 34 0 36Z"/></svg></div>
 <div id="goo" aria-hidden="true"><div id="tl"><i class="bl b1"></i><i class="bl b2"></i><i class="bl b3"></i><i class="bl b4"></i></div><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="slGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c9"/><stop offset="1" stop-color="#f3d06b"/></linearGradient><linearGradient id="slGalaxy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe6ff"/><stop offset=".5" stop-color="#d4c6ff"/><stop offset="1" stop-color="#b8cdfb"/></linearGradient><linearGradient id="slRainbow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd1dc"/><stop offset=".25" stop-color="#ffe9b8"/><stop offset=".5" stop-color="#d8f5c8"/><stop offset=".75" stop-color="#cde6ff"/><stop offset="1" stop-color="#e5d4ff"/></linearGradient></defs><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V30H391C379 30 371.5 42.2 371.5 57.5A6.5 6.5 0 0 1 358.5 57.5C358.5 42.2 351 30 339 30H331C319 30 312 50.5 312 81A7 7 0 0 1 298 81C298 50.5 291 30 279 30H271C259 30 251 38.2 251 46A6 6 0 0 1 239 46C239 38.2 231 30 219 30H198C186 30 180 55.7 180 96A8 8 0 0 1 164 96C164 55.7 158 30 146 30H131C119 30 111.5 40.1 111.5 51.5A6.5 6.5 0 0 1 98.5 51.5C98.5 40.1 91 30 79 30H66C54 30 47 45.5 47 67A7 7 0 0 1 33 67C33 45.5 26 30 14 30H0Z"/></g><path class="sl-main" d="M0 0H400V30H391C379 30 371.5 42.2 371.5 57.5A6.5 6.5 0 0 1 358.5 57.5C358.5 42.2 351 30 339 30H331C319 30 312 50.5 312 81A7 7 0 0 1 298 81C298 50.5 291 30 279 30H271C259 30 251 38.2 251 46A6 6 0 0 1 239 46C239 38.2 231 30 219 30H198C186 30 180 55.7 180 96A8 8 0 0 1 164 96C164 55.7 158 30 146 30H131C119 30 111.5 40.1 111.5 51.5A6.5 6.5 0 0 1 98.5 51.5C98.5 40.1 91 30 79 30H66C54 30 47 45.5 47 67A7 7 0 0 1 33 67C33 45.5 26 30 14 30H0Z"/><g class="sl-d d1"><path d="M298.6 78V94A6.4 6.4 0 0 0 311.4 94V78Z"/></g><g class="sl-d d2"><path d="M164.6 93V110A7.4 7.4 0 0 0 179.4 110V93Z"/></g><g class="sl-d d3"><path d="M33.6 64V80A6.4 6.4 0 0 0 46.4 80V64Z"/></g><g class="sl-d d4"><path d="M359.1 54.5V70A5.9 5.9 0 0 0 370.9 70V54.5Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i><i class="fall xr r1"></i><i class="fall xr r2"></i><i class="fall xr r3"></i><i class="fall xr r4"></i><i class="fall xr r5"></i><i class="fall xr r6"></i></div></div>
 <div id="grain" aria-hidden="true"></div>
-<div id="holo" hidden role="dialog" aria-modal="true" aria-label="New badge"><div class="hcard" id="hcard"><div class="hfoil"></div><div class="hglare"></div><div class="hin"><span class="hrar" id="hRar"></span><svg class="hmark" viewBox="0 0 160 160" aria-hidden="true"><use href="#lg"/></svg><p class="hk">New badge</p><h3 id="hName"></h3><p id="hDesc"></p><b id="hRew"></b></div></div><p class="htap">Tap anywhere to close</p></div>
+<div id="holo" hidden role="dialog" aria-modal="true" aria-label="New badge"><div class="hcard" id="hcard"><div class="hfoil"></div><div class="hglare"></div><div class="hin"><span class="hrar" id="hRar"></span><span class="hbadge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.8C12 2.8 5.5 10 5.5 14.6a6.5 6.5 0 0 0 13 0C18.5 10 12 2.8 12 2.8Z"/><path d="M9 14.5a3 3 0 0 0 3 3" stroke-linecap="round"/></svg></span><p class="hk">New badge</p><h3 id="hName"></h3><p id="hDesc"></p><b id="hRew"></b></div></div><p class="htap">Tap anywhere to close</p></div>
 <div id="pour" hidden role="dialog" aria-modal="true" aria-label="Level up"><div class="psheet"><svg class="pdrip" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H400V22C392 22 390 60 382 60S372 22 364 22 352 34 346 34 338 22 330 22 318 78 306 78 296 22 286 22 276 40 268 40 258 22 250 22 240 52 230 52 220 22 210 22 198 86 186 86 176 22 166 22 156 36 148 36 138 22 128 22 118 62 108 62 98 22 88 22 78 44 70 44 60 22 50 22 40 70 30 70 20 22 10 22 4 30 0 30Z"/></svg><div class="pin"><p class="pk">Level up</p><b id="pL"></b><span id="pN"></span></div></div></div>
 <svg id="cream" aria-hidden="true"><defs><filter id="gooF" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/><feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/></filter><radialGradient id="crG" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6e4df"/></radialGradient></defs><g filter="url(#gooF)" fill="#f6f4ef"></g></svg>
 <div id="boot" aria-hidden="true"><svg class="bmark" viewBox="0 0 160 160" aria-hidden="true"><defs><filter id="liqF" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="turbulence" baseFrequency="0.007 0.012" numOctaves="1" seed="4" result="t"><animate attributeName="baseFrequency" dur="3s" values="0.007 0.012;0.010 0.016;0.007 0.012" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="3" xChannelSelector="R" yChannelSelector="G"><animate attributeName="scale" values="40;0;7;3" keyTimes="0;.5;.75;1" dur="1.6s" fill="freeze"/></feDisplacementMap></filter><linearGradient id="glsG" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="bclip"><rect width="160" height="160" rx="36"/></clipPath></defs><g class="bliq" filter="url(#liqF)"><use href="#lg"/></g><g clip-path="url(#bclip)"><g transform="rotate(22 80 80)"><rect class="bgls" x="-120" y="-60" width="44" height="280" fill="url(#glsG)"/></g></g></svg><i class="bb bb1"></i><i class="bb bb2"></i><i class="bb bb3"></i><div class="slimewrap"><svg class="slime" viewBox="0 0 400 190" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="slGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c9"/><stop offset="1" stop-color="#f3d06b"/></linearGradient><linearGradient id="slGalaxy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe6ff"/><stop offset=".5" stop-color="#d4c6ff"/><stop offset="1" stop-color="#b8cdfb"/></linearGradient><linearGradient id="slRainbow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd1dc"/><stop offset=".25" stop-color="#ffe9b8"/><stop offset=".5" stop-color="#d8f5c8"/><stop offset=".75" stop-color="#cde6ff"/><stop offset="1" stop-color="#e5d4ff"/></linearGradient></defs><g class="sl-edge" transform="translate(0,7)"><path d="M0 0H400V30H391C379 30 371.5 42.2 371.5 57.5A6.5 6.5 0 0 1 358.5 57.5C358.5 42.2 351 30 339 30H331C319 30 312 50.5 312 81A7 7 0 0 1 298 81C298 50.5 291 30 279 30H271C259 30 251 38.2 251 46A6 6 0 0 1 239 46C239 38.2 231 30 219 30H198C186 30 180 55.7 180 96A8 8 0 0 1 164 96C164 55.7 158 30 146 30H131C119 30 111.5 40.1 111.5 51.5A6.5 6.5 0 0 1 98.5 51.5C98.5 40.1 91 30 79 30H66C54 30 47 45.5 47 67A7 7 0 0 1 33 67C33 45.5 26 30 14 30H0Z"/></g><path class="sl-main" d="M0 0H400V30H391C379 30 371.5 42.2 371.5 57.5A6.5 6.5 0 0 1 358.5 57.5C358.5 42.2 351 30 339 30H331C319 30 312 50.5 312 81A7 7 0 0 1 298 81C298 50.5 291 30 279 30H271C259 30 251 38.2 251 46A6 6 0 0 1 239 46C239 38.2 231 30 219 30H198C186 30 180 55.7 180 96A8 8 0 0 1 164 96C164 55.7 158 30 146 30H131C119 30 111.5 40.1 111.5 51.5A6.5 6.5 0 0 1 98.5 51.5C98.5 40.1 91 30 79 30H66C54 30 47 45.5 47 67A7 7 0 0 1 33 67C33 45.5 26 30 14 30H0Z"/><g class="sl-d d1"><path d="M298.6 78V94A6.4 6.4 0 0 0 311.4 94V78Z"/></g><g class="sl-d d2"><path d="M164.6 93V110A7.4 7.4 0 0 0 179.4 110V93Z"/></g><g class="sl-d d3"><path d="M33.6 64V80A6.4 6.4 0 0 0 46.4 80V64Z"/></g><g class="sl-d d4"><path d="M359.1 54.5V70A5.9 5.9 0 0 0 370.9 70V54.5Z"/></g><ellipse class="sl-gl" cx="120" cy="14" rx="90" ry="4"/><ellipse class="sl-gl" cx="300" cy="12" rx="70" ry="3.5"/></svg><i class="fall f1"></i><i class="fall f2"></i><i class="fall f3"></i><i class="fall xr r1"></i><i class="fall xr r2"></i><i class="fall xr r3"></i><i class="fall xr r4"></i><i class="fall xr r5"></i><i class="fall xr r6"></i></div><i class="ld e1"></i><i class="ld e2"></i><i class="ld e3"></i><i class="ld e4"></i><i class="ld e5"></i><i class="ld e6"></i><i class="ld e7"></i><i class="ld e8"></i><i class="ld e9"></i><svg class="bpool" viewBox="0 0 400 120" preserveAspectRatio="none"><g class="pw1"><path d="M-400 30Q-350 8 -300 30T-200 30T-100 30T0 30T100 30T200 30T300 30T400 30T500 30T600 30T700 30T800 30V120H-400Z"/></g><g class="pw2"><path d="M-400 44Q-350 26 -300 44T-200 44T-100 44T0 44T100 44T200 44T300 44T400 44T500 44T600 44T700 44T800 44V120H-400Z"/></g></svg></div>
@@ -1356,7 +1390,13 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 <div class="fdrops" id="fDrops" hidden></div><p id="fDropN" hidden></p><p id="frSort" hidden></p>
 <ul id="fl" class="frl"></ul>
 </div>
-<div class="fempty" id="fEmpty" hidden><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M16 14c3 0 6 1.5 6 5"/></svg><h3>Add your first friend</h3><p>See how long it has been since their last load. They see your stats only if you turn on sharing in Settings.</p><div class="row"><button type="button" class="go" data-fadd="1">Add friend</button><button type="button" data-finv="1">Invite</button></div></div>
+<div id="cmpWrap"><div class="eyebrow">Compete</div>
+<div class="cmpt">
+<button type="button" class="ctile" data-cmp="duCard"><span class="ck">Duel</span><b id="ctDu">Duel a friend</b><span id="ctDuS">1 vs 1 for 3 or 7 days</span></button>
+<button type="button" class="ctile" data-cmp="crewCard"><span class="ck">Crew tank</span><b id="ctCr">Start a crew</b><span id="ctCrS">Fill one tank together each week</span><i class="ctbar" id="ctCrB" hidden><u></u></i></button>
+<button type="button" class="ctile ctw" data-cmp="lgCard"><span class="ck">Weekly league</span><b id="ctLg">League</b><span id="ctLgS"></span></button>
+</div></div>
+<div class="fempty" id="fEmpty" hidden><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M16 14c3 0 6 1.5 6 5"/></svg><h3>Add your first friend</h3><p>See how long it has been since their last load. They see yours too, and you can hide your stats in Settings.</p><div class="row"><button type="button" class="go" data-fadd="1">Add friend</button><button type="button" data-finv="1">Invite</button></div></div>
 <p class="note" id="fNote">Demo: the user list is three sample names with made-up sessions. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
 </div>
 <div id="fDetail" hidden>
@@ -1367,27 +1407,6 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 
 <div id="rewardsView" hidden>
 <div class="sgrid" id="rw"></div>
-<div id="rwComp" class="stack home"><div class="eyebrow">Compete with friends</div>
-<section class="card crewc" id="crewCard" data-k="crew" data-sum="Team up with friends and fill one shared tank each week."></section>
-<section class="card soft" id="lgCard" data-k="league" data-sum="A weekly ranking against your friends."></section>
-<section class="card soft" id="duCard" data-k="duels" data-sum="Challenge a friend, with or without LDs at stake.">
-<h2>Duels</h2>
-<div id="duList"></div>
-<div class="sec">New duel</div>
-<label for="duF" style="margin-top:0">Opponent</label>
-<select id="duF"></select>
-<label for="duS">What counts</label>
-<select id="duS"><option value="n">Most sessions</option><option value="m">Most total minutes</option><option value="a">Highest average rating (3+ sessions)</option><option value="d">Most active days</option></select>
-<label for="duD">Length</label>
-<select id="duD"><option value="3">3 days</option><option value="7">7 days</option></select>
-<label for="duK">Stake</label>
-<select id="duK"><option value="0">No stake</option><option value="20">20 LDs</option><option value="50">50 LDs</option><option value="100">100 LDs</option></select>
-<div class="row"><button type="button" class="go" id="duGo">Start duel</button></div>
-<p class="note" id="duMsg" role="status" style="min-height:1.4em"></p>
-<div id="duHist"></div>
-<p class="note" id="duNote">The winner takes the other side's stake. A draw returns it. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
-</section>
-</div>
 </div>
 
 <div id="profileView" hidden>
@@ -1567,7 +1586,7 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Time since last load</div><div class="wrow2"><div class="wbig">3H 42M</div><svg viewBox="0 0 120 120" width="54" height="54" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="#a9a9b8" stroke-width="4" opacity=".6"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/></svg></div><div class="wbtn">+ LOG A SESSION</div><div class="wchips"><span>Streak 5 days</span><span>Freezes 2 of 3</span></div></div>
 <div class="wmc"><div class="wlab">Today</div><div class="wrow"><span>A session of 15+ min</span><b>+25</b></div><div class="wrow"><span>Log 3 sessions</span><b>+40</b></div></div></div></div>
 </div></section>
-<section class="wband hide-in"><div class="wc"><span>Free</span><span>18+ only</span><span>Private by default</span><span>Phone and computer</span></div></section>
+<section class="wband hide-in"><div class="wc"><span>Free</span><span>18+ only</span><span>Only friends see your stats</span><span>Phone and computer</span></div></section>
 <section class="wsec hide-in"><div class="wc wsplit">
 <div class="wtxt"><p class="wk">Log</p><h3 class="wt2">Log a session in seconds</h3><p class="wp">Pick the start and end, add a rating, and say whether it was released. A session can run over several days. Use the built-in timer if you want it counted live.</p><ul class="wul"><li>Date and time for start and end</li><li>Rating from 1 to 10</li><li>Released yes makes it a load and restarts your timer</li><li>Errors shown if a time is wrong</li></ul></div>
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wt">New session</div><div class="wlab">Started</div><div class="wf2"><i>24 Nov 2026</i><i>22:10</i></div><div class="wlab">Ended</div><div class="wf2"><i>24 Nov 2026</i><i>22:25</i></div><div class="wnote">Duration: 15 min</div><div class="wlab">Rating <b>7</b></div><div class="wbar"><u style="width:70%"></u></div><div class="wlab">Released?</div><div class="wseg"><i class="on">Yes</i><i>No</i></div><div class="wbtn">Save</div></div></div></div></div></section>
@@ -1576,12 +1595,12 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Sessions, last 7 days</div><div class="wchart"><u style="height:35%"></u><u style="height:55%"></u><u style="height:30%"></u><u style="height:70%"></u><u style="height:45%"></u><u style="height:90%" class=hi></u><u style="height:60%"></u></div><div class="wdays"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div></div>
 <div class="wmc wgrid3"><div><b>6.4</b><span>avg rating</span></div><div><b>12</b><span>best streak</span></div><div><b>9h</b><span>avg gap</span></div></div></div></div></div></section>
 <section class="wsec hide-in"><div class="wc wsplit">
-<div class="wtxt"><p class="wk">Friends</p><h3 class="wt2">Compare with friends</h3><p class="wp">Add friends by username and see their time since last load and stats, if they share them. Challenge them to duels, join a crew and climb the leagues.</p><ul class="wul"><li>Add by username</li><li>Their stats next to yours</li><li>Duels for LDs, crews and leagues</li><li>Everyone is private until they choose to share</li></ul></div>
+<div class="wtxt"><p class="wk">Friends</p><h3 class="wt2">Compare with friends</h3><p class="wp">Add friends by username and see their time since last load and stats, if they share them. Challenge them to duels, join a crew and climb the leagues.</p><ul class="wul"><li>Add by username</li><li>Their stats next to yours</li><li>Duels for LDs, crews and leagues</li><li>Friends see your stats, and you can hide them any time in Settings</li></ul></div>
 <div class="wmock"><div class="wph"><div class="wmc"><div class="wlab">Friends</div><div class="wfr"><i>M</i><span>@mike</span><b>2h 10m</b></div><div class="wfr"><i>D</i><span>@dan</span><b>1d 4h</b></div><div class="wfr"><i>A</i><span>@alex</span><b class="mu">private</b></div></div>
 <div class="wmc"><div class="wlab">Duel</div><div class="wrow"><span>You vs @mike</span><b>+50</b></div><div class="wbtn alt">Challenge</div></div></div></div></div></section>
 <section class="wsec hide-in wmore"><div class="wc"><p class="wk">And more</p><h3 class="wt2">Built to keep you coming back</h3><div class="wcards"><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="34" y="10" width="52" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M38 52 Q50 46 60 52 T82 52 V96 Q82 106 72 106 H48 Q38 106 38 96 Z" fill="#f4f4f6"/><circle cx="52" cy="76" r="3" fill="#08080b" opacity=".25"/><circle cx="68" cy="88" r="4" fill="#08080b" opacity=".2"/><path d="M60 28 v10" stroke="#e11d48" stroke-width="3" stroke-linecap="round"/></svg></div><h4>Live tank</h4><p>Refills as time passes and empties when you log a load.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="62" r="30" fill="#e11d48"/><circle cx="48" cy="62" r="22" fill="none" stroke="#f4f4f6" stroke-width="3" opacity=".8"/><path d="M48 46 C48 46 38 60 38 67 A10 10 0 0 0 58 67 C58 60 48 46 48 46 Z" fill="#f4f4f6"/><path d="M84 30 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#f4f4f6"/><path d="M92 78 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 Z" fill="#f4f4f6" opacity=".7"/></svg></div><h4>LDs, badges and a shop</h4><p>Earn LDs on every session. 80 badges, slime colors, effects and levels.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="18" y="26" width="84" height="76" rx="12" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M18 48 H102" stroke="currentColor" stroke-width="3" opacity=".5"/><path d="M40 16 v18 M80 16 v18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"/><path d="M60 58 l6 13 14 2 -10 10 3 14 -13 -7 -13 7 3 -14 -10 -10 14 -2 Z" fill="#e11d48"/></svg></div><h4>Daily challenges</h4><p>A new challenge each day and surprise events with bonus LDs.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="34" cy="44" r="14" fill="#f4f4f6"/><path d="M12 92 Q12 66 34 66 Q56 66 56 92 Z" fill="#f4f4f6"/><circle cx="86" cy="44" r="14" fill="#e11d48"/><path d="M64 92 Q64 66 86 66 Q108 66 108 92 Z" fill="#e11d48"/><path d="M52 24 L60 38 L68 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="60" y="108" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="16" fill="currentColor">VS</text></svg></div><h4>Duels, crews, leagues</h4><p>Go head to head, team up with a crew, or climb a league.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><rect x="28" y="52" width="64" height="52" rx="12" fill="#f4f4f6"/><path d="M42 52 V40 a18 18 0 0 1 36 0 V52" fill="none" stroke="#f4f4f6" stroke-width="7" stroke-linecap="round"/><circle cx="60" cy="76" r="7" fill="#08080b"/><rect x="57" y="78" width="6" height="14" rx="3" fill="#08080b"/></svg></div><h4>PIN lock</h4><p>Lock the app behind a PIN so nobody else opens it.</p></div><div class="wcard"><div class="wic"><svg viewBox="0 0 120 120" width="44" height="44" aria-hidden="true"><circle cx="48" cy="60" r="32" fill="#f4f4f6"/><circle cx="76" cy="60" r="32" fill="#e11d48" opacity=".9"/></svg></div><h4>Two looks</h4><p>After dark or Workshop. Switch any time in Settings.</p></div></div></div></section>
 <section class="wsec hide-in wsoft"><div class="wc"><p class="wk">How it works</p><h3 class="wt2">Up and running in a minute</h3><ol class="wsteps"><li><b>1</b><div><h4>Create an account</h4><p>A username and an email. Or try it as a guest first.</p></div></li><li><b>2</b><div><h4>Log a session</h4><p>Tap Log a session whenever you want. Start, end, rating, released.</p></div></li><li><b>3</b><div><h4>Watch it add up</h4><p>Stats, streaks, rewards and your friends fill in on their own.</p></div></li></ol></div></section>
-<section class="wsec hide-in"><div class="wc"><p class="wk">Privacy</p><h3 class="wt2">Only numbers. Always yours.</h3><div class="wprv"><div><h4>Numbers and timestamps only</h4><p>No photos, no notes, no location.</p></div><div><h4>Private by default</h4><p>Friends see your stats only if you allow it.</p></div><div><h4>Your data, your call</h4><p>Add a PIN lock, or delete your account any time.</p></div><div><h4>Adults only</h4><p>Creamer is for people 18 and older.</p></div></div></div></section>
+<section class="wsec hide-in"><div class="wc"><p class="wk">Privacy</p><h3 class="wt2">Only numbers. Always yours.</h3><div class="wprv"><div><h4>Numbers and timestamps only</h4><p>No photos, no notes, no location.</p></div><div><h4>Only your friends</h4><p>Friends you accept see your stats. Turn sharing off any time in Settings.</p></div><div><h4>Your data, your call</h4><p>Add a PIN lock, or delete your account any time.</p></div><div><h4>Adults only</h4><p>Creamer is for people 18 and older.</p></div></div></div></section>
 <section class="wsec hide-in wsoft"><div class="wc wnarrow"><p class="wk">Questions</p><h3 class="wt2">Good to know</h3><details><summary>Is it free?</summary><p>Yes. There is nothing to pay.</p></details><details><summary>Do I need an account?</summary><p>No. You can try it as a guest. Guest sessions stay on your device, and they carry over if you create an account later.</p></details><details><summary>What do you store?</summary><p>Your email, username, an optional short bio, and for each session the times, rating, whether it was released and any tags. No photos, contacts or location. Details are in the <a href="privacy.html">privacy policy</a>.</p></details><details><summary>Who can see my sessions?</summary><p>Only you, unless you choose to share with friends in Settings.</p></details><details><summary>Can I delete my account?</summary><p>Yes, from Settings. It removes your account and your sessions.</p></details><details><summary>Does it work on a computer?</summary><p>Yes. It works in any browser on a phone or a computer, and you can add it to your home screen.</p></details></div></section>
 <section class="wsec wfinal"><div class="wc wnarrow"><h3 class="wt2 hide-in" style="text-align:center">Create your account</h3><p class="wp hide-in" style="text-align:center">Free. Takes under a minute. +100 LDs on sign-up.</p>
 <div class="card gc" id="authCard">
@@ -1617,6 +1636,27 @@ html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!importa
 </div>
 </div>
 
+<div class="ov cmpov" id="cmpOv" hidden><div class="card" role="dialog" aria-modal="true" aria-label="Compete"><div class="cmphd"><button type="button" id="cmpX" aria-label="Close">&#215;</button></div><div id="cmpBody">
+<section class="card crewc" id="crewCard"></section>
+<section class="card soft" id="lgCard"></section>
+<section class="card soft" id="duCard">
+<h2>Duels</h2>
+<div id="duList"></div>
+<div class="sec">New duel</div>
+<label for="duF" style="margin-top:0">Opponent</label>
+<select id="duF"></select>
+<label for="duS">What counts</label>
+<select id="duS"><option value="n">Most sessions</option><option value="m">Most total minutes</option><option value="a">Highest average rating (3+ sessions)</option><option value="d">Most active days</option></select>
+<label for="duD">Length</label>
+<select id="duD"><option value="3">3 days</option><option value="7">7 days</option></select>
+<label for="duK">Stake</label>
+<select id="duK"><option value="0">No stake</option><option value="20">20 LDs</option><option value="50">50 LDs</option><option value="100">100 LDs</option></select>
+<div class="row"><button type="button" class="go" id="duGo">Start duel</button></div>
+<p class="note" id="duMsg" role="status" style="min-height:1.4em"></p>
+<div id="duHist"></div>
+<p class="note" id="duNote">The winner takes the other side's stake. A draw returns it. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
+</section>
+</div></div></div>
 <div class="ov" id="ov" hidden>
 <div class="card" role="dialog" aria-modal="true" aria-labelledby="mt">
 <h2 id="mt" style="font-size:26px">New session</h2>
@@ -1652,7 +1692,7 @@ try {
   if (CFG.url && CFG.key) { if (window.supabase && window.supabase.createClient) { sb = window.supabase.createClient(CFG.url, CFG.key); CLOUD = true; } else CLOUDFAIL = true; }
 } catch (e) { CLOUDFAIL = true; }
 var uid = '', ACC = {};
-var DEF_P = {name: '', pub: false, discover: true, bio: ''}, DEF_S = {theme: 'dark', dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: false, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
+var DEF_P = {name: '', pub: true, discover: true, bio: ''}, DEF_S = {theme: 'dark', dRate: 5, dLen: 10, dRel: true, fx: true, pop: true, nt: true, tank: 24, snd: false, hap: true, tilt: false, wipe: true, h24: true, w: {k: 'load', s: '', p: ''}, tags: []};
 function newG() { return {dset: {}, fz: 0, fd: {}, st: {}, lg: null, du: [], lost: 0, pick: null, bonus: 0, spent: 0, claimed: {}, owned: {}, eq: {theme: 'strawberry', splash: 'default', title: 't_none', fx: 'none'}, boosts: []}; }
 var E = [], F = [], P = Object.assign({}, DEF_P), S = Object.assign({}, DEF_S), G = newG(), relV = true, histAll = false, tTimer, selTags = [], entFilter = '', entSort = 'new', entMax = 50, delArm = '', delT;
 function ukey(n, u) { return 'creamer:u:' + (u || uid) + ':' + n; }
@@ -1806,7 +1846,7 @@ function renderFriendLists(force) {
   if (!force && key === fKey) return;
   fKey = key;
   $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
-  $('fEmpty').hidden = !!list.length; $('frCard').hidden = !list.length;
+  $('fEmpty').hidden = !!list.length; $('frCard').hidden = !list.length; $('cmpWrap').hidden = !list.length;
   var ml = lastOf(E.filter(function (x) { return x.rel; }));
   var me = '<li><div class="frr frme">' + avatar(P.name || 'me') + '<span class="frn"><b>You</b></span>' + (ml ? '<span class="frt"><b data-since="' + ml.t + '">' + sinceLabel(ml.t, false) + '</b></span>' : '<span class="frt"><span class="frq">no loads yet</span></span>') + '</div></li>';
   $('fl').innerHTML = list.length ? me + list.map(function (f) {
@@ -2094,7 +2134,7 @@ $('fBack').addEventListener('click', function () { openF = ''; fMoreOn = false; 
 $('fMore').addEventListener('click', function () { fMoreOn = !fMoreOn; renderFriendView(); });
 $('fBody').addEventListener('click', function (e) {
   if (e.target.id === 'fAll') { fAllOn = !fAllOn; renderFriendView(); return; }
-  if (e.target.id === 'fDuel') { var who = openF; openF = ''; fMoreOn = false; fAllOn = false; renderFriendView(); rwSub = 'rw'; try { localStorage.setItem('creamer:rw', 'rw'); } catch (x) {} tab('rewards'); renderRewards(); FOLD.duels = true; foldAll(); setTimeout(function () { var sel = $('duF'); if (sel) { for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === who) sel.value = who; } var d = $('duCard'); if (d) d.scrollIntoView({block: 'start', behavior: 'smooth'}); }, 80); return; }
+  if (e.target.id === 'fDuel') { cmpOpen('duCard', openF); return; }
   if (e.target.id !== 'fRemove') return;
   if (CLOUD) { var fo = FR[openF]; openF = ''; if (fo) sb.rpc('remove_friend', {other: fo.id}).then(refreshSocial).then(render); else render(); return; }
   F = F.filter(function (x) { return x !== openF; }); saveF(); openF = ''; render();
@@ -3078,7 +3118,6 @@ function renderRewards() {
   var seg = '<div class="span2"><div class="seg" id="rwSeg"><button type="button" data-sub="rw" aria-pressed="' + (rwSub !== 'shop') + '">Rewards</button><button type="button" data-sub="shop" aria-pressed="' + (rwSub === 'shop') + '">Shop</button></div></div>';
   balSet(T.bal);
   $('rw').innerHTML = seg + (rwSub === 'shop' ? shopCard : out.join(''));
-  $('rwComp').hidden = rwSub === 'shop';
 }
 $('rw').addEventListener('click', function (e) {
   if (dailyClick(e)) return;
@@ -4237,7 +4276,7 @@ $('crewCard').addEventListener('change', function (e) {
   var g = +e.target.value;
   crewAct('set_crew', {p_name: '', p_goal: g}, 'Goal changed to ' + g + '.', function () { var d = crewDemoGet(); d.goal = g; crewDemoPut(d); });
 });
-$('crewHome').addEventListener('click', function () { goTab('friends'); setTimeout(function () { $('crewCard').scrollIntoView({behavior: 'smooth', block: 'start'}); }, 60); });
+$('crewHome').addEventListener('click', function () { cmpOpen('crewCard'); });
 
 /* ===== folds: secondary cards collapse to one row ===== */
 var FOLD = {}, KEEP = {'Overview': 1, 'No stats yet': 1, 'Last 35 days': 1, 'Weekly challenges': 1, 'Next badges to get': 1, 'Shop': 1, 'Numbers': 1, 'Top badges': 1, 'Profile': 1, 'Your level': 1};
@@ -4511,6 +4550,54 @@ function fInvite() {
 }
 $('fInvite').addEventListener('click', fInvite);
 $('fEmpty').addEventListener('click', function (e) { if (e.target.closest('[data-fadd]')) fAddToggle(true); else if (e.target.closest('[data-finv]')) fInvite(); });
+
+/* ===== compete tiles + sheet ===== */
+var CMP = '';
+function cmpOpen(id, who) {
+  CMP = id; ['duCard', 'crewCard', 'lgCard'].forEach(function (k) { $(k).hidden = k !== id; });
+  var o = $('cmpOv'); clearTimeout(o._t); o.classList.remove('out'); o.hidden = false;
+  render(); chipAll();
+  if (who) { var sel = $('duF'); for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === who) { sel.value = who; chipAll(); } }
+  setTimeout(function () { var x = $('cmpX'); if (x) x.focus({preventScroll: true}); }, 30);
+}
+function cmpClose() { var o = $('cmpOv'); if (o.hidden) return; CMP = ''; if (FXON()) { o.classList.add('out'); clearTimeout(o._t); o._t = setTimeout(function () { o.hidden = true; o.classList.remove('out'); }, 230); } else o.hidden = true; }
+$('cmpX').addEventListener('click', cmpClose);
+$('cmpOv').addEventListener('click', function (e) { if (e.target === $('cmpOv')) cmpClose(); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('cmpOv').hidden) cmpClose(); });
+document.addEventListener('click', function (e) { var t = e.target.closest && e.target.closest('[data-cmp]'); if (t) cmpOpen(t.getAttribute('data-cmp')); });
+function chipify(id) {
+  var sel = $(id); if (!sel) return;
+  var box = sel.nextElementSibling;
+  if (!box || !box.classList.contains('chips2')) {
+    box = document.createElement('div'); box.className = 'chips2'; box.setAttribute('role', 'group');
+    var lb = document.querySelector('label[for="' + id + '"]'); if (lb) box.setAttribute('aria-label', lb.textContent);
+    sel.parentNode.insertBefore(box, sel.nextSibling); sel.classList.add('vh'); sel.setAttribute('tabindex', '-1');
+    box.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.disabled) return; sel.value = b.getAttribute('data-v'); sel.dispatchEvent(new Event('change', {bubbles: true})); chipify(id); });
+  }
+  var key = Array.prototype.map.call(sel.options, function (o) { return o.value + o.text + o.disabled; }).join('|') + '#' + sel.value;
+  if (box._k === key) return; box._k = key;
+  box.innerHTML = Array.prototype.map.call(sel.options, function (o) { return '<button type="button" data-v="' + esc(o.value) + '" aria-pressed="' + (o.value === sel.value) + '"' + (o.disabled || !o.value ? ' disabled' : '') + '>' + esc(o.text) + '</button>'; }).join('');
+}
+function chipAll() { ['duF', 'duS', 'duD', 'duK', 'crGoal', 'crInv', 'crGoalSet'].forEach(chipify); }
+function renderCompete() {
+  if (!uid || !G) return;
+  var du = G.du || [], act = du.filter(function (d) { return !d.done; }), inc = act.filter(function (d) { return d.pend === 'in'; })[0], run = act.filter(function (d) { return !d.pend; })[0], now = Date.now(), t, st;
+  if (inc) { t = esc(fn(inc.f)) + ' challenges you'; st = 'Tap to accept or decline'; }
+  else if (run) { var u = api.find(run.f), me = dval(run.st, E, run.a, run.b), th = u && !u.priv ? dval(run.st, u.entries, run.a, run.b) : 0; t = 'vs ' + esc(fn(run.f)); st = (me > th ? 'You lead ' : me < th ? 'Behind ' : 'Tied ') + dfmt(run.st, me) + ' to ' + dfmt(run.st, th) + ' · ' + fmtGap(run.b - now) + ' left'; }
+  else if (act.length) { t = 'Waiting for ' + esc(fn(act[0].f)); st = 'They have not accepted yet'; }
+  else { t = 'Duel a friend'; st = '1 vs 1 for 3 or 7 days'; }
+  $('ctDu').innerHTML = t; $('ctDuS').textContent = st;
+  var cb = $('ctCrB');
+  if (CREW && CREW.ok && CREW.members) { var tot = crewTotal(), pc = Math.min(100, Math.round(tot / CREW.goal * 100)); $('ctCr').textContent = CREW.name; $('ctCrS').textContent = tot >= CREW.goal ? 'Full! +100 LDs each' : tot + ' of ' + CREW.goal + ' this week'; cb.hidden = false; cb.firstChild.style.width = pc + '%'; }
+  else if (CREW && CREW.inv && CREW.inv.length) { $('ctCr').textContent = 'Crew invite'; $('ctCrS').textContent = 'Tap to join ' + CREW.inv[0].name; cb.hidden = true; }
+  else { $('ctCr').textContent = 'Start a crew'; $('ctCrS').textContent = 'Fill one tank together each week'; cb.hidden = true; }
+  if (G.lg) { var w = winOf('w'), rows = leagueRows(w.a, w.b), mi = rows.map(function (r) { return r.me; }).indexOf(true);
+    if (rows.length < 3) { $('ctLg').textContent = TIERS[G.lg.tier] + ' league'; $('ctLgS').textContent = 'Needs 2 friends with public stats'; }
+    else { $('ctLg').textContent = '#' + (mi + 1) + ' of ' + rows.length + ' · ' + TIERS[G.lg.tier]; $('ctLgS').textContent = 'Resets in ' + fmtGap(w.b - now); } }
+  if (!$('cmpOv').hidden) chipAll();
+}
+(function () { var rc = renderCrew; renderCrew = function () { var r = rc.apply(this, arguments); try { renderCompete(); } catch (e) {} return r; }; })();
+(function () { var rd = renderDuels; renderDuels = function () { var r = rd.apply(this, arguments); if (!$('cmpOv').hidden) chipAll(); return r; }; })();
 </script>
 </body>
 </html>
