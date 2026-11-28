@@ -1195,6 +1195,53 @@ html[data-theme] .card.hero{padding-top:20px!important}
 #homeView .card.hero #hStreak{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;margin-top:4px}
 #homeView .card.hero #hStreak>*{background:transparent!important;border:0!important;padding:0!important;font-size:15px!important;color:var(--t-mute,#b9b9c7)!important;box-shadow:none!important}
 @media (min-width:1000px){#homeView .tank{width:210px}}
+
+/* ===== simple friends tab ===== */
+.fhd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 2px}
+html[data-theme] .fht{margin:0!important;font-family:var(--t-fd,inherit)!important;font-size:34px!important;letter-spacing:.02em;text-transform:uppercase;color:var(--t-ink)!important}
+.fht{white-space:nowrap}
+.fht .cnt{color:var(--t-mute)!important;font-size:24px}
+@media (max-width:380px){html[data-theme] .fht{font-size:28px!important}.fha button{padding:0 12px}}
+.fha{display:flex;gap:8px}
+.fha button{min-height:44px;padding:0 16px;font-size:16px;width:auto}
+.fadd{background:var(--t-card);border:1px solid var(--t-edge);border-radius:var(--t-rad,16px);padding:14px 16px}
+#fMsg:empty{display:none}
+#fMsg{margin:0!important}
+#frCard[hidden]{display:none}
+#fl.frl{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+#fl.frl>li{padding:0!important;border:0!important;display:block!important}
+.frr{width:100%;display:flex!important;flex-direction:row!important;align-items:center;gap:12px;padding:12px 14px!important;min-height:68px;border-radius:var(--t-rad,16px)!important;background:var(--t-card,#121217)!important;border:1px solid var(--t-edge,#2c2c37)!important;border-top-color:rgba(255,255,255,.17)!important;color:var(--t-ink);text-align:left;font-family:var(--t-fb,inherit);text-transform:none!important;letter-spacing:0;font-weight:500;box-shadow:none}
+.frr .av{width:42px;height:42px;flex:0 0 auto;font-size:18px}
+.frr .frn{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15}
+.frr .frn b{font-size:19px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.frr .frn small{font-size:13px;color:var(--t-mute)}
+.frr .frt{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.frr .frt b{font:400 26px/1 var(--t-fd,inherit);letter-spacing:.02em;color:var(--t-ink);white-space:nowrap}
+.frq{font-size:15px;color:var(--t-mute)}
+.frdot{width:10px;height:10px;border-radius:50%;background:var(--t-acc,#e11d48);display:inline-block}
+.frme{background:transparent!important;border:1px dashed var(--t-edge,#2c2c37)!important;opacity:.85}
+.frme .frt b{color:var(--t-mute)}
+.fempty{text-align:center;padding:36px 18px;border:1px solid var(--t-edge);border-radius:var(--t-rad,16px);background:var(--t-card);color:var(--t-ink)}
+.fempty svg{color:var(--t-mute)}
+.fempty h3{margin:10px 0 6px;font-size:24px}
+.fempty p{margin:0 auto 16px;max-width:320px;color:var(--t-mute);font-size:16px;line-height:1.45}
+.fempty .row{justify-content:center;max-width:340px;margin:0 auto}
+.fhead{display:flex;justify-content:space-between;align-items:center}
+#fMore{width:48px;min-height:44px;font-size:22px;line-height:1;padding:0}
+#fDetail:not(.more) .fnick,#fDetail:not(.more) .fnickh,#fDetail:not(.more) .fmore{display:none!important}
+.fwho{margin-bottom:14px}
+.fmore{margin:0 0 12px}
+.fmore button{width:auto}
+.fbig{display:flex;flex-direction:column;gap:2px}
+.fbig b{font:400 clamp(48px,15vw,68px)/1 var(--t-fd,inherit);color:var(--t-ink)}
+.fbig b.fz{font-size:34px;color:var(--t-mute)}
+.fls{margin:8px 0 0!important}
+.fbio{margin:8px 0 0;font-size:16px;color:var(--t-ink)}
+#fDetail .card.hero .tiles{margin-top:14px}
+.fact{display:flex;gap:10px;flex-wrap:wrap}
+.fact button{flex:1 1 160px;min-height:52px}
+#rwComp{margin-top:14px}
+#rwComp[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -1301,20 +1348,26 @@ html[data-theme] .card.hero{padding-top:20px!important}
 
 <div id="friendsView" hidden>
 <div id="fList" class="stack home">
+<div class="fhd"><h2 class="fht">Friends <span class="cnt" id="frCount"></span></h2><div class="fha"><button type="button" id="fInvite">Invite</button><button type="button" class="go" id="fAddBtn" aria-expanded="false">+ Add</button></div></div>
+<form id="addForm" class="fadd" hidden><label for="fq" style="margin-top:0">Friend's username</label><div style="display:flex;gap:10px"><input type="text" id="fq" maxlength="21" placeholder="username" autocomplete="off" autocapitalize="none" spellcheck="false" style="flex:1;width:auto;min-width:0"><button type="submit" class="go">Add</button></div></form>
+<p class="note" id="fMsg" role="status"></p>
 <section class="card b" id="rqCard" hidden></section>
-<section class="card" id="frCard">
-<h2>Friends <span class="cnt" id="frCount"></span></h2>
-<div class="fdrops" id="fDrops" hidden aria-label="Friends as drops"></div><p class="note fdn" id="fDropN" hidden>Bigger drop means longer since their last load. Drag and fling them, tap one to open.</p>
-<p class="sub" id="frSort" style="margin:-4px 0 8px">Longest since their last load comes first.</p>
+<div id="frCard">
+<div class="fdrops" id="fDrops" hidden></div><p id="fDropN" hidden></p><p id="frSort" hidden></p>
 <ul id="fl" class="frl"></ul>
-<div class="sec">Add a friend</div>
-<form id="addForm" style="display:flex;gap:10px">
-<input type="text" id="fq" maxlength="21" placeholder="find by username" aria-label="Friend's username" autocomplete="off" autocapitalize="none" spellcheck="false" style="flex:1;width:auto;min-width:0">
-<button type="submit" class="go">Add</button>
-</form>
-<p class="note" id="fMsg" role="status" style="min-height:1.4em"></p>
+</div>
+<div class="fempty" id="fEmpty" hidden><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-4 3-6 7-6s7 2 7 6M16 14c3 0 6 1.5 6 5"/></svg><h3>Add your first friend</h3><p>See how long it has been since their last load. They see your stats only if you turn on sharing in Settings.</p><div class="row"><button type="button" class="go" data-fadd="1">Add friend</button><button type="button" data-finv="1">Invite</button></div></div>
 <p class="note" id="fNote">Demo: the user list is three sample names with made-up sessions. Real usernames need the Supabase backend. Your logs stay in this browser only.</p>
-</section>
+</div>
+<div id="fDetail" hidden>
+<div class="fhead"><button type="button" id="fBack">Back</button><button type="button" id="fMore" aria-label="More options" aria-expanded="false">&#8943;</button></div><div class="fwho"><span id="fAv"></span><div id="fName"></div></div><div class="fnick"><input type="text" id="fNick" maxlength="24" placeholder="Add a nickname" aria-label="Nickname"><button type="button" id="fNickSave" class="go">Save</button></div><p class="sub fnickh" style="margin:6px 4px 12px">Only you can see this name. It replaces the username everywhere in your app.</p>
+<div id="fBody"></div>
+</div>
+</div>
+
+<div id="rewardsView" hidden>
+<div class="sgrid" id="rw"></div>
+<div id="rwComp" class="stack home"><div class="eyebrow">Compete with friends</div>
 <section class="card crewc" id="crewCard" data-k="crew" data-sum="Team up with friends and fill one shared tank each week."></section>
 <section class="card soft" id="lgCard" data-k="league" data-sum="A weekly ranking against your friends."></section>
 <section class="card soft" id="duCard" data-k="duels" data-sum="Challenge a friend, with or without LDs at stake.">
@@ -1335,14 +1388,6 @@ html[data-theme] .card.hero{padding-top:20px!important}
 <p class="note" id="duNote">The winner takes the other side's stake. A draw returns it. Only friends with public stats can be challenged. Demo: opponents are the sample users and accounts on this device, and they accept automatically.</p>
 </section>
 </div>
-<div id="fDetail" hidden>
-<div class="fhead"><button type="button" id="fBack">Back</button></div><div class="fwho"><span id="fAv"></span><div id="fName"></div></div><div class="fnick"><input type="text" id="fNick" maxlength="24" placeholder="Add a nickname" aria-label="Nickname"><button type="button" id="fNickSave" class="go">Save</button></div><p class="sub" style="margin:6px 4px 18px">Only you can see this name. It replaces the username everywhere in your app.</p>
-<div id="fBody"></div>
-</div>
-</div>
-
-<div id="rewardsView" hidden>
-<div class="sgrid" id="rw"></div>
 </div>
 
 <div id="profileView" hidden>
@@ -1688,6 +1733,21 @@ function sinceCell(u) {
   var l = lastOf(u.entries);
   return l ? '<b data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="empty">no loads yet</span>';
 }
+var fMoreOn = false, fAllOn = false;
+function friendDetail(u) {
+  var es = u.entries || [], rel = es.filter(function (x) { return x.rel; }), ll = lastOf(rel), le = lastOf(es), rs = 0;
+  es.forEach(function (x) { rs += x.rate; });
+  var top = '<div class="fbig">' + (ll ? '<b data-since="' + ll.t + '">' + sinceLabel(ll.t, false) + '</b>' : '<b class="fz">No loads yet</b>') + '</div>' +
+    (le ? '<p class="sub fls">Last session ' + spanTxt(le, false) + ' · ' + fmtMin(le.dur) + ' · ' + le.rate + '/10 · ' + (le.rel ? 'load' : 'not released') + '</p>' : '') +
+    (u.bio ? '<p class="fbio">' + esc(u.bio) + '</p>' : '');
+  var st = curStreak(es);
+  var tiles = '<div class="tiles">' + tile(es.length, 'sessions') + tile(rel.length, 'loads') + tile(es.length ? (rs / es.length).toFixed(1) : '–', 'avg rating') + tile(st + (st === 1 ? ' day' : ' days'), 'streak') + '</div>';
+  var hm = '', tmp = document.createElement('div'); tmp.innerHTML = statsHtml(es, false);
+  Array.prototype.forEach.call(tmp.children, function (c) { var h = c.querySelector('h2'); if (h && h.textContent === 'Last 35 days') hm = c.outerHTML; });
+  var act = '<div class="span2 fact"><button type="button" class="go" id="fDuel">Challenge to a duel</button><button type="button" id="fAll" aria-expanded="' + fAllOn + '">' + (fAllOn ? 'Hide all stats' : 'All stats') + '</button></div>';
+  var all = fAllOn ? tmp.innerHTML.replace('class="card span2 hero"', 'class="card span2"') : '';
+  return card(' span2 hero', 'Since last load', top + tiles) + hm + act + all;
+}
 function renderFriendView() {
   var det = openF && F.indexOf(openF) >= 0;
   if (!det) openF = '';
@@ -1696,9 +1756,10 @@ function renderFriendView() {
     var u = api.find(openF), body;
     if (!u) body = card('', 'Unavailable', '<p class="empty">This user is no longer available.</p>');
     else if (u.priv) body = card('', 'Private profile', '<p class="empty">' + esc(fn(openF)) + ' keeps their stats private.</p>');
-    else body = (u.bio ? card(' b', 'Bio', '<p style="margin:0">' + esc(u.bio) + '</p>') : '') + statsHtml(u.entries, false);
+    else body = friendDetail(u);
     $('fName').innerHTML = fnH(openF); if (document.activeElement !== $('fNick')) $('fNick').value = nickOf(openF); $('fAv').innerHTML = avatar(openF, false);
-    $('fBody').innerHTML = '<div class="sgrid">' + body + '</div><div class="row" style="max-width:260px"><button type="button" id="fRemove">Remove friend</button></div>';
+    $('fBody').innerHTML = '<div class="fmore"><button type="button" id="fRemove">Remove friend</button></div><div class="sgrid">' + body + '</div>';
+    $('fDetail').classList.toggle('more', fMoreOn); $('fMore').setAttribute('aria-expanded', String(fMoreOn));
   }
 }
 var fKey = '';
@@ -1715,6 +1776,14 @@ function agoCell(f) {
   if (f.u.priv) return '<span class="ago lx">private</span>';
   var l = lastOf((f.u.entries || []).filter(function (x) { return x.rel; }));
   return l ? '<b class="ago l' + gapLvl(f.gap) + '" data-since="' + l.t + '" data-ago="1">' + sinceLabel(l.t, true) + '</b>' : '<span class="ago l2">no loads yet</span>';
+}
+function friendRow(f) {
+  var nm = '<span class="frn"><b>' + esc(fn(f.n)) + '</b>' + (nickOf(f.n) ? '<small>@' + esc(f.n) + '</small>' : '') + '</span>';
+  var right;
+  if (!f.u) right = '<span class="frq">unavailable</span>';
+  else if (f.u.priv) right = '<span class="frq">private</span>';
+  else { var l = lastOf((f.u.entries || []).filter(function (x) { return x.rel; })); right = l ? '<b data-since="' + l.t + '">' + sinceLabel(l.t, false) + '</b>' : '<span class="frq">no loads yet</span>'; }
+  return avatar(f.n) + nm + '<span class="frt">' + (gapLvl(f.gap) === '2' ? '<i class="frdot" aria-label="3 days or more"></i>' : '') + right + '</span>';
 }
 function friendCard(f) {
   var top = '<span class="frh">' + avatar(f.n) + '<span class="frn"><b>' + fnH(f.n) + '</b></span><i class="frgo" aria-hidden="true">&#8250;</i></span>';
@@ -1736,13 +1805,16 @@ function renderFriendLists(force) {
   var list = friendSort(), key = list.map(function (f) { var le = f.u && !f.u.priv ? lastOf(f.u.entries || []) : null; return f.n + nickOf(f.n) + gapLvl(f.gap) + (f.gap === Infinity ? 'n' : '') + (le ? le.id + '' + le.t : ''); }).join(',');
   if (!force && key === fKey) return;
   fKey = key;
-  $('frCount').textContent = F.length ? '(' + F.length + ')' : ''; $('frSort').hidden = F.length < 2;
-  $('fl').innerHTML = list.length ? list.map(function (f) {
-    return '<li><button class="frc g' + gapLvl(f.gap) + '" type="button" data-open="' + esc(f.n) + '">' + friendCard(f) + '</button></li>';
-  }).join('') : '<li class="empty">No friends yet. Add one by username below.</li>';
+  $('frCount').textContent = F.length ? '(' + F.length + ')' : '';
+  $('fEmpty').hidden = !!list.length; $('frCard').hidden = !list.length;
+  var ml = lastOf(E.filter(function (x) { return x.rel; }));
+  var me = '<li><div class="frr frme">' + avatar(P.name || 'me') + '<span class="frn"><b>You</b></span>' + (ml ? '<span class="frt"><b data-since="' + ml.t + '">' + sinceLabel(ml.t, false) + '</b></span>' : '<span class="frt"><span class="frq">no loads yet</span></span>') + '</div></li>';
+  $('fl').innerHTML = list.length ? me + list.map(function (f) {
+    return '<li><button class="frr g' + gapLvl(f.gap) + '" type="button" data-open="' + esc(f.n) + '">' + friendRow(f) + '</button></li>';
+  }).join('') : '';
   $('hf').innerHTML = list.length ? list.slice(0, 5).map(function (f) {
     return '<li><span class="nm">' + avatar(f.n, true) + '<b>' + fnH(f.n) + '</b></span>' + agoCell(f) + '</li>';
-  }).join('') + (list.length > 5 ? '<li class="empty">+' + (list.length - 5) + ' more in the Friends tab</li>' : '') : '<li class="empty">No friends yet.</li><li class="empty"><button type="button" data-gotab="friends">Add a friend</button></li>';
+  }).join('') + (list.length > 5 ? '<li class="empty">+' + (list.length - 5) + ' more in the Friends tab</li>' : '') : '<li class="empty">No friends yet.</li><li class="empty"><button type="button" data-gotab="friends" data-addf="1">Add a friend</button></li>';
 }
 function spanTxt(x, yr) {
   var e = new Date(x.t), st = new Date(x.t - x.dur * 60000), o = yr ? {day: 'numeric', month: 'short', year: 'numeric'} : {day: 'numeric', month: 'short'};
@@ -2016,10 +2088,13 @@ $('addForm').addEventListener('submit', function (e) {
 $('fl').addEventListener('click', function (e) {
   var b = e.target.closest ? e.target.closest('[data-open]') : null;
   if (!b) return;
-  openF = b.getAttribute('data-open'); renderFriendView(); window.scrollTo(0, 0);
+  openF = b.getAttribute('data-open'); fMoreOn = false; fAllOn = false; renderFriendView(); window.scrollTo(0, 0);
 });
-$('fBack').addEventListener('click', function () { openF = ''; renderFriendView(); });
+$('fBack').addEventListener('click', function () { openF = ''; fMoreOn = false; fAllOn = false; renderFriendView(); });
+$('fMore').addEventListener('click', function () { fMoreOn = !fMoreOn; renderFriendView(); });
 $('fBody').addEventListener('click', function (e) {
+  if (e.target.id === 'fAll') { fAllOn = !fAllOn; renderFriendView(); return; }
+  if (e.target.id === 'fDuel') { var who = openF; openF = ''; fMoreOn = false; fAllOn = false; renderFriendView(); rwSub = 'rw'; try { localStorage.setItem('creamer:rw', 'rw'); } catch (x) {} tab('rewards'); renderRewards(); FOLD.duels = true; foldAll(); setTimeout(function () { var sel = $('duF'); if (sel) { for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === who) sel.value = who; } var d = $('duCard'); if (d) d.scrollIntoView({block: 'start', behavior: 'smooth'}); }, 80); return; }
   if (e.target.id !== 'fRemove') return;
   if (CLOUD) { var fo = FR[openF]; openF = ''; if (fo) sb.rpc('remove_friend', {other: fo.id}).then(refreshSocial).then(render); else render(); return; }
   F = F.filter(function (x) { return x !== openF; }); saveF(); openF = ''; render();
@@ -3003,6 +3078,7 @@ function renderRewards() {
   var seg = '<div class="span2"><div class="seg" id="rwSeg"><button type="button" data-sub="rw" aria-pressed="' + (rwSub !== 'shop') + '">Rewards</button><button type="button" data-sub="shop" aria-pressed="' + (rwSub === 'shop') + '">Shop</button></div></div>';
   balSet(T.bal);
   $('rw').innerHTML = seg + (rwSub === 'shop' ? shopCard : out.join(''));
+  $('rwComp').hidden = rwSub === 'shop';
 }
 $('rw').addEventListener('click', function (e) {
   if (dailyClick(e)) return;
@@ -4198,7 +4274,7 @@ function statsMore() {
 }
 function foldTog(c) { var k = c.getAttribute('data-k'); FOLD[k] = !FOLD[k]; foldAll(); }
 document.addEventListener('click', function (e) {
-  var g = e.target.closest && e.target.closest('[data-gotab]'); if (g) { goTab(g.getAttribute('data-gotab')); return; }
+  var g = e.target.closest && e.target.closest('[data-gotab]'); if (g) { goTab(g.getAttribute('data-gotab')); if (g.hasAttribute('data-addf')) fAddToggle(true); return; }
   if (e.target.closest && e.target.closest('[data-logit]')) { tab('home'); setTimeout(function () { $('add').click(); }, 50); return; }
   var c = e.target.closest && e.target.closest('section.fold'); if (!c) return;
   var h = e.target.closest('h2');
@@ -4355,7 +4431,7 @@ function levelPour(L) {
 var DR = {b: [], run: 0, key: ''};
 function dropsSync() {
   var box = $('fDrops'); if (!box) return;
-  var on = FXON() && F.length > 0 && !openF;
+  var on = false;
   box.hidden = !on; $('fDropN').hidden = !on;
   if (!on) { DR.run = 0; return; }
   var list = friendSort(), key = list.map(function (f) { return f.n + ':' + gapLvl(f.gap) + ':' + (f.gap === Infinity ? 'x' : Math.round(f.gap / 3600000)); }).join(',');
@@ -4423,6 +4499,18 @@ function dropLoop(now) {
 (function () { var rf = renderFriendLists; renderFriendLists = function () { var r = rf.apply(this, arguments); if (!$('friendsView').hidden) dropsSync(); return r; }; })();
 (function () { var rv = renderFriendView; renderFriendView = function () { var r = rv.apply(this, arguments); dropsSync(); return r; }; })();
 
+
+/* ===== simple friends tab ===== */
+function fAddToggle(on) { var f = $('addForm'); f.hidden = on === undefined ? !f.hidden : !on; $('fAddBtn').setAttribute('aria-expanded', String(!f.hidden)); if (!f.hidden) setTimeout(function () { $('fq').focus(); }, 30); }
+$('fAddBtn').addEventListener('click', function () { fAddToggle(); });
+function fInvite() {
+  var me = P.name ? '@' + P.name : 'me', txt = 'Add me on Creamer: ' + me, url = 'https://creamer.ink';
+  if (navigator.share) { navigator.share({title: 'Creamer', text: txt, url: url}).catch(function () {}); return; }
+  var full = txt + '\n' + url;
+  try { navigator.clipboard.writeText(full).then(function () { toast('Invite copied. Paste it in any chat.'); }, function () { toast(full); }); } catch (e) { toast(full); }
+}
+$('fInvite').addEventListener('click', fInvite);
+$('fEmpty').addEventListener('click', function (e) { if (e.target.closest('[data-fadd]')) fAddToggle(true); else if (e.target.closest('[data-finv]')) fInvite(); });
 </script>
 </body>
 </html>
